@@ -5,141 +5,171 @@
         {
             "CopyimgInwardIcon0d7ec6b0c1bd244": {
                 "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "inwardentrygreen.png"
+                "src": "inwardentrygreen.png",
+                "type": "Image"
             },
             "CopylblRecentActivityDesc0fbfda4d382704e": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "2 hours ago"
+                "text": "2 hours ago",
+                "type": "Label"
             },
             "lblRecentActivityDesc": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Vehicle Received: 41281 Nissan Altima 2020"
+                "text": "Vehicle Received: 41281 Nissan Altima 2020",
+                "type": "Label"
             }
         },
         {
             "CopyimgInwardIcon0d7ec6b0c1bd244": {
                 "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "inwardentrygreen.png"
+                "src": "inwardentrygreen.png",
+                "type": "Image"
             },
             "CopylblRecentActivityDesc0fbfda4d382704e": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "2 hours ago"
+                "text": "2 hours ago",
+                "type": "Label"
             },
             "lblRecentActivityDesc": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Vehicle Received: 41281 Nissan Altima 2020"
+                "text": "Vehicle Received: 41281 Nissan Altima 2020",
+                "type": "Label"
             }
         },
         {
             "CopyimgInwardIcon0d7ec6b0c1bd244": {
                 "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "inwardentrygreen.png"
+                "src": "inwardentrygreen.png",
+                "type": "Image"
             },
             "CopylblRecentActivityDesc0fbfda4d382704e": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "2 hours ago"
+                "text": "2 hours ago",
+                "type": "Label"
             },
             "lblRecentActivityDesc": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Vehicle Received: 41281 Nissan Altima 2020"
+                "text": "Vehicle Received: 41281 Nissan Altima 2020",
+                "type": "Label"
             }
         },
         {
             "CopyimgInwardIcon0d7ec6b0c1bd244": {
                 "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "inwardentrygreen.png"
+                "src": "inwardentrygreen.png",
+                "type": "Image"
             },
             "CopylblRecentActivityDesc0fbfda4d382704e": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "2 hours ago"
+                "text": "2 hours ago",
+                "type": "Label"
             },
             "lblRecentActivityDesc": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Vehicle Received: 41281 Nissan Altima 2020"
+                "text": "Vehicle Received: 41281 Nissan Altima 2020",
+                "type": "Label"
             }
         },
         {
             "CopyimgInwardIcon0d7ec6b0c1bd244": {
                 "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "inwardentrygreen.png"
+                "src": "inwardentrygreen.png",
+                "type": "Image"
             },
             "CopylblRecentActivityDesc0fbfda4d382704e": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "2 hours ago"
+                "text": "2 hours ago",
+                "type": "Label"
             },
             "lblRecentActivityDesc": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Vehicle Received: 41281 Nissan Altima 2020"
+                "text": "Vehicle Received: 41281 Nissan Altima 2020",
+                "type": "Label"
             }
         },
         {
             "CopyimgInwardIcon0d7ec6b0c1bd244": {
                 "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "inwardentrygreen.png"
+                "src": "inwardentrygreen.png",
+                "type": "Image"
             },
             "CopylblRecentActivityDesc0fbfda4d382704e": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "2 hours ago"
+                "text": "2 hours ago",
+                "type": "Label"
             },
             "lblRecentActivityDesc": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Vehicle Received: 41281 Nissan Altima 2020"
+                "text": "Vehicle Received: 41281 Nissan Altima 2020",
+                "type": "Label"
             }
         },
         {
             "CopyimgInwardIcon0d7ec6b0c1bd244": {
                 "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "inwardentrygreen.png"
+                "src": "inwardentrygreen.png",
+                "type": "Image"
             },
             "CopylblRecentActivityDesc0fbfda4d382704e": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "2 hours ago"
+                "text": "2 hours ago",
+                "type": "Label"
             },
             "lblRecentActivityDesc": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Vehicle Received: 41281 Nissan Altima 2020"
+                "text": "Vehicle Received: 41281 Nissan Altima 2020",
+                "type": "Label"
             }
         },
         {
             "CopyimgInwardIcon0d7ec6b0c1bd244": {
                 "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "inwardentrygreen.png"
+                "src": "inwardentrygreen.png",
+                "type": "Image"
             },
             "CopylblRecentActivityDesc0fbfda4d382704e": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "2 hours ago"
+                "text": "2 hours ago",
+                "type": "Label"
             },
             "lblRecentActivityDesc": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Vehicle Received: 41281 Nissan Altima 2020"
+                "text": "Vehicle Received: 41281 Nissan Altima 2020",
+                "type": "Label"
             }
         },
         {
             "CopyimgInwardIcon0d7ec6b0c1bd244": {
                 "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "inwardentrygreen.png"
+                "src": "inwardentrygreen.png",
+                "type": "Image"
             },
             "CopylblRecentActivityDesc0fbfda4d382704e": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "2 hours ago"
+                "text": "2 hours ago",
+                "type": "Label"
             },
             "lblRecentActivityDesc": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Vehicle Received: 41281 Nissan Altima 2020"
+                "text": "Vehicle Received: 41281 Nissan Altima 2020",
+                "type": "Label"
             }
         },
         {
             "CopyimgInwardIcon0d7ec6b0c1bd244": {
                 "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "inwardentrygreen.png"
+                "src": "inwardentrygreen.png",
+                "type": "Image"
             },
             "CopylblRecentActivityDesc0fbfda4d382704e": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "2 hours ago"
+                "text": "2 hours ago",
+                "type": "Label"
             },
             "lblRecentActivityDesc": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Vehicle Received: 41281 Nissan Altima 2020"
+                "text": "Vehicle Received: 41281 Nissan Altima 2020",
+                "type": "Label"
             }
         }
     ],
@@ -231,7 +261,7 @@
     "selectionbehaviorconfig": null,
     "separatorcolor": "ffffff00",
     "separatorrequired": true,
-    "separatorthickness": 4,
+    "separatorthickness": 10,
     "showscrollbars": false,
     "swipeContext": {
         "currentPage": 0,

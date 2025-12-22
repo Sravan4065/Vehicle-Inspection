@@ -45,7 +45,7 @@
         "flxImages",
         "flxProfile"
     ],
-    "clipbounds": false,
+    "clipbounds": true,
     "containerweight": 100,
     "enablescrolling": true,
     "id": "flxfooter",

@@ -25,7 +25,7 @@
     "_text_": "Select a category to begin your workflow",
     "_top_": {
         "type": "string",
-        "value": "0dp"
+        "value": "3dp"
     },
     "_width_": {
         "type": "ref",

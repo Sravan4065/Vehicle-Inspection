@@ -36,7 +36,7 @@
     "canUpdateUI": true,
     "children": [
         "lblRecentActivityDesc",
-        "CopylblRecentActivityDesc0fbfda4d382704e"
+        "lblRecentActivityTime"
     ],
     "clipbounds": true,
     "containerweight": 100,

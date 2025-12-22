@@ -40,7 +40,7 @@
         "value": "50%"
     },
     "containerweight": 100,
-    "contentalignment": 1,
+    "contentalignment": 4,
     "id": "lblVehicleInspection",
     "info": null,
     "ipad": {

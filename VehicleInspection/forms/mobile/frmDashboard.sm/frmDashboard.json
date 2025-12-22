@@ -42,7 +42,7 @@
             "name": "frmDashboardController"
         }
     },
-    "currentLocale": "en",
+    "currentLocale": "default",
     "desktopweb": {
         "needAppMenu": false
     },

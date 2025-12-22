@@ -39,8 +39,8 @@
         "value": "50%"
     },
     "children": [
-        "CopyflxVehicleInspectionIcon0bce8e57054164f",
-        "CopyflxVIRight0cfa7797f7bb94f"
+        "flxImagesIcon",
+        "flxImagesRight"
     ],
     "clipbounds": true,
     "containerweight": 100,

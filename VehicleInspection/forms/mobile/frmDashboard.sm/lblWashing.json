@@ -57,7 +57,7 @@
     "isvisible": true,
     "kuid": "a70363d29ca94b10bf3a2069cf42c286",
     "name": "kony.ui.Label",
-    "parent": "CopyflxInwardEntryRightTop0ef84150d5fd346",
+    "parent": "flxWashingRightTop",
     "pf": "frmDashboard",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,

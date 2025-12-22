@@ -1,5 +1,9 @@
 {
     "DNDConfig": null,
+    "_bottom_": {
+        "type": "string",
+        "value": "20dp"
+    },
     "_height_": {
         "type": "string",
         "value": "150dp"
@@ -39,8 +43,8 @@
         "value": "50%"
     },
     "children": [
-        "CopyflxVehicleInspectionIcon0af9be78c2bb848",
-        "CopyflxVIRight0ef2cbc2a103f41"
+        "flxWashingIcon",
+        "flxWashingRight"
     ],
     "clipbounds": true,
     "containerweight": 100,

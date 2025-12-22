@@ -1,5 +1,9 @@
 {
     "DNDConfig": null,
+    "_bottom_": {
+        "type": "string",
+        "value": "20dp"
+    },
     "_height_": {
         "type": "ref",
         "value": "preferred"
@@ -45,7 +49,7 @@
     "id": "flxRecentActivity",
     "info": null,
     "iscustomlayout": false,
-    "isvisible": true,
+    "isvisible": false,
     "kuid": "f797b95d9a5440a9a72bae872d04d20f",
     "layouttype": 4,
     "name": "kony.ui.FlexContainer",
