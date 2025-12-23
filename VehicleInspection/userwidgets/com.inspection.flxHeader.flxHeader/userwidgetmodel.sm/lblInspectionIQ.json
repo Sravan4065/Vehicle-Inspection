@@ -21,6 +21,10 @@
         0,
         0
     ],
+    "_right_": {
+        "type": "string",
+        "value": "6%"
+    },
     "_skin_": "s374fa0aec494397b71156e499e21268",
     "_text_": "InspectioniQ",
     "_width_": {
@@ -35,12 +39,16 @@
         }
     },
     "canUpdateUI": true,
+    "centerx": {
+        "type": "string",
+        "value": "50%"
+    },
     "centery": {
         "type": "string",
         "value": "50%"
     },
     "containerweight": 100,
-    "contentalignment": 4,
+    "contentalignment": 5,
     "id": "lblInspectionIQ",
     "info": null,
     "ipad": {

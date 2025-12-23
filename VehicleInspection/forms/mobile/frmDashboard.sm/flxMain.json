@@ -44,7 +44,8 @@
     },
     "children": [
         "flxHeader",
-        "flxBody"
+        "flxBody",
+        "flxfooter"
     ],
     "clipbounds": false,
     "containerweight": 100,

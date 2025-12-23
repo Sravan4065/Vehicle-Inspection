@@ -1,0 +1,282 @@
+{
+    "@class": "com.kony.gen.viz.model.container.KVizSegment2",
+    "DNDConfig": null,
+    "_data_": [
+        {
+            "imgRight": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "imgchevronright.png",
+                "type": "Image"
+            },
+            "lblServiceType": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "Vehicle Details",
+                "type": "Label"
+            }
+        },
+        {
+            "imgRight": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "imgchevronright.png",
+                "type": "Image"
+            },
+            "lblServiceType": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "Engine Condition",
+                "type": "Label"
+            }
+        },
+        {
+            "imgRight": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "imgchevronright.png",
+                "type": "Image"
+            },
+            "lblServiceType": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "Transmission",
+                "type": "Label"
+            }
+        },
+        {
+            "imgRight": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "imgchevronright.png",
+                "type": "Image"
+            },
+            "lblServiceType": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "Electrical System Condition",
+                "type": "Label"
+            }
+        },
+        {
+            "imgRight": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "imgchevronright.png",
+                "type": "Image"
+            },
+            "lblServiceType": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "Suspension Condition",
+                "type": "Label"
+            }
+        },
+        {
+            "imgRight": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "imgchevronright.png",
+                "type": "Image"
+            },
+            "lblServiceType": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "Brake System Condition",
+                "type": "Label"
+            }
+        },
+        {
+            "imgRight": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "imgchevronright.png",
+                "type": "Image"
+            },
+            "lblServiceType": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "Rims Condition",
+                "type": "Label"
+            }
+        },
+        {
+            "imgRight": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "imgchevronright.png",
+                "type": "Image"
+            },
+            "lblServiceType": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "Tyres Condition",
+                "type": "Label"
+            }
+        },
+        {
+            "imgRight": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "imgchevronright.png",
+                "type": "Image"
+            },
+            "lblServiceType": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "Chassis Damage Report",
+                "type": "Label"
+            }
+        },
+        {
+            "imgRight": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "imgchevronright.png",
+                "type": "Image"
+            },
+            "lblServiceType": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "Exterior",
+                "type": "Label"
+            }
+        },
+        {
+            "imgRight": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "imgchevronright.png",
+                "type": "Image"
+            },
+            "lblServiceType": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "Interiors",
+                "type": "Label"
+            }
+        },
+        {
+            "imgRight": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "imgchevronright.png",
+                "type": "Image"
+            },
+            "lblServiceType": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "Vehicle Summary Report",
+                "type": "Label"
+            }
+        },
+        {
+            "imgRight": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "imgchevronright.png",
+                "type": "Image"
+            },
+            "lblServiceType": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "Service History & Manuals",
+                "type": "Label"
+            }
+        },
+        {
+            "imgRight": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "imgchevronright.png",
+                "type": "Image"
+            },
+            "lblServiceType": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "Paint Condition",
+                "type": "Label"
+            }
+        },
+        {
+            "imgRight": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "imgchevronright.png",
+                "type": "Image"
+            },
+            "lblServiceType": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "Engine Bay & Undercarriage Photos",
+                "type": "Label"
+            }
+        }
+    ],
+    "_height_": {
+        "type": "ref",
+        "value": "preferred"
+    },
+    "_indicator_": "none",
+    "_left_": {
+        "type": "string",
+        "value": "0"
+    },
+    "_margin_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_orientation_": 2,
+    "_padding_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_top_": {
+        "type": "string",
+        "value": "0"
+    },
+    "_width_": {
+        "type": "string",
+        "value": "100%"
+    },
+    "autogrowmode": 1,
+    "canUpdateUI": true,
+    "containerweight": 100,
+    "counter": "014",
+    "focusedindex": null,
+    "focuseditem": null,
+    "groupcells": false,
+    "hasSections": false,
+    "id": "segInspectionItems",
+    "info": null,
+    "ipad": {
+        "psp": {
+            "indicator": "rowselect"
+        }
+    },
+    "iphone": {
+        "psp": {
+            "indicator": "none"
+        }
+    },
+    "iscustomlayout": false,
+    "isvisible": true,
+    "kuid": "h05685ee95d04d6f9a87556132f917a7",
+    "masterdata": {},
+    "name": "kony.ui.SegmentedUI2",
+    "needpageindicator": true,
+    "pageoffdotimage": "pageoffdot.png",
+    "pageondotimage": "pageondot.png",
+    "paginationconfig": {
+        "position": "bottom"
+    },
+    "parent": "flxSegInspectionTypes",
+    "pf": "frmChooseInspectionType",
+    "retaincontentalignment": false,
+    "retainflexpositionproperties": false,
+    "retainselection": false,
+    "rowTemplateId": "a81e954ccef94e02b560c36da7636e5b",
+    "rowcounter": 14,
+    "rowfocusskin": "sb4cbb0437db46f8863eedda6fd864f8",
+    "rowskin": "s87cc27d14a9433a9b4a99cdf72f69f3",
+    "rowtemplate": "flxInspectionItem",
+    "screenlevelwidget": false,
+    "seccounter": 0,
+    "sectionheaderskin": "sa779cd8b039405584aff5e9ef1f42da",
+    "selectedRows": null,
+    "selectedState": false,
+    "selectedindex": null,
+    "selectedindices": null,
+    "selecteditems": null,
+    "selectedsectionindex": null,
+    "selectionbehavior": "default",
+    "separatorrequired": false,
+    "separatorthickness": 0,
+    "showscrollbars": false,
+    "viewtype": "tableview",
+    "vizProps": {},
+    "wType": "Segment",
+    "widgetalignment": 5,
+    "widgetdatamap": {
+        "flxInspectionItem": "flxInspectionItem",
+        "flxRightArrow": "flxRightArrow",
+        "flxServiceItem": "flxServiceItem",
+        "flxUL": "flxUL",
+        "imgRight": "imgRight",
+        "lblServiceType": "lblServiceType"
+    }
+}

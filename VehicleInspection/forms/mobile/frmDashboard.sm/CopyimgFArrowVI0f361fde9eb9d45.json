@@ -46,7 +46,7 @@
     "isvisible": true,
     "kuid": "i42cee6ac3044b17a57e804c7945df8b",
     "name": "kony.ui.Image2",
-    "parent": "CopyflxViewDetailsVI0h37d302d23cf4f",
+    "parent": "flxViewDetailsImages",
     "pf": "frmDashboard",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,

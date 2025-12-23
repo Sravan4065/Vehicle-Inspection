@@ -43,10 +43,11 @@
         "imgprofile",
         "lblprofile"
     ],
-    "clipbounds": false,
+    "clipbounds": true,
     "containerweight": 100,
     "enablescrolling": true,
     "id": "flxProfile",
+    "ide_onClick": "AS_FlexContainer_b3091a1a2f684a3eaa596d08521ee5a8",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
