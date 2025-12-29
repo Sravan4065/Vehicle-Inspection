@@ -1,0 +1,51 @@
+{
+    "@class": "com.kony.gen.viz.model.component.KVizButton",
+    "DNDConfig": null,
+    "_height_": {
+        "type": "string",
+        "value": "30dp"
+    },
+    "_left_": {
+        "type": "string",
+        "value": "5%"
+    },
+    "_margin_": [
+        6,
+        6,
+        6,
+        6
+    ],
+    "_padding_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_skin_": "s43dc12ceda94040b2cff43cf08506bd",
+    "_text_": "Button",
+    "_top_": {
+        "type": "string",
+        "value": "0"
+    },
+    "_width_": {
+        "type": "string",
+        "value": "25%"
+    },
+    "canUpdateUI": true,
+    "containerweight": 100,
+    "contentalignment": 5,
+    "displaytext": true,
+    "focusskin": "s4ec7cfbb99d4ca7a00f788aa71ee43c",
+    "id": "RearLeft",
+    "info": null,
+    "iscustomlayout": false,
+    "isvisible": true,
+    "kuid": "j97f817a36634147a7f95e044200cbc6",
+    "name": "kony.ui.Button",
+    "parent": "flxDirections",
+    "pf": "frmTyres",
+    "retaincontentalignment": false,
+    "retainflexpositionproperties": false,
+    "texti18n": "Rear Left",
+    "wType": "Button"
+}

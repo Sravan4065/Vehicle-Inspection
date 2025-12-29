@@ -1,0 +1,51 @@
+{
+    "@class": "com.kony.gen.viz.model.component.KVizButton",
+    "DNDConfig": null,
+    "_height_": {
+        "type": "string",
+        "value": "30dp"
+    },
+    "_margin_": [
+        6,
+        6,
+        6,
+        6
+    ],
+    "_padding_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_right_": {
+        "type": "string",
+        "value": "0%"
+    },
+    "_skin_": "sb65165f16ac4b7e8b1698ea42ee1b0c",
+    "_text_": "Button",
+    "_top_": {
+        "type": "string",
+        "value": "0"
+    },
+    "_width_": {
+        "type": "string",
+        "value": "30%"
+    },
+    "canUpdateUI": true,
+    "containerweight": 100,
+    "contentalignment": 5,
+    "displaytext": true,
+    "focusskin": "s4ec7cfbb99d4ca7a00f788aa71ee43c",
+    "id": "btnStart",
+    "info": null,
+    "iscustomlayout": false,
+    "isvisible": true,
+    "kuid": "be7f19ffb3904e1682ed1d8dcbdd9ac2",
+    "name": "kony.ui.Button",
+    "parent": "flxSaveclose",
+    "pf": "frmVehicleSummaryreport",
+    "retaincontentalignment": false,
+    "retainflexpositionproperties": false,
+    "texti18n": "Start",
+    "wType": "Button"
+}

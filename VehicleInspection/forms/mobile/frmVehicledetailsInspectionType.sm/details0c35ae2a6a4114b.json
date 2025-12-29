@@ -1,0 +1,153 @@
+{
+    "@class": "com.kony.gen.viz.model.component.KVizUserWidget",
+    "DNDConfig": null,
+    "_children_": [],
+    "_height_": {
+        "type": "ref",
+        "value": "preferred"
+    },
+    "_left_": {
+        "type": "string",
+        "value": "0"
+    },
+    "_margin_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_orientation_": 1,
+    "_padding_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_percent_": true,
+    "_right_": {
+        "type": "string",
+        "value": "0"
+    },
+    "_skin_": "s43b3f0daddb4853bfc5983bfb525431",
+    "_top_": {
+        "type": "string",
+        "value": "10dp"
+    },
+    "_width_": {
+        "type": "string",
+        "value": "100%"
+    },
+    "areflexpropsreferenced": false,
+    "autogrowmode": 1,
+    "canUpdateUI": true,
+    "clipbounds": false,
+    "containerweight": 0,
+    "dataDiffs": {
+        "Segment0j5d01d22ad6d41": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "d7d0d648949f4b3cbc366a6680371967",
+                "srcKUID": "cfe5a327284c4bd88a6f1de68e7f0c17",
+                "wType": "Segment"
+            }
+        },
+        "details": {
+            "__events__": {},
+            "__info__": {
+                "isRoot": true,
+                "kuid": "afea0bcc628e4c9ba70e83671de8024c",
+                "srcKUID": "f55b13451ca848fd9dee6df988be37bf",
+                "wType": "FlexContainer"
+            },
+            "top": {
+                "Default": {
+                    "type": "string",
+                    "value": "10dp"
+                }
+            }
+        },
+        "flxArrow": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "c008d1c1f6e34c2394d16ac29e5a56b4",
+                "srcKUID": "c6340dee896b4876bb7ecce4d50050ce",
+                "wType": "FlexContainer"
+            }
+        },
+        "flxName": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "b8cc8adc405f453fb865ed51b9998fc8",
+                "srcKUID": "af4f55790c1942ab9a8e328a44437228",
+                "wType": "FlexContainer"
+            },
+            "width": {
+                "Default": {
+                    "type": "string",
+                    "value": "19%"
+                }
+            }
+        },
+        "flxSegment": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "d5337b2a34e6488b814ddc251d811d2e",
+                "srcKUID": "i81d685650c047e0a36b27249031670f",
+                "wType": "FlexContainer"
+            }
+        },
+        "flxTextbox": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "b8ace42a0b594dc69bb00284090d4d04",
+                "srcKUID": "ae8483871dbe422190d63fe28bb6daab",
+                "wType": "FlexContainer"
+            }
+        },
+        "imgarrow": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "d18901bbd4c6436ba8dc8c41e1feb2ad",
+                "srcKUID": "jbc1bfbf2d7646e3bbab003dd7da117f",
+                "wType": "Image"
+            }
+        },
+        "lblNamedata": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "bb358c50bcfc402583760775901d251c",
+                "srcKUID": "b007f5d9e1dc4a809572ef3b836312a4",
+                "wType": "Label"
+            },
+            "text": "Wheel Drive"
+        },
+        "txbData": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "dbd4b06db51e473cbc921912e3516169",
+                "srcKUID": "f836dbce2d5943308d153692e8c3cfb3",
+                "wType": "TextField"
+            }
+        }
+    },
+    "enablescrolling": true,
+    "id": "details0c35ae2a6a4114b",
+    "info": null,
+    "iscustomlayout": false,
+    "isdatareferenced": false,
+    "isvisible": true,
+    "kuid": "afea0bcc628e4c9ba70e83671de8024c",
+    "layouttype": 2,
+    "masterType": 0,
+    "name": "kony.ui.UserWidgetInstance",
+    "parent": "flxBody",
+    "pf": "frmVehicledetailsInspectionType",
+    "retaincontentalignment": false,
+    "retainflexpositionproperties": false,
+    "retainflowhorizontalalignment": false,
+    "snapgridsize": 10,
+    "snaptogrid": true,
+    "sourceUserWidget": "f55b13451ca848fd9dee6df988be37bf",
+    "wType": "UserWidgetInstance",
+    "zindex": 1
+}
