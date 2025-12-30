@@ -52,7 +52,7 @@
     "id": "flxWashing",
     "info": null,
     "iscustomlayout": false,
-    "isvisible": true,
+    "isvisible": false,
     "kuid": "j2bcc71c2de1446786664983b5714d75",
     "layouttype": 2,
     "name": "kony.ui.FlexContainer",

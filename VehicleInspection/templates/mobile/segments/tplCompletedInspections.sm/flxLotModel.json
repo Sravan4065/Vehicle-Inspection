@@ -2,7 +2,7 @@
     "DNDConfig": null,
     "_height_": {
         "type": "string",
-        "value": "5%"
+        "value": "60dp"
     },
     "_left_": {
         "type": "string",
@@ -22,10 +22,10 @@
         0
     ],
     "_percent_": true,
-    "_skin_": "s6f3c7a29a1647d0bb62adc3bf5cda77",
+    "_skin_": "s43b3f0daddb4853bfc5983bfb525431",
     "_top_": {
         "type": "string",
-        "value": "0"
+        "value": "10dp"
     },
     "_width_": {
         "type": "string",
@@ -34,23 +34,23 @@
     "allboxes": [],
     "autogrowmode": 0,
     "canUpdateUI": true,
-    "centerx": {
-        "type": "string",
-        "value": "50%"
-    },
-    "children": [],
-    "clipbounds": false,
+    "children": [
+        "flxVehicleIcon",
+        "flxModelAndNumber"
+    ],
+    "clipbounds": true,
+    "containerId": true,
     "containerweight": 100,
     "enablescrolling": true,
-    "id": "flxprofileline",
+    "id": "flxLotModel",
     "info": null,
     "iscustomlayout": false,
-    "isvisible": false,
-    "kuid": "h1196c28e754472aa14eb517eb4506ef",
-    "layouttype": 2,
+    "isvisible": true,
+    "kuid": "dcdb431bc73b45bd87057f3a0dc13750",
+    "layouttype": 3,
     "name": "kony.ui.FlexContainer",
-    "parent": "flxProfile",
-    "pf": "userwidgetmodel",
+    "parent": "flxCompletedInspections",
+    "pf": "tplCompletedInspections",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainflowhorizontalalignment": false,

@@ -1,0 +1,497 @@
+{
+    "@class": "com.kony.gen.viz.model.container.KVizSegment2",
+    "DNDConfig": null,
+    "_bottom_": {
+        "type": "string",
+        "value": "20dp"
+    },
+    "_data_": [
+        {
+            "imgCalendarIcon": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "calendar.png"
+            },
+            "imgFArrowIE": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "frontarrowwhite.png"
+            },
+            "imgLocationIcon": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "usericon.png"
+            },
+            "imgVehicleIcon": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "caricon.png"
+            },
+            "lblDate": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "24/04/2025, 9:00 AM"
+            },
+            "lblLocation": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "Sharjah Autohub"
+            },
+            "lblLotAndModel": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "41281 Nissan Altima 2020"
+            },
+            "lblVehicleNumber": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "1HGBH41JXMN109999"
+            },
+            "lblViewDetailsInwardEntry": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "View Details"
+            }
+        },
+        {
+            "imgCalendarIcon": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "calendar.png"
+            },
+            "imgFArrowIE": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "frontarrowwhite.png"
+            },
+            "imgLocationIcon": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "usericon.png"
+            },
+            "imgVehicleIcon": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "caricon.png"
+            },
+            "lblDate": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "24/04/2025, 9:00 AM"
+            },
+            "lblLocation": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "Sharjah Autohub"
+            },
+            "lblLotAndModel": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "41281 Nissan Altima 2020"
+            },
+            "lblVehicleNumber": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "1HGBH41JXMN109999"
+            },
+            "lblViewDetailsInwardEntry": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "View Details"
+            }
+        },
+        {
+            "imgCalendarIcon": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "calendar.png"
+            },
+            "imgFArrowIE": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "frontarrowwhite.png"
+            },
+            "imgLocationIcon": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "usericon.png"
+            },
+            "imgVehicleIcon": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "caricon.png"
+            },
+            "lblDate": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "24/04/2025, 9:00 AM"
+            },
+            "lblLocation": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "Sharjah Autohub"
+            },
+            "lblLotAndModel": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "41281 Nissan Altima 2020"
+            },
+            "lblVehicleNumber": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "1HGBH41JXMN109999"
+            },
+            "lblViewDetailsInwardEntry": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "View Details"
+            }
+        },
+        {
+            "imgCalendarIcon": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "calendar.png"
+            },
+            "imgFArrowIE": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "frontarrowwhite.png"
+            },
+            "imgLocationIcon": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "usericon.png"
+            },
+            "imgVehicleIcon": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "caricon.png"
+            },
+            "lblDate": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "24/04/2025, 9:00 AM"
+            },
+            "lblLocation": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "Sharjah Autohub"
+            },
+            "lblLotAndModel": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "41281 Nissan Altima 2020"
+            },
+            "lblVehicleNumber": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "1HGBH41JXMN109999"
+            },
+            "lblViewDetailsInwardEntry": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "View Details"
+            }
+        },
+        {
+            "imgCalendarIcon": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "calendar.png"
+            },
+            "imgFArrowIE": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "frontarrowwhite.png"
+            },
+            "imgLocationIcon": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "usericon.png"
+            },
+            "imgVehicleIcon": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "caricon.png"
+            },
+            "lblDate": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "24/04/2025, 9:00 AM"
+            },
+            "lblLocation": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "Sharjah Autohub"
+            },
+            "lblLotAndModel": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "41281 Nissan Altima 2020"
+            },
+            "lblVehicleNumber": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "1HGBH41JXMN109999"
+            },
+            "lblViewDetailsInwardEntry": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "View Details"
+            }
+        },
+        {
+            "imgCalendarIcon": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "calendar.png"
+            },
+            "imgFArrowIE": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "frontarrowwhite.png"
+            },
+            "imgLocationIcon": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "usericon.png"
+            },
+            "imgVehicleIcon": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "caricon.png"
+            },
+            "lblDate": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "24/04/2025, 9:00 AM"
+            },
+            "lblLocation": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "Sharjah Autohub"
+            },
+            "lblLotAndModel": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "41281 Nissan Altima 2020"
+            },
+            "lblVehicleNumber": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "1HGBH41JXMN109999"
+            },
+            "lblViewDetailsInwardEntry": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "View Details"
+            }
+        },
+        {
+            "imgCalendarIcon": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "calendar.png"
+            },
+            "imgFArrowIE": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "frontarrowwhite.png"
+            },
+            "imgLocationIcon": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "usericon.png"
+            },
+            "imgVehicleIcon": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "caricon.png"
+            },
+            "lblDate": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "24/04/2025, 9:00 AM"
+            },
+            "lblLocation": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "Sharjah Autohub"
+            },
+            "lblLotAndModel": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "41281 Nissan Altima 2020"
+            },
+            "lblVehicleNumber": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "1HGBH41JXMN109999"
+            },
+            "lblViewDetailsInwardEntry": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "View Details"
+            }
+        },
+        {
+            "imgCalendarIcon": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "calendar.png"
+            },
+            "imgFArrowIE": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "frontarrowwhite.png"
+            },
+            "imgLocationIcon": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "usericon.png"
+            },
+            "imgVehicleIcon": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "caricon.png"
+            },
+            "lblDate": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "24/04/2025, 9:00 AM"
+            },
+            "lblLocation": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "Sharjah Autohub"
+            },
+            "lblLotAndModel": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "41281 Nissan Altima 2020"
+            },
+            "lblVehicleNumber": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "1HGBH41JXMN109999"
+            },
+            "lblViewDetailsInwardEntry": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "View Details"
+            }
+        },
+        {
+            "imgCalendarIcon": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "calendar.png"
+            },
+            "imgFArrowIE": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "frontarrowwhite.png"
+            },
+            "imgLocationIcon": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "usericon.png"
+            },
+            "imgVehicleIcon": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "caricon.png"
+            },
+            "lblDate": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "24/04/2025, 9:00 AM"
+            },
+            "lblLocation": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "Sharjah Autohub"
+            },
+            "lblLotAndModel": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "41281 Nissan Altima 2020"
+            },
+            "lblVehicleNumber": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "1HGBH41JXMN109999"
+            },
+            "lblViewDetailsInwardEntry": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "View Details"
+            }
+        },
+        {
+            "imgCalendarIcon": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "calendar.png"
+            },
+            "imgFArrowIE": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "frontarrowwhite.png"
+            },
+            "imgLocationIcon": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "usericon.png"
+            },
+            "imgVehicleIcon": {
+                "@class": "com.viz.ide.model.segment.ImageSegmentData",
+                "src": "caricon.png"
+            },
+            "lblDate": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "24/04/2025, 9:00 AM"
+            },
+            "lblLocation": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "Sharjah Autohub"
+            },
+            "lblLotAndModel": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "41281 Nissan Altima 2020"
+            },
+            "lblVehicleNumber": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "1HGBH41JXMN109999"
+            },
+            "lblViewDetailsInwardEntry": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": "View Details"
+            }
+        }
+    ],
+    "_height_": {
+        "type": "string",
+        "value": "500dp"
+    },
+    "_indicator_": "none",
+    "_left_": {
+        "type": "string",
+        "value": "0"
+    },
+    "_margin_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_orientation_": 2,
+    "_padding_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_top_": {
+        "type": "string",
+        "value": "10dp"
+    },
+    "_width_": {
+        "type": "string",
+        "value": "100%"
+    },
+    "autogrowmode": 0,
+    "canUpdateUI": true,
+    "containerweight": 100,
+    "counter": "09",
+    "focusedindex": null,
+    "focuseditem": null,
+    "groupcells": false,
+    "hasSections": false,
+    "id": "segInwardEntryList",
+    "info": null,
+    "ipad": {
+        "psp": {
+            "indicator": "rowselect"
+        }
+    },
+    "iphone": {
+        "psp": {
+            "indicator": "none"
+        }
+    },
+    "iscustomlayout": false,
+    "isvisible": true,
+    "kuid": "a30fb743b9f1478f922123cd928ecabe",
+    "masterdata": {},
+    "name": "kony.ui.SegmentedUI2",
+    "needpageindicator": true,
+    "pageoffdotimage": "pageoffdot.png",
+    "pageondotimage": "pageondot.png",
+    "paginationconfig": {
+        "position": "bottom"
+    },
+    "parent": "flxPendingAndCompleted",
+    "pf": "frmImagesSummary",
+    "retaincontentalignment": false,
+    "retainflexpositionproperties": false,
+    "retainselection": false,
+    "rowTemplateId": "c124510b306841f8b9d9066491a2c368",
+    "rowcounter": 9,
+    "rowfocusskin": "sb4cbb0437db46f8863eedda6fd864f8",
+    "rowskin": "s87cc27d14a9433a9b4a99cdf72f69f3",
+    "rowtemplate": "flxItemInwardImages",
+    "screenlevelwidget": false,
+    "seccounter": 0,
+    "sectionheaderskin": "sa779cd8b039405584aff5e9ef1f42da",
+    "selectedRows": null,
+    "selectedState": false,
+    "selectedindex": null,
+    "selectedindices": null,
+    "selecteditems": null,
+    "selectedsectionindex": 0,
+    "selectionbehavior": "default",
+    "separatorcolor": "aaaaaa00",
+    "separatorrequired": true,
+    "separatorthickness": 1,
+    "showscrollbars": false,
+    "viewtype": "tableview",
+    "vizProps": {},
+    "wType": "Segment",
+    "widgetalignment": 5,
+    "widgetdatamap": {
+        "flxDate": "flxDate",
+        "flxItemInwardImages": "flxItemInwardImages",
+        "flxLocation": "flxLocation",
+        "flxLotModel": "flxLotModel",
+        "flxModelAndNumber": "flxModelAndNumber",
+        "flxVehicleIcon": "flxVehicleIcon",
+        "flxViewDetailsInwardEntry": "flxViewDetailsInwardEntry",
+        "imgCalendarIcon": "imgCalendarIcon",
+        "imgFArrowIE": "imgFArrowIE",
+        "imgLocationIcon": "imgLocationIcon",
+        "imgVehicleIcon": "imgVehicleIcon",
+        "lblDate": "lblDate",
+        "lblLocation": "lblLocation",
+        "lblLotAndModel": "lblLotAndModel",
+        "lblVehicleNumber": "lblVehicleNumber",
+        "lblViewDetailsInwardEntry": "lblViewDetailsInwardEntry"
+    }
+}

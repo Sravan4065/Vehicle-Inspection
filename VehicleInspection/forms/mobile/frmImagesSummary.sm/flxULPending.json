@@ -2,7 +2,7 @@
     "DNDConfig": null,
     "_height_": {
         "type": "string",
-        "value": "5%"
+        "value": "8%"
     },
     "_left_": {
         "type": "string",
@@ -25,32 +25,28 @@
     "_skin_": "s6f3c7a29a1647d0bb62adc3bf5cda77",
     "_top_": {
         "type": "string",
-        "value": "0"
+        "value": "90%"
     },
     "_width_": {
         "type": "string",
-        "value": "100%"
+        "value": "50%"
     },
     "allboxes": [],
     "autogrowmode": 0,
     "canUpdateUI": true,
-    "centerx": {
-        "type": "string",
-        "value": "50%"
-    },
     "children": [],
     "clipbounds": false,
     "containerweight": 100,
     "enablescrolling": true,
-    "id": "flximgline",
+    "id": "flxULPending",
     "info": null,
     "iscustomlayout": false,
-    "isvisible": false,
-    "kuid": "ia8c391b8be647709850da49929cb308",
+    "isvisible": true,
+    "kuid": "ce73695e43bf42abbe5396f5f907d95b",
     "layouttype": 2,
     "name": "kony.ui.FlexContainer",
-    "parent": "flxImages",
-    "pf": "userwidgetmodel",
+    "parent": "flxPendingAndCompletedItems",
+    "pf": "frmImagesSummary",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainflowhorizontalalignment": false,

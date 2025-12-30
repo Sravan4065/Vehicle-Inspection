@@ -1,12 +1,14 @@
 {
+    "@class": "com.kony.gen.viz.model.component.KVizImage2",
     "DNDConfig": null,
+    "_base64_": null,
     "_height_": {
         "type": "string",
-        "value": "5%"
+        "value": "18dp"
     },
     "_left_": {
         "type": "string",
-        "value": "0"
+        "value": "13%"
     },
     "_margin_": [
         0,
@@ -14,48 +16,40 @@
         0,
         0
     ],
-    "_orientation_": 6,
     "_padding_": [
         0,
         0,
         0,
         0
     ],
-    "_percent_": true,
-    "_skin_": "s6f3c7a29a1647d0bb62adc3bf5cda77",
+    "_skin_": "sb8f9ecd82a04b66a15ce7fd3be4cb0b",
+    "_src_": "needsrepairicon.png",
     "_top_": {
         "type": "string",
         "value": "0"
     },
     "_width_": {
         "type": "string",
-        "value": "100%"
+        "value": "18dp"
     },
-    "allboxes": [],
-    "autogrowmode": 0,
     "canUpdateUI": true,
-    "centerx": {
+    "centery": {
         "type": "string",
         "value": "50%"
     },
-    "children": [],
-    "clipbounds": false,
     "containerweight": 100,
-    "enablescrolling": true,
-    "id": "flxinwardline",
+    "id": "imgNeedsRepair",
+    "imagescalemode": 1,
     "info": null,
     "iscustomlayout": false,
-    "isvisible": false,
-    "kuid": "d090cab39e204611ae9b773e1fbec165",
-    "layouttype": 2,
-    "name": "kony.ui.FlexContainer",
-    "parent": "flxInward",
+    "isvisible": true,
+    "kuid": "e04a056b72784d74b972e7b7c6c18fbc",
+    "name": "kony.ui.Image2",
+    "parent": "flxNeedsRepair",
     "pf": "userwidgetmodel",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
-    "retainflowhorizontalalignment": false,
-    "snapgridsize": 10,
-    "snaptogrid": true,
-    "wType": "FlexContainer",
-    "widgetalignment": 1
+    "srcType": 1,
+    "wType": "Image",
+    "widgetalignment": 5
 }

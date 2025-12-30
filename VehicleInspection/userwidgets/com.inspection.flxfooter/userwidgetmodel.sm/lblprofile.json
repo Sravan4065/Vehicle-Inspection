@@ -44,7 +44,7 @@
         "value": "50%"
     },
     "containerweight": 100,
-    "contentalignment": 5,
+    "contentalignment": 2,
     "id": "lblprofile",
     "info": null,
     "ipad": {
@@ -60,6 +60,7 @@
     "iscustomlayout": false,
     "isvisible": true,
     "kuid": "a3859841e84942358d660e09f1feb3ec",
+    "maxnumberoflines": 1,
     "name": "kony.ui.Label",
     "parent": "flxProfile",
     "pf": "userwidgetmodel",
@@ -67,6 +68,7 @@
     "retainflexpositionproperties": false,
     "texti18n": "Profile",
     "textstyle": {},
+    "texttruncateposition": 3,
     "tooltip": "",
     "wType": "Label"
 }

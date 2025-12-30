@@ -48,7 +48,7 @@
     "id": "flxInwardEntry",
     "info": null,
     "iscustomlayout": false,
-    "isvisible": true,
+    "isvisible": false,
     "kuid": "b1450ebed7264299b0155ff15955b320",
     "layouttype": 2,
     "name": "kony.ui.FlexContainer",

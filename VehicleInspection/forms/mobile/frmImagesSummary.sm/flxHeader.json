@@ -1,0 +1,88 @@
+{
+    "@class": "com.kony.gen.viz.model.component.KVizUserWidget",
+    "DNDConfig": null,
+    "_children_": [],
+    "_height_": {
+        "type": "string",
+        "value": "8%"
+    },
+    "_left_": {
+        "type": "string",
+        "value": "0dp"
+    },
+    "_margin_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_orientation_": 1,
+    "_padding_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_percent_": true,
+    "_skin_": "s111fceb475246daa92935c0f316039e",
+    "_top_": {
+        "type": "string",
+        "value": "0dp"
+    },
+    "_width_": {
+        "type": "string",
+        "value": "100%"
+    },
+    "areflexpropsreferenced": false,
+    "autogrowmode": 0,
+    "canUpdateUI": true,
+    "clipbounds": true,
+    "containerweight": 0,
+    "dataDiffs": {
+        "flxHeader": {
+            "__events__": {},
+            "__info__": {
+                "isRoot": true,
+                "kuid": "c913f6bd484942f99c4e33272ed35a24",
+                "srcKUID": "heb97a2d121a4430bbc0259df8dc61a6",
+                "wType": "FlexContainer"
+            }
+        },
+        "flxUL": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "hbc31f9f5b5549889fe53610d11f4c26",
+                "srcKUID": "a52dd62e79284009ad50f02c9363aef5",
+                "wType": "FlexContainer"
+            }
+        },
+        "lblInspectionIQ": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "fbcb3385584d49ad80a182733a2f2846",
+                "srcKUID": "jf5e79045e50472d944c4e659934ae1c",
+                "wType": "Label"
+            }
+        }
+    },
+    "enablescrolling": true,
+    "id": "flxHeader",
+    "info": null,
+    "iscustomlayout": false,
+    "isdatareferenced": false,
+    "isvisible": true,
+    "kuid": "c913f6bd484942f99c4e33272ed35a24",
+    "layouttype": 2,
+    "masterType": 0,
+    "name": "kony.ui.UserWidgetInstance",
+    "parent": "flxMain",
+    "pf": "frmImagesSummary",
+    "retaincontentalignment": false,
+    "retainflexpositionproperties": false,
+    "retainflowhorizontalalignment": false,
+    "snapgridsize": 10,
+    "snaptogrid": true,
+    "sourceUserWidget": "heb97a2d121a4430bbc0259df8dc61a6",
+    "wType": "UserWidgetInstance",
+    "zindex": 1
+}

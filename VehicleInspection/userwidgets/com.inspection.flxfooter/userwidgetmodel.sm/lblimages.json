@@ -44,7 +44,7 @@
         "value": "50%"
     },
     "containerweight": 100,
-    "contentalignment": 5,
+    "contentalignment": 2,
     "id": "lblimages",
     "info": null,
     "ipad": {
@@ -60,6 +60,7 @@
     "iscustomlayout": false,
     "isvisible": true,
     "kuid": "f7f9fcbedfd845448d6102b7d8b5fcf5",
+    "maxnumberoflines": 1,
     "name": "kony.ui.Label",
     "parent": "flxImages",
     "pf": "userwidgetmodel",
@@ -67,6 +68,7 @@
     "retainflexpositionproperties": false,
     "texti18n": "Images",
     "textstyle": {},
+    "texttruncateposition": 3,
     "tooltip": "",
     "wType": "Label"
 }

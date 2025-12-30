@@ -39,7 +39,7 @@
         "value": "50%"
     },
     "children": [
-        "flximgline",
+        "flxH4",
         "imgaddimages",
         "lblimages"
     ],
@@ -47,6 +47,7 @@
     "containerweight": 100,
     "enablescrolling": true,
     "id": "flxImages",
+    "ide_onClick": "AS_FlexContainer_ebc8f0217c304f44a6ac63068195f7a1",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,

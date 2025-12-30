@@ -44,7 +44,7 @@
         "value": "50%"
     },
     "containerweight": 100,
-    "contentalignment": 5,
+    "contentalignment": 2,
     "id": "lblHome",
     "info": null,
     "ipad": {
@@ -60,6 +60,7 @@
     "iscustomlayout": false,
     "isvisible": true,
     "kuid": "a254d3356a4949cab5fc932bf9d60dd5",
+    "maxnumberoflines": 1,
     "name": "kony.ui.Label",
     "parent": "flxHome",
     "pf": "userwidgetmodel",
@@ -67,6 +68,7 @@
     "retainflexpositionproperties": false,
     "texti18n": "Dashboard",
     "textstyle": {},
+    "texttruncateposition": 3,
     "tooltip": "",
     "wType": "Label"
 }
