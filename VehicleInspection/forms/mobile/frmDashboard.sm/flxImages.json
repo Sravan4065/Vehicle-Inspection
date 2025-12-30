@@ -48,7 +48,7 @@
     "id": "flxImages",
     "info": null,
     "iscustomlayout": false,
-    "isvisible": true,
+    "isvisible": false,
     "kuid": "h6267a1b8f304a5e9037684ab500f343",
     "layouttype": 2,
     "name": "kony.ui.FlexContainer",

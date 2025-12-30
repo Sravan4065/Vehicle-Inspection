@@ -39,7 +39,7 @@
         "value": "50%"
     },
     "children": [
-        "flxinwardline",
+        "flxH3",
         "imginward",
         "lblinward"
     ],
@@ -47,6 +47,7 @@
     "containerweight": 100,
     "enablescrolling": true,
     "id": "flxInward",
+    "ide_onClick": "AS_FlexContainer_b0427f7188a84015a40d45a099e198fa",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,

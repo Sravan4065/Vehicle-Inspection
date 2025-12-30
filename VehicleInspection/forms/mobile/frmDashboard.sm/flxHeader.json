@@ -40,7 +40,9 @@
     "containerweight": 0,
     "dataDiffs": {
         "flxHeader": {
-            "__events__": {},
+            "__events__": {
+                "ide_onTouchEnd": "AS_UWI_f971504bf17e426a84c30d73f8e0725e"
+            },
             "__info__": {
                 "isRoot": true,
                 "kuid": "e020f5e00b214965a29f3712360d54a5",
@@ -76,6 +78,7 @@
     },
     "enablescrolling": true,
     "id": "flxHeader",
+    "ide_onTouchEnd": "AS_UWI_f971504bf17e426a84c30d73f8e0725e",
     "info": null,
     "iscustomlayout": false,
     "isdatareferenced": false,

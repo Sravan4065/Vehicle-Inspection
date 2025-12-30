@@ -39,7 +39,7 @@
         "value": "50%"
     },
     "children": [
-        "flximageline",
+        "flxH2",
         "imginspections",
         "lblinspections"
     ],
@@ -47,6 +47,7 @@
     "containerweight": 100,
     "enablescrolling": true,
     "id": "flxInspections",
+    "ide_onClick": "AS_FlexContainer_b9928537a7254f5b8a516dad67b5a4a9",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,

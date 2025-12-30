@@ -42,7 +42,8 @@
         "flxVehicleInspection",
         "flxImages",
         "flxWashing",
-        "flxRecentActivity"
+        "flxRecentActivity",
+        "segActivities"
     ],
     "clipbounds": true,
     "containerweight": 100,

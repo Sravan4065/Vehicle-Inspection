@@ -44,7 +44,7 @@
         "value": "50%"
     },
     "containerweight": 100,
-    "contentalignment": 5,
+    "contentalignment": 2,
     "id": "lblinspections",
     "info": null,
     "ipad": {
@@ -60,6 +60,7 @@
     "iscustomlayout": false,
     "isvisible": true,
     "kuid": "gcba89b5daf24e1dab1c95dd15fc0666",
+    "maxnumberoflines": 1,
     "name": "kony.ui.Label",
     "parent": "flxInspections",
     "pf": "userwidgetmodel",
@@ -67,6 +68,7 @@
     "retainflexpositionproperties": false,
     "texti18n": "Inspections",
     "textstyle": {},
+    "texttruncateposition": 3,
     "tooltip": "",
     "wType": "Label"
 }

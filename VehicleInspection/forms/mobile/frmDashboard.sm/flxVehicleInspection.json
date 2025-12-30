@@ -48,7 +48,7 @@
     "id": "flxVehicleInspection",
     "info": null,
     "iscustomlayout": false,
-    "isvisible": true,
+    "isvisible": false,
     "kuid": "i9be37c56f5d46cab80c3121f1d2a702",
     "layouttype": 2,
     "name": "kony.ui.FlexContainer",

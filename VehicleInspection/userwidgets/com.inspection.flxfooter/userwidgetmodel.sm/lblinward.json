@@ -44,7 +44,7 @@
         "value": "50%"
     },
     "containerweight": 100,
-    "contentalignment": 5,
+    "contentalignment": 2,
     "id": "lblinward",
     "info": null,
     "ipad": {
@@ -60,6 +60,7 @@
     "iscustomlayout": false,
     "isvisible": true,
     "kuid": "f7304aac0c274745b4912a56d7626e3b",
+    "maxnumberoflines": 1,
     "name": "kony.ui.Label",
     "parent": "flxInward",
     "pf": "userwidgetmodel",
@@ -67,6 +68,7 @@
     "retainflexpositionproperties": false,
     "texti18n": "Inward",
     "textstyle": {},
+    "texttruncateposition": 3,
     "tooltip": "",
     "wType": "Label"
 }

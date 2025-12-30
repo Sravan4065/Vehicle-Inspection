@@ -5,180 +5,12 @@
         {
             "imgRight": {
                 "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "imgchevronright.png",
+                "src": "",
                 "type": "Image"
             },
             "lblServiceType": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Vehicle Details",
-                "type": "Label"
-            }
-        },
-        {
-            "imgRight": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "imgchevronright.png",
-                "type": "Image"
-            },
-            "lblServiceType": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Engine Condition",
-                "type": "Label"
-            }
-        },
-        {
-            "imgRight": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "imgchevronright.png",
-                "type": "Image"
-            },
-            "lblServiceType": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Transmission",
-                "type": "Label"
-            }
-        },
-        {
-            "imgRight": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "imgchevronright.png",
-                "type": "Image"
-            },
-            "lblServiceType": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Electrical System Condition",
-                "type": "Label"
-            }
-        },
-        {
-            "imgRight": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "imgchevronright.png",
-                "type": "Image"
-            },
-            "lblServiceType": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Suspension Condition",
-                "type": "Label"
-            }
-        },
-        {
-            "imgRight": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "imgchevronright.png",
-                "type": "Image"
-            },
-            "lblServiceType": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Brake System Condition",
-                "type": "Label"
-            }
-        },
-        {
-            "imgRight": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "imgchevronright.png",
-                "type": "Image"
-            },
-            "lblServiceType": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Rims Condition",
-                "type": "Label"
-            }
-        },
-        {
-            "imgRight": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "imgchevronright.png",
-                "type": "Image"
-            },
-            "lblServiceType": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Tyres Condition",
-                "type": "Label"
-            }
-        },
-        {
-            "imgRight": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "imgchevronright.png",
-                "type": "Image"
-            },
-            "lblServiceType": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Chassis Damage Report",
-                "type": "Label"
-            }
-        },
-        {
-            "imgRight": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "imgchevronright.png",
-                "type": "Image"
-            },
-            "lblServiceType": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Exterior",
-                "type": "Label"
-            }
-        },
-        {
-            "imgRight": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "imgchevronright.png",
-                "type": "Image"
-            },
-            "lblServiceType": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Interiors",
-                "type": "Label"
-            }
-        },
-        {
-            "imgRight": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "imgchevronright.png",
-                "type": "Image"
-            },
-            "lblServiceType": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Vehicle Summary Report",
-                "type": "Label"
-            }
-        },
-        {
-            "imgRight": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "imgchevronright.png",
-                "type": "Image"
-            },
-            "lblServiceType": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Service History & Manuals",
-                "type": "Label"
-            }
-        },
-        {
-            "imgRight": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "imgchevronright.png",
-                "type": "Image"
-            },
-            "lblServiceType": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Paint Condition",
-                "type": "Label"
-            }
-        },
-        {
-            "imgRight": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "imgchevronright.png",
-                "type": "Image"
-            },
-            "lblServiceType": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Engine Bay & Undercarriage Photos",
+                "text": "",
                 "type": "Label"
             }
         }
@@ -216,7 +48,7 @@
     "autogrowmode": 1,
     "canUpdateUI": true,
     "containerweight": 100,
-    "counter": "014",
+    "counter": "00",
     "focusedindex": null,
     "focuseditem": null,
     "groupcells": false,
@@ -250,7 +82,7 @@
     "retainflexpositionproperties": false,
     "retainselection": false,
     "rowTemplateId": "a81e954ccef94e02b560c36da7636e5b",
-    "rowcounter": 14,
+    "rowcounter": 0,
     "rowfocusskin": "sb4cbb0437db46f8863eedda6fd864f8",
     "rowskin": "s87cc27d14a9433a9b4a99cdf72f69f3",
     "rowtemplate": "flxInspectionItem",
