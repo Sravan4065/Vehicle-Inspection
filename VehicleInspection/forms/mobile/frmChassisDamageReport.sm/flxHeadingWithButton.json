@@ -97,6 +97,9 @@
                     "type": "string",
                     "value": "0dp"
                 }
+            },
+            "zIndex": {
+                "Default": 21
             }
         },
         "imgBack": {
@@ -136,5 +139,5 @@
     "snaptogrid": true,
     "sourceUserWidget": "e1ffe84933ff4c53821a6187631a25bd",
     "wType": "UserWidgetInstance",
-    "zindex": 1
+    "zindex": 21
 }

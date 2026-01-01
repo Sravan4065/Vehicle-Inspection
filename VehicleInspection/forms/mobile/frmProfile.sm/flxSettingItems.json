@@ -35,6 +35,7 @@
     "autogrowmode": 1,
     "canUpdateUI": true,
     "children": [
+        "flxLanguageToggle",
         "flxAppSettings",
         "flxNotifications",
         "flxPrivacySecurity",

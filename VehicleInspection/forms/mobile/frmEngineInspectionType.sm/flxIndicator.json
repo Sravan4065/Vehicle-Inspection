@@ -31,11 +31,15 @@
     },
     "_width_": {
         "type": "string",
-        "value": "100%"
+        "value": "90%"
     },
     "areflexpropsreferenced": false,
     "autogrowmode": 0,
     "canUpdateUI": true,
+    "centerx": {
+        "type": "string",
+        "value": "50%"
+    },
     "clipbounds": true,
     "containerweight": 0,
     "dataDiffs": {
@@ -46,6 +50,18 @@
                 "kuid": "eb6c76277a364dd3abb524d50be6a69f",
                 "srcKUID": "c8e0ca8098434d91a6f5ea2a86b479c4",
                 "wType": "FlexContainer"
+            },
+            "centerX": {
+                "Default": {
+                    "type": "string",
+                    "value": "50%"
+                }
+            },
+            "width": {
+                "Default": {
+                    "type": "string",
+                    "value": "90%"
+                }
             }
         },
         "flxNeedsRepair": {
@@ -62,6 +78,28 @@
                 "kuid": "a2a0ae458fcd4506bbe89391f648dc7f",
                 "srcKUID": "ec6922b643ba4d9681274ea21af5d620",
                 "wType": "FlexContainer"
+            },
+            "left": {
+                "Default": {
+                    "type": "string",
+                    "value": "2%"
+                }
+            },
+            "minWidth": {
+                "Default": {
+                    "type": "string",
+                    "value": ""
+                },
+                "iphone": {
+                    "type": "string",
+                    "value": ""
+                }
+            },
+            "width": {
+                "Default": {
+                    "type": "string",
+                    "value": "33%"
+                }
             }
         },
         "flxPass": {
@@ -70,6 +108,12 @@
                 "kuid": "bcec304f2adb4a01a47b5af239ce3b24",
                 "srcKUID": "fbc6465d66114e16b65ea92e6657bce8",
                 "wType": "FlexContainer"
+            },
+            "width": {
+                "Default": {
+                    "type": "string",
+                    "value": "30%"
+                }
             }
         },
         "imgNeedsRepair": {
@@ -78,7 +122,8 @@
                 "kuid": "hbb6d2e14fe146ecbad3dd6826941bf6",
                 "srcKUID": "e04a056b72784d74b972e7b7c6c18fbc",
                 "wType": "Image"
-            }
+            },
+            "src": "needsrepairicon.png"
         },
         "imgNotApplicable": {
             "__events__": {},
@@ -86,7 +131,8 @@
                 "kuid": "gc12755ff6b847319382bc72a41f3af7",
                 "srcKUID": "iabb069550b0404397c9d0bdd2a319de",
                 "wType": "Image"
-            }
+            },
+            "src": "notapplicableicon.png"
         },
         "imgPassIcon": {
             "__events__": {},
@@ -94,7 +140,8 @@
                 "kuid": "ee85bff23a65479a8736f8fae8c1788f",
                 "srcKUID": "ecb66d43a68344e5bfc91118c69d2fac",
                 "wType": "Image"
-            }
+            },
+            "src": "passicon.png"
         },
         "lblNeedsRepair": {
             "__events__": {},

@@ -7,7 +7,7 @@
     },
     "_height_": {
         "type": "string",
-        "value": "48dp"
+        "value": "44dp"
     },
     "_margin_": [
         6,
@@ -34,8 +34,11 @@
     "canUpdateUI": true,
     "containerweight": 100,
     "contentalignment": 5,
+    "disabledSkins": {
+        "focusSkin": "s4ec7cfbb99d4ca7a00f788aa71ee43c"
+    },
     "displaytext": true,
-    "focusskin": "s4ec7cfbb99d4ca7a00f788aa71ee43c",
+    "focusskin": null,
     "id": "btnSaveResponse",
     "info": null,
     "iscustomlayout": false,

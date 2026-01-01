@@ -41,7 +41,6 @@
     "containerweight": 100,
     "enablescrolling": true,
     "id": "flxViewAll",
-    "ide_onClick": "AS_FlexContainer_e5b4793cba6849bb94cb4cea1bd35f03",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
