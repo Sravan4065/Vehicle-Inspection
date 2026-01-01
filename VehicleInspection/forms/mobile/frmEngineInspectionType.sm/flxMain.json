@@ -44,7 +44,10 @@
     },
     "children": [
         "flxHeader",
-        "flxBody"
+        "flxBody",
+        "flxfooter",
+        "flxAddDetailsAndUpload",
+        "flxChooseFileTakePhoto"
     ],
     "clipbounds": false,
     "containerweight": 100,

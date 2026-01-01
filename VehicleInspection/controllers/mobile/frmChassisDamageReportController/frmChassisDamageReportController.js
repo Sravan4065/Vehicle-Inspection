@@ -5,12 +5,18 @@ define({
     var self = this;
     self.selectedChecks = ""; 
     self.createCheckBoxes(21);
+    this.view.preShow = this.onPreShow.bind(this);
+  },
+  
+  onPreShow: function()
+  {
+    toggleFooterIcons(this.view, "frmChassisDamageReport");
   },
   
   createCheckBoxes: function (totalItems) {
     var self = this;
     self.view.flxCheckBoxes.removeAll();
-
+//     self.view.flxCheckBoxes.zIndex = "10";
     var screenWidth = voltmx.os.deviceInfo().screenWidth - 10;
     var itemSize = 30; // flxItem width
     var margin = 10;
@@ -23,8 +29,8 @@ define({
     for (var i = 1; i <= totalItems; i++) {
 
         if (countInRow >= itemsPerRow) {
-            currentLeft = 6;
-            currentTop += 40; // next row
+            currentLeft = 5;
+            currentTop += 44; // next row
             countInRow = 0;
         }
 
@@ -32,14 +38,14 @@ define({
 
         var flxItem = new voltmx.ui.FlexContainer({
             id: "flxItem" + index,
-            width: "30dp",
-            height: "30dp",
+            width: "35dp",
+            height: "35dp",
             left: currentLeft + "dp",
             top: currentTop + "dp",
             layoutType: voltmx.flex.FLOW_HORIZONTAL,
             clipBounds: true,
             isVisible: true,
-            skin: "slFbox",
+            skin: "sknFlxBasic",
             onClick: self.onCheckClick.bind(self, index)
         }, {}, {});
 

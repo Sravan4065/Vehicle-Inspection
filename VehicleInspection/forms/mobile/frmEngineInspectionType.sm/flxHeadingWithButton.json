@@ -40,7 +40,9 @@
     "containerweight": 0,
     "dataDiffs": {
         "btnSaveResponse": {
-            "__events__": {},
+            "__events__": {
+                "ide_onClick": "AS_Button_ga99a8f4c99541669073ace905766d01"
+            },
             "__info__": {
                 "kuid": "b4224da0d1734e8e8cb5add72af302d7",
                 "srcKUID": "e7ed5d5d305644c28c7ab5529c49040e",
@@ -105,7 +107,8 @@
                 "kuid": "f294f3eb0d6c47efa9efbdf0a0506822",
                 "srcKUID": "af3ad0728c3c4d4e9e4311c055f4f9ea",
                 "wType": "Image"
-            }
+            },
+            "src": "backarrow.png"
         },
         "lblImages": {
             "__events__": {},

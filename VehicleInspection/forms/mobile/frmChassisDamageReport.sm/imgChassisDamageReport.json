@@ -39,7 +39,7 @@
     },
     "containerweight": 100,
     "id": "imgChassisDamageReport",
-    "imagescalemode": 2,
+    "imagescalemode": 0,
     "info": null,
     "invokedProperty": "src",
     "iscustomlayout": false,

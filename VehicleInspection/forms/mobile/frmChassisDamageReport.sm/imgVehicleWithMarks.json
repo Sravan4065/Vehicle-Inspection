@@ -4,7 +4,7 @@
     "_base64_": null,
     "_height_": {
         "type": "string",
-        "value": "180dp"
+        "value": "230dp"
     },
     "_left_": {
         "type": "string",
@@ -30,7 +30,7 @@
     },
     "_width_": {
         "type": "string",
-        "value": "100%"
+        "value": "94%"
     },
     "canUpdateUI": true,
     "centerx": {
@@ -39,7 +39,7 @@
     },
     "containerweight": 100,
     "id": "imgVehicleWithMarks",
-    "imagescalemode": 1,
+    "imagescalemode": 0,
     "info": null,
     "invokedProperty": "src",
     "iscustomlayout": false,

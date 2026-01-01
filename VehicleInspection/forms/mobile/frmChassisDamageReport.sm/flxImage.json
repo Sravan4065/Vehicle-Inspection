@@ -43,7 +43,7 @@
     "id": "flxImage",
     "info": null,
     "iscustomlayout": false,
-    "ismodalcontainer": true,
+    "ismodalcontainer": false,
     "isvisible": true,
     "kuid": "bb30ecf2a24d41f28676ff300bf2d5f0",
     "layouttype": 2,
