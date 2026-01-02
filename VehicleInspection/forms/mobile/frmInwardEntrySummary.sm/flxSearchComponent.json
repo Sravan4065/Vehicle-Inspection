@@ -93,6 +93,14 @@
                 "srcKUID": "a38e9e21f2214d429cdf2551e985391a",
                 "wType": "Label"
             }
+        },
+        "tbxSearchBy": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "f239f0d463a948d9891ba1443612d9e7",
+                "srcKUID": "d2787e0f2b8a473e9ca6bc9ded6b3608",
+                "wType": "TextField"
+            }
         }
     },
     "enablescrolling": true,

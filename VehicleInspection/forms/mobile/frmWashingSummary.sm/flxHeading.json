@@ -36,13 +36,13 @@
     "areflexpropsreferenced": false,
     "autogrowmode": 0,
     "canUpdateUI": true,
-    "clipbounds": false,
+    "clipbounds": true,
     "containerweight": 0,
     "dataDiffs": {
         "flxBack": {
             "__events__": {},
             "__info__": {
-                "kuid": "gabf17747c514160ae1f598a17e2f945",
+                "kuid": "d9bf4e22dd0b47a2a04595fabad1bf2a",
                 "srcKUID": "c9c62e4afcf44ba8a1956978a66817d1",
                 "wType": "FlexContainer"
             }
@@ -51,27 +51,15 @@
             "__events__": {},
             "__info__": {
                 "isRoot": true,
-                "kuid": "cbd4a516fe304a358c8287a50befc113",
+                "kuid": "a469d34394374a02b85186f3ff20ac03",
                 "srcKUID": "e3bfd273ea9e44b4bc5367e8775cd1cf",
                 "wType": "FlexContainer"
-            },
-            "centerY": {
-                "Default": {
-                    "type": "string",
-                    "value": ""
-                }
-            },
-            "top": {
-                "Default": {
-                    "type": "string",
-                    "value": "0dp"
-                }
             }
         },
         "imgBack": {
             "__events__": {},
             "__info__": {
-                "kuid": "e0982f10583d430ea4eae4c72e57c172",
+                "kuid": "ic61384e1e18432ab1bb882e67717877",
                 "srcKUID": "gbbcb1b0713640a0bec682ec913b1fb7",
                 "wType": "Image"
             }
@@ -79,7 +67,7 @@
         "lblImages": {
             "__events__": {},
             "__info__": {
-                "kuid": "ee763d0716664df8adb1f549746719d4",
+                "kuid": "a663d5982c304d00b8c39b10b03c00f3",
                 "srcKUID": "c99ec061bed3441bb3221b9f335ab163",
                 "wType": "Label"
             },
@@ -92,8 +80,8 @@
     "iscustomlayout": false,
     "isdatareferenced": false,
     "isvisible": true,
-    "kuid": "cbd4a516fe304a358c8287a50befc113",
-    "layouttype": 2,
+    "kuid": "a469d34394374a02b85186f3ff20ac03",
+    "layouttype": 3,
     "masterType": 0,
     "name": "kony.ui.UserWidgetInstance",
     "parent": "flxInnerBody",
@@ -101,6 +89,7 @@
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainflowhorizontalalignment": false,
+    "reverselayoutdirection": false,
     "snapgridsize": 10,
     "snaptogrid": true,
     "sourceUserWidget": "e3bfd273ea9e44b4bc5367e8775cd1cf",

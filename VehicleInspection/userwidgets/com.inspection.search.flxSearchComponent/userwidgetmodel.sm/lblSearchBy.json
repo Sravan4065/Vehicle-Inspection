@@ -54,7 +54,7 @@
         }
     },
     "iscustomlayout": false,
-    "isvisible": true,
+    "isvisible": false,
     "kuid": "a38e9e21f2214d429cdf2551e985391a",
     "name": "kony.ui.Label",
     "paddinginpixel": false,
