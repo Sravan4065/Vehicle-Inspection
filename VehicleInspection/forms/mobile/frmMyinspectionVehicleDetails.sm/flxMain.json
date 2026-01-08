@@ -36,8 +36,8 @@
     "canUpdateUI": true,
     "children": [
         "flxHeadermain",
-        "flxSubheader",
-        "flxBody"
+        "flxBody",
+        "flxfooter"
     ],
     "clipbounds": false,
     "containerweight": 100,

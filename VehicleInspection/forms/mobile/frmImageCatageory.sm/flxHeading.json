@@ -70,6 +70,12 @@
                 "kuid": "a7ae72fbace04aa5b9b8b93227ab3b1c",
                 "srcKUID": "c99ec061bed3441bb3221b9f335ab163",
                 "wType": "Label"
+            },
+            "left": {
+                "Default": {
+                    "type": "string",
+                    "value": "15%"
+                }
             }
         }
     },

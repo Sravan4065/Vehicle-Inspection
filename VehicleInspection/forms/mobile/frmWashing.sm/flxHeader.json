@@ -1,0 +1,100 @@
+{
+    "@class": "com.kony.gen.viz.model.component.KVizUserWidget",
+    "DNDConfig": null,
+    "_children_": [],
+    "_height_": {
+        "type": "string",
+        "value": "8%"
+    },
+    "_left_": {
+        "type": "string",
+        "value": "0dp"
+    },
+    "_margin_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_orientation_": 1,
+    "_padding_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_percent_": true,
+    "_skin_": "s111fceb475246daa92935c0f316039e",
+    "_top_": {
+        "type": "string",
+        "value": "0dp"
+    },
+    "_width_": {
+        "type": "string",
+        "value": "100%"
+    },
+    "areflexpropsreferenced": false,
+    "autogrowmode": 0,
+    "canUpdateUI": true,
+    "clipbounds": false,
+    "containerweight": 0,
+    "dataDiffs": {
+        "flxHeader": {
+            "__events__": {
+                "ide_onTouchEnd": "AS_UWI_f971504bf17e426a84c30d73f8e0725e"
+            },
+            "__info__": {
+                "isRoot": true,
+                "kuid": "b7ef383a224048cf964b7c7cb3df9fb2",
+                "srcKUID": "heb97a2d121a4430bbc0259df8dc61a6",
+                "wType": "FlexContainer"
+            },
+            "autogrowMode": {
+                "Default": 0
+            },
+            "height": {
+                "Default": {
+                    "type": "string",
+                    "value": "8%"
+                }
+            }
+        },
+        "flxUL": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "dc7569edaf3b4c7d924d508da5264845",
+                "srcKUID": "a52dd62e79284009ad50f02c9363aef5",
+                "wType": "FlexContainer"
+            }
+        },
+        "lblInspectionIQ": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "b1fe527de9b942bfbaa205ef0f2a9d9a",
+                "srcKUID": "jf5e79045e50472d944c4e659934ae1c",
+                "wType": "Label"
+            }
+        }
+    },
+    "enablescrolling": true,
+    "id": "flxHeader",
+    "ide_onTouchEnd": "AS_UWI_f971504bf17e426a84c30d73f8e0725e",
+    "info": null,
+    "iscustomlayout": false,
+    "isdatareferenced": false,
+    "isvisible": true,
+    "kuid": "b7ef383a224048cf964b7c7cb3df9fb2",
+    "layouttype": 2,
+    "masterType": 0,
+    "name": "kony.ui.UserWidgetInstance",
+    "parent": "flxMain",
+    "pf": "frmWashing",
+    "retaincontentalignment": false,
+    "retainflexpositionproperties": false,
+    "retainflowhorizontalalignment": false,
+    "snapgridsize": 10,
+    "snaptogrid": true,
+    "sourceUserWidget": "heb97a2d121a4430bbc0259df8dc61a6",
+    "wType": "UserWidgetInstance",
+    "zindex": 1
+}

@@ -36,6 +36,10 @@
     "areflexpropsreferenced": false,
     "autogrowmode": 0,
     "canUpdateUI": true,
+    "centery": {
+        "type": "string",
+        "value": "50%"
+    },
     "clipbounds": true,
     "containerweight": 0,
     "dataDiffs": {
@@ -65,7 +69,7 @@
             "centerY": {
                 "Default": {
                     "type": "string",
-                    "value": ""
+                    "value": "50%"
                 }
             },
             "height": {
@@ -137,6 +141,12 @@
                 "kuid": "bdcf40e683c44b6ea9f9b3bcfc8a284e",
                 "srcKUID": "jf5e79045e50472d944c4e659934ae1c",
                 "wType": "Label"
+            },
+            "centerY": {
+                "Default": {
+                    "type": "string",
+                    "value": "50%"
+                }
             }
         }
     },

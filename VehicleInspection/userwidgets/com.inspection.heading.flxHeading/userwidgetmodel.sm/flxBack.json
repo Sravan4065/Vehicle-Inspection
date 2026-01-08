@@ -45,6 +45,7 @@
     "containerweight": 100,
     "enablescrolling": true,
     "id": "flxBack",
+    "ide_onClick": "AS_FlexContainer_e2e7c225e86248d2ab2411fd868498fa",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,

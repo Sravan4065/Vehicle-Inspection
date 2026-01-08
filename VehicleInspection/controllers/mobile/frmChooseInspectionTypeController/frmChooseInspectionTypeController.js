@@ -56,49 +56,64 @@ define({
         switch(selectedRow[0].key)
           {
             case "VEHICLE_DETAILS":
-              new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
+//               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
+              NavigationManager.push("frmVehicledetailsInspectionType");
               break;
               case "ENGINE_CONDITION":
-              new voltmx.mvc.Navigation("frmEngineInspectionType").navigate();
+//               new voltmx.mvc.Navigation("frmEngineInspectionType").navigate();
+               NavigationManager.push("frmEngineInspectionType");
               break;
               case "TRANSMISSION":
-              new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
-              break;
-              case "VEHICLE_DETAILS":
-              new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
+//               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
+               NavigationManager.push("frmTransmission");
               break;
               case "ELECTRICAL_SYSTEM":
-              new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
+//               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
+               NavigationManager.push("frmElectricalSystemCondition");
               break;
               case "SUSPENSION":
-              new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
+//               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
+               NavigationManager.push("frmSuspensionCondition");
               break;
               case "BRAKE_SYSTEM":
-              new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
+//               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
+               NavigationManager.push("frmBrakeSystemCondition");
               break;
               case "RIMS":
-              new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
+//               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
+               NavigationManager.push("frmRimsCondition");
               break;
               case "TYRES":
-              new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
+//               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
+               NavigationManager.push("frmTyres");
               break;
               case "CHASSIS_DAMAGE":
-              new voltmx.mvc.Navigation("frmChassisDamageReport").navigate();
+//               new voltmx.mvc.Navigation("frmChassisDamageReport").navigate();
+               NavigationManager.push("frmChassisDamageReport");
               break;
                case "EXTERIOR":
-              new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
+//               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
+               NavigationManager.push("frmInspectionExterior");
               break;
+              case "INTERIORS":
+//               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
+               NavigationManager.push("frmInspectionInterior");
+               break;
                case "VEHICLE_SUMMARY":
-              new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
+//               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
+               NavigationManager.push("frmVehicleSummaryreport");
               break;
                case "SERVICE_HISTORY":
-              new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
+//               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
+               NavigationManager.push("frmServiceHistoryandManuals");
               break;
                case "PAINT_CONDITION":
-              new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
+//               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
+               NavigationManager.push("frmPaintCondition");
               break;
                case "ENGINE_BAY_PHOTOS":
-              new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
+//               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
+               NavigationManager.push("frmEngineBayAndUnderCarriagePhotos");
               break;
             default:
               return;

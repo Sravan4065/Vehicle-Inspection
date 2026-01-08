@@ -43,6 +43,7 @@
         "lblPleaseEnter",
         "txtAreaPleaseEnterDetails",
         "flxUploadImages",
+        "flxUploadedImage",
         "btnSubmitUpload"
     ],
     "clipbounds": true,

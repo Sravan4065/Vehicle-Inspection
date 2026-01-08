@@ -2,7 +2,7 @@
     "DNDConfig": null,
     "_height_": {
         "type": "string",
-        "value": "90%"
+        "value": "82%"
     },
     "_left_": {
         "type": "string",
@@ -25,7 +25,7 @@
     "_skin_": "s43b3f0daddb4853bfc5983bfb525431",
     "_top_": {
         "type": "string",
-        "value": "10%"
+        "value": "8%"
     },
     "_width_": {
         "type": "string",
@@ -35,9 +35,10 @@
     "autogrowmode": 0,
     "canUpdateUI": true,
     "children": [
+        "flxSubheader",
         "flxContent"
     ],
-    "clipbounds": false,
+    "clipbounds": true,
     "containerweight": 100,
     "enablescrolling": true,
     "id": "flxBody",
@@ -45,7 +46,7 @@
     "iscustomlayout": false,
     "isvisible": true,
     "kuid": "e54443ce2aa94cad9b2f971fcf5efe1e",
-    "layouttype": 2,
+    "layouttype": 4,
     "name": "kony.ui.FlexContainer",
     "parent": "flxMain",
     "pf": "frmMyinspectionVehicleDetails",

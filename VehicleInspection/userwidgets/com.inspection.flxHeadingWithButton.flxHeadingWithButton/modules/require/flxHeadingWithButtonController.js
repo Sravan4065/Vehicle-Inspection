@@ -1,6 +1,8 @@
 define(function() {
 
-	return {
-
-	};
+  return {
+    onBackClick: function () {
+      NavigationManager.pop();
+    }
+  };
 });
