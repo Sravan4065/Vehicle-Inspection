@@ -11,6 +11,11 @@ define({
   {
     toggleFooterIcons(this.view, "frmWashingSummary");
     
+//      this.view.flxHeading.flxBack.onClick = () =>
+//     {
+//       NavigationManager.pop();
+//     }
+    
   },
   
   adjustRTL: function()

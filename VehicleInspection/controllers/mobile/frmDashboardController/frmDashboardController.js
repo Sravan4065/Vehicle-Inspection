@@ -12,6 +12,7 @@ define({
   
   onPreShow: function()
   {
+    NavigationManager.init("frmDashboard");
     toggleFooterIcons(this.view, "frmDashboard");
     this.setDataToSeg();
   },
@@ -89,7 +90,8 @@ define({
   
   navToRelatedActivity: function(navigatingFormName) 
       { 
-        new voltmx.mvc.Navigation(navigatingFormName).navigate();
+//         new voltmx.mvc.Navigation(navigatingFormName).navigate();
+        NavigationManager.push(navigatingFormName);
         
       },
   adjustRTL: function(){

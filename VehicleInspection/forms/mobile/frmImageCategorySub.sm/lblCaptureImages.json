@@ -7,7 +7,7 @@
     },
     "_left_": {
         "type": "string",
-        "value": "146dp"
+        "value": "5%"
     },
     "_margin_": [
         1,
@@ -21,11 +21,11 @@
         0,
         0
     ],
-    "_skin_": "s874a6f08ecc42ac8786efa4e352dfde",
-    "_text_": "Label",
+    "_skin_": "s74d3f3586b34e84b44c92ef94cda894",
+    "_text_": "Capture Images",
     "_top_": {
         "type": "string",
-        "value": "110dp"
+        "value": "12dp"
     },
     "_width_": {
         "type": "ref",
@@ -41,7 +41,7 @@
     "canUpdateUI": true,
     "containerweight": 100,
     "contentalignment": 4,
-    "id": "lbltest",
+    "id": "lblCaptureImages",
     "info": null,
     "ipad": {
         "psp": {
@@ -55,14 +55,13 @@
     },
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "ae386e1757f84b588c6a4d4fbee4ddb4",
+    "kuid": "c35ef23b124d48299d86d0b830451806",
     "name": "kony.ui.Label",
-    "parent": "frmLogin",
-    "pf": "frmLogin",
+    "parent": "flxInnerBody",
+    "pf": "frmImageCategorySub",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "textstyle": {},
     "tooltip": "",
-    "wType": "Label",
-    "zindex": 1
+    "wType": "Label"
 }

@@ -1,5 +1,15 @@
 define({ 
 
- //Type your controller code here 
+ onNavigate: function()
+  {
+    this.view.preShow = this.onPreShow.bind(this);
+  },
+  
+  onPreShow: function()
+{
+  this.view.btnSignIn.onClick = () => {
+    new voltmx.mvc.Navigation("frmDashboard").navigate();
+  }
+}
 
  });

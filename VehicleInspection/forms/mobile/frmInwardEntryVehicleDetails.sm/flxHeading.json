@@ -83,6 +83,12 @@
                 "srcKUID": "c99ec061bed3441bb3221b9f335ab163",
                 "wType": "Label"
             },
+            "left": {
+                "Default": {
+                    "type": "string",
+                    "value": "17%"
+                }
+            },
             "text": "Inward Entry"
         }
     },

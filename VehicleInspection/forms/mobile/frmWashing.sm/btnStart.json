@@ -1,0 +1,57 @@
+{
+    "@class": "com.kony.gen.viz.model.component.KVizButton",
+    "DNDConfig": null,
+    "_height_": {
+        "type": "string",
+        "value": "35dp"
+    },
+    "_margin_": [
+        6,
+        6,
+        6,
+        6
+    ],
+    "_padding_": [
+        5,
+        0,
+        5,
+        0
+    ],
+    "_right_": {
+        "type": "string",
+        "value": "4%"
+    },
+    "_skin_": "sb65165f16ac4b7e8b1698ea42ee1b0c",
+    "_text_": "Start",
+    "_top_": {
+        "type": "string",
+        "value": "0"
+    },
+    "_width_": {
+        "type": "ref",
+        "value": "preferred"
+    },
+    "canUpdateUI": true,
+    "centery": {
+        "type": "string",
+        "value": "50%"
+    },
+    "containerweight": 100,
+    "contentalignment": 5,
+    "disabledSkins": {
+        "focusSkin": "s4ec7cfbb99d4ca7a00f788aa71ee43c"
+    },
+    "displaytext": true,
+    "id": "btnStart",
+    "info": null,
+    "iscustomlayout": false,
+    "isvisible": true,
+    "kuid": "e62b4206fe524a8191eaaaaf5157eaf0",
+    "name": "kony.ui.Button",
+    "paddinginpixel": false,
+    "parent": "flxStartWashing",
+    "pf": "frmWashing",
+    "retaincontentalignment": false,
+    "retainflexpositionproperties": false,
+    "wType": "Button"
+}

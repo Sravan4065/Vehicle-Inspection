@@ -2,7 +2,7 @@
     "DNDConfig": null,
     "_height_": {
         "type": "string",
-        "value": "5%"
+        "value": "8%"
     },
     "_left_": {
         "type": "string",
@@ -25,7 +25,7 @@
     "_skin_": "s43b3f0daddb4853bfc5983bfb525431",
     "_top_": {
         "type": "string",
-        "value": "5%"
+        "value": "0%"
     },
     "_width_": {
         "type": "string",
@@ -47,7 +47,7 @@
     "kuid": "g28d09678d8e476aa88ac4c8fb0c2921",
     "layouttype": 2,
     "name": "kony.ui.FlexContainer",
-    "parent": "flxMain",
+    "parent": "flxBody",
     "pf": "frmMyinspectionVehicleDetails",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,

@@ -2,10 +2,14 @@
     "splashScreen": {
         "desktop": {
             "desktopweb": {},
-            "kiosk": {}
+            "kiosk": {},
+            "nativemac": {},
+            "nativewin": {}
         },
         "mobile": {
-            "android": {},
+            "android": {
+                "showVoltmxSplashScreen": false
+            },
             "iphone": {
                 "splashConfig": {
                     "_skin_": "sfbe0b910dfe4363bf286a9d2ada7748",

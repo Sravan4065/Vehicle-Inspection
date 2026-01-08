@@ -3,9 +3,16 @@ define({
  //Type your controller code here 
 onNavigate: function(){
   this.adjustRTL();
+   this.view.preShow = this.onPreShow.bind(this);
 },
   
-
+ onPreShow: function() {
+   toggleFooterIcons(this.view, "frmMyinspectionVehicleDetails");
+   this.view.btnStart.onClick = () =>
+   {
+     NavigationManager.push("frmChooseInspectionType");
+   }
+ },
   
   adjustRTL: function () {
 
@@ -84,7 +91,7 @@ onNavigate: function(){
         this.view.lblRequestedtimedata.right ="0%";
         this.view.lblNotesData.right  ="0%";
         this.view.lblStatusData.right  ="0%";
-        this.view.lblInspectionReportDat.right ="0%";
+        this.view.lblInspectionReportData.right ="0%";
         this.view.btnClose.right ="0%";
       
          this.view.lblId.right = null;

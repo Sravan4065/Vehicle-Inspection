@@ -1,5 +1,13 @@
 define({ 
 
- //Type your controller code here 
+   onNavigate: function()
+  {
+    this.view.preShow = this.onPreShow.bind(this);
+  },
+  
+  onPreShow: function()
+  {
+    toggleFooterIcons(this.view, "frmCompletedInspections");
+  }
 
  });

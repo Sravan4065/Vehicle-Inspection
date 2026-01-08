@@ -30,8 +30,20 @@ function toggleFooterIcons(formObj, formName) {
       activeIndex = 2; 
       break;
       
+    case "frmMyinspectionVehicleDetails":
+      activeIndex = 2; 
+      break;
+      
       case "frmChassisDamageReport":
       activeIndex = 2; 
+      break;
+      
+    case "frmImageCatageory":
+       activeIndex = 4; 
+      break;
+      
+       case "frmImageCategorySub":
+       activeIndex = 4; 
       break;
       
     case  "frmActivityist":
@@ -40,6 +52,11 @@ function toggleFooterIcons(formObj, formName) {
     return;
  
     case  "frmWashingSummary":
+      resetFooterToNormal(footer);
+    formObj.forceLayout();
+    return;
+      
+    case "frmCompletedInspections":
       resetFooterToNormal(footer);
     formObj.forceLayout();
     return;

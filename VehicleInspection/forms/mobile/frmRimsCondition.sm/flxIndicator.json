@@ -1,0 +1,191 @@
+{
+    "@class": "com.kony.gen.viz.model.component.KVizUserWidget",
+    "DNDConfig": null,
+    "_children_": [],
+    "_height_": {
+        "type": "string",
+        "value": "38dp"
+    },
+    "_left_": {
+        "type": "string",
+        "value": "0dp"
+    },
+    "_margin_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_orientation_": 1,
+    "_padding_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_percent_": true,
+    "_skin_": "s43b3f0daddb4853bfc5983bfb525431",
+    "_top_": {
+        "type": "string",
+        "value": "0dp"
+    },
+    "_width_": {
+        "type": "string",
+        "value": "90%"
+    },
+    "areflexpropsreferenced": false,
+    "autogrowmode": 0,
+    "canUpdateUI": true,
+    "centerx": {
+        "type": "string",
+        "value": "50%"
+    },
+    "clipbounds": true,
+    "containerweight": 0,
+    "dataDiffs": {
+        "flxIndicator": {
+            "__events__": {},
+            "__info__": {
+                "isRoot": true,
+                "kuid": "e6f7928b042b4337b81adbbafbd23055",
+                "srcKUID": "c8e0ca8098434d91a6f5ea2a86b479c4",
+                "wType": "FlexContainer"
+            },
+            "centerX": {
+                "Default": {
+                    "type": "string",
+                    "value": "50%"
+                }
+            },
+            "width": {
+                "Default": {
+                    "type": "string",
+                    "value": "90%"
+                }
+            }
+        },
+        "flxNeedsRepair": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "bba4e74c973c4390b043f8311a5e7f1b",
+                "srcKUID": "ae45c125fe434ee1852368dac855dbc9",
+                "wType": "FlexContainer"
+            }
+        },
+        "flxNotApplicable": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "c4ed3bb5ee9d4ff5b008f997f3ae4e6b",
+                "srcKUID": "ec6922b643ba4d9681274ea21af5d620",
+                "wType": "FlexContainer"
+            },
+            "left": {
+                "Default": {
+                    "type": "string",
+                    "value": "2%"
+                }
+            },
+            "minWidth": {
+                "Default": {
+                    "type": "string",
+                    "value": ""
+                },
+                "iphone": {
+                    "type": "string",
+                    "value": ""
+                }
+            },
+            "width": {
+                "Default": {
+                    "type": "string",
+                    "value": "33%"
+                }
+            }
+        },
+        "flxPass": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "b7bce26986514a03ace731325e6ab25a",
+                "srcKUID": "fbc6465d66114e16b65ea92e6657bce8",
+                "wType": "FlexContainer"
+            },
+            "width": {
+                "Default": {
+                    "type": "string",
+                    "value": "30%"
+                }
+            }
+        },
+        "imgNeedsRepair": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "e4944c02afdd47568d364e89635032ec",
+                "srcKUID": "e04a056b72784d74b972e7b7c6c18fbc",
+                "wType": "Image"
+            },
+            "src": "needsrepairicon.png"
+        },
+        "imgNotApplicable": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "aec7a8ab06484138b48869286507ff75",
+                "srcKUID": "iabb069550b0404397c9d0bdd2a319de",
+                "wType": "Image"
+            },
+            "src": "notapplicableicon.png"
+        },
+        "imgPassIcon": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "b7ea15e5de45464dace2929623355f19",
+                "srcKUID": "ecb66d43a68344e5bfc91118c69d2fac",
+                "wType": "Image"
+            },
+            "src": "passicon.png"
+        },
+        "lblNeedsRepair": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "cda078d05fe6478b9bf80a09cd587a4c",
+                "srcKUID": "ffa07e1ee77a4e18937aa098ea1b281b",
+                "wType": "Label"
+            }
+        },
+        "lblNotApplicable": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "h502b13fe19043d5b05c051f08ee33eb",
+                "srcKUID": "jf50adb86d1c4aff990e88e51385f157",
+                "wType": "Label"
+            }
+        },
+        "lblPass": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "f669ae86dbda4015991fde1019f9ce70",
+                "srcKUID": "heab923de6b9401ba28453b8861149ff",
+                "wType": "Label"
+            }
+        }
+    },
+    "enablescrolling": true,
+    "id": "flxIndicator",
+    "info": null,
+    "iscustomlayout": false,
+    "isdatareferenced": false,
+    "isvisible": true,
+    "kuid": "e6f7928b042b4337b81adbbafbd23055",
+    "layouttype": 3,
+    "masterType": 0,
+    "name": "kony.ui.UserWidgetInstance",
+    "parent": "flxInnerBody",
+    "pf": "frmRimsCondition",
+    "retaincontentalignment": false,
+    "retainflexpositionproperties": false,
+    "retainflowhorizontalalignment": false,
+    "snapgridsize": 10,
+    "snaptogrid": true,
+    "sourceUserWidget": "c8e0ca8098434d91a6f5ea2a86b479c4",
+    "wType": "UserWidgetInstance",
+    "zindex": 1
+}

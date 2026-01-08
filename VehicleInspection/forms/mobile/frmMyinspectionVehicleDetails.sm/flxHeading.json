@@ -42,7 +42,7 @@
         "flxBack": {
             "__events__": {},
             "__info__": {
-                "kuid": "hbc8027024384257994e0e7f8e47e140",
+                "kuid": "afcda2e95b034b86978c46357dc80dcd",
                 "srcKUID": "c9c62e4afcf44ba8a1956978a66817d1",
                 "wType": "FlexContainer"
             }
@@ -59,7 +59,7 @@
         "imgBack": {
             "__events__": {},
             "__info__": {
-                "kuid": "b50545b2c2654589a74e980a1ba0143f",
+                "kuid": "fc5fce71408e4abdbe887fa6baadeef8",
                 "srcKUID": "gbbcb1b0713640a0bec682ec913b1fb7",
                 "wType": "Image"
             }
@@ -67,11 +67,17 @@
         "lblImages": {
             "__events__": {},
             "__info__": {
-                "kuid": "c403d5e17bbe480e9db192c637de5444",
+                "kuid": "c8329c54aeed44d2a35cf4e9764ef56c",
                 "srcKUID": "c99ec061bed3441bb3221b9f335ab163",
                 "wType": "Label"
             },
             "i18n_text": "Vehicle Details",
+            "left": {
+                "Default": {
+                    "type": "string",
+                    "value": "17%"
+                }
+            },
             "text": "Vehicle Details"
         }
     },

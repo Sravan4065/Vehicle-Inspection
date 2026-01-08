@@ -16,7 +16,7 @@
         "actions": [{
             "id": "ADD_SNIPPET_b42d4445bc7c4b299a129681e9aac87d",
             "type": "ADD_SNIPPET",
-            "codeSnippet": "new voltmx.mvc.Navigation(\"frmDashboard\").navigate();",
+            "codeSnippet": "// new voltmx.mvc.Navigation(\"frmDashboard\").navigate();\nNavigationManager.push(\"frmDashboard\");",
             "parentId": null
         }]
     }

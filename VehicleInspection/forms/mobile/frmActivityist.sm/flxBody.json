@@ -37,12 +37,12 @@
     "bounces": true,
     "canUpdateUI": true,
     "children": [
+        "flxHeading",
         "flx1",
         "flx2",
-        "flx3",
-        "flxHeading"
+        "flx3"
     ],
-    "clipbounds": false,
+    "clipbounds": true,
     "containerweight": 100,
     "decelerat": false,
     "dragg": false,
@@ -53,7 +53,7 @@
     "iscustomlayout": false,
     "isvisible": true,
     "kuid": "hf1a75b89d734e828cf5c24cb16989c9",
-    "layouttype": 2,
+    "layouttype": 4,
     "name": "kony.ui.FlexScrollContainer",
     "pagingenabled": false,
     "parent": "flxmain",
