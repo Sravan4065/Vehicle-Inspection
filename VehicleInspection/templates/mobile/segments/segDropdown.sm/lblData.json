@@ -7,7 +7,7 @@
     },
     "_left_": {
         "type": "string",
-        "value": "3%"
+        "value": "5%"
     },
     "_margin_": [
         1,
@@ -21,7 +21,7 @@
         0,
         0
     ],
-    "_skin_": "s37bf460541c4b3b8b39bbb180b75546",
+    "_skin_": "s2c46a43167c48218e16ac4013fcb1a0",
     "_text_": "Label",
     "_top_": {
         "type": "string",

@@ -36,6 +36,10 @@
     "areflexpropsreferenced": false,
     "autogrowmode": 0,
     "canUpdateUI": true,
+    "centery": {
+        "type": "string",
+        "value": "50%"
+    },
     "clipbounds": true,
     "containerweight": 0,
     "dataDiffs": {
@@ -43,7 +47,7 @@
             "__events__": {},
             "__info__": {
                 "isRoot": true,
-                "kuid": "feb1a972186f4df982f5d202593fd306",
+                "kuid": "jb2ced1287214849b8fd9c96efcde9bc",
                 "srcKUID": "heb97a2d121a4430bbc0259df8dc61a6",
                 "wType": "FlexContainer"
             },
@@ -65,7 +69,7 @@
             "centerY": {
                 "Default": {
                     "type": "string",
-                    "value": ""
+                    "value": "50%"
                 }
             },
             "height": {
@@ -126,7 +130,7 @@
         "flxUL": {
             "__events__": {},
             "__info__": {
-                "kuid": "e517f2e7111c4d479ae3fdaffa1af4c4",
+                "kuid": "f693047459024965b0a6416a828aa93d",
                 "srcKUID": "a52dd62e79284009ad50f02c9363aef5",
                 "wType": "FlexContainer"
             }
@@ -134,7 +138,7 @@
         "lblInspectionIQ": {
             "__events__": {},
             "__info__": {
-                "kuid": "a8051660a52049f691c7671749ae9079",
+                "kuid": "f482004f21194e8e8c1562019a512242",
                 "srcKUID": "jf5e79045e50472d944c4e659934ae1c",
                 "wType": "Label"
             }
@@ -146,7 +150,7 @@
     "iscustomlayout": false,
     "isdatareferenced": false,
     "isvisible": true,
-    "kuid": "feb1a972186f4df982f5d202593fd306",
+    "kuid": "jb2ced1287214849b8fd9c96efcde9bc",
     "layouttype": 2,
     "masterType": 0,
     "name": "kony.ui.UserWidgetInstance",

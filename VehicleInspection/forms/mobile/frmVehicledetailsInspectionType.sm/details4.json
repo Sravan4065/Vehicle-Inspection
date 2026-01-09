@@ -43,19 +43,11 @@
     "clipbounds": false,
     "containerweight": 0,
     "dataDiffs": {
-        "Segment0j5d01d22ad6d41": {
-            "__events__": {},
-            "__info__": {
-                "kuid": "c2180b2fb99647d69133bed5ae2752f7",
-                "srcKUID": "cfe5a327284c4bd88a6f1de68e7f0c17",
-                "wType": "Segment"
-            }
-        },
         "details": {
             "__events__": {},
             "__info__": {
                 "isRoot": true,
-                "kuid": "b099b5f7c64f457b93bd26c281adeef0",
+                "kuid": "ae0b9242451e4ffd96ca6342c7179da6",
                 "srcKUID": "f55b13451ca848fd9dee6df988be37bf",
                 "wType": "FlexContainer"
             },
@@ -69,7 +61,7 @@
         "flxArrow": {
             "__events__": {},
             "__info__": {
-                "kuid": "a657bb1f28ee4a91a16d47c45c9487c9",
+                "kuid": "e9f255dff69a44509ad515a7c8a1f685",
                 "srcKUID": "c6340dee896b4876bb7ecce4d50050ce",
                 "wType": "FlexContainer"
             }
@@ -77,21 +69,21 @@
         "flxName": {
             "__events__": {},
             "__info__": {
-                "kuid": "b9844f188d314db194feaf5994663b50",
+                "kuid": "d7ee412f68a34d268a2438ca03584e97",
                 "srcKUID": "af4f55790c1942ab9a8e328a44437228",
                 "wType": "FlexContainer"
             },
             "width": {
                 "Default": {
                     "type": "string",
-                    "value": "8%"
+                    "value": "20%"
                 }
             }
         },
         "flxSegment": {
             "__events__": {},
             "__info__": {
-                "kuid": "e22cdca4729a4a06a5c2522f2184b883",
+                "kuid": "b514e5aa5a984c5f8857dcf8d749ffe2",
                 "srcKUID": "i81d685650c047e0a36b27249031670f",
                 "wType": "FlexContainer"
             }
@@ -99,7 +91,7 @@
         "flxTextbox": {
             "__events__": {},
             "__info__": {
-                "kuid": "f718bbf43afc447aa042569a050392ef",
+                "kuid": "f3d680056b6343b4aba4519276b1f7a4",
                 "srcKUID": "ae8483871dbe422190d63fe28bb6daab",
                 "wType": "FlexContainer"
             }
@@ -107,24 +99,33 @@
         "imgarrow": {
             "__events__": {},
             "__info__": {
-                "kuid": "d3b28e0e24b942bcb9062e8013e04d53",
+                "kuid": "gfc351f7007443029c3453e300de2b35",
                 "srcKUID": "jbc1bfbf2d7646e3bbab003dd7da117f",
                 "wType": "Image"
-            }
+            },
+            "src": "downarrow.png"
         },
         "lblNamedata": {
             "__events__": {},
             "__info__": {
-                "kuid": "g7acaaf0d757463e830781c60ac564fd",
+                "kuid": "e08da64ba0594452a582482724071053",
                 "srcKUID": "b007f5d9e1dc4a809572ef3b836312a4",
                 "wType": "Label"
             },
-            "text": "Trim"
+            "text": "Vehicle Color"
+        },
+        "segVehicleDetails": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "c38b9ed72a254616a92f39e720fcc8ac",
+                "srcKUID": "cfe5a327284c4bd88a6f1de68e7f0c17",
+                "wType": "Segment"
+            }
         },
         "txbData": {
             "__events__": {},
             "__info__": {
-                "kuid": "f1c813a8ec394a178356e33cd0c356e3",
+                "kuid": "hec745c91cd1487d9448c4ad6d2e7652",
                 "srcKUID": "f836dbce2d5943308d153692e8c3cfb3",
                 "wType": "TextField"
             }
@@ -136,11 +137,11 @@
     "iscustomlayout": false,
     "isdatareferenced": false,
     "isvisible": true,
-    "kuid": "b099b5f7c64f457b93bd26c281adeef0",
+    "kuid": "ae0b9242451e4ffd96ca6342c7179da6",
     "layouttype": 2,
     "masterType": 0,
     "name": "kony.ui.UserWidgetInstance",
-    "parent": "flxBody",
+    "parent": "flxInnerBody",
     "pf": "frmVehicledetailsInspectionType",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,

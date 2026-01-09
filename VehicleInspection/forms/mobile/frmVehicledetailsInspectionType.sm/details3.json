@@ -43,19 +43,11 @@
     "clipbounds": false,
     "containerweight": 0,
     "dataDiffs": {
-        "Segment0j5d01d22ad6d41": {
-            "__events__": {},
-            "__info__": {
-                "kuid": "c7a8467ca1e84d32b9a6cb76c51edd8c",
-                "srcKUID": "cfe5a327284c4bd88a6f1de68e7f0c17",
-                "wType": "Segment"
-            }
-        },
         "details": {
             "__events__": {},
             "__info__": {
                 "isRoot": true,
-                "kuid": "ae0b9242451e4ffd96ca6342c7179da6",
+                "kuid": "f0de705b391a43e7a53d740267f22001",
                 "srcKUID": "f55b13451ca848fd9dee6df988be37bf",
                 "wType": "FlexContainer"
             },
@@ -69,7 +61,7 @@
         "flxArrow": {
             "__events__": {},
             "__info__": {
-                "kuid": "d6293d3b2c8143aeac818e3db5992066",
+                "kuid": "e42a82c2edac49de9a1da3ba4e946719",
                 "srcKUID": "c6340dee896b4876bb7ecce4d50050ce",
                 "wType": "FlexContainer"
             }
@@ -77,7 +69,7 @@
         "flxName": {
             "__events__": {},
             "__info__": {
-                "kuid": "j7ea976a8936460ca683c4e4c31ffbab",
+                "kuid": "da08e3b7088f415297b6e0fb74dbee92",
                 "srcKUID": "af4f55790c1942ab9a8e328a44437228",
                 "wType": "FlexContainer"
             },
@@ -91,7 +83,7 @@
         "flxSegment": {
             "__events__": {},
             "__info__": {
-                "kuid": "a0fceb4bacdc4483a89b015b53868239",
+                "kuid": "f3a798a9b6204f09b55de023701a002a",
                 "srcKUID": "i81d685650c047e0a36b27249031670f",
                 "wType": "FlexContainer"
             }
@@ -99,7 +91,7 @@
         "flxTextbox": {
             "__events__": {},
             "__info__": {
-                "kuid": "b2257314d96c4dc6b23be96ee91410aa",
+                "kuid": "cfe1beae79a6411483d69d8350660bb2",
                 "srcKUID": "ae8483871dbe422190d63fe28bb6daab",
                 "wType": "FlexContainer"
             }
@@ -107,24 +99,33 @@
         "imgarrow": {
             "__events__": {},
             "__info__": {
-                "kuid": "i8fed6245b4f4e2ea3702d45f366174d",
+                "kuid": "bc433df6233b48a0ba50791c10fa92a6",
                 "srcKUID": "jbc1bfbf2d7646e3bbab003dd7da117f",
                 "wType": "Image"
-            }
+            },
+            "src": "downarrow.png"
         },
         "lblNamedata": {
             "__events__": {},
             "__info__": {
-                "kuid": "fef82bf4c1cf4762b1d21fdfa70fb055",
+                "kuid": "da548651cf38479db6d44f65389adcb8",
                 "srcKUID": "b007f5d9e1dc4a809572ef3b836312a4",
                 "wType": "Label"
             },
-            "text": "Vehicle Color"
+            "text": "Vehicle Type"
+        },
+        "segVehicleDetails": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "b0272a62177e4e90b7f69a371378bb8e",
+                "srcKUID": "cfe5a327284c4bd88a6f1de68e7f0c17",
+                "wType": "Segment"
+            }
         },
         "txbData": {
             "__events__": {},
             "__info__": {
-                "kuid": "hea01f4341314906b47335e19390e8cf",
+                "kuid": "g5d170ff185347fe84728bb9e2c2e804",
                 "srcKUID": "f836dbce2d5943308d153692e8c3cfb3",
                 "wType": "TextField"
             }
@@ -136,11 +137,11 @@
     "iscustomlayout": false,
     "isdatareferenced": false,
     "isvisible": true,
-    "kuid": "ae0b9242451e4ffd96ca6342c7179da6",
+    "kuid": "f0de705b391a43e7a53d740267f22001",
     "layouttype": 2,
     "masterType": 0,
     "name": "kony.ui.UserWidgetInstance",
-    "parent": "flxBody",
+    "parent": "flxInnerBody",
     "pf": "frmVehicledetailsInspectionType",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,

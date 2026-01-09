@@ -20,16 +20,16 @@
     "_percent_": true,
     "_right_": {
         "type": "string",
-        "value": "9dp"
+        "value": "8dp"
     },
     "_skin_": "s43b3f0daddb4853bfc5983bfb525431",
     "_top_": {
         "type": "string",
-        "value": "-38dp"
+        "value": "-40dp"
     },
     "_width_": {
         "type": "string",
-        "value": "7%"
+        "value": "8%"
     },
     "allboxes": [],
     "autogrowmode": 0,

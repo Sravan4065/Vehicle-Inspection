@@ -34,6 +34,10 @@
     "allboxes": [],
     "autogrowmode": 1,
     "canUpdateUI": true,
+    "centerx": {
+        "type": "string",
+        "value": "50%"
+    },
     "children": [
         "lblConditionRating",
         "flxStars"
@@ -48,7 +52,7 @@
     "kuid": "j43e3295151840dcb4d975b2c598f40c",
     "layouttype": 3,
     "name": "kony.ui.FlexContainer",
-    "parent": "flxContent",
+    "parent": "flxInnerBody",
     "pf": "frmTyres",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,

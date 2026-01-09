@@ -2,7 +2,7 @@
     "DNDConfig": null,
     "_height_": {
         "type": "string",
-        "value": "7%"
+        "value": "8%"
     },
     "_left_": {
         "type": "string",
@@ -37,14 +37,14 @@
     "children": [
         "flxHeader1"
     ],
-    "clipbounds": false,
+    "clipbounds": true,
     "containerweight": 100,
     "enablescrolling": true,
     "id": "flxHeader",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "a73945b52f18407a8d72b99d6e5cdfbe",
+    "kuid": "bed5a8bfefe94038b12f813b9ba5919c",
     "layouttype": 2,
     "name": "kony.ui.FlexContainer",
     "parent": "flxMain",

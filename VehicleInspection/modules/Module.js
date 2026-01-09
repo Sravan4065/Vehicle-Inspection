@@ -34,7 +34,15 @@ function toggleFooterIcons(formObj, formName) {
       activeIndex = 2; 
       break;
       
+    case "frmVehicledetailsInspectionType":
+      activeIndex = 2;
+      break;
+      
       case "frmChassisDamageReport":
+      activeIndex = 2; 
+      break;
+      
+    case "frmVehicleSummaryreport":
       activeIndex = 2; 
       break;
       

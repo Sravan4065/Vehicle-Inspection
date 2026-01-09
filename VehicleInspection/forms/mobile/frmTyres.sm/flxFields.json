@@ -1,5 +1,9 @@
 {
     "DNDConfig": null,
+    "_bottom_": {
+        "type": "string",
+        "value": "20dp"
+    },
     "_height_": {
         "type": "ref",
         "value": "preferred"
@@ -50,7 +54,7 @@
     "kuid": "g7fd68e696e34c549bd70688f0b3126f",
     "layouttype": 4,
     "name": "kony.ui.FlexContainer",
-    "parent": "flxContent",
+    "parent": "flxInnerBody",
     "pf": "frmTyres",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,

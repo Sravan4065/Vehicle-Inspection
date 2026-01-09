@@ -2,7 +2,7 @@
     "DNDConfig": null,
     "_height_": {
         "type": "string",
-        "value": "20dp"
+        "value": "100%"
     },
     "_left_": {
         "type": "string",
@@ -34,8 +34,12 @@
     "allboxes": [],
     "autogrowmode": 0,
     "canUpdateUI": true,
+    "centery": {
+        "type": "string",
+        "value": "50%"
+    },
     "children": [
-        "imgstar1"
+        "imgStar1"
     ],
     "clipbounds": false,
     "containerweight": 100,

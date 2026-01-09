@@ -34,8 +34,10 @@
     "canUpdateUI": true,
     "containerweight": 100,
     "contentalignment": 5,
+    "disabledSkins": {
+        "focusSkin": "s4ec7cfbb99d4ca7a00f788aa71ee43c"
+    },
     "displaytext": true,
-    "focusskin": "s4ec7cfbb99d4ca7a00f788aa71ee43c",
     "id": "btnFrontRight",
     "info": null,
     "iscustomlayout": false,
