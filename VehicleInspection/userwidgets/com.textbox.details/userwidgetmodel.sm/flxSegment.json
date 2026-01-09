@@ -39,7 +39,7 @@
         "value": "45%"
     },
     "children": [
-        "Segment0j5d01d22ad6d41"
+        "segVehicleDetails"
     ],
     "clipbounds": true,
     "containerweight": 100,

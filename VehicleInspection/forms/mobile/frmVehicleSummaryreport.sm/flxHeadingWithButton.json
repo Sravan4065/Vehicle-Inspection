@@ -1,0 +1,143 @@
+{
+    "@class": "com.kony.gen.viz.model.component.KVizUserWidget",
+    "DNDConfig": null,
+    "_children_": [],
+    "_height_": {
+        "type": "string",
+        "value": "20%"
+    },
+    "_left_": {
+        "type": "string",
+        "value": "0dp"
+    },
+    "_margin_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_orientation_": 1,
+    "_padding_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_percent_": true,
+    "_skin_": "s111fceb475246daa92935c0f316039e",
+    "_top_": {
+        "type": "string",
+        "value": "0dp"
+    },
+    "_width_": {
+        "type": "string",
+        "value": "100%"
+    },
+    "areflexpropsreferenced": false,
+    "autogrowmode": 0,
+    "canUpdateUI": true,
+    "clipbounds": true,
+    "containerweight": 0,
+    "dataDiffs": {
+        "btnSaveResponse": {
+            "__events__": {
+                "ide_onClick": "AS_Button_ga99a8f4c99541669073ace905766d01"
+            },
+            "__info__": {
+                "kuid": "b5c695d736194d5680a85451fb2c48e9",
+                "srcKUID": "e7ed5d5d305644c28c7ab5529c49040e",
+                "wType": "Button"
+            },
+            "bottom": {
+                "Default": {
+                    "type": "string",
+                    "value": "14dp"
+                }
+            }
+        },
+        "flxBack": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "f87ba978e4924322a38be92382248186",
+                "srcKUID": "f0f0e5abfded46d7a38ef4f48d3c8f89",
+                "wType": "FlexContainer"
+            }
+        },
+        "flxHeading": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "faa002ffa253485ab0b4af59251973b3",
+                "srcKUID": "f1a5b4fea22c40debec9edda654d7627",
+                "wType": "FlexContainer"
+            }
+        },
+        "flxHeadingWithButton": {
+            "__events__": {},
+            "__info__": {
+                "isRoot": true,
+                "kuid": "a2b70ce441e6420bacf2fa613aff32a7",
+                "srcKUID": "e1ffe84933ff4c53821a6187631a25bd",
+                "wType": "FlexContainer"
+            },
+            "autogrowMode": {
+                "Default": 0
+            },
+            "centerY": {
+                "Default": {
+                    "type": "string",
+                    "value": ""
+                }
+            },
+            "height": {
+                "Default": {
+                    "type": "string",
+                    "value": "20%"
+                }
+            },
+            "top": {
+                "Default": {
+                    "type": "string",
+                    "value": "0dp"
+                }
+            }
+        },
+        "imgBack": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "be950d7b51a9424b8828427e2252a292",
+                "srcKUID": "af3ad0728c3c4d4e9e4311c055f4f9ea",
+                "wType": "Image"
+            },
+            "src": "backarrow.png"
+        },
+        "lblImages": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "h431fa63e60c43b9b9650e67f2c2c92e",
+                "srcKUID": "adf7eb6db260494b9bcfb8940fb4b583",
+                "wType": "Label"
+            },
+            "text": "Vehicle Inspection"
+        }
+    },
+    "enablescrolling": true,
+    "id": "flxHeadingWithButton",
+    "info": null,
+    "iscustomlayout": false,
+    "isdatareferenced": false,
+    "isvisible": true,
+    "kuid": "a2b70ce441e6420bacf2fa613aff32a7",
+    "layouttype": 2,
+    "masterType": 0,
+    "name": "kony.ui.UserWidgetInstance",
+    "parent": "flxBody",
+    "pf": "frmVehicleSummaryreport",
+    "retaincontentalignment": false,
+    "retainflexpositionproperties": false,
+    "retainflowhorizontalalignment": false,
+    "snapgridsize": 10,
+    "snaptogrid": true,
+    "sourceUserWidget": "e1ffe84933ff4c53821a6187631a25bd",
+    "wType": "UserWidgetInstance",
+    "zindex": 1
+}

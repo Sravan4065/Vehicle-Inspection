@@ -36,6 +36,10 @@
     "areflexpropsreferenced": false,
     "autogrowmode": 0,
     "canUpdateUI": true,
+    "centery": {
+        "type": "string",
+        "value": "50%"
+    },
     "clipbounds": true,
     "containerweight": 0,
     "dataDiffs": {
@@ -65,7 +69,7 @@
             "centerY": {
                 "Default": {
                     "type": "string",
-                    "value": ""
+                    "value": "50%"
                 }
             },
             "height": {

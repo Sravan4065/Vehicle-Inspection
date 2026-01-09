@@ -3,7 +3,7 @@
     "DNDConfig": null,
     "_height_": {
         "type": "string",
-        "value": "30dp"
+        "value": "35dp"
     },
     "_left_": {
         "type": "string",
@@ -22,7 +22,7 @@
         0
     ],
     "_skin_": "s5b3be5a93034ac8b91489deddf04aba",
-    "_text_": "Button",
+    "_text_": "Cancel",
     "_top_": {
         "type": "string",
         "value": "0"
@@ -46,6 +46,5 @@
     "pf": "frmVehicleSummaryreport",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
-    "texti18n": "Close",
     "wType": "Button"
 }

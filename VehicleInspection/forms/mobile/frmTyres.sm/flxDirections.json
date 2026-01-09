@@ -63,7 +63,7 @@
     "layouttype": 3,
     "name": "kony.ui.FlexScrollContainer",
     "pagingenabled": false,
-    "parent": "flxContent",
+    "parent": "flxInnerBody",
     "pf": "frmTyres",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,

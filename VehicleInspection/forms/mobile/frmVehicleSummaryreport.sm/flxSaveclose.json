@@ -52,7 +52,7 @@
     "kuid": "bb60fd15212e44d897bc34fd79b24526",
     "layouttype": 2,
     "name": "kony.ui.FlexContainer",
-    "parent": "flxContent",
+    "parent": "flxInnerBody",
     "pf": "frmVehicleSummaryreport",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,

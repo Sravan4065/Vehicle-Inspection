@@ -1,0 +1,81 @@
+{
+    "@class": "com.kony.gen.viz.model.component.KVizUserWidget",
+    "DNDConfig": null,
+    "_bottom_": {
+        "type": "string",
+        "value": "0"
+    },
+    "_children_": [],
+    "_height_": {
+        "type": "string",
+        "value": "10%"
+    },
+    "_left_": {
+        "type": "string",
+        "value": "0dp"
+    },
+    "_margin_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_orientation_": 1,
+    "_padding_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_percent_": true,
+    "_skin_": "s43b3f0daddb4853bfc5983bfb525431",
+    "_width_": {
+        "type": "string",
+        "value": "100%"
+    },
+    "areflexpropsreferenced": false,
+    "autogrowmode": 0,
+    "canUpdateUI": true,
+    "clipbounds": false,
+    "containerweight": 0,
+    "dataDiffs": {
+        "btnCompleteInspection": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "j3a57ec14536404e953e69f110556ab5",
+                "srcKUID": "c514d9f02c614629ba68c995e6a844ee",
+                "wType": "Button"
+            },
+            "text": "Complete Inspection"
+        },
+        "flxCompleteButton": {
+            "__events__": {},
+            "__info__": {
+                "isRoot": true,
+                "kuid": "ad4478ff403a4e9e87cd6c0a33272b57",
+                "srcKUID": "c47cbf99dddb4356985d8758741b10a4",
+                "wType": "FlexContainer"
+            }
+        }
+    },
+    "enablescrolling": true,
+    "id": "flxCompleteButton",
+    "info": null,
+    "iscustomlayout": false,
+    "isdatareferenced": false,
+    "isvisible": true,
+    "kuid": "ad4478ff403a4e9e87cd6c0a33272b57",
+    "layouttype": 2,
+    "masterType": 0,
+    "name": "kony.ui.UserWidgetInstance",
+    "parent": "flxMain",
+    "pf": "frmEngineBayAndUnderCarriagePhotos",
+    "retaincontentalignment": false,
+    "retainflexpositionproperties": false,
+    "retainflowhorizontalalignment": false,
+    "snapgridsize": 10,
+    "snaptogrid": true,
+    "sourceUserWidget": "c47cbf99dddb4356985d8758741b10a4",
+    "wType": "UserWidgetInstance",
+    "zindex": 1
+}

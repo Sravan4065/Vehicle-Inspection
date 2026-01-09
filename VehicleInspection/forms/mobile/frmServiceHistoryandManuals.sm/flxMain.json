@@ -36,17 +36,17 @@
     "canUpdateUI": true,
     "children": [
         "flxHeader",
-        "flxSubheader",
-        "flxBody"
+        "flxBody",
+        "flxFoooter"
     ],
-    "clipbounds": false,
+    "clipbounds": true,
     "containerweight": 100,
     "enablescrolling": true,
     "id": "flxMain",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "c6a8d0ed0aec483fb9c71837fce40568",
+    "kuid": "i6a1131300554d6e87b446633fffd9ef",
     "layouttype": 2,
     "name": "kony.ui.FlexContainer",
     "parent": "frmServiceHistoryandManuals",

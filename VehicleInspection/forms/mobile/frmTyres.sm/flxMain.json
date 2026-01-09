@@ -36,7 +36,6 @@
     "canUpdateUI": true,
     "children": [
         "flxHeader",
-        "flxSubHeader",
         "flxBody",
         "flxFooter"
     ],

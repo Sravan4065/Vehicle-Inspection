@@ -31,7 +31,7 @@
     "_skin_": "s43b3f0daddb4853bfc5983bfb525431",
     "_top_": {
         "type": "string",
-        "value": "10dp"
+        "value": "4dp"
     },
     "_width_": {
         "type": "string",
@@ -43,33 +43,25 @@
     "clipbounds": false,
     "containerweight": 0,
     "dataDiffs": {
-        "Segment0j5d01d22ad6d41": {
-            "__events__": {},
-            "__info__": {
-                "kuid": "hb9c2557bc964c3e8530daa2aac9c6a4",
-                "srcKUID": "cfe5a327284c4bd88a6f1de68e7f0c17",
-                "wType": "Segment"
-            }
-        },
         "details": {
             "__events__": {},
             "__info__": {
                 "isRoot": true,
-                "kuid": "ccfce28216da42bb92ee8690d65492fc",
+                "kuid": "g4e7718bdbf24632995db1708e1177b3",
                 "srcKUID": "f55b13451ca848fd9dee6df988be37bf",
                 "wType": "FlexContainer"
             },
             "top": {
                 "Default": {
                     "type": "string",
-                    "value": "10dp"
+                    "value": "4dp"
                 }
             }
         },
         "flxArrow": {
             "__events__": {},
             "__info__": {
-                "kuid": "i75a86a8e1164a4fb18a91d2e76b1988",
+                "kuid": "ce5230bc84fe41d5b3441ca7fed5530a",
                 "srcKUID": "c6340dee896b4876bb7ecce4d50050ce",
                 "wType": "FlexContainer"
             }
@@ -77,7 +69,7 @@
         "flxName": {
             "__events__": {},
             "__info__": {
-                "kuid": "fdba93e364fe4e489844b8631f951ea0",
+                "kuid": "f8ab69f31b5c4135945e25599108d516",
                 "srcKUID": "af4f55790c1942ab9a8e328a44437228",
                 "wType": "FlexContainer"
             },
@@ -91,15 +83,17 @@
         "flxSegment": {
             "__events__": {},
             "__info__": {
-                "kuid": "e39cb35d97a244dcb72848f02db3bfca",
+                "kuid": "fbd438c578b941ce9fee00ab966a7930",
                 "srcKUID": "i81d685650c047e0a36b27249031670f",
                 "wType": "FlexContainer"
-            }
+            },
+            "clipBounds": true,
+            "isVisible": false
         },
         "flxTextbox": {
             "__events__": {},
             "__info__": {
-                "kuid": "h8c92e9af1304255a56483e081fee8d8",
+                "kuid": "i9ad93044e094548974c11ce159b83be",
                 "srcKUID": "ae8483871dbe422190d63fe28bb6daab",
                 "wType": "FlexContainer"
             }
@@ -107,24 +101,33 @@
         "imgarrow": {
             "__events__": {},
             "__info__": {
-                "kuid": "f1eaf14b06de413fb73652ebca080e16",
+                "kuid": "da07ae5defaf412b8316fac2db79d87a",
                 "srcKUID": "jbc1bfbf2d7646e3bbab003dd7da117f",
                 "wType": "Image"
-            }
+            },
+            "src": "downarrow.png"
         },
         "lblNamedata": {
             "__events__": {},
             "__info__": {
-                "kuid": "f8d3378e95304df792f741b2bd5ba826",
+                "kuid": "c44e851a670946278ad2ab6d50b9d51a",
                 "srcKUID": "b007f5d9e1dc4a809572ef3b836312a4",
                 "wType": "Label"
             },
-            "text": "Vehicle Model"
+            "text": "Vehicle Make"
+        },
+        "segVehicleDetails": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "b322957b9e124be18400be4d69bbc0d4",
+                "srcKUID": "cfe5a327284c4bd88a6f1de68e7f0c17",
+                "wType": "Segment"
+            }
         },
         "txbData": {
             "__events__": {},
             "__info__": {
-                "kuid": "jd514e32e70a4778baddbe0480be129b",
+                "kuid": "jac2fb39b13b4ee6a61b5a970e23a820",
                 "srcKUID": "f836dbce2d5943308d153692e8c3cfb3",
                 "wType": "TextField"
             }
@@ -136,11 +139,11 @@
     "iscustomlayout": false,
     "isdatareferenced": false,
     "isvisible": true,
-    "kuid": "ccfce28216da42bb92ee8690d65492fc",
+    "kuid": "g4e7718bdbf24632995db1708e1177b3",
     "layouttype": 2,
     "masterType": 0,
     "name": "kony.ui.UserWidgetInstance",
-    "parent": "flxBody",
+    "parent": "flxInnerBody",
     "pf": "frmVehicledetailsInspectionType",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,

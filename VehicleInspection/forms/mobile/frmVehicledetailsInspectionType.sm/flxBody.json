@@ -2,7 +2,7 @@
     "DNDConfig": null,
     "_height_": {
         "type": "string",
-        "value": "75%"
+        "value": "82%"
     },
     "_left_": {
         "type": "string",
@@ -22,62 +22,39 @@
         0
     ],
     "_percent_": true,
-    "_skin_": "s61746a446b2492b8e5c448cf68ede12",
+    "_skin_": "s43b3f0daddb4853bfc5983bfb525431",
     "_top_": {
         "type": "string",
-        "value": "15%"
+        "value": "8%"
     },
     "_width_": {
         "type": "string",
         "value": "100%"
     },
     "allboxes": [],
-    "allowhorizontalbounce": false,
-    "allowverticalbounce": true,
-    "bounces": true,
+    "autogrowmode": 0,
     "canUpdateUI": true,
     "children": [
-        "details",
-        "details1",
-        "details2",
-        "details3",
-        "details4",
-        "details5",
-        "details0ife89384c81440",
-        "details0gcd26fe69e2c40",
-        "details0bc3f2331a01740",
-        "details0c8a46d22542143",
-        "details0f5768ef9f6ce47",
-        "details0d2851e9b03964e",
-        "details0d4e0cbc97d2b4f",
-        "details0c35ae2a6a4114b",
-        "details0deef7abf16b144",
-        "details0a48a3f02e52043"
+        "flxHeadingWithButton",
+        "flxScrollContainer"
     ],
     "clipbounds": true,
     "containerweight": 100,
-    "decelerat": false,
-    "dragg": false,
     "enablescrolling": true,
-    "horizontalscrollindicator": true,
     "id": "flxBody",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "daf277f99f204e6a9dabf208cc7aa9c2",
+    "kuid": "e45e9b4b5c444c9bbacf3eaa6c1cc003",
     "layouttype": 4,
-    "name": "kony.ui.FlexScrollContainer",
-    "pagingenabled": false,
+    "name": "kony.ui.FlexContainer",
     "parent": "flxMain",
     "pf": "frmVehicledetailsInspectionType",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainflowhorizontalalignment": false,
-    "scrolldirection": 2,
     "snapgridsize": 10,
     "snaptogrid": true,
-    "track": false,
-    "verticalscrollindicator": true,
-    "wType": "FlexScrollContainer",
+    "wType": "FlexContainer",
     "widgetalignment": 1
 }

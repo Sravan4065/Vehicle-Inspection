@@ -2,7 +2,7 @@
     "DNDConfig": null,
     "_height_": {
         "type": "string",
-        "value": "86%"
+        "value": "82%"
     },
     "_left_": {
         "type": "string",
@@ -25,7 +25,7 @@
     "_skin_": "s43b3f0daddb4853bfc5983bfb525431",
     "_top_": {
         "type": "string",
-        "value": "14%"
+        "value": "8%"
     },
     "_width_": {
         "type": "string",
@@ -35,18 +35,18 @@
     "autogrowmode": 0,
     "canUpdateUI": true,
     "children": [
-        "details",
-        "details1"
+        "flxHeadingWithButton",
+        "flxScrollContainer"
     ],
-    "clipbounds": false,
+    "clipbounds": true,
     "containerweight": 100,
     "enablescrolling": true,
     "id": "flxBody",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "h957bc81fc7d42408e8021b68aae8332",
-    "layouttype": 2,
+    "kuid": "edd3f5a7055f47e5be1c6dc21e07b69d",
+    "layouttype": 4,
     "name": "kony.ui.FlexContainer",
     "parent": "flxMain",
     "pf": "frmServiceHistoryandManuals",
