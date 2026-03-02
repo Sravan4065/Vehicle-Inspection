@@ -8,7 +8,7 @@ define({
   onPreShow: function()
 {
   this.view.btnSignIn.onClick = () => {
-    new voltmx.mvc.Navigation("frmDashboard").navigate();
+    new voltmx.mvc.Navigation("frmLoginBrowser").navigate();
   }
 }
 
