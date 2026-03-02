@@ -45,7 +45,6 @@
     "displaytext": true,
     "focusskin": "s4ec7cfbb99d4ca7a00f788aa71ee43c",
     "id": "btnReceiveVehicle",
-    "ide_onClick": "AS_Button_c0ca167cc5ed4c428b642394ba17e118",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,

@@ -46,6 +46,7 @@
     "containerweight": 100,
     "enablescrolling": true,
     "id": "flxAssigned",
+    "ide_onClick": "AS_FlexContainer_b0502acccab04803a8b82468b9632cf9",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
