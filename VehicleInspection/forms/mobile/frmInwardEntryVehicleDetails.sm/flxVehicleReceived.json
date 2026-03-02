@@ -160,7 +160,8 @@
                 "kuid": "h5473a07aed44d34a594e9644566d9b8",
                 "srcKUID": "f04fb61e5a974f518de6aa742173b6e9",
                 "wType": "Image"
-            }
+            },
+            "src": "cross.png"
         },
         "imgHamIcon": {
             "__events__": {},
@@ -168,7 +169,8 @@
                 "kuid": "b9e8234a8ad64ee9b3e13e7c5663085d",
                 "srcKUID": "ae47d470710f406a992b5dc2cb80db75",
                 "wType": "Image"
-            }
+            },
+            "src": "hamicon.png"
         },
         "imgPrintIcon": {
             "__events__": {},
@@ -176,7 +178,8 @@
                 "kuid": "i0fe3b83270a4f6a9c62fff380daf41e",
                 "srcKUID": "a732ebb7e46245e19a57ceda02d0f479",
                 "wType": "Image"
-            }
+            },
+            "src": "printwhite.png"
         },
         "imgTick": {
             "__events__": {},
@@ -184,7 +187,8 @@
                 "kuid": "c55c811721094845b366b7c55672aca3",
                 "srcKUID": "e6f1da1916de4323a5ca6dbcac01aebc",
                 "wType": "Image"
-            }
+            },
+            "src": "greentick.png"
         },
         "lblPrintBarCode": {
             "__events__": {},

@@ -1,13 +1,153 @@
 define({ 
 
  //Type your controller code here 
-onNavigate: function(){
+onNavigate: function(context){
   this.adjustRTL();
+  this.context = context;
+  this.view.preShow = this.onPreShow.bind(this);
 },
   
+  onPreShow: function()
+  {
+    var objectId = this.context.objectId;
+    this.vehicleDetails(objectId);
+    this.view.btnReceiveVehicle.onClick = this.onReceiveClick.bind(this);
+  },
   
+  vehicleDetails: function(objectId) {
+
+    var serviceName = "fry_int_common";
+    var operationName = "fleet-details";
+
+    var integrationObj = voltmx.sdk.getCurrentInstance()
+                                  .getIntegrationService(serviceName);
+    var role = voltmx.store.getItem("jobTitle");
+    var data = {
+        "object_id": objectId,
+        "auction_id": "",
+        "job_title": role,
+        "user_id": "",
+        "language": "ar"
+    };
+
+   
+    var headers = {
+      "user_token": voltmx.store.getItem("user_token"),
+    };
+
+    integrationObj.invokeOperation(
+        operationName,
+        headers,
+        data,
+        this.vehicleDetailsSuccess.bind(this),
+        this.vehicleDetailsFailure.bind(this)
+    );
+},
   
+  vehicleDetailsSuccess: function(response) {
+    var self = this;
+    voltmx.print("Vehicle Details Success: " + JSON.stringify(response));
+
+    if (response) {
+     if(response.meta_data)
+       {
+         self.setDataToLabels(response.meta_data[0]);
+       }
+    }
+},
   
+  vehicleDetailsFailure: function(error) {
+
+    voltmx.print("Vehicle Details Error: " + JSON.stringify(error));
+    alert("Failed to fetch vehicle details");
+},
+  
+  onReceiveClick: function()
+  {
+    var self = this;
+    
+//     self.view.flxVehicleReceived.setVisibility(true);
+
+  var serviceName = "ms_fleet";
+
+  var integrationObj = voltmx.sdk.getCurrentInstance()
+
+                                  .getIntegrationService(serviceName);
+
+  var operationName = "fleet-wfstatus";
+ 
+  var data = {
+    
+  "object_id": self.context.objectId,
+  "action_name": "Yard Received"
+    
+  };
+ 
+  // Headers
+
+  var headers = {
+
+      "user_token": voltmx.store.getItem("getUserAccesstoken") 
+
+  };
+ integrationObj.invokeOperation
+  integrationObj.invokeOperation(
+
+      operationName,
+
+      headers,
+
+      data,
+    
+    operationSuccessCompleted,   // ✅ pass reference
+    
+    operationFailureCompleted
+
+  );
+
+
+  function operationSuccessCompleted(response)
+
+  {
+
+    voltmx.print(response);
+ 
+
+  }
+
+  function operationFailureCompleted(error)
+
+  {
+
+    voltmx.print(error);
+
+  }
+ 
+    
+    
+  },
+  
+  setDataToLabels: function(metadata)
+  {
+    var self = this;
+    
+    self.view.lblLotAndModel.text = (metadata.lot_no || "") + " "+ (metadata.title || "") + " "+ (metadata.year_make || "");
+    self.view.lblVehicleNumber.text = (metadata.chassis_number || "");
+    self.view.lblChassisValue.text = (metadata.chassis_number || "");
+//     self.view.lblEngineNumberValue.text = (metadata.chassis_number || "");
+    self.view.lblSellerNameValue.text = metadata.location || "-";
+    self.view.lblSubmittedDateValue.text = metadata.submitted_date || "-";
+    self.view.lblBodyStyleValue.text = metadata.body_type || "-";
+    self.view.lblFuelTypeValue.text = metadata.fuel_type || "-";
+    self.view.lblLocationValue.text = metadata.location || "-";
+    self.view.lblYearValue.text = metadata.year_make || "-";
+    self.view.lblMileageValue.text = metadata.milage || "-";
+    self.view.lblTransmissionValue.text = metadata.transmission || "-";
+    self.view.lblExteriorColorValue.text = metadata.colors || "-";
+    self.view.lblInteriorColorValue.text = metadata.colors || "-";
+    self.view.lblDriveTypeValue.text = metadata.drive_type || "-";
+    self.view.lblEngineValue.text = metadata.engine || "-";
+  },
   
   adjustRTL: function(){
 
