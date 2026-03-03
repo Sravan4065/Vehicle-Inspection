@@ -37,7 +37,8 @@
     "children": [
         "flxHeader",
         "flxBody",
-        "flxfooter"
+        "flxfooter",
+        "browserLogoutWidget"
     ],
     "clipbounds": false,
     "containerweight": 100,
