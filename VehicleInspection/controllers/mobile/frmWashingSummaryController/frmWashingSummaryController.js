@@ -9,6 +9,7 @@ define({
   
   onPreShow: function()
   {
+    this.showPendingVehicles();
     toggleFooterIcons(this.view, "frmWashingSummary");
     
 //      this.view.flxHeading.flxBack.onClick = () =>
@@ -29,12 +30,15 @@ define({
   },
   
    showPendingVehicles: function()
-  {
+  { this.isPending = true;
+    this.view.segInwardEntryList.setData([]);
+   this.invokePendingInwardService();
     this.view.flxPendingVehicles.skin = "sknFlxFFE2E5";
     this.view.lblPendingVehicles.skin = "sknlblDubaid3243720pxMedium";
     this.view.lblPendingCount.skin = "sknLblDubai231f2020pxRegular";
     this.view.flxULPending.skin = "sknflxd32437";
     
+   
     this.view.flxCompletedVehicles.skin = "sknFlxBasic";
     this.view.lblCompletedVehicles.skin = "sknlblDubaid3243720pxMedium";
     this.view.lblCompletedCount.skin = "sknLblDubai231f2020pxRegular";
@@ -43,6 +47,9 @@ define({
   
   showCompletedVehicles: function()
   {
+      this.isPending = false;
+    this.view.segInwardEntryList.setData([]);
+    this.invokeCompletedInwardService();
     this.view.flxPendingVehicles.skin = "sknFlxBasic";
     this.view.lblPendingVehicles.skin = "sknlblDubaid3243720pxMedium";
     this.view.lblPendingCount.skin = "sknLblDubai231f2020pxRegular";
@@ -52,6 +59,207 @@ define({
     this.view.lblCompletedVehicles.skin = "sknlblDubaid3243720pxMedium";
     this.view.lblCompletedCount.skin = "sknLblDubai231f2020pxRegular";
     this.view.flxULCompleted.skin = "sknflxd32437";
+  },
+  
+  
+  
+  
+  ///////
+  
+  
+  
+  
+  
+  invokePendingInwardService: function() {
+  var self = this;
+    voltmx.application.showLoadingScreen(null, "Loading..",     constants.LOADING_SCREEN_POSITION_ONLY_CENTER, false, true, {         shouldShowLabelInBottom: "true",         separatorHeight: 45,         progressIndicatorType: constants.PROGRESS_INDICATOR_TYPE_SMALL,         progressIndicatorColor: "Gray"     });
+  var serviceName = "fry_int_inspection";
+  var integrationObj = voltmx.sdk.getCurrentInstance()
+                                  .getIntegrationService(serviceName);
+  var operationName = "get-washing-vehicles";
+
+  var data = {
+     "lot_no": "",
+  "model": "",
+  "chassis_number": "",
+  "location": "",
+  "is_washed": "0",  // pending = 0 || completed = 1
+  "days": "150",           // default value
+  "page_number": "1",
+  "page_size": "10"
+  };
+
+  // Headers
+  var headers = {
+      "user_token": voltmx.store.getItem("getUserAccesstoken") 
+  };
+
+  integrationObj.invokeOperation(
+      operationName,
+      headers,
+      data,
+      this.operationSuccessPending.bind(this),
+      this.operationFailurePending.bind(this)
+  );
+},
+  
+  operationSuccessPending: function(response)
+  {
+    voltmx.application.dismissLoadingScreen();
+    voltmx.print(response);
+    this.addToSegment(response);
+  },
+  
+  operationFailurePending: function(error)
+  {
+    voltmx.application.dismissLoadingScreen();
+    voltmx.print(error);
+  },
+  
+   invokeCompletedInwardService: function() {
+  var self = this;
+         voltmx.application.showLoadingScreen(null, "Loading..",     constants.LOADING_SCREEN_POSITION_ONLY_CENTER, false, true, {         shouldShowLabelInBottom: "true",         separatorHeight: 45,         progressIndicatorType: constants.PROGRESS_INDICATOR_TYPE_SMALL,         progressIndicatorColor: "Gray"     });
+
+  var serviceName = "fry_int_inspection";
+  var integrationObj = voltmx.sdk.getCurrentInstance()
+                                  .getIntegrationService(serviceName);
+  var operationName = "get-washing-vehicles";
+
+  var data = {
+     "lot_no": "",
+  "model": "",
+  "chassis_number": "",
+  "location": "",
+  "is_washed": "1",  // pending = 0 || completed = 1
+  "days": "150",           // default value
+  "page_number": "1",
+  "page_size": "10"
+  };
+
+  // Headers
+  var headers = {
+      "user_token": voltmx.store.getItem("getUserAccesstoken") 
+  };
+
+  integrationObj.invokeOperation(
+      operationName,
+      headers,
+      data,
+      this.operationSuccessCompleted.bind(this),
+      this.operationFailureCompleted.bind(this)
+  );
+},
+  
+  operationSuccessCompleted: function(response)
+  {
+    voltmx.application.dismissLoadingScreen();
+    voltmx.print(response);
+    this.addToSegment(response);
+  },
+  
+  operationFailureCompleted: function(error)
+  {
+    voltmx.application.dismissLoadingScreen();
+    voltmx.print(error);
+  },
+  
+   addToSegment: function(response) {
+    var self = this;
+
+    var records = response && response.records ? response.records : [];
+    var isArabic = voltmx.i18n.getCurrentLocale() === "ar_AE";
+    
+
+    self.view.segInwardEntryList.widgetDataMap = {
+        "flxLotModel": "flxLotModel",
+        "flxVehicleIcon":"flxVehicleIcon",
+        "flxModelAndNumber": "flxModelAndNumber",
+        "flxLocation": "flxLocation",
+        "flxDate": "flxDate",
+        "flxViewDetailsInwardEntry": "flxViewDetailsInwardEntry",
+        "lblLotAndModel": "lblLotAndModel",
+        "lblVehicleNumber": "lblVehicleNumber",
+        "lblLocation": "lblLocation",
+        "lblDate": "lblDate",
+        "lblViewDetailsInwardEntry": "lblViewDetailsInwardEntry"
+    };
+
+    var data = [];
+
+    if (records.length > 0) {
+//         self.view.lblNorecords.setVisibility(false);
+        self.view.segInwardEntryList.setVisibility(true);
+        records.forEach(function(record) {
+
+            data.push({
+                "flxVehicleIcon": 
+              {
+                "left": isArabic ? "" : "5%",
+                "right": isArabic ? "4%": ""
+              },
+              "flxModelAndNumber":{
+                "left": isArabic ? "" : "2%",
+                "right": isArabic ? "2%": ""
+              },
+                "lblLotAndModel":{
+                  "text": (record.lot_no || "") + " " + (record.model || ""),
+                    "left": isArabic ? "" : "2%",
+                "right": isArabic ? "2%": ""
+                }, 
+               "lblVehicleNumber":{
+                  "text": record.chassis_number || "",
+                    "left": isArabic ? "" : "2%",
+                "right": isArabic ? "2%": ""
+                }, 
+                "lblVehicleNumber": record.chassis_number || "",
+                "lblLocation": record.location || "",
+                "lblDate": record.yard_received_date || "",
+                "flxLocation": {
+                   "isVisible": true,
+                   "reverseLayoutDirection": isArabic
+                },
+                "flxViewDetailsInwardEntry":
+              {
+                  "left": isArabic ? "5%" : "",
+                   "right": isArabic ? "" : "5%"
+                },
+                "flxDate": {
+                   "isVisible": true,
+                   "reverseLayoutDirection": isArabic
+                },
+                "lblViewDetailsInwardEntry": "View Details",
+                 
+                "flxViewDetailsInwardEntry": {
+                    "left": isArabic ? "5%" : "",
+                    "right": isArabic ? "" : "5%",
+                    "onClick": function() {
+                        self.openDetails(record.object_id);
+                    }
+                }
+            });
+
+        });
+
+    }
+    else
+      {
+//         self.view.lblNorecords.setVisibility(true);
+        self.view.segInwardEntryList.setVisibility(false);
+      }
+
+    self.view.segInwardEntryList.setData(data);
+},
+  
+  
+  
+  
+  
+  openDetails: function(objectId)
+  {
+    new voltmx.mvc.Navigation("frmWashing").navigate(
+    {
+      "objectId": objectId
+    });
   },
   
   adjustRTL: function()
@@ -179,5 +387,6 @@ define({
         this.view.flxSearchComponent.flxSearch.left = "";
         this.view.flxHeading.imgBack.transform = voltmx.ui.makeAffineTransform();
       }
-  }
+  },
+  
  });

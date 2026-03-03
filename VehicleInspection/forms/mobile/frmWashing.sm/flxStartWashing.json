@@ -37,7 +37,8 @@
     "children": [
         "flxIcon",
         "lblStartWashing",
-        "btnStart"
+        "btnStart",
+        "btnComplete"
     ],
     "clipbounds": false,
     "containerweight": 100,
