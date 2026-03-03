@@ -9,7 +9,20 @@ onNavigate: function(context){
   
   onPreShow: function()
   {
+    var self = this;
     var objectId = this.context.objectId;
+    var isPending = this.context.isPending;
+    if(isPending) 
+      {
+         self.view.flxRequestFooter.setVisibility(true);
+         self.view.flxBody.height = "82%";
+      }
+    else 
+      {
+        self.view.flxRequestFooter.setVisibility(false);
+        self.view.flxBody.height = "90%";
+      }
+      
     this.vehicleDetails(objectId);
     this.view.btnReceiveVehicle.onClick = this.onReceiveClick.bind(this);
   },

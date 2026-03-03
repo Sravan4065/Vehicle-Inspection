@@ -5,12 +5,78 @@ define({
     this.adjustRTL();
     this.view.preShow = this.onPreShow.bind(this);
     this.view.flxLanguageToggle.onClick = this.changeApplicationCurrentLocale.bind(this);
+    this.view.flxLogout.onClick = this.logoutSession.bind(this);
   },
   
   onPreShow: function()
   {
     toggleFooterIcons(this.view, "frmProfile");
   },
+  
+  logoutSession: function() {
+  // Show loading while logout is in progress
+  voltmx.application.showLoadingScreen(null, "Logging out..", constants.LOADING_SCREEN_POSITION_ONLY_CENTER, false, true, {
+    shouldShowLabelInBottom: "true",
+    separatorHeight: 45,
+    progressIndicatorType: constants.PROGRESS_INDICATOR_TYPE_SMALL,
+    progressIndicatorColor: "Gray"
+  });
+
+  var serviceName = "AzureB2C"; 
+  var client = voltmx.sdk.getCurrentInstance();
+  var identitySvc = client.getIdentityService(serviceName);
+
+  var options = {
+    slo: true,
+    browserWidget: this.view.browserLogoutWidget
+  };
+
+  identitySvc.logout(
+    function(response) {
+      voltmx.print("Logout success: " + JSON.stringify(response));
+      voltmx.net.clearCookies();
+
+      voltmx.store.setItem("isLogin", false);
+      voltmx.store.removeItem("refreshtoken");
+      voltmx.store.removeItem("expon");
+      voltmx.store.removeItem("userAccessTokenExp");
+      voltmx.store.setItem("isUserCreated", false);
+      voltmx.store.removeItem("accesstoken");
+      voltmx.store.removeItem("userObject");
+      voltmx.store.removeItem("getUserAccesstoken");
+      voltmx.store.removeItem("userId");
+      voltmx.store.removeItem("userEmail");
+
+      voltmx.application.dismissLoadingScreen();  
+
+      var x = new voltmx.mvc.Navigation("frmDashboard");
+      x.navigate();
+    },
+    function(error) {
+      if (error && error.message && error.message.indexOf("sessions is not active") !== -1) {
+        voltmx.print("Session expired. Clearing stored tokens...");
+        voltmx.net.clearCookies();
+        voltmx.store.setItem("isLogin", false);
+        voltmx.store.removeItem("refreshtoken");
+        voltmx.store.removeItem("expon");
+        voltmx.store.removeItem("userAccessTokenExp");
+        voltmx.store.setItem("isUserCreated", false);
+        voltmx.store.removeItem("accesstoken");
+        voltmx.store.removeItem("userObject");
+        voltmx.store.removeItem("getUserAccesstoken");
+        voltmx.store.removeItem("userId");
+        voltmx.store.removeItem("userEmail");
+         var x = new voltmx.mvc.Navigation("frmDashboard");
+      x.navigate();
+      } else {
+        voltmx.print("Logout failure: " + JSON.stringify(error));
+      }
+
+      voltmx.application.dismissLoadingScreen(); 
+    },
+    options
+  );
+},
   
   changeApplicationCurrentLocale: function() 
       { 

@@ -9,6 +9,22 @@ var NavigationManager = {
   },
   
   push: function (formId, data) {
+    
+    var isLoggedIn = voltmx.store.getItem("isLogin");
+    
+    if (formId === "frmProfile" && !isLoggedIn) {
+
+      // Navigate to Login instead
+      this.stack.push({
+        formId: "frmLogin",
+        data: null
+      });
+
+      new voltmx.mvc.Navigation("frmLogin").navigate();
+      return;
+    }
+
+    
     var last = this.stack[this.stack.length - 1];
 
     if (!last || last.formId !== formId) {
