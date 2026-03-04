@@ -36,7 +36,8 @@
     "canUpdateUI": true,
     "children": [
         "flxSummaryHeading",
-        "flxPendingAndCompleted"
+        "flxPendingAndCompleted",
+        "btnLoadMore"
     ],
     "clipbounds": true,
     "containerweight": 100,

@@ -9,9 +9,12 @@ define({
   
   onPreShow: function()
   {
-    this.showPendingVehicles();
+   
     toggleFooterIcons(this.view, "frmWashingSummary");
-    
+     this.pageSize = 5;
+    this.currentOffset = 0;
+    this.view.segInwardEntryList.setData([]);
+     this.showPendingVehicles();
 //      this.view.flxHeading.flxBack.onClick = () =>
 //     {
 //       NavigationManager.pop();
@@ -27,10 +30,29 @@ define({
       this.showCompletedVehicles();
     }
     
+     this.view.btnLoadMore.onClick = this.onLoadMoreClick.bind(this);
+  },
+  
+  onLoadMoreClick: function()
+  {
+    var self = this;
+    if(self.isPending)
+      {
+        self.pageSize += 5;
+        self.invokePendingInwardService();
+      }
+    else
+      {
+        self.pageSize += 5;
+        self.invokeCompletedInwardService();
+      }
   },
   
    showPendingVehicles: function()
-  { this.isPending = true;
+  {
+    this.isPending = true;
+    this.pageSize = 5;
+    this.currentOffset = 0;
     this.view.segInwardEntryList.setData([]);
    this.invokePendingInwardService();
     this.view.flxPendingVehicles.skin = "sknFlxFFE2E5";
@@ -47,7 +69,9 @@ define({
   
   showCompletedVehicles: function()
   {
-      this.isPending = false;
+    this.isPending = false;
+    this.pageSize = 5;
+    this.currentOffset = 0;
     this.view.segInwardEntryList.setData([]);
     this.invokeCompletedInwardService();
     this.view.flxPendingVehicles.skin = "sknFlxBasic";
@@ -60,15 +84,6 @@ define({
     this.view.lblCompletedCount.skin = "sknLblDubai231f2020pxRegular";
     this.view.flxULCompleted.skin = "sknflxd32437";
   },
-  
-  
-  
-  
-  ///////
-  
-  
-  
-  
   
   invokePendingInwardService: function() {
   var self = this;
@@ -86,7 +101,7 @@ define({
   "is_washed": "0",  // pending = 0 || completed = 1
   "days": "150",           // default value
   "page_number": "1",
-  "page_size": "10"
+  "page_size": self.pageSize || 5
   };
 
   // Headers
@@ -133,7 +148,7 @@ define({
   "is_washed": "1",  // pending = 0 || completed = 1
   "days": "150",           // default value
   "page_number": "1",
-  "page_size": "10"
+  "page_size": self.pageSize || 5
   };
 
   // Headers
@@ -167,6 +182,16 @@ define({
     var self = this;
 
     var records = response && response.records ? response.records : [];
+    if(records.length > 0)
+      {
+        self.view.lblNorecords.setVisibility(false);
+        self.view.segInwardEntryList.setVisibility(true);
+      }
+     else{
+        self.view.lblNorecords.setVisibility(true);
+        self.view.segInwardEntryList.setVisibility(false);
+     }
+    var newRecords = records.slice(self.currentOffset);
     var isArabic = voltmx.i18n.getCurrentLocale() === "ar_AE";
     
 
@@ -185,11 +210,11 @@ define({
     };
 
     var data = [];
-
-    if (records.length > 0) {
+    
+    if (newRecords.length > 0) {
 //         self.view.lblNorecords.setVisibility(false);
-        self.view.segInwardEntryList.setVisibility(true);
-        records.forEach(function(record) {
+//         self.view.segInwardEntryList.setVisibility(true);
+        newRecords.forEach(function(record) {
 
             data.push({
                 "flxVehicleIcon": 
@@ -244,10 +269,17 @@ define({
     else
       {
 //         self.view.lblNorecords.setVisibility(true);
-        self.view.segInwardEntryList.setVisibility(false);
+//         self.view.segInwardEntryList.setVisibility(false);
       }
+     
+     if (records.length < self.pageSize) {
+    self.view.btnLoadMore.setVisibility(false);
+} else {
+    self.view.btnLoadMore.setVisibility(true);
+}
+     self.currentOffset += newRecords.length;
 
-    self.view.segInwardEntryList.setData(data);
+    self.view.segInwardEntryList.addAll(data);
 },
   
   

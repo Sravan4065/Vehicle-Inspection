@@ -112,10 +112,10 @@ var flxSelectOptions = new voltmx.ui.FlexContainer(
     isVisible: true,
     clipBounds: true,
     width: "94%",
-    height: "60dp",
+    height: "36dp",
     centerX: "50%",
     top: "10dp",
-    layoutType: voltmx.flex.FREE_FORM,
+    layoutType: voltmx.flex.FLOW_HORIZONTAL,
     skin: "sknFlxBasic"
   },
   {
@@ -124,166 +124,43 @@ var flxSelectOptions = new voltmx.ui.FlexContainer(
   {}
 );
       
-  var flxPass = new voltmx.ui.FlexContainer(
-  {
-  id: "flxPass"+i,
-  isVisible: true,
-    width: "31%",
-  height: "100%",
-//   left: "0dp",
-  left: isArabic ? "" : "0dp",
-  right: isArabic ? "0dp" : "",
-  centerY: "50%",
-  layoutType: voltmx.flex.FLOW_VERTICAL,
-  clipBounds: true,
-  skin: "sknFlxFFFFFFd2d5daBorderRadius8px",  //sknFlxFFFFFF0AAA00BorderRadius8px
-  onClick: this.onOptionSelect.bind(this, i, "PASS")
-  },
-  {},
-  {}
-);
-      
-        var imgTick = new voltmx.ui.Image2(
-        {
-    id: "imgTick"+i,
-    isVisible: true,
-    centerX: "50%",
-    width: "14dp",
-    height: "14dp",
-    top: "18%",
-    src: "tickpass.png"  //tickpassgreen.png
-  },
-  {
-  
-  },
-  {}
-      );
-      
-      var lblPass = new voltmx.ui.Label(
-  {
-    id: "lblPass"+i,
-    isVisible: true,
-    text: "Pass",
-    skin: "sknLblDubai00000012pxRegular",  //sknLblDubai61b35c12pxRegular
-    top: "4%",
-    centerX: "50%",
-    width: voltmx.flex.USE_PREFERRED_SIZE
-  },
-  {
-    
-  },
-  {}
-);
-      
-     flxPass.add(imgTick,lblPass); 
-      
-   
-       var flxNeedsRepair = new voltmx.ui.FlexContainer(
-  {
-  id: "flxNeedsRepair"+i,
-  isVisible: true,
-    width: "31%",
-  height: "100%",
-  top: "0dp",
-  centerY: "50%",
-  centerX: "50%",
-  layoutType: voltmx.flex.FLOW_VERTICAL,
-  clipBounds: true,
-  skin: "sknFlxFFFFFFd2d5daBorderRadius8px", //sknFlxFFFFFFd32437BorderRadius8px
-  onClick: this.onOptionSelect.bind(this, i, "REPAIR")
-},
-  {},
-  {}
-);
-      
-        var imgNeedsRepair = new voltmx.ui.Image2(
-        {
-    id: "imgNeedsRepair"+i,
-    isVisible: true,
-    centerX: "50%",
-    width: "14dp",
-    height: "14dp",
-    top: "18%",
-    src: "crossneedrepair.png" //crossneedrepairred.png
-  },
-  {
-  
-  },
-  {}
-      );
-      
-      var lblNeedsRepair = new voltmx.ui.Label(
-  {
-    id: "lblNeedsRepair"+i,
-    isVisible: true,
-    text: "Needs Repair",
-    skin: "sknLblDubai00000012pxRegular", //sknLblDubaid3243712pxRegular
-    top: "4%",
-    centerX: "50%",
-    width: voltmx.flex.USE_PREFERRED_SIZE
-  },
-  {
-    
-  },
-  {}
-);
-      
-     flxNeedsRepair.add(imgNeedsRepair,lblNeedsRepair);
+      for (var rating = 1; rating <= 10; rating++) {
 
-         var flxNotApplicable = new voltmx.ui.FlexContainer(
-  {
-  id: "flxNotApplicable"+i,
-  isVisible: true,
-    width: "31%",
-  height: "100%",
-  centerY: "50%",
-//   right: "0dp",
-  right: isArabic ? "" : "0dp",
-  left: isArabic ? "0dp" : "",
-  layoutType: voltmx.flex.FLOW_VERTICAL,
-  clipBounds: true,
-  skin: "sknFlxFFFFFFd2d5daBorderRadius8px", //sknFlxFFFFFFFFA500BorderRadius8px
-  onClick: this.onOptionSelect.bind(this, i, "NA")
-},
-  {},
-  {}
-);
-      
-        var imgNotApplicable = new voltmx.ui.Image2(
-        {
-    id: "imgNotApplicable"+i,
-    isVisible: true,
-    centerX: "50%",
-    width: "14dp",
-    height: "14dp",
-    top: "18%",
-    src: "notappicon.png" //notappiconyellow.png
-  },
-  {
-  
-  },
-  {}
-      );
-      
-      var lblNotApplicable = new voltmx.ui.Label(
-  {
-    id: "lblNotApplicable"+i,
-    isVisible: true,
-    text: "Not Applicable",
-    skin: "sknLblDubai00000012pxRegular", //sknLblDubaiFFA50012pxRegular
-    top: "4%",
-    centerX: "50%",
-    width: voltmx.flex.USE_PREFERRED_SIZE
-  },
-  {
-    
-  },
-  {}
-);
-      
-     flxNotApplicable.add(imgNotApplicable,lblNotApplicable);
-      
-      flxSelectOptions.add(flxPass,flxNeedsRepair,flxNotApplicable);
+    var flxRate = new voltmx.ui.FlexContainer(
+    {
+        id: "flxRate"+i+"_"+rating,
+        isVisible: true,
+        width: "9%",
+        height: "100%",
+        left: "1%",
+//         right: isArabic ? "0dp" : "",
+        centerY: "50%",
+        layoutType: voltmx.flex.FREE_FORM,
+        clipBounds: true,
+        skin: "sknFlxFFFFFFd2d5daBorderRadius4px",
+        onClick: this.onOptionSelect.bind(this, i, rating)
+    },
+    {},
+    {}
+    );
+
+    var lblRateItem = new voltmx.ui.Label(
+    {
+        id: "RateItem"+i+"_"+rating,
+        isVisible: true,
+        text: rating.toString(),
+        skin: "sknlblDubai231f2016pxMedium",
+        centerY: "50%",
+        centerX: "50%",
+        width: voltmx.flex.USE_PREFERRED_SIZE
+    },
+    {},
+    {}
+    );
+
+    flxRate.add(lblRateItem);
+    flxSelectOptions.add(flxRate);
+      }
 
 var flxAddDetails = new voltmx.ui.FlexContainer(
   {
@@ -354,61 +231,93 @@ flxItem.add(
   }
   },
   
-  onOptionSelect: function (index, selectedType) {
+//   onOptionSelect: function (index, selectedType) {
+
+//     var flxItem = this.view["flxItem" + index];
+
+//     // Map each option to its UI widgets
+//     var optionsMap = {
+//         PASS: {
+//             flx: flxItem["flxPass" + index],
+//             lbl: flxItem["lblPass" + index],
+//             img: flxItem["imgTick" + index],
+//             flxSelectedSkin: "sknFlxFFFFFF0AAA00BorderRadius8px", // commented selected skin
+//             lblSelectedSkin: "sknLblDubai61b35c12pxRegular",
+//             imgSelectedSrc: "tickpassgreen.png"
+//         },
+//         REPAIR: {
+//             flx: flxItem["flxNeedsRepair" + index],
+//             lbl: flxItem["lblNeedsRepair" + index],
+//             img: flxItem["imgNeedsRepair" + index],
+//             flxSelectedSkin: "sknFlxFFFFFFd32437BorderRadius8px",
+//             lblSelectedSkin: "sknLblDubaid3243712pxRegular",
+//             imgSelectedSrc: "crossneedrepairred.png"
+//         },
+//         NA: {
+//             flx: flxItem["flxNotApplicable" + index],
+//             lbl: flxItem["lblNotApplicable" + index],
+//             img: flxItem["imgNotApplicable" + index],
+//             flxSelectedSkin: "sknFlxFFFFFFFFA500BorderRadius8px",
+//             lblSelectedSkin: "sknLblDubaiFFA50012pxRegular",
+//             imgSelectedSrc: "notappiconyellow.png"
+//         }
+//     };
+
+//     // Reset all options to default
+//     for (var key in optionsMap) {
+//         optionsMap[key].flx.skin = "sknFlxFFFFFFd2d5daBorderRadius8px"; // current default
+//         optionsMap[key].lbl.skin = "sknLblDubai00000012pxRegular";       // current default
+//         // Reset image to default (commented ones are only for selection)
+//         if(key === "PASS") optionsMap[key].img.src = "tickpass.png";
+//         else if(key === "REPAIR") optionsMap[key].img.src = "crossneedrepair.png";
+//         else optionsMap[key].img.src = "notappicon.png";
+//     }
+
+//     // Apply selection
+//     var selected = optionsMap[selectedType];
+//     selected.flx.skin = selected.flxSelectedSkin;
+//     selected.lbl.skin = selected.lblSelectedSkin;
+//     selected.img.src = selected.imgSelectedSrc;
+
+//     // Track selection
+//     this.flxSelectedItems[index] = {
+//         selected: selectedType,
+//         flx: selected.flx,
+//         lbl: selected.lbl,
+//         img: selected.img
+//     };
+
+//     this.view.forceLayout();
+// },
+  
+  onOptionSelect: function (index, selectedRating) {
 
     var flxItem = this.view["flxItem" + index];
 
-    // Map each option to its UI widgets
-    var optionsMap = {
-        PASS: {
-            flx: flxItem["flxPass" + index],
-            lbl: flxItem["lblPass" + index],
-            img: flxItem["imgTick" + index],
-            flxSelectedSkin: "sknFlxFFFFFF0AAA00BorderRadius8px", // commented selected skin
-            lblSelectedSkin: "sknLblDubai61b35c12pxRegular",
-            imgSelectedSrc: "tickpassgreen.png"
-        },
-        REPAIR: {
-            flx: flxItem["flxNeedsRepair" + index],
-            lbl: flxItem["lblNeedsRepair" + index],
-            img: flxItem["imgNeedsRepair" + index],
-            flxSelectedSkin: "sknFlxFFFFFFd32437BorderRadius8px",
-            lblSelectedSkin: "sknLblDubaid3243712pxRegular",
-            imgSelectedSrc: "crossneedrepairred.png"
-        },
-        NA: {
-            flx: flxItem["flxNotApplicable" + index],
-            lbl: flxItem["lblNotApplicable" + index],
-            img: flxItem["imgNotApplicable" + index],
-            flxSelectedSkin: "sknFlxFFFFFFFFA500BorderRadius8px",
-            lblSelectedSkin: "sknLblDubaiFFA50012pxRegular",
-            imgSelectedSrc: "notappiconyellow.png"
-        }
-    };
-
-    // Reset all options to default
-    for (var key in optionsMap) {
-        optionsMap[key].flx.skin = "sknFlxFFFFFFd2d5daBorderRadius8px"; // current default
-        optionsMap[key].lbl.skin = "sknLblDubai00000012pxRegular";       // current default
-        // Reset image to default (commented ones are only for selection)
-        if(key === "PASS") optionsMap[key].img.src = "tickpass.png";
-        else if(key === "REPAIR") optionsMap[key].img.src = "crossneedrepair.png";
-        else optionsMap[key].img.src = "notappicon.png";
+    // Initialize storage object if not exists
+    if (!this.selectedRatings) {
+        this.selectedRatings = {};
     }
 
-    // Apply selection
-    var selected = optionsMap[selectedType];
-    selected.flx.skin = selected.flxSelectedSkin;
-    selected.lbl.skin = selected.lblSelectedSkin;
-    selected.img.src = selected.imgSelectedSrc;
+    // Loop from 1 to 10 and update UI
+    for (var rating = 1; rating <= 10; rating++) {
 
-    // Track selection
-    this.flxSelectedItems[index] = {
-        selected: selectedType,
-        flx: selected.flx,
-        lbl: selected.lbl,
-        img: selected.img
-    };
+        var flxRate = flxItem["flxSelectOptions" + index]["flxRate" + index + "_" + rating];
+        var lblRate = flxRate["RateItem" + index + "_" + rating];
+
+        if (rating <= selectedRating) {
+            // Selected (Green)
+            flxRate.skin = "sknFlx61b35cBorder4px";
+            lblRate.skin = "sknlblDubaiffffff16pxMedium";
+        } else {
+            // Default
+            flxRate.skin = "sknFlxFFFFFFd2d5daBorderRadius4px";
+            lblRate.skin = "sknlblDubai231f2016pxMedium";
+        }
+    }
+
+    // Store selected rating locally per item
+    this.selectedRatings[index] = selectedRating;
 
     this.view.forceLayout();
 },
