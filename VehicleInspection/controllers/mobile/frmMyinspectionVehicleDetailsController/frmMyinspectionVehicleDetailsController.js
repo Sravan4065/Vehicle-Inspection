@@ -1,8 +1,11 @@
 define({ 
 
  //Type your controller code here 
-onNavigate: function(){
+onNavigate: function(context){
   this.adjustRTL();
+    this.vehicleDetails = context.vehicleDetails;
+
+   
    this.view.preShow = this.onPreShow.bind(this);
 },
   
@@ -12,6 +15,7 @@ onNavigate: function(){
    {
      NavigationManager.push("frmChooseInspectionType");
    }
+   this.populateDetails();
  },
   
   adjustRTL: function () {
@@ -265,7 +269,21 @@ onNavigate: function(){
 
     this.view.btnClose.text =
         voltmx.i18n.getLocalizedString("Close");
-}
+},
+  
+  populateDetails: function(){
+    this.view.lblIdData.text = this.vehicleDetails.ID;
+
+      this.view.lblDescriptionData.text = this.vehicleDetails.description;
+      this.view.lblYearData.text = this.vehicleDetails.year;
+
+      this.view.lblServiceTypeData.text = this.vehicleDetails.service_type;
+      this.view.lblRequestedtimedata.text = this.vehicleDetails.requested_time;
+      this.view.lblNotesData.text = this.vehicleDetails.notes;
+
+      this.view.lblStatusData.text = this.vehicleDetails.status;
+      this.view.lblInspectionReportData.text = this.vehicleDetails.status;
+  },
 
   
  });
