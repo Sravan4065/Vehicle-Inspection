@@ -40,7 +40,8 @@
     },
     "children": [
         "flxPendingAndCompletedItems",
-        "segMyinspections"
+        "segMyinspections",
+        "lblNorecords"
     ],
     "clipbounds": true,
     "containerweight": 100,

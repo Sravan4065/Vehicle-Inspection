@@ -1,3 +1,246 @@
+function currentEpochTime() {
+  const epochMillis = new Date().getTime();
+  voltmx.print("=============================");
+  voltmx.print(epochMillis);
+  voltmx.print("=============================");
+}
+ 
+ 
+function checkTokenValidatity(onSuccessCallback) {
+  var epochMillis = new Date().getTime();
+  var expires_in = Number(voltmx.store.getItem("userAccessTokenExp")); // stored expiry time in ms
+ 
+  voltmx.print("Token expiration time: " + expires_in);
+  voltmx.print("Current epoch time: " + epochMillis);
+ 
+  if (expires_in > epochMillis) {
+    voltmx.print("Token still valid. Proceeding with callback.");
+    onSuccessCallback(); // token is valid, proceed
+  } else {
+    voltmx.print("Token expired. Refreshing...");
+    calling_service(onSuccessCallback); // refresh and then proceed
+  }
+}
+ 
+// Function to call the token refresh service
+function calling_service(onRefreshComplete) {
+  var refreshtoken = voltmx.store.getItem("refreshtoken");
+ 
+  var get_refresh_token_inputparam = {
+    "serviceID": "ms_user$get-refresh-token",
+    "platform": "mobile",
+    "httpheaders": {
+      "refresh_token": refreshtoken
+    },
+    "httpconfig": {}
+  };
+ 
+  mfintegrationsecureinvokerasync(
+    get_refresh_token_inputparam,
+    "ms_user",
+    "get-refresh-token",
+    function(status, response) {
+      get_refresh_token_callback(status, response, onRefreshComplete);
+    }
+  );
+}
+ 
+// Properly defined callback function working but doesnt give network errors
+// function get_refresh_token_callback(status, response, onRefreshComplete) {
+//   if (!response || !response.rawResponse || !response.rawResponse.data || !response.rawResponse.data.access_token) {
+//     voltmx.print("Token refresh failed.");
+//     return;
+//   }
+ 
+//   var newToken = response.rawResponse.data.access_token;
+//     var newExpiry = Number(response.rawResponse.data.expires_in);
+ 
+//   voltmx.store.setItem("getUserAccesstoken", newToken);
+//   voltmx.store.setItem("userAccessTokenExp", newExpiry); // update stored expiry
+  
+  
+  
+//   voltmx.print("New token stored. Proceeding...");
+//   onRefreshComplete(); // continue the original request
+// }
+
+function get_refresh_token_callback(status, response, onRefreshComplete) {
+  var currentForm = voltmx.application.getCurrentForm();
+  
+  // Handle error: network or service issue
+  if (!response || response.opstatus !== 0 || !response.rawResponse || !response.rawResponse.data || !response.rawResponse.data.access_token) {
+    voltmx.print("Token refresh failed.");
+
+    // Show flexError if available in the current form
+    if (currentForm && currentForm.flxError) {
+      if(response && response.opstatus === 1011){
+        voltmx.application.dismissLoadingScreen();
+
+      currentForm.flxError.setVisibility(true);
+        return;
+      }
+      else{
+         currentForm.flxError.setVisibility(false);
+      }
+    }
+      
+        if(currentForm && currentForm.SmthngWentWrong)
+          {
+            if(response && response.opstatus !== 0){
+              voltmx.application.dismissLoadingScreen();
+              
+              
+              if (response && response.httpStatusCode === 400 || response.httpStatusCode === 401) {
+   logoutSessionModule()
+  return;
+}
+
+              
+              
+              
+            currentForm.SmthngWentWrong.setVisibility(true);
+            
+              var errMsg = "Something went wrong";
+
+    if (response && response.rawResponse && response.rawResponse.error && response.rawResponse.error.message) {
+      errMsg = response.rawResponse.error.message;
+    }
+              currentForm.SmthngWentWrong.lblSomethingWentWrong.text = errMsg;
+            return;
+          }
+        else{
+          currentForm.SmthngWentWrong.setVisibility(false);
+        }
+      
+    }
+     
+    
+  }
+
+  // Success path
+  var newToken = "";
+var newExpiry = 0;
+ if (
+    response &&
+    response.rawResponse &&
+    response.rawResponse.data &&
+    typeof response.rawResponse.data.access_token !== "undefined"
+) {
+    newToken = response.rawResponse.data.access_token;
+}
+
+if (
+    response &&
+    response.rawResponse &&
+    response.rawResponse.data &&
+    typeof response.rawResponse.data.expires_in !== "undefined"
+) {
+    newExpiry = Number(response.rawResponse.data.expires_in);
+}
+
+  voltmx.store.setItem("getUserAccesstoken", newToken);
+  voltmx.store.setItem("userAccessTokenExp", newExpiry);
+
+  voltmx.print("New token stored. Proceeding...");
+  
+  // Hide error if shown
+  if (currentForm && currentForm.flxError) {
+    currentForm.flxError.setVisibility(false);
+  }
+
+  onRefreshComplete(); // continue after refreshing token
+}
+
+
+ 
+
+
+  function logoutSessionModule() {
+      try {
+        voltmx.application.showLoadingScreen(
+          null,
+          "Logging out..No session Found",
+          constants.LOADING_SCREEN_POSITION_ONLY_CENTER,
+          false,
+          true,
+          {
+            shouldShowLabelInBottom: "true",
+            separatorHeight: 45,
+            progressIndicatorType: constants.PROGRESS_INDICATOR_TYPE_SMALL,
+            progressIndicatorColor: "Gray"
+          }
+        );
+
+        var serviceName = "AzureB2C";
+        var client = voltmx.sdk.getCurrentInstance();
+        var identitySvc = client.getIdentityService(serviceName);
+
+        var options = {
+          slo: true,
+          browserWidget: voltmx.application.getCurrentForm().browserLogoutWidget
+        };
+
+        identitySvc.logout(
+          function(response) {
+            voltmx.print("Logout success: " + JSON.stringify(response));
+
+            voltmx.net.clearCookies();
+
+            voltmx.store.setItem("isLogin", false);
+            voltmx.store.removeItem("refreshtoken");
+            voltmx.store.removeItem("expon");
+            voltmx.store.removeItem("userAccessTokenExp");
+            voltmx.store.setItem("isUserCreated", false);
+            voltmx.store.removeItem("accesstoken");
+            voltmx.store.removeItem("userObject");
+            voltmx.store.removeItem("getUserAccesstoken");
+            voltmx.store.removeItem("userId");
+            voltmx.store.removeItem("userEmail");
+
+            voltmx.application.dismissLoadingScreen();
+
+            var nav = new voltmx.mvc.Navigation("frmLoginScreen");
+            nav.navigate();
+          },
+          function(error) {
+            voltmx.print("Logout failure: " + JSON.stringify(error));
+
+            // Handle session already expired
+            if (
+              error &&
+              error.message &&
+              error.message.indexOf("sessions is not active") !== -1
+            ) {
+              voltmx.net.clearCookies();
+              voltmx.store.setItem("isLogin", false);
+              voltmx.store.removeItem("refreshtoken");
+              voltmx.store.removeItem("expon");
+              voltmx.store.removeItem("userAccessTokenExp");
+              voltmx.store.setItem("isUserCreated", false);
+              voltmx.store.removeItem("accesstoken");
+              voltmx.store.removeItem("userObject");
+              voltmx.store.removeItem("getUserAccesstoken");
+              voltmx.store.removeItem("userId");
+              voltmx.store.removeItem("userEmail");
+            }
+
+            voltmx.application.dismissLoadingScreen();
+
+            var nav = new voltmx.mvc.Navigation("frmLoginScreen");
+            nav.navigate();
+          },
+          options
+        );
+      } catch (e) {
+        voltmx.print("Logout exception: " + e.message);
+        voltmx.application.dismissLoadingScreen();
+
+        var nav = new voltmx.mvc.Navigation("frmLoginScreen");
+        nav.navigate();
+      }
+    }
+
+
 function toggleFooterIcons(formObj, formName) {
   if (!formObj || !formObj.flxfooter) return;
 

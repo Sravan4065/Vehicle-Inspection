@@ -15,7 +15,12 @@ define({
 //       NavigationManager.pop();
 //     }
     
-    this.view.segMyinspections.onRowClick = this.onRowClickAction.bind(this);
+     this.pageSize = 5;
+    this.currentOffset = 0;
+    this.view.segMyinspections.setData([]);
+    this.showPendingVehicles();
+    
+//     this.view.segMyinspections.onRowClick = this.onRowClickAction.bind(this);
     
     this.view.flxPendingVehicles.onClick = () =>
     {
@@ -26,7 +31,8 @@ define({
     {
       this.showCompletedVehicles();
     }
-      this.invokePendingInspectionService();
+    
+    this.view.btnLoadMore.onClick = this.onLoadMoreClick.bind(this);
   },
   
   onRowClickAction: function()
@@ -34,8 +40,29 @@ define({
     NavigationManager.push("frmMyinspectionVehicleDetails");
   },
   
+   onLoadMoreClick: function()
+  {
+    var self = this;
+    if(self.isPending)
+      {
+        self.pageSize += 5;
+        self.invokePendingInwardService();
+      }
+    else
+      {
+        self.pageSize += 5;
+        self.invokeCompletedInwardService();
+      }
+  },
+  
+  
    showPendingVehicles: function()
   {
+     this.isPending = true;
+    this.pageSize = 5;
+    this.currentOffset = 0;
+    this.view.segMyinspections.setData([]);
+   this.invokePendingInspectionService();
     this.view.flxPendingVehicles.skin = "sknFlxFFE2E5";
     this.view.lblPendingVehicles.skin = "sknlblDubaid3243720pxMedium";
     this.view.lblPendingCount.skin = "sknLblDubai231f2020pxRegular";
@@ -49,6 +76,12 @@ define({
   
   showCompletedVehicles: function()
   {
+     this.isPending = false;
+    this.pageSize = 5;
+    this.currentOffset = 0;
+    this.view.segMyinspections.setData([]);
+//     this.invokeCompletedInwardService();
+    
     this.view.flxPendingVehicles.skin = "sknFlxBasic";
     this.view.lblPendingVehicles.skin = "sknlblDubaid3243720pxMedium";
     this.view.lblPendingCount.skin = "sknLblDubai231f2020pxRegular";
@@ -63,6 +96,7 @@ define({
   
     invokePendingInspectionService: function() {
   var self = this;
+      checkTokenValidatity(function() {
     voltmx.application.showLoadingScreen(null, "Loading..",     constants.LOADING_SCREEN_POSITION_ONLY_CENTER, false, true, {         shouldShowLabelInBottom: "true",         separatorHeight: 45,         progressIndicatorType: constants.PROGRESS_INDICATOR_TYPE_SMALL,         progressIndicatorColor: "Gray"     });
   var serviceName = "fry_int_inspection";
   var integrationObj = voltmx.sdk.getCurrentInstance()
@@ -75,7 +109,7 @@ define({
   "type": "",
   "status": "Pending", // Pending || Completed
   "page": "1",
-  "page_size": "10"
+  "page_size": self.pageSize || 5
   };
 
   // Headers
@@ -87,9 +121,10 @@ define({
       operationName,
       headers,
       data,
-      this.operationSuccessPending.bind(this),
-      this.operationFailurePending.bind(this)
+      self.operationSuccessPending.bind(self),
+      self.operationFailurePending.bind(self)
   );
+      });
 },
   
   operationSuccessPending: function(response)
@@ -111,6 +146,18 @@ define({
     var self = this;
 
     var records = response && response.records ? response.records : [];
+     
+      if(records.length > 0)
+      {
+        self.view.lblNorecords.setVisibility(false);
+        self.view.segMyinspections.setVisibility(true);
+      }
+     else{
+        self.view.lblNorecords.setVisibility(true);
+        self.view.segMyinspections.setVisibility(false);
+     }
+    var newRecords = records.slice(self.currentOffset);
+     
     var isArabic = voltmx.i18n.getCurrentLocale() === "ar_AE";
     
 
@@ -125,9 +172,9 @@ define({
 
     var data = [];
 
-    if (records.length > 0) {
+   if (newRecords.length > 0) {
 //         self.view.lblNorecords.setVisibility(false);
-        self.view.segMyinspections.setVisibility(true);
+//         self.view.segMyinspections.setVisibility(true);
         records.forEach(function(record) {
 
             data.push({
@@ -177,10 +224,17 @@ define({
     else
       {
 //         self.view.lblNorecords.setVisibility(true);
-        self.view.segMyinspections.setVisibility(false);
+//         self.view.segMyinspections.setVisibility(false);
       }
+     
+       if (records.length < self.pageSize) {
+    self.view.btnLoadMore.setVisibility(false);
+} else {
+    self.view.btnLoadMore.setVisibility(true);
+}
+     self.currentOffset += newRecords.length;
 
-    self.view.segMyinspections.setData(data);
+    self.view.segMyinspections.addAll(data);
 },
   openDetails: function(objectId,record)
   {
