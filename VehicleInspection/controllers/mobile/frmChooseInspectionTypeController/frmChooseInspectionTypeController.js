@@ -38,7 +38,9 @@ define({
       { key: "VEHICLE_SUMMARY", lblServiceType: "Vehicle Summary Report", imgRight: "imgchevronright.png" },
       { key: "SERVICE_HISTORY", lblServiceType: "Service History & Manuals", imgRight: "imgchevronright.png" },
       { key: "PAINT_CONDITION", lblServiceType: "Paint Condition", imgRight: "imgchevronright.png" },
-      { key: "ENGINE_BAY_PHOTOS", lblServiceType: "Engine Bay & Undercarriage Photos", imgRight: "imgchevronright.png" }
+      { key: "ENGINE_BAY_PHOTOS", lblServiceType: "Engine Bay & Undercarriage Photos", imgRight: "imgchevronright.png" },
+      { key: "MISCELLANEOUS", lblServiceType: "Miscellaneous", imgRight: "imgchevronright.png" }
+
     ];
 
     self.view.segInspectionItems.setData(data);
@@ -114,6 +116,10 @@ define({
                case "ENGINE_BAY_PHOTOS":
 //               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
                NavigationManager.push("frmEngineBayAndUnderCarriagePhotos");
+              break;
+               case "MISCELLANEOUS":
+//               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
+               NavigationManager.push("frmMiscellaneous");
               break;
             default:
               return;

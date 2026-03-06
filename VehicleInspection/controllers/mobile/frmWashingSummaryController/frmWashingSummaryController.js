@@ -87,6 +87,7 @@ define({
   
   invokePendingInwardService: function() {
   var self = this;
+    checkTokenValidatity(function() {
     voltmx.application.showLoadingScreen(null, "Loading..",     constants.LOADING_SCREEN_POSITION_ONLY_CENTER, false, true, {         shouldShowLabelInBottom: "true",         separatorHeight: 45,         progressIndicatorType: constants.PROGRESS_INDICATOR_TYPE_SMALL,         progressIndicatorColor: "Gray"     });
   var serviceName = "fry_int_inspection";
   var integrationObj = voltmx.sdk.getCurrentInstance()
@@ -113,9 +114,10 @@ define({
       operationName,
       headers,
       data,
-      this.operationSuccessPending.bind(this),
-      this.operationFailurePending.bind(this)
+      self.operationSuccessPending.bind(self),
+      self.operationFailurePending.bind(self)
   );
+    });
 },
   
   operationSuccessPending: function(response)
@@ -133,6 +135,7 @@ define({
   
    invokeCompletedInwardService: function() {
   var self = this;
+     checkTokenValidatity(function() {
          voltmx.application.showLoadingScreen(null, "Loading..",     constants.LOADING_SCREEN_POSITION_ONLY_CENTER, false, true, {         shouldShowLabelInBottom: "true",         separatorHeight: 45,         progressIndicatorType: constants.PROGRESS_INDICATOR_TYPE_SMALL,         progressIndicatorColor: "Gray"     });
 
   var serviceName = "fry_int_inspection";
@@ -160,9 +163,10 @@ define({
       operationName,
       headers,
       data,
-      this.operationSuccessCompleted.bind(this),
-      this.operationFailureCompleted.bind(this)
+      self.operationSuccessCompleted.bind(self),
+      self.operationFailureCompleted.bind(self)
   );
+     });
 },
   
   operationSuccessCompleted: function(response)

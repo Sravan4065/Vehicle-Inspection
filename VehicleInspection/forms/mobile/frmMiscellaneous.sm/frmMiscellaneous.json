@@ -18,7 +18,7 @@
     "_pxMenuIndex": [
         0,
         1,
-        20
+        28
     ],
     "_skin_": "sfbe0b910dfe4363bf286a9d2ada7748",
     "_title_": null,
@@ -44,7 +44,7 @@
     "controllerInfo": {
         "default": {
             "channel": "mobile",
-            "name": "frmMyInspectionsSummaryController"
+            "name": "frmMiscellaneousController"
         }
     },
     "currentLocale": "default",
@@ -54,7 +54,7 @@
     "device": "iPhone14",
     "displayorientation": 1,
     "enabledforidletimeout": false,
-    "id": "frmMyInspectionsSummary",
+    "id": "frmMiscellaneous",
     "info": null,
     "initdone": false,
     "inputaccessoryviewtype": 4,
@@ -72,7 +72,7 @@
             "titleBarAttributes": {
                 "barStyle": 0,
                 "hidesBackButton": false,
-                "kuid": "f0b3d3d64f7f4d1ca08ac6744134d7e7",
+                "kuid": "ie155a9dfe54499d945dc0eedaa69910",
                 "leftBarButtonItems": [],
                 "leftItemsSupplementBackButton": true,
                 "prompt": "",
@@ -83,7 +83,7 @@
                         "info": {
                             "title": "Edit"
                         },
-                        "kuid": "bbb420837d1a493baf8e8ff7af8ee8e3",
+                        "kuid": "d5147f5825464939a0f5e263c0382c53",
                         "style": 0,
                         "tintColor": "4b88f100",
                         "type": 1
@@ -100,7 +100,7 @@
     "kiosk": {
         "needAppMenu": false
     },
-    "kuid": "a71acc5058d748e5aa7f6bcce2020ae8",
+    "kuid": "d9feb630bcf94298ab143fd54f3bcd37",
     "layouttype": 2,
     "name": "kony.ui.Form2",
     "needappmenu": false,

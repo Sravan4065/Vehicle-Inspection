@@ -1,8 +1,8 @@
 {
     "DNDConfig": null,
     "_height_": {
-        "type": "ref",
-        "value": "preferred"
+        "type": "string",
+        "value": "280dp"
     },
     "_left_": {
         "type": "string",
@@ -22,35 +22,31 @@
         0
     ],
     "_percent_": true,
-    "_skin_": "s43b3f0daddb4853bfc5983bfb525431",
+    "_skin_": "seb990d75613454e86395aadddd102d1",
     "_top_": {
         "type": "string",
-        "value": "15dp"
+        "value": "0"
     },
     "_width_": {
         "type": "string",
-        "value": "100%"
+        "value": "1.50%"
     },
     "allboxes": [],
-    "autogrowmode": 1,
+    "autogrowmode": 0,
     "canUpdateUI": true,
-    "children": [
-        "flxSummaryHeading",
-        "flxPendingAndCompleted",
-        "btnLoadMore"
-    ],
-    "clipbounds": true,
+    "children": [],
+    "clipbounds": false,
     "containerweight": 100,
     "enablescrolling": true,
-    "id": "flxSummaryOfVehicleInspections",
+    "id": "FlexContainer0f6a390937e6141",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "jffb64bf168349349ebb928013f0ce5d",
-    "layouttype": 4,
+    "kuid": "d3e52d4cf090473ab916e16ce30575db",
+    "layouttype": 2,
     "name": "kony.ui.FlexContainer",
-    "parent": "flxInnerBody",
-    "pf": "frmMyInspectionsSummary",
+    "parent": "flxImportantNotice",
+    "pf": "frmMiscellaneous",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainflowhorizontalalignment": false,
