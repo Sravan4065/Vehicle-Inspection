@@ -103,7 +103,7 @@ onNavigate: function(context){
       "user_token": voltmx.store.getItem("getUserAccesstoken") 
 
   };
- integrationObj.invokeOperation
+//  integrationObj.invokeOperation
   integrationObj.invokeOperation(
 
       operationName,

@@ -1,10 +1,11 @@
 define({ 
 
- onNavigate: function()
+ onNavigate: function(context)
   {
     var self = this;
     this.adjustRTL();
-    this.createUI();
+    this.lovId = context;
+//     this.createUI();
     this.view.preShow = this.onPreShow.bind(this);
     this.flxSelectedItems = {}; 
    
@@ -36,14 +37,16 @@ define({
       self.view.flxChooseFileTakePhoto.setVisibility(false);
     }
     this.view.flxAddDetailsAndUpload.setVisibility(false);
+    
+    this.invokeGetInspectionDetailsList();
   },
   
-  createUI: function()
+  createUIWithRecords: function(records)
   {
     var self = this;
     var isArabic = voltmx.i18n.getCurrentLocale() === "ar_AE";
     self.view.flxInspectionSubTypes.removeAll();
-    for(var i=0;i<5;i++){
+    for(var i=0;i<records.length;i++){
     var basicProperties = {
   id: "flxItem"+i,
   isVisible: true,
@@ -75,7 +78,8 @@ var flxItem = new voltmx.ui.FlexContainer(
   {
     id: "lblSubType"+i,
     isVisible: true,
-    text: "Engine Upper Cover",
+//     text: "Engine Upper Cover",
+     text: records[i].item_name || "N/A",
       left: isArabic ? "": "3%",
     right: isArabic ? "3%": "",
     top: "10dp",
@@ -124,9 +128,13 @@ var flxSelectOptions = new voltmx.ui.FlexContainer(
   },
   {}
 );
+      var recordRating = Number(records[i].rating) || 0;
       
       for (var rating = 1; rating <= 10; rating++) {
 
+        
+        var flxSkin =  recordRating >= rating ? "sknFlx61b35cBorder4px" : "sknFlxFFFFFFd2d5daBorderRadius4px";
+        var labelSkin = recordRating >= rating ? "sknlblDubaiffffff16pxMedium" : "sknlblDubai231f2016pxMedium";
     var flxRate = new voltmx.ui.FlexContainer(
     {
         id: "flxRate"+i+"_"+rating,
@@ -138,7 +146,8 @@ var flxSelectOptions = new voltmx.ui.FlexContainer(
         centerY: "50%",
         layoutType: voltmx.flex.FREE_FORM,
         clipBounds: true,
-        skin: "sknFlxFFFFFFd2d5daBorderRadius4px",
+//         skin: "sknFlxFFFFFFd2d5daBorderRadius4px",
+        skin: flxSkin,
         onClick: this.onOptionSelect.bind(this, i, rating)
     },
     {},
@@ -150,7 +159,8 @@ var flxSelectOptions = new voltmx.ui.FlexContainer(
         id: "RateItem"+i+"_"+rating,
         isVisible: true,
         text: rating.toString(),
-        skin: "sknlblDubai231f2016pxMedium",
+//         skin: "sknlblDubai231f2016pxMedium",
+        skin: labelSkin,
         centerY: "50%",
         centerX: "50%",
         width: voltmx.flex.USE_PREFERRED_SIZE
@@ -175,7 +185,7 @@ var flxAddDetails = new voltmx.ui.FlexContainer(
     centerX: "50%",
     top: "10dp",
     bottom: "5dp",
-    onClick: this.showAddDetails.bind(this)
+    onClick: this.showAddDetails.bind(this,records[i])
   },
   {
   
@@ -323,11 +333,13 @@ flxItem.add(
     this.view.forceLayout();
 },
   
-  showAddDetails: function()
+  showAddDetails: function(record)
   {
     this.view.flxAddDetailsAndUpload.flxUploadedImage.setVisibility(false);
     this.view.flxAddDetailsAndUpload.flxUploadImages.setVisibility(true);
     this.view.flxAddDetailsAndUpload.setVisibility(true);
+    this.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text = record.repair_estimate_aed;
+    this.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text = record.notes || "";
   },
   
    flxChooseFromLibraryOnClickAction: function () {
@@ -446,7 +458,54 @@ flxItem.add(
     voltmx.print("No image captured from camera.");
   }
 },
-  
+  invokeGetInspectionDetailsList: function()
+  {
+    
+    var self = this;
+voltmx.application.showLoadingScreen(null,"LoadingScreen",constants.LOADING_SCREEN_POSITION_ONLY_CENTER, false,true,null);
+    
+    var serviceName = "fry_int_inspection";
+   var integrationObj =  voltmx.sdk.getCurrentInstance().getIntegrationService(serviceName);
+    var operationName = "get-inspection-details-list";
+    var headers = 
+        {
+          "user_token": voltmx.store.getItem("getUserAccesstoken")
+        }
+    
+    var data = 
+        {
+         "master_lov_id": self.lovId
+        }
+    integrationObj.invokeOperation(operationName, headers, data, successCallback, failureCallback)
+    
+    function successCallback(response)
+    {
+      voltmx.application.dismissLoadingScreen();
+      voltmx.print(response);
+      if(response && response.records)
+        {
+          if(response.records.length > 0)
+            {
+              self.createUIWithRecords(response.records);
+            }
+          else
+            {
+              voltmx.print("no records");
+            }
+        }
+      else
+        {
+          voltmx.print("Invalid response");
+        }
+    }
+    
+    function failureCallback(error)
+    {
+      voltmx.application.dismissLoadingScreen();
+      voltmx.print(error);
+    }
+    
+  },
   adjustRTL: function()
   {
     var self = this;

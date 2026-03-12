@@ -10,10 +10,11 @@ onNavigate: function(context){
 },
   
  onPreShow: function() {
+   var self = this;
    toggleFooterIcons(this.view, "frmMyinspectionVehicleDetails");
    this.view.btnStart.onClick = () =>
    {
-     NavigationManager.push("frmChooseInspectionType");
+     NavigationManager.push("frmChooseInspectionType",self.vehicleDetails.type_service_id);
    }
    this.populateDetails();
  },
@@ -184,13 +185,7 @@ onNavigate: function(context){
         ? constants.CONTENT_ALIGN_MIDDLE_LEFT
         : constants.CONTENT_ALIGN_MIDDLE_RIGHT;
 
-    this.view.btnStart.contentAlignment = isArabic
-        ? constants.CONTENT_ALIGN_MIDDLE_RIGHT
-        : constants.CONTENT_ALIGN_MIDDLE_LEFT;
-
-    this.view.btnClose.contentAlignment = isArabic
-        ? constants.CONTENT_ALIGN_MIDDLE_LEFT
-        : constants.CONTENT_ALIGN_MIDDLE_RIGHT;
+    
 
     var labelList = [
         "lblId",
@@ -208,9 +203,7 @@ onNavigate: function(context){
         "lblStatus",
         "lblStatusData",
         "lblINspectionReport",
-        "lblInspectionReportData",
-        "btnStart",
-        "btnClose"
+        "lblInspectionReportData"
     ];
 
     for (var i = 0; i < labelList.length; i++) {
@@ -272,17 +265,22 @@ onNavigate: function(context){
 },
   
   populateDetails: function(){
-    this.view.lblIdData.text = this.vehicleDetails.ID;
 
-      this.view.lblDescriptionData.text = this.vehicleDetails.description;
-      this.view.lblYearData.text = this.vehicleDetails.year;
+    this.view.lblIdData.text = (this.vehicleDetails && this.vehicleDetails.ID) ? this.vehicleDetails.ID : "N/A";
 
-      this.view.lblServiceTypeData.text = this.vehicleDetails.service_type;
-      this.view.lblRequestedtimedata.text = this.vehicleDetails.requested_time;
-      this.view.lblNotesData.text = this.vehicleDetails.notes;
+    this.view.lblDescriptionData.text = (this.vehicleDetails && this.vehicleDetails.description) ? this.vehicleDetails.description : "N/A";
 
-      this.view.lblStatusData.text = this.vehicleDetails.status;
-      this.view.lblInspectionReportData.text = this.vehicleDetails.status;
+    this.view.lblYearData.text = (this.vehicleDetails && this.vehicleDetails.year) ? this.vehicleDetails.year : "N/A";
+
+    this.view.lblServiceTypeData.text = (this.vehicleDetails && this.vehicleDetails.service_type) ? this.vehicleDetails.service_type : "N/A";
+
+    this.view.lblRequestedtimedata.text = (this.vehicleDetails && this.vehicleDetails.requested_time) ? this.vehicleDetails.requested_time : "N/A";
+
+    this.view.lblNotesData.text = (this.vehicleDetails && this.vehicleDetails.notes) ? this.vehicleDetails.notes : "N/A";
+
+    this.view.lblStatusData.text = (this.vehicleDetails && this.vehicleDetails.status) ? this.vehicleDetails.status : "N/A";
+
+    this.view.lblInspectionReportData.text = (this.vehicleDetails && this.vehicleDetails.status) ? this.vehicleDetails.status : "N/A";
   },
 
   
