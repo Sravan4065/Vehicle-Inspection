@@ -1,13 +1,53 @@
 define({ 
 
-   onNavigate: function()
+   onNavigate: function(context)
   {
     var self = this;
-    
+    this.lovId = context;
     this.view.preShow = this.onPreShow.bind(this);
   
-   
+//    this.createButtons();
   },
+  
+  createButtons: function(records)
+  {
+    var self = this;
+    self.view.flxDirections.removeAll();
+    for(var i=0;i<records.length;i++)
+      {
+        var btnFrontleft = new voltmx.ui.Button({
+                "height": "30dp",
+                "id": "btnFrontleft"+i,
+                "isVisible": true,
+                "left": "5%",
+                "skin": "sknBtnd3243018px",
+                "text": records[i].position,
+                "top": "0",
+                "width": "25%",
+                "onClick": self.navToButtonSpecific.bind(self)
+            }, {
+                "contentAlignment": constants.CONTENT_ALIGN_CENTER,
+                "displayText": true,
+                "padding": [0, 0, 0, 0],
+                "paddingInPixel": false
+            }, {});
+        
+        self.view.flxDirections.add(btnFrontleft);
+      }
+  },
+  
+  navToButtonSpecific: function(eventobject) {
+
+    var self = this;
+
+    var widgets = self.view.flxDirections.widgets();
+
+    for (var i = 0; i < widgets.length; i++) {
+        widgets[i].skin = "sknBtnebebeb18px";
+    }
+
+    eventobject.skin = "sknBtnd3243018px";
+},
   
   onPreShow: function()
   {
@@ -23,6 +63,7 @@ while (i < 6) {
 }
     
     this.createUIBox();
+    this.invokeGetInspectionTyresList();
   },
   
  callRate: function (context) {
@@ -105,7 +146,7 @@ while (i < 6) {
       bottom: "12dp",
       skin: "sknFlxFFFFFFBorderCCCCCCRadius8px",
       layoutType: voltmx.flex.FREE_FORM,
-//       onClick: this.openUploadPopup.bind(this,i)
+      onClick: this.openUploadPopup.bind(this,i)
     }, {}, {})
            
             var imgCamera = new voltmx.ui.Image2({
@@ -136,7 +177,62 @@ while (i < 6) {
     
     this.view.flxItems.add(flxItem);
 //     this.view.flxFields.removeAt(index);
-  }
+  },
+  
+  openUploadPopup: function(index)
+  {
+    this.index = index;
+    this.view.flxChooseFileTakePhoto.setVisibility(true);
+  },
+  
+    invokeGetInspectionTyresList: function()
+  {
+    
+    var self = this;
+voltmx.application.showLoadingScreen(null,"LoadingScreen",constants.LOADING_SCREEN_POSITION_ONLY_CENTER, false,true,null);
+    
+    var serviceName = "fry_int_inspection";
+   var integrationObj =  voltmx.sdk.getCurrentInstance().getIntegrationService(serviceName);
+    var operationName = "get-inspection-tyres-list";
+    var headers = 
+        {
+          "user_token": voltmx.store.getItem("getUserAccesstoken")
+        }
+    
+    var data = 
+        {
+         "insp_pac_lov_id": self.lovId
+        }
+    integrationObj.invokeOperation(operationName, headers, data, successCallback, failureCallback)
+    
+    function successCallback(response)
+    {
+      voltmx.application.dismissLoadingScreen();
+      voltmx.print(response);
+      if(response && response.records)
+        {
+          if(response.records.length > 0)
+            {
+              self.createButtons(response.records);
+            }
+          else
+            {
+              voltmx.print("no records");
+            }
+        }
+      else
+        {
+          voltmx.print("Invalid response");
+        }
+    }
+    
+    function failureCallback(error)
+    {
+      voltmx.application.dismissLoadingScreen();
+      voltmx.print(error);
+    }
+    
+  },
 
 
  });

@@ -5,7 +5,7 @@ define({
   },
   onPreShow: function(){
     toggleFooterIcons(this.view, "frmVehicledetailsInspectionType");
-    this.clearData();
+//     this.clearData();
     this.setDataToSeg();  
     for (let i = 1; i <= 16; i++) {
   this.view["details" + i].flxArrow.onClick =

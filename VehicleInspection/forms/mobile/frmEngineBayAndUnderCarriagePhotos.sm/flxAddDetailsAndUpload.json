@@ -161,6 +161,14 @@
                 "wType": "Label"
             }
         },
+        "lblEstimatedCost": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "eeb03313dbda42f396c6bbe7aff0c08b",
+                "srcKUID": "ec3374ecf2f5461da4e137890cf6e77c",
+                "wType": "Label"
+            }
+        },
         "lblImgName": {
             "__events__": {},
             "__info__": {
@@ -199,6 +207,14 @@
                 "kuid": "cc7300f93f7d41a59f337774b1e9ba6f",
                 "srcKUID": "a839f5b02d9f42e4adc607f4a3b12414",
                 "wType": "Label"
+            }
+        },
+        "txtAreaEstimatedCost": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "hce583fe03e6405dab942cfcdc01a7eb",
+                "srcKUID": "i7a7527ce16246f3999ec715e52a5cae",
+                "wType": "TextArea"
             }
         },
         "txtAreaPleaseEnterDetails": {

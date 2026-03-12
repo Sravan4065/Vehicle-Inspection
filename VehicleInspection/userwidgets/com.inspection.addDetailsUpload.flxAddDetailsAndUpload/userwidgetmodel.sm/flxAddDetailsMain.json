@@ -42,6 +42,8 @@
         "flxAddDetails",
         "lblPleaseEnter",
         "txtAreaPleaseEnterDetails",
+        "lblEstimatedCost",
+        "txtAreaEstimatedCost",
         "flxUploadImages",
         "flxUploadedImage",
         "btnSubmitUpload"
