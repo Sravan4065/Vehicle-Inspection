@@ -3,7 +3,8 @@ define({
  onNavigate: function(context)
   {
     var self = this;
-    this.serviceId = context;
+    this.serviceId = context.type_service_id;
+    this.objectId = context.object_id;
     this.view.preShow = this.onPreShow.bind(this);
     this.view.segInspectionItems.onRowClick = this.onRowClickAction.bind(this);
   },
@@ -113,74 +114,77 @@ voltmx.application.showLoadingScreen(null,"LoadingScreen",constants.LOADING_SCRE
     var self = this;
     var selectedRow = self.view.segInspectionItems && 
         self.view.segInspectionItems.selectedRowItems;
-    
+    var navObj = {
+      "object_id" : self.objectId,
+      "lovId": selectedRow[0].lov_id || ""
+    }
     if(selectedRow && selectedRow[0].key)
       {
         switch(selectedRow[0].key)
           {
             case "6":
-//               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
-              NavigationManager.push("frmVehicledetailsInspectionType",selectedRow[0].lov_id);
+//               NavigationManager.push("frmVehicledetailsInspectionType",selectedRow[0].lov_id);
+                NavigationManager.push("frmVehicledetailsInspectionType",navObj);
               break;
               case "7":
 //               new voltmx.mvc.Navigation("frmEngineInspectionType").navigate();
-               NavigationManager.push("frmEngineInspectionType",selectedRow[0].lov_id);
+               NavigationManager.push("frmEngineInspectionType",navObj);
               break;
               case "8":
 //               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
-               NavigationManager.push("frmTransmission",selectedRow[0].lov_id);
+               NavigationManager.push("frmTransmission",navObj);
               break;
               case "9":
 //               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
-               NavigationManager.push("frmElectricalSystemCondition",selectedRow[0].lov_id);
+               NavigationManager.push("frmElectricalSystemCondition",navObj);
               break;
               case "10":
 //               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
-               NavigationManager.push("frmSuspensionCondition",selectedRow[0].lov_id);
+               NavigationManager.push("frmSuspensionCondition",navObj);
               break;
               case "11":
 //               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
-               NavigationManager.push("frmBrakeSystemCondition",selectedRow[0].lov_id);
+               NavigationManager.push("frmBrakeSystemCondition",navObj);
               break;
               case "12":
 //               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
-               NavigationManager.push("frmRimsCondition",selectedRow[0].lov_id);
+               NavigationManager.push("frmRimsCondition",navObj);
               break;
               case "13":
 //               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
-               NavigationManager.push("frmTyres",selectedRow[0].lov_id);
+               NavigationManager.push("frmTyres",navObj);
               break;
               case "14":
 //               new voltmx.mvc.Navigation("frmChassisDamageReport").navigate();
-               NavigationManager.push("frmChassisDamageReport",selectedRow[0].lov_id);
+               NavigationManager.push("frmChassisDamageReport",navObj);
               break;
                case "15":
 //               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
-               NavigationManager.push("frmInspectionExterior",selectedRow[0].lov_id);
+               NavigationManager.push("frmInspectionExterior",navObj);
               break;
               case "16":
 //               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
-               NavigationManager.push("frmInspectionInterior",selectedRow[0].lov_id);
+               NavigationManager.push("frmInspectionInterior",navObj);
                break;
                case "17":
 //               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
-               NavigationManager.push("frmVehicleSummaryreport",selectedRow[0].lov_id);
+               NavigationManager.push("frmVehicleSummaryreport",navObj);
               break;
                case "18":
 //               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
-               NavigationManager.push("frmServiceHistoryandManuals",selectedRow[0].lov_id);
+               NavigationManager.push("frmServiceHistoryandManuals",navObj);
               break;
                case "19":
 //               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
-               NavigationManager.push("frmPaintCondition",selectedRow[0].lov_id);
+               NavigationManager.push("frmPaintCondition",navObj);
               break;
                case "20":
 //               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
-               NavigationManager.push("frmEngineBayAndUnderCarriagePhotos",selectedRow[0].lov_id);
+               NavigationManager.push("frmEngineBayAndUnderCarriagePhotos",navObj);
               break;
                case "21":
 //               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
-               NavigationManager.push("frmMiscellaneous",selectedRow[0].lov_id);
+               NavigationManager.push("frmMiscellaneous",navObj);
               break;
             default:
               return;
