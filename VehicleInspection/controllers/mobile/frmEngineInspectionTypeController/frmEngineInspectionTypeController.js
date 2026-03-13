@@ -4,7 +4,8 @@ define({
   {
     var self = this;
     this.adjustRTL();
-    this.lovId = context;
+    this.lovId = context.lovId;
+    this.objectId = context.object_id;
 //     this.createUI();
     this.view.preShow = this.onPreShow.bind(this);
     this.flxSelectedItems = {}; 
@@ -14,8 +15,11 @@ define({
   onPreShow: function()
   {
     var self = this;
+    self.tempStore = self.tempStore || [];
    toggleFooterIcons(this.view, "frmEngineInspectionType"); 
    
+    this.fileDetails = [];
+    
      this.view.flxAddDetailsAndUpload.flxCloseAddDetails.onClick = () =>
     {
       self.view.flxAddDetailsAndUpload.setVisibility(false);
@@ -37,7 +41,39 @@ define({
       self.view.flxChooseFileTakePhoto.setVisibility(false);
     }
     this.view.flxAddDetailsAndUpload.setVisibility(false);
+    this.view.flxHeadingWithButton.flxBack.onClick = () =>
+    {
+      if(self.tempStore && self.tempStore.length > 0)
+        {
+          ImageUploadAndDeletion.deleteImage(self.tempStore, function(response, error){
+
+    if(error){
+        alert("Image deletion failed");
+        voltmx.print("Delete Error: " + JSON.stringify(error));
+        return;
+    }
+
+    if(response){
+        voltmx.print("Delete Response: " + JSON.stringify(response));
+
+        if(response.opstatus === 0){
+            alert("Image deleted successfully");
+        }else{
+            alert("Failed to delete image");
+        }
+    }else{
+        alert("Invalid response from server");
+    }
+
+});
+        }
+      else
+        {
+          NavigationManager.pop();
+        }
+    }
     
+    this.view.flxAddDetailsAndUpload.btnSubmitUpload.onClick = this.onAddDetailsSubmit.bind(this);
     this.invokeGetInspectionDetailsList();
   },
   
@@ -241,65 +277,7 @@ flxItem.add(
 
   }
   },
-  
-//   onOptionSelect: function (index, selectedType) {
 
-//     var flxItem = this.view["flxItem" + index];
-
-//     // Map each option to its UI widgets
-//     var optionsMap = {
-//         PASS: {
-//             flx: flxItem["flxPass" + index],
-//             lbl: flxItem["lblPass" + index],
-//             img: flxItem["imgTick" + index],
-//             flxSelectedSkin: "sknFlxFFFFFF0AAA00BorderRadius8px", // commented selected skin
-//             lblSelectedSkin: "sknLblDubai61b35c12pxRegular",
-//             imgSelectedSrc: "tickpassgreen.png"
-//         },
-//         REPAIR: {
-//             flx: flxItem["flxNeedsRepair" + index],
-//             lbl: flxItem["lblNeedsRepair" + index],
-//             img: flxItem["imgNeedsRepair" + index],
-//             flxSelectedSkin: "sknFlxFFFFFFd32437BorderRadius8px",
-//             lblSelectedSkin: "sknLblDubaid3243712pxRegular",
-//             imgSelectedSrc: "crossneedrepairred.png"
-//         },
-//         NA: {
-//             flx: flxItem["flxNotApplicable" + index],
-//             lbl: flxItem["lblNotApplicable" + index],
-//             img: flxItem["imgNotApplicable" + index],
-//             flxSelectedSkin: "sknFlxFFFFFFFFA500BorderRadius8px",
-//             lblSelectedSkin: "sknLblDubaiFFA50012pxRegular",
-//             imgSelectedSrc: "notappiconyellow.png"
-//         }
-//     };
-
-//     // Reset all options to default
-//     for (var key in optionsMap) {
-//         optionsMap[key].flx.skin = "sknFlxFFFFFFd2d5daBorderRadius8px"; // current default
-//         optionsMap[key].lbl.skin = "sknLblDubai00000012pxRegular";       // current default
-//         // Reset image to default (commented ones are only for selection)
-//         if(key === "PASS") optionsMap[key].img.src = "tickpass.png";
-//         else if(key === "REPAIR") optionsMap[key].img.src = "crossneedrepair.png";
-//         else optionsMap[key].img.src = "notappicon.png";
-//     }
-
-//     // Apply selection
-//     var selected = optionsMap[selectedType];
-//     selected.flx.skin = selected.flxSelectedSkin;
-//     selected.lbl.skin = selected.lblSelectedSkin;
-//     selected.img.src = selected.imgSelectedSrc;
-
-//     // Track selection
-//     this.flxSelectedItems[index] = {
-//         selected: selectedType,
-//         flx: selected.flx,
-//         lbl: selected.lbl,
-//         img: selected.img
-//     };
-
-//     this.view.forceLayout();
-// },
   
   onOptionSelect: function (index, selectedRating) {
 
@@ -333,8 +311,80 @@ flxItem.add(
     this.view.forceLayout();
 },
   
+//   onAddDetailsSubmit: function()
+//   {
+//     var self = this;
+//     ImageUploadAndDeletion.uploadImage(self.objectId,self.fileDetails);
+//   },
+  
+  onAddDetailsSubmit: function()
+{
+    var self = this;
+
+    ImageUploadAndDeletion.uploadImage(
+        self.objectId,
+        self.fileDetails,
+        function(response, error){
+
+            if(error){
+                alert("Image upload failed");
+              return;
+            }
+          if(response){
+            if(response.message === "Success"){
+              alert(response.message || "Upload Successful");
+              var parsed = JSON.parse(response.response || "[]");
+              
+                if(parsed && parsed.length > 0){
+
+        var item = parsed[0];
+
+        var payload = JSON.parse(item.object_image_payload || "{}");
+        var imageLog = JSON.parse(item.object_image_loged_result || "{}");
+
+        var obj = {
+            file_name: payload.file_name,
+            file_url: payload.file_url,
+            object_id: payload.object_id,
+            image_id: imageLog.id
+        };
+
+        if(!this.tempStore){
+            this.tempStore = [];
+        }
+
+        this.tempStore.push(obj);
+
+        voltmx.print("Temp Store: " + JSON.stringify(this.tempStore));
+    }
+            }
+            else{
+              if(response.response)
+              {
+                var parsed = JSON.parse(response.response || "[]");
+                var errCode = parsed[0] && parsed[0].error_code;
+
+                if(errCode == 409){
+                  alert("File already exists");
+                }
+                else
+                {
+                  alert("Failed");
+                }
+              }
+            }
+          }
+          else
+          {
+              alert("Invalid response");
+            }
+        }
+    );
+},
+  
   showAddDetails: function(record)
   {
+    this.record = record;
     this.view.flxAddDetailsAndUpload.flxUploadedImage.setVisibility(false);
     this.view.flxAddDetailsAndUpload.flxUploadImages.setVisibility(true);
     this.view.flxAddDetailsAndUpload.setVisibility(true);
@@ -369,22 +419,31 @@ flxItem.add(
 
       var base64Data = voltmx.convertToBase64(rawbytes);
 
-//       var sizeInBytes = self.estimateBase64Size(base64Data);
-//       var sizeInMB = (sizeInBytes / (1024 * 1024)).toFixed(2);
+      
+   
+      var sizeInBytes = self.estimateBase64Size(base64Data);
+      var sizeInMB = (sizeInBytes / (1024 * 1024)).toFixed(2);
 
-//       if (sizeInBytes > 10 * 1024 * 1024) {
-//         alert("Image too large. Please select an image smaller than 10 MB.");
-//         return;
-//       }
+      if (sizeInBytes > 10 * 1024 * 1024) {
+        alert("Image too large. Please select an image smaller than 10 MB.");
+        return;
+      }
 
-//       var filetype = detectFileType(base64Data) || ".jpg";
-//       var filefullname = filename + filetype;
+      var filetype = detectFileType(base64Data) || ".jpg";
+      var filefullname = filename + filetype;
+      this.fileDetails = [];
+      
+         this.fileDetails.push({
+    "is_thumbnail":"false",
+            "inspection_category": self.record.value_en,
+            "inspection_subcategory":self.record.item_name,
+    "filename": filefullname,
+    "base64": base64Data
+    });
 
 //       self.selectedPdfFileName = filefullname;
       self.selectedPdfBase64 = base64Data;
-//       self.view[imgItem].index = base64Data;
        
-//       self.fleetDocUpload();
       
       self.view.flxChooseFileTakePhoto.setVisibility(false);
       self.view.flxAddDetailsAndUpload.flxUploadedImage.setVisibility(true);
@@ -428,21 +487,29 @@ flxItem.add(
       filename = "captured_image_" + new Date().getTime();
     }
 
+    
+    
     var base64Image = voltmx.convertToBase64(rawBytes);
 
-//     var sizeInBytes = this.estimateBase64Size(base64Image);
-//     var sizeInMB = (sizeInBytes / (1024 * 1024)).toFixed(2);
+    
+        var sizeInBytes = this.estimateBase64Size(base64Image);
+    var sizeInMB = (sizeInBytes / (1024 * 1024)).toFixed(2);
 
-//     if (sizeInBytes > 10 * 1024 * 1024) {
-//       alert(" Image too large. Please capture an image smaller than 10 MB.");
-//       return;
-//     }
+    if (sizeInBytes > 10 * 1024 * 1024) {
+      alert(" Image too large. Please capture an image smaller than 10 MB.");
+      return;
+    }
 
-//     var filetype = detectFileType(base64Image) || ".jpg";
-//     var filefullname = filename + filetype;
+    var filetype = detectFileType(base64Image) || ".jpg";
+    var filefullname = filename + filetype;
+    this.fileDetails = [];
+    this.fileDetails.push({
+    filename: filefullname,
+    base64: base64Image
+    });
 
-//     this.filenameCam = filefullname;
-//     this.selectedPdfFileName = filefullname;
+
+
     this.selectedPdfBase64 = base64Image;
     self.view.flxChooseFileTakePhoto.setVisibility(false);
       self.view.flxAddDetailsAndUpload.flxUploadedImage.setVisibility(true);
@@ -458,6 +525,16 @@ flxItem.add(
     voltmx.print("No image captured from camera.");
   }
 },
+  
+    estimateBase64Size: function (base64Str) {
+  if (!base64Str || typeof base64Str !== "string") {
+    return 0; // or handle error gracefully
+  }
+
+  let padding = (base64Str.match(/=*$/) || [""])[0].length;
+  return Math.floor((base64Str.length * 3) / 4) - padding;
+},
+  
   invokeGetInspectionDetailsList: function()
   {
     
@@ -474,7 +551,8 @@ voltmx.application.showLoadingScreen(null,"LoadingScreen",constants.LOADING_SCRE
     
     var data = 
         {
-         "master_lov_id": self.lovId
+         "master_lov_id": self.lovId,
+          "object_id": self.objectId
         }
     integrationObj.invokeOperation(operationName, headers, data, successCallback, failureCallback)
     

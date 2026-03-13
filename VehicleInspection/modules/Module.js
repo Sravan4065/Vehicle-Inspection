@@ -415,3 +415,22 @@ function resetFooterToNormal(footer) {
   }
 }
 
+function detectFileType(base64) {
+  if (!base64) return ".bin";
+ 
+  if (base64.startsWith("data:image/jpeg") || base64.startsWith("/9j/")) {
+    return ".jpg";
+  } else if (base64.startsWith("data:image/png") || base64.startsWith("iVBORw0KGgo")) {
+    return ".png";
+  } else if (base64.startsWith("data:image/webp") || base64.startsWith("UklG")) {
+    return ".webp";
+  } else if (
+    base64.startsWith("data:application/pdf") || 
+    base64.startsWith("JVBER")
+  ) {
+    return ".pdf";
+  } else {
+    return ".bin";
+  }
+}
+

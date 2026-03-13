@@ -14,7 +14,7 @@ onNavigate: function(context){
    toggleFooterIcons(this.view, "frmMyinspectionVehicleDetails");
    this.view.btnStart.onClick = () =>
    {
-     NavigationManager.push("frmChooseInspectionType",self.vehicleDetails.type_service_id);
+     NavigationManager.push("frmChooseInspectionType",self.vehicleDetails);
    }
    this.populateDetails();
  },
