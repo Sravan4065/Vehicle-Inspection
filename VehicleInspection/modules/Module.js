@@ -434,3 +434,85 @@ function detectFileType(base64) {
   }
 }
 
+function base64Encode(str) {
+    var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+    var encoded = '';
+    var i = 0;
+ 
+    while (i < str.length) {
+        var c1 = str.charCodeAt(i++);
+        var c2 = str.charCodeAt(i++);
+        var c3 = str.charCodeAt(i++);
+ 
+        var e1 = c1 >> 2;
+        var e2 = ((c1 & 3) << 4) | (c2 >> 4);
+        var e3 = ((c2 & 15) << 2) | (c3 >> 6);
+        var e4 = c3 & 63;
+ 
+        if (isNaN(c2)) {
+            e3 = e4 = 64;
+        } else if (isNaN(c3)) {
+            e4 = 64;
+        }
+ 
+        encoded += chars.charAt(e1) + chars.charAt(e2) + chars.charAt(e3) + chars.charAt(e4);
+    }
+ 
+    return encoded;
+}
+
+function fetchClientProperties() {
+  var client = voltmx.sdk.getCurrentInstance();
+  if (!client) {
+  voltmx.print("SDK not initialized yet. Retrying after 500ms...");
+ 
+  try {
+    voltmx.timer.cancel("fetchClientRetry");
+  } catch (e) {
+  }
+ 
+  voltmx.timer.schedule("fetchClientRetry", function() {
+    fetchClientProperties();
+  }, 0.5, false);
+ 
+  return;
+}
+ 
+
+  var configurationSvc = client.getConfigurationService();
+  configurationSvc.getAllClientAppProperties(function(response) {
+//     voltmx.store.setItem("BASE_URL", response.BASE_URL);
+    voltmx.store.setItem("ALWATANEYA_DEVELOPMENT_PUBLIC_APP_KEY", response.ALWATANEYA_DEVELOPMENT_PUBLIC_APP_KEY);
+    voltmx.store.setItem("ALWATANEYA_DEVELOPMENT_PUBLIC_APP_SECRET", response.ALWATANEYA_DEVELOPMENT_PUBLIC_APP_SECRET);
+//     voltmx.store.setItem("PAYMENT_ACCESS_TOKEN", response.PAYMENT_ACCESS_TOKEN);
+//     voltmx.store.setItem("PAYMENT_ACCESS_URL", response.PAYMENT_ACCESS_URL);
+//     voltmx.store.setItem("PAYMENT_ORDER_ID", response.PAYMENT_ORDER_ID);
+//     voltmx.store.setItem("DAM_USER_NAME",response.DAM_USER_NAME);
+//     voltmx.store.setItem("DAM_PASSWORD",response.DAM_PASSWORD);
+    
+    
+    if (response.PAYMENT_ACCESS_TOKEN) {
+    voltmx.store.setItem("PAYMENT_ACCESS_TOKEN", response.PAYMENT_ACCESS_TOKEN);
+}
+
+if (response.PAYMENT_ACCESS_URL) {
+    voltmx.store.setItem("PAYMENT_ACCESS_URL", response.PAYMENT_ACCESS_URL);
+}
+
+if (response.PAYMENT_ORDER_ID) {
+    voltmx.store.setItem("PAYMENT_ORDER_ID", response.PAYMENT_ORDER_ID);
+}
+
+if (response.DAM_USER_NAME) {
+    voltmx.store.setItem("DAM_USER_NAME", response.DAM_USER_NAME);
+}
+
+if (response.DAM_PASSWORD) {
+    voltmx.store.setItem("DAM_PASSWORD", response.DAM_PASSWORD);
+}
+
+
+  }, function(error) {
+    voltmx.print("Failed to retrieve client app properties: " + JSON.stringify(error));
+  });
+}

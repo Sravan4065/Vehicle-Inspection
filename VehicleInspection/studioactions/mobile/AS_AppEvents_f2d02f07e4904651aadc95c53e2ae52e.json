@@ -1,0 +1,27 @@
+{
+    "AS_AppEvents_f2d02f07e4904651aadc95c53e2ae52e": {
+        "id": "AS_AppEvents_f2d02f07e4904651aadc95c53e2ae52e",
+        "type": "ACTION_SEQUENCE",
+        "params": [{
+            "datatype": "collection",
+            "name": "eventobject"
+        }],
+        "language": "js",
+        "eventType": "Pre Appinit",
+        "actions": [{
+            "id": "ADD_SNIPPET_ad1c00dccc354241b48e2c34ca12c589",
+            "type": "ADD_SNIPPET",
+            "codeSnippet": "voltmx.store.setItem(\"BASE_URL\",\"https://dev2-hcltx.et.ae:443/\");",
+            "parentId": null
+        }, {
+            "id": "INVOKE_FUNCTION__i215d2617d71488594c2d56e304b2c4d",
+            "type": "INVOKE_FUNCTION",
+            "sequenceKUID": "fetchClientProperties",
+            "display": "fetchClientProperties",
+            "inputparams": [],
+            "parentId": null,
+            "disabled": null,
+            "source": "module"
+        }]
+    }
+}
