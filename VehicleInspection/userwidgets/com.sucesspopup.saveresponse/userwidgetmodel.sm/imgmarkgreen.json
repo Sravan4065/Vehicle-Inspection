@@ -1,8 +1,10 @@
 {
+    "@class": "com.kony.gen.viz.model.component.KVizImage2",
     "DNDConfig": null,
+    "_base64_": null,
     "_height_": {
         "type": "string",
-        "value": "100%"
+        "value": "34.96%"
     },
     "_left_": {
         "type": "string",
@@ -14,25 +16,22 @@
         0,
         0
     ],
-    "_orientation_": 6,
     "_padding_": [
         0,
         0,
         0,
         0
     ],
-    "_percent_": true,
-    "_skin_": "s43b3f0daddb4853bfc5983bfb525431",
+    "_skin_": "sb8f9ecd82a04b66a15ce7fd3be4cb0b",
+    "_src_": "mark.png",
     "_top_": {
         "type": "string",
         "value": "0"
     },
     "_width_": {
         "type": "string",
-        "value": "100%"
+        "value": "37.95%"
     },
-    "allboxes": [],
-    "autogrowmode": 0,
     "canUpdateUI": true,
     "centerx": {
         "type": "string",
@@ -40,31 +39,21 @@
     },
     "centery": {
         "type": "string",
-        "value": "50%"
+        "value": "33%"
     },
-    "children": [
-        "flxHeader",
-        "flxBody",
-        "flxfooter",
-        "saveresponse"
-    ],
-    "clipbounds": false,
     "containerweight": 100,
-    "enablescrolling": true,
-    "id": "flxMain",
+    "id": "imgmarkgreen",
+    "imagescalemode": 1,
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "a335271ec6c74f06b1b484757a028df3",
-    "layouttype": 2,
-    "name": "kony.ui.FlexContainer",
-    "parent": "frmPaintCondition",
-    "pf": "frmPaintCondition",
+    "kuid": "d105cce42c874f2d8518f6f50216fc4c",
+    "name": "kony.ui.Image2",
+    "parent": "flxPopup",
+    "pf": "userwidgetmodel",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
-    "retainflowhorizontalalignment": false,
-    "snapgridsize": 10,
-    "snaptogrid": true,
-    "wType": "FlexContainer",
-    "widgetalignment": 1
+    "srcType": 1,
+    "wType": "Image",
+    "widgetalignment": 5
 }

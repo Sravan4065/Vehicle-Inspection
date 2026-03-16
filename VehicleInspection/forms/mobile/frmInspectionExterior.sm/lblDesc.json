@@ -1,13 +1,17 @@
 {
     "@class": "com.kony.gen.viz.model.component.KVizLabel",
     "DNDConfig": null,
+    "_bottom_": {
+        "type": "string",
+        "value": "8dp"
+    },
     "_height_": {
         "type": "ref",
         "value": "preferred"
     },
     "_left_": {
         "type": "string",
-        "value": "5dp"
+        "value": "2%"
     },
     "_margin_": [
         1,
@@ -21,11 +25,15 @@
         0,
         0
     ],
-    "_skin_": "sd13fb851fca4ceab20ba993ab0aefe5",
-    "_text_": "1",
+    "_skin_": "se7bd885a6dd487da04265d5a6d6daef",
+    "_text_": "Inspect all 21 designated chassis points for signs of impact, cracks, bends, rust, or deformation. Mark the corresponding checkbox for each damaged area to ensure accurate documentation and assessment.",
+    "_top_": {
+        "type": "string",
+        "value": "10dp"
+    },
     "_width_": {
-        "type": "ref",
-        "value": "preferred"
+        "type": "string",
+        "value": "98%"
     },
     "_wrapping_": 2,
     "android": {
@@ -35,13 +43,9 @@
         }
     },
     "canUpdateUI": true,
-    "centery": {
-        "type": "string",
-        "value": "50%"
-    },
     "containerweight": 100,
     "contentalignment": 4,
-    "id": "lblCheckNo",
+    "id": "lblDesc",
     "info": null,
     "ipad": {
         "psp": {
@@ -55,10 +59,10 @@
     },
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "e8ae74302f574366844eba90dac607df",
+    "kuid": "c323ba0f7b704c5e93e1c615ea00ef82",
     "name": "kony.ui.Label",
-    "parent": "flxItem1",
-    "pf": "frmChassisDamageReport",
+    "parent": "flxDescriptionWithImage",
+    "pf": "frmInspectionExterior",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "textstyle": {},

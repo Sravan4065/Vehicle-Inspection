@@ -45,7 +45,8 @@
     "children": [
         "flxHeader",
         "flxBody",
-        "flxfooter"
+        "flxfooter",
+        "saveresponse"
     ],
     "clipbounds": false,
     "containerweight": 100,
@@ -54,7 +55,7 @@
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "dc48b9d1206b4c6fa94f34577ebe898d",
+    "kuid": "cccf1b576c8748f8ba398309d44d30b2",
     "layouttype": 2,
     "name": "kony.ui.FlexContainer",
     "parent": "frmChassisDamageReport",

@@ -1,8 +1,8 @@
 {
     "DNDConfig": null,
     "_height_": {
-        "type": "string",
-        "value": "100%"
+        "type": "ref",
+        "value": "preferred"
     },
     "_left_": {
         "type": "string",
@@ -22,44 +22,38 @@
         0
     ],
     "_percent_": true,
-    "_skin_": "s43b3f0daddb4853bfc5983bfb525431",
+    "_skin_": "s7fe05cfc3b9433991f015810c396703",
     "_top_": {
         "type": "string",
-        "value": "0"
+        "value": "2dp"
     },
     "_width_": {
         "type": "string",
-        "value": "100%"
+        "value": "90%"
     },
     "allboxes": [],
-    "autogrowmode": 0,
+    "autogrowmode": 1,
     "canUpdateUI": true,
     "centerx": {
         "type": "string",
         "value": "50%"
     },
-    "centery": {
-        "type": "string",
-        "value": "50%"
-    },
     "children": [
-        "flxHeader",
-        "flxBody",
-        "flxfooter",
-        "saveresponse"
+        "flxImage",
+        "lblDesc"
     ],
-    "clipbounds": false,
+    "clipbounds": true,
     "containerweight": 100,
     "enablescrolling": true,
-    "id": "flxMain",
+    "id": "flxDescriptionWithImage",
     "info": null,
     "iscustomlayout": false,
-    "isvisible": true,
-    "kuid": "a335271ec6c74f06b1b484757a028df3",
-    "layouttype": 2,
+    "isvisible": false,
+    "kuid": "fbc84b7c817d443f9740fc961fca3c57",
+    "layouttype": 4,
     "name": "kony.ui.FlexContainer",
-    "parent": "frmPaintCondition",
-    "pf": "frmPaintCondition",
+    "parent": "flxInnerBody",
+    "pf": "frmInspectionExterior",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainflowhorizontalalignment": false,

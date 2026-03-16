@@ -40,7 +40,7 @@
     },
     "children": [
         "flxPendingAndCompletedItems",
-        "segInwardEntryList"
+        "segImagesLIst"
     ],
     "clipbounds": true,
     "containerweight": 100,

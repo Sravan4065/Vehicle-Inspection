@@ -4,11 +4,11 @@
     "_base64_": null,
     "_height_": {
         "type": "string",
-        "value": "230dp"
+        "value": "110%"
     },
     "_left_": {
         "type": "string",
-        "value": "0"
+        "value": "0dp"
     },
     "_margin_": [
         0,
@@ -23,31 +23,35 @@
         0
     ],
     "_skin_": "sb8f9ecd82a04b66a15ce7fd3be4cb0b",
-    "_src_": "vehiclewithmarkings.png",
+    "_src_": "imgtickblack.png",
     "_top_": {
         "type": "string",
-        "value": "10dp"
+        "value": "0dp"
     },
     "_width_": {
         "type": "string",
-        "value": "94%"
+        "value": "110%"
     },
     "canUpdateUI": true,
     "centerx": {
         "type": "string",
         "value": "50%"
     },
+    "centery": {
+        "type": "string",
+        "value": "50%"
+    },
     "containerweight": 100,
-    "id": "imgVehicleWithMarks",
+    "id": "imgTick",
     "imagescalemode": 0,
     "info": null,
     "invokedProperty": "src",
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "ed178eda290b46a9a088a9b5c142a693",
+    "kuid": "a7da3f69ac3a46c19ccc8524e3660909",
     "name": "kony.ui.Image2",
-    "parent": "flxInnerBody",
-    "pf": "frmChassisDamageReport",
+    "parent": "flxCheck1",
+    "pf": "frmInspectionExterior",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "srcType": 1,
