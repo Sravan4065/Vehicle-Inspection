@@ -42,7 +42,7 @@
         "btnSaveResponse": {
             "__events__": {},
             "__info__": {
-                "kuid": "i74827fa8b304771a2469666b398a32c",
+                "kuid": "f4e1d6de96c84cda86db2f89ff825b2d",
                 "srcKUID": "e7ed5d5d305644c28c7ab5529c49040e",
                 "wType": "Button"
             },
@@ -56,7 +56,7 @@
         "flxBack": {
             "__events__": {},
             "__info__": {
-                "kuid": "ea571727947949f3a9d0468e7663a668",
+                "kuid": "j84621323e034e56a63ac03bbb9603e7",
                 "srcKUID": "f0f0e5abfded46d7a38ef4f48d3c8f89",
                 "wType": "FlexContainer"
             }
@@ -64,7 +64,7 @@
         "flxHeading": {
             "__events__": {},
             "__info__": {
-                "kuid": "id11a24a17c14a2ab25a741f36340d9f",
+                "kuid": "b9341846a9ae4c51a1bc5a05502ba021",
                 "srcKUID": "f1a5b4fea22c40debec9edda654d7627",
                 "wType": "FlexContainer"
             }
@@ -73,7 +73,7 @@
             "__events__": {},
             "__info__": {
                 "isRoot": true,
-                "kuid": "bcf3f8dddcae49a6b8f719eb87762fca",
+                "kuid": "d0b70682490445bbbd2845b6bb8df4c1",
                 "srcKUID": "e1ffe84933ff4c53821a6187631a25bd",
                 "wType": "FlexContainer"
             },
@@ -105,19 +105,20 @@
         "imgBack": {
             "__events__": {},
             "__info__": {
-                "kuid": "a29daa101ff54dcf9fa6882d872e854a",
+                "kuid": "ec1ceb4f8a2c4adc88b1b9112e18560e",
                 "srcKUID": "af3ad0728c3c4d4e9e4311c055f4f9ea",
                 "wType": "Image"
-            }
+            },
+            "src": "backarrow.png"
         },
         "lblImages": {
             "__events__": {},
             "__info__": {
-                "kuid": "ed3a0dc507d64b44b220320e7cd0eb20",
+                "kuid": "i5136510189e4b12be2780fb7dafeda2",
                 "srcKUID": "adf7eb6db260494b9bcfb8940fb4b583",
                 "wType": "Label"
             },
-            "text": "Chassis Damage Report"
+            "text": "ChassisDamageReport"
         }
     },
     "enablescrolling": true,
@@ -126,7 +127,7 @@
     "iscustomlayout": false,
     "isdatareferenced": false,
     "isvisible": true,
-    "kuid": "bcf3f8dddcae49a6b8f719eb87762fca",
+    "kuid": "d0b70682490445bbbd2845b6bb8df4c1",
     "layouttype": 2,
     "masterType": 0,
     "name": "kony.ui.UserWidgetInstance",

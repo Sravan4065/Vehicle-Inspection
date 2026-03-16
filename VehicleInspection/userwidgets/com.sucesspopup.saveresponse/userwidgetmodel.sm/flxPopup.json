@@ -2,7 +2,7 @@
     "DNDConfig": null,
     "_height_": {
         "type": "string",
-        "value": "7%"
+        "value": "35%"
     },
     "_left_": {
         "type": "string",
@@ -22,33 +22,43 @@
         0
     ],
     "_percent_": true,
-    "_skin_": "s43b3f0daddb4853bfc5983bfb525431",
+    "_skin_": "s2fd193c7b034a0ebdbf7d1fee1d0155",
     "_top_": {
         "type": "string",
-        "value": "23%"
+        "value": "0"
     },
     "_width_": {
         "type": "string",
-        "value": "100%"
+        "value": "95%"
     },
     "allboxes": [],
     "autogrowmode": 0,
     "canUpdateUI": true,
+    "centerx": {
+        "type": "string",
+        "value": "50%"
+    },
+    "centery": {
+        "type": "string",
+        "value": "50%"
+    },
     "children": [
-        "flxIndicator1"
+        "imgmarkgreen",
+        "lblUPdatedsucessfully",
+        "btnClose"
     ],
     "clipbounds": false,
     "containerweight": 100,
     "enablescrolling": true,
-    "id": "flxIndicator",
+    "id": "flxPopup",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "cee6394d1ba6498883cc035177e442ff",
+    "kuid": "bf43ffb367af42a7ac744ca949d13c33",
     "layouttype": 2,
     "name": "kony.ui.FlexContainer",
-    "parent": "flxMain",
-    "pf": "frmInspectionExterior",
+    "parent": "saveresponse",
+    "pf": "userwidgetmodel",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainflowhorizontalalignment": false,

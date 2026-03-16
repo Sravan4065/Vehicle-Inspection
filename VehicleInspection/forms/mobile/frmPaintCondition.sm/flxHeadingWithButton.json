@@ -108,7 +108,8 @@
                 "kuid": "j2e0515a7c084c29951cdf4a18edffe4",
                 "srcKUID": "af3ad0728c3c4d4e9e4311c055f4f9ea",
                 "wType": "Image"
-            }
+            },
+            "src": "backarrow.png"
         },
         "lblImages": {
             "__events__": {},

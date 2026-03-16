@@ -2,6 +2,7 @@ define({
 
   onNavigate: function()
   {
+    this.adjustRTL();
     this.view.preShow = this.onPreShow.bind(this);
     
   },
@@ -14,8 +15,13 @@ define({
 //     {
 //       NavigationManager.pop();
 //     }
+      this.pageSize = 5;
+    this.currentOffset = 0;
+    this.view.segImagesLIst.setData([]);
+   
+     this.showPendingVehicles();
     
-    this.view.segInwardEntryList.onRowClick = () =>
+    this.view.segImagesLIst.onRowClick = () =>
     {
       NavigationManager.push("frmImageCatageory");
     }
@@ -29,10 +35,34 @@ define({
     {
       this.showCompletedVehicles();
     }
+      
+       this.view.btnLoadMore.onClick = this.onLoadMoreClick.bind(this);
   },
+  
+   onLoadMoreClick: function()
+  {
+    var self = this;
+    if(self.isPending)
+      {
+        self.pageSize += 5;
+        self.invokeImagespending();
+      }
+    else
+      {
+        self.pageSize += 5;
+        self.invokePhotoCompleted();
+      }
+  },
+  
   
   showPendingVehicles: function()
   {
+    
+     this.isPending = true;
+    this.pageSize = 5;
+    this.currentOffset = 0;
+    this.view.segImagesLIst.setData([]);
+    this.invokeImagespending();
     this.view.flxPendingVehicles.skin = "sknFlxFFE2E5";
     this.view.lblPendingVehicles.skin = "sknlblDubaid3243720pxMedium";
     this.view.lblPendingCount.skin = "sknLblDubai231f2020pxRegular";
@@ -46,6 +76,13 @@ define({
   
   showCompletedVehicles: function()
   {
+    
+      this.isPending = false;
+    this.pageSize = 5;
+    this.currentOffset = 0;
+    this.view.segImagesLIst.setData([]);
+    this.invokePhotoCompleted();
+
     this.view.flxPendingVehicles.skin = "sknFlxBasic";
     this.view.lblPendingVehicles.skin = "sknlblDubaid3243720pxMedium";
     this.view.lblPendingCount.skin = "sknLblDubai231f2020pxRegular";
@@ -55,6 +92,281 @@ define({
     this.view.lblCompletedVehicles.skin = "sknlblDubaid3243720pxMedium";
     this.view.lblCompletedCount.skin = "sknLblDubai231f2020pxRegular";
     this.view.flxULCompleted.skin = "sknflxd32437";
+  },
+  
+  invokeImagespending: function() {
+  var self = this;
+    checkTokenValidatity(function() {
+    voltmx.application.showLoadingScreen(null, "Loading..",     constants.LOADING_SCREEN_POSITION_ONLY_CENTER, false, true, {         shouldShowLabelInBottom: "true",         separatorHeight: 45,         progressIndicatorType: constants.PROGRESS_INDICATOR_TYPE_SMALL,         progressIndicatorColor: "Gray"     });
+  var serviceName = "fry_int_inspection";
+  var integrationObj = voltmx.sdk.getCurrentInstance()
+                                  .getIntegrationService(serviceName);
+  var operationName = "get-photo-vehicle";
+
+  var data = {
+    "lot_no": "",
+  "model": "",
+  "chassis_number": "",
+  "location": "",
+  "is_photo_done": "0",
+  "days": "7",
+  "page": "1",
+  "page_size": "10"
+  };
+
+  // Headers
+  var headers = {
+      "user_token": voltmx.store.getItem("getUserAccesstoken") 
+  };
+
+  integrationObj.invokeOperation(
+      operationName,
+      headers,
+      data,
+      self.operationSuccessPending.bind(self),
+      self.operationFailurePending.bind(self)
+  );
+    });
+},
+  
+  operationSuccessPending: function(response)
+  {
+    voltmx.application.dismissLoadingScreen();
+    voltmx.print(response);
+    this.addToSegment(response);
+  },
+  
+  operationFailurePending: function(error)
+  {
+    voltmx.application.dismissLoadingScreen();
+    voltmx.print(error);
+  },
+  
+   invokePhotoCompleted: function() {
+  var self = this;
+     checkTokenValidatity(function() {
+         voltmx.application.showLoadingScreen(null, "Loading..",     constants.LOADING_SCREEN_POSITION_ONLY_CENTER, false, true, {         shouldShowLabelInBottom: "true",         separatorHeight: 45,         progressIndicatorType: constants.PROGRESS_INDICATOR_TYPE_SMALL,         progressIndicatorColor: "Gray"     });
+
+  var serviceName = "fry_int_inspection";
+  var integrationObj = voltmx.sdk.getCurrentInstance()
+                                  .getIntegrationService(serviceName);
+  var operationName = "get-photo-vehicle";
+
+  var data = {
+     "lot_no": "",
+  "model": "",
+  "chassis_number": "",
+  "location": "",
+  "is_photo_done": "1",
+  "days": "7",
+  "page": "1",
+  "page_size": "10"
+  };
+
+  // Headers
+  var headers = {
+      "user_token": voltmx.store.getItem("getUserAccesstoken") 
+  };
+
+  integrationObj.invokeOperation(
+      operationName,
+      headers,
+      data,
+      self.operationSuccessCompleted.bind(self),
+      self.operationFailureCompleted.bind(self)
+  );
+     });
+},
+  
+  operationSuccessCompleted: function(response)
+  {
+    voltmx.application.dismissLoadingScreen();
+    voltmx.print(response);
+    this.addToSegment(response);
+  },
+  
+  operationFailureCompleted: function(error)
+  {
+    voltmx.application.dismissLoadingScreen();
+    voltmx.print(error);
+  },
+
+  
+  addToSegment: function(response) {
+    var self = this;
+
+    var records = response && response.records ? response.records : [];
+    if(records.length > 0)
+      {
+        self.view.lblNorecords.setVisibility(false);
+       self.view.segImagesLIst.setVisibility(true);
+      }
+     else{
+        self.view.lblNorecords.setVisibility(true);
+        self.view.segImagesLIst.setVisibility(false);
+     }
+    var newRecords = records.slice(self.currentOffset);
+    var isArabic = voltmx.i18n.getCurrentLocale() === "ar_AE";
+    
+
+    self.view.segImagesLIst.widgetDataMap = {
+        "flxLotModel": "flxLotModel",
+        "flxVehicleIcon":"flxVehicleIcon",
+        "flxModelAndNumber": "flxModelAndNumber",
+        "flxLocation": "flxLocation",
+        "flxDate": "flxDate",
+        "flxViewDetailsInwardEntry": "flxViewDetailsInwardEntry",
+        "lblLotAndModel": "lblLotAndModel",
+        "lblVehicleNumber": "lblVehicleNumber",
+        "lblLocation": "lblLocation",
+        "lblDate": "lblDate",
+        "lblViewDetailsInwardEntry": "lblViewDetailsInwardEntry"
+    };
+
+    var data = [];
+
+    if (newRecords.length > 0) {
+//         self.view.lblNorecords.setVisibility(false);
+//         self.view.segInwardEntryList.setVisibility(true);
+        newRecords.forEach(function(record) {
+
+            data.push({
+                "flxVehicleIcon": 
+              {
+                "left": isArabic ? "" : "5%",
+                "right": isArabic ? "4%": ""
+              },
+              "flxModelAndNumber":{
+                "left": isArabic ? "" : "2%",
+                "right": isArabic ? "2%": ""
+              },
+                "lblLotAndModel":{
+                  "text": (record.lot_no || "") + " " + (record.model || ""),
+                    "left": isArabic ? "" : "2%",
+                "right": isArabic ? "2%": ""
+                }, 
+               "lblVehicleNumber":{
+                  "text": record.chassis_number || "",
+                    "left": isArabic ? "" : "2%",
+                "right": isArabic ? "2%": ""
+                }, 
+                "lblVehicleNumber": record.chassis_number || "",
+                "lblLocation": record.location || "",
+                "lblDate": record.yard_received_date || "",
+                "flxLocation": {
+                   "isVisible": !self.isPending,
+                   "reverseLayoutDirection": isArabic
+                },
+                "flxViewDetailsInwardEntry":
+              {
+                  "left": isArabic ? "5%" : "",
+                   "right": isArabic ? "" : "5%"
+                },
+                "flxDate": {
+                   "isVisible": !self.isPending,
+                   "reverseLayoutDirection": isArabic
+                },
+                "lblViewDetailsInwardEntry": "View Details",
+                 
+                "flxViewDetailsInwardEntry": {
+                    "left": isArabic ? "5%" : "",
+                    "right": isArabic ? "" : "5%",
+                    "onClick": function() {
+                        self.openDetails(record.object_id);
+                    }
+                }
+            });
+
+        });
+
+    }
+    else
+      {
+//         self.view.lblNorecords.setVisibility(true);
+//         self.view.segInwardEntryList.setVisibility(false);
+      }
+    
+      if (records.length < self.pageSize) {
+    self.view.btnLoadMore.setVisibility(false);
+} else {
+    self.view.btnLoadMore.setVisibility(true);
+}
+     self.currentOffset += newRecords.length;
+
+    self.view.segImagesLIst.setData(data);
+},
+  
+   openDetails: function(objectId)
+  {
+    var self = this;
+    new voltmx.mvc.Navigation("frmImageCatageory").navigate(
+    {
+      "objectId": objectId,
+      "isPending": self.isPending
+    });
+  },
+  
+    adjustRTL: function()
+  {
+    var self = this;
+    var isArabic = voltmx.i18n.getCurrentLocale() === "ar_AE";
+    
+    self.view.flxULSummary.reverseLayoutDirection = isArabic;
+    if(isArabic)
+      {
+        self.view.flxSummary.lblActivityName.left = "";
+        self.view.flxSummary.lblActivityName.right = "5%";
+        
+        self.view.flxSummary.lblTotalVehicles.left = "";
+        self.view.flxSummary.lblTotalVehicles.right = "0dp";
+        
+        self.view.flxSummary.lblCompletedVehicles.left = "";
+        self.view.flxSummary.lblCompletedVehicles.right = "0dp";
+        
+        self.view.flxSummary.lblPendingVehicles.left = "";
+        self.view.flxSummary.lblPendingVehicles.right = "0dp";
+        
+        self.view.flxSummary.lblTotalCount.left = "0dp";
+        self.view.flxSummary.lblTotalCount.right = "";
+        
+        self.view.flxSummary.lblCompletedCount.left = "0dp";
+        self.view.flxSummary.lblCompletedCount.right = "";
+        
+        self.view.flxSummary.lblPendingCount.left = "0dp";
+        self.view.flxSummary.lblPendingCount.right = "";
+        
+        self.view.lblSummaryOfVehicleInspection.left = "";
+        self.view.lblSummaryOfVehicleInspection.right = "0dp";
+      }
+    else
+      {
+        self.view.flxSummary.lblActivityName.left = "5%";
+        self.view.flxSummary.lblActivityName.right = "";
+        
+        self.view.flxSummary.lblTotalVehicles.left = "0dp";
+        self.view.flxSummary.lblTotalVehicles.right = "";
+        
+         self.view.flxSummary.lblCompletedVehicles.left = "0dp";
+        self.view.flxSummary.lblCompletedVehicles.right = "";
+        
+        self.view.flxSummary.lblPendingVehicles.left = "0dp";
+        self.view.flxSummary.lblPendingVehicles.right = "";
+        
+        self.view.flxSummary.lblTotalCount.left = "";
+        self.view.flxSummary.lblTotalCount.right = "0dp";
+        
+        self.view.flxSummary.lblCompletedCount.left = "";
+        self.view.flxSummary.lblCompletedCount.right = "0dp";
+        
+        self.view.flxSummary.lblPendingCount.left = "";
+        self.view.flxSummary.lblPendingCount.right = "0dp";
+        
+        self.view.lblSummaryOfVehicleInspection.left = "0dp";
+        self.view.lblSummaryOfVehicleInspection.right = "";
+      }
   }
+
+ 
+  
 
  });

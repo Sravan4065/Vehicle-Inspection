@@ -5,10 +5,6 @@
         "type": "ref",
         "value": "preferred"
     },
-    "_left_": {
-        "type": "string",
-        "value": "5dp"
-    },
     "_margin_": [
         1,
         1,
@@ -21,8 +17,12 @@
         0,
         0
     ],
-    "_skin_": "sd13fb851fca4ceab20ba993ab0aefe5",
-    "_text_": "1",
+    "_skin_": "s0924f74fe7b4a1daa4bd83ca5925416",
+    "_text_": "Data saved successfully.",
+    "_top_": {
+        "type": "string",
+        "value": "57%"
+    },
     "_width_": {
         "type": "ref",
         "value": "preferred"
@@ -35,13 +35,13 @@
         }
     },
     "canUpdateUI": true,
-    "centery": {
+    "centerx": {
         "type": "string",
-        "value": "50%"
+        "value": "50.00%"
     },
     "containerweight": 100,
     "contentalignment": 4,
-    "id": "lblCheckNo",
+    "id": "lblUPdatedsucessfully",
     "info": null,
     "ipad": {
         "psp": {
@@ -55,10 +55,10 @@
     },
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "e8ae74302f574366844eba90dac607df",
+    "kuid": "e6a6d9ed9ef1446c9f9774f3c8651473",
     "name": "kony.ui.Label",
-    "parent": "flxItem1",
-    "pf": "frmChassisDamageReport",
+    "parent": "flxPopup",
+    "pf": "userwidgetmodel",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "textstyle": {},

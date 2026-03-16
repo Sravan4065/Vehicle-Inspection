@@ -4,7 +4,7 @@
     "_children_": [],
     "_height_": {
         "type": "string",
-        "value": "100%"
+        "value": "20%"
     },
     "_left_": {
         "type": "string",
@@ -42,33 +42,21 @@
         "btnSaveResponse": {
             "__events__": {},
             "__info__": {
-                "kuid": "g446877ffb534a80a1eb783943d0de9e",
+                "kuid": "e1d22a0b9eab47d2978262d8caeacd3f",
                 "srcKUID": "e7ed5d5d305644c28c7ab5529c49040e",
                 "wType": "Button"
             },
             "bottom": {
                 "Default": {
                     "type": "string",
-                    "value": "16dp"
-                }
-            },
-            "height": {
-                "Default": {
-                    "type": "string",
-                    "value": "35dp"
-                }
-            },
-            "width": {
-                "Default": {
-                    "type": "string",
-                    "value": "135dp"
+                    "value": "14dp"
                 }
             }
         },
         "flxBack": {
             "__events__": {},
             "__info__": {
-                "kuid": "d9d5928373e442b28f5a394596fbe0b0",
+                "kuid": "cf80a9799ea84e8b90aa85c99494e93a",
                 "srcKUID": "f0f0e5abfded46d7a38ef4f48d3c8f89",
                 "wType": "FlexContainer"
             }
@@ -76,7 +64,7 @@
         "flxHeading": {
             "__events__": {},
             "__info__": {
-                "kuid": "f5a3419f54224a6185d0769e80a7e20c",
+                "kuid": "e60651e3cf1f4c8398c9b11a6ca93e02",
                 "srcKUID": "f1a5b4fea22c40debec9edda654d7627",
                 "wType": "FlexContainer"
             }
@@ -85,24 +73,12 @@
             "__events__": {},
             "__info__": {
                 "isRoot": true,
-                "kuid": "f1ae1bf20c6e4ad2bec695f504ea6ab7",
+                "kuid": "b82bad904c0c457589a3edfad9667ee2",
                 "srcKUID": "e1ffe84933ff4c53821a6187631a25bd",
                 "wType": "FlexContainer"
             },
             "autogrowMode": {
                 "Default": 0
-            },
-            "bottom": {
-                "Default": {
-                    "type": "string",
-                    "value": ""
-                }
-            },
-            "centerX": {
-                "Default": {
-                    "type": "string",
-                    "value": ""
-                }
             },
             "centerY": {
                 "Default": {
@@ -113,43 +89,7 @@
             "height": {
                 "Default": {
                     "type": "string",
-                    "value": "100%"
-                }
-            },
-            "left": {
-                "Default": {
-                    "type": "string",
-                    "value": "0dp"
-                }
-            },
-            "maxHeight": {
-                "Default": {
-                    "type": "string",
-                    "value": ""
-                }
-            },
-            "maxWidth": {
-                "Default": {
-                    "type": "string",
-                    "value": ""
-                }
-            },
-            "minHeight": {
-                "Default": {
-                    "type": "string",
-                    "value": ""
-                }
-            },
-            "minWidth": {
-                "Default": {
-                    "type": "string",
-                    "value": ""
-                }
-            },
-            "right": {
-                "Default": {
-                    "type": "string",
-                    "value": ""
+                    "value": "20%"
                 }
             },
             "top": {
@@ -158,30 +98,27 @@
                     "value": "0dp"
                 }
             },
-            "width": {
-                "Default": {
-                    "type": "string",
-                    "value": "100%"
-                }
+            "zIndex": {
+                "Default": 21
             }
         },
         "imgBack": {
             "__events__": {},
             "__info__": {
-                "kuid": "d8a134d8a64e43f69a945cf664ddf099",
+                "kuid": "g47a901aeb47462cb259cab1189ccf90",
                 "srcKUID": "af3ad0728c3c4d4e9e4311c055f4f9ea",
                 "wType": "Image"
-            }
+            },
+            "src": "backarrow.png"
         },
         "lblImages": {
             "__events__": {},
             "__info__": {
-                "kuid": "daeeb85deda949f0bb7adc6640df9a28",
+                "kuid": "h52cc3e0fb5e4ec4ab1a7958e111fcb0",
                 "srcKUID": "adf7eb6db260494b9bcfb8940fb4b583",
                 "wType": "Label"
             },
-            "i18n_text": "Exterior Images",
-            "text": "Ex"
+            "text": "Exterior"
         }
     },
     "enablescrolling": true,
@@ -190,11 +127,11 @@
     "iscustomlayout": false,
     "isdatareferenced": false,
     "isvisible": true,
-    "kuid": "f1ae1bf20c6e4ad2bec695f504ea6ab7",
+    "kuid": "b82bad904c0c457589a3edfad9667ee2",
     "layouttype": 2,
     "masterType": 0,
     "name": "kony.ui.UserWidgetInstance",
-    "parent": "flxSubHeader",
+    "parent": "flxBody",
     "pf": "frmInspectionExterior",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
@@ -203,5 +140,5 @@
     "snaptogrid": true,
     "sourceUserWidget": "e1ffe84933ff4c53821a6187631a25bd",
     "wType": "UserWidgetInstance",
-    "zindex": 1
+    "zindex": 21
 }
