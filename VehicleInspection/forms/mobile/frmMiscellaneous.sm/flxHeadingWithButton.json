@@ -40,9 +40,7 @@
     "containerweight": 0,
     "dataDiffs": {
         "btnSaveResponse": {
-            "__events__": {
-                "ide_onClick": "AS_Button_ga99a8f4c99541669073ace905766d01"
-            },
+            "__events__": {},
             "__info__": {
                 "kuid": "a2a0171a44d947d6b4899f528e01ec3f",
                 "srcKUID": "e7ed5d5d305644c28c7ab5529c49040e",

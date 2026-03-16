@@ -18,7 +18,7 @@
     "_pxMenuIndex": [
         0,
         1,
-        28
+        19
     ],
     "_skin_": "sfbe0b910dfe4363bf286a9d2ada7748",
     "_title_": null,
@@ -51,7 +51,7 @@
     "desktopweb": {
         "needAppMenu": false
     },
-    "device": "iPhone14",
+    "device": "Pixel6",
     "displayorientation": 1,
     "enabledforidletimeout": false,
     "id": "frmMiscellaneous",
@@ -105,7 +105,7 @@
     "name": "kony.ui.Form2",
     "needappmenu": false,
     "paddinginpixel": false,
-    "platform": "iphone",
+    "platform": "android",
     "prevDevice": "iPhone14",
     "prevPlatform": "iphone",
     "retaincontentalignment": false,
