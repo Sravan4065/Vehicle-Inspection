@@ -15,6 +15,7 @@ define({
   this.view["details" + i].segVehicleDetails.onRowClick =
     this.onRowClickAction.bind(this);
 }
+    this.invokePendingInspectionService();
   },
 
   toggleDetails: function (context) {
@@ -62,6 +63,53 @@ define({
     var transform = voltmx.ui.makeAffineTransform();
   transform.rotate(0); 
   details.imgarrow.transform = transform;
-}
+},
+  
+  
+     invokePendingInspectionService: function() {
+  var self = this;
+      checkTokenValidatity(function() {
+    voltmx.application.showLoadingScreen(null, "Loading..",     constants.LOADING_SCREEN_POSITION_ONLY_CENTER, false, true, {         shouldShowLabelInBottom: "true",         separatorHeight: 45,         progressIndicatorType: constants.PROGRESS_INDICATOR_TYPE_SMALL,         progressIndicatorColor: "Gray"     });
+  var serviceName = "fry_int_fleet";
+  var integrationObj = voltmx.sdk.getCurrentInstance()
+                                  .getIntegrationService(serviceName);
+  var operationName = "master-fleet-spec-values";
+
+  var data ={
+  "spec_list": "name;size;year_make;roles;customer_rating;horsepower;branch;location;emirates;body_condition;mechanical_condition;body_type;doors;no_of_cylinders;color;transmission_type;warranty;fuel_type;extra;technical_features;investment_center;mileage_type;media;type_of_wheels;seats;general_items;vehicle_source;documents;ownership;administrative_fees;keys;0;Media;Type of wheels;Seats;General items;Vehicle Source;Administrative fees",
+
+  "widget_name": "fleet_specs_details;fleet_insp_details;users;add_request",
+
+  "asset_definitions": "false",
+  "auction_types": "false"
+};
+
+
+  // Headers
+  var headers = {
+      "user_token": voltmx.store.getItem("getUserAccesstoken") 
+  };
+
+  integrationObj.invokeOperation(
+      operationName,
+      headers,
+      data,
+      self.operationSuccessPending.bind(self),
+      self.operationFailurePending.bind(self)
+  );
+      });
+},
+  
+  operationSuccessPending: function(response)
+{
+  voltmx.application.dismissLoadingScreen();
+  voltmx.print(response);
+},
+  operationFailurePending: function(error)
+  {
+    voltmx.application.dismissLoadingScreen();
+    voltmx.print(error);
+  },
+ 
 
 });

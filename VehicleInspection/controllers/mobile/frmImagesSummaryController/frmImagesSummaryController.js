@@ -111,7 +111,7 @@ define({
   "is_photo_done": "0",
   "days": "7",
   "page": "1",
-  "page_size": "10"
+  "page_size": self.pageSize || 5
   };
 
   // Headers
@@ -133,6 +133,26 @@ define({
   {
     voltmx.application.dismissLoadingScreen();
     voltmx.print(response);
+     
+      if (!response.records || response.records.length === 0) {
+    response.records = [{
+      total_completed: "0",
+      total_pending: "0",
+      total_vehicles: "0"
+    }];
+  }
+
+  this.completedVehicles = response.records[0].total_completed;
+  this.pendingVehicles = response.records[0].total_pending;
+  this.totalVehicles = response.records[0].total_vehicles;
+
+  this.view.flxSummary.lblTotalCount.text = this.totalVehicles;
+  this.view.flxSummary.lblCompletedCount.text = this.completedVehicles;
+  this.view.flxSummary.lblPendingCount.text = this.pendingVehicles;
+
+  this.view.lblPendingCount.text = this.pendingVehicles;
+  this.view.lblCompletedCount.text = this.completedVehicles;
+
     this.addToSegment(response);
   },
   
@@ -160,7 +180,7 @@ define({
   "is_photo_done": "1",
   "days": "7",
   "page": "1",
-  "page_size": "10"
+  "page_size": self.pageSize || 5
   };
 
   // Headers
@@ -198,11 +218,11 @@ define({
     var records = response && response.records ? response.records : [];
     if(records.length > 0)
       {
-        self.view.lblNorecords.setVisibility(false);
+       // self.view.lblNorecords.setVisibility(false);
        self.view.segImagesLIst.setVisibility(true);
       }
      else{
-        self.view.lblNorecords.setVisibility(true);
+       // self.view.lblNorecords.setVisibility(true);
         self.view.segImagesLIst.setVisibility(false);
      }
     var newRecords = records.slice(self.currentOffset);
@@ -293,7 +313,7 @@ define({
 }
      self.currentOffset += newRecords.length;
 
-    self.view.segImagesLIst.setData(data);
+    self.view.segImagesLIst.addAll(data);
 },
   
    openDetails: function(objectId)

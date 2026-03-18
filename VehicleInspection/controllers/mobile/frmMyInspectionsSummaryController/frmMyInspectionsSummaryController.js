@@ -33,7 +33,7 @@ define({
     }
     
     this.view.btnLoadMore.onClick = this.onLoadMoreClick.bind(this);
-  },
+     },
   
   onRowClickAction: function()
   {
@@ -128,13 +128,32 @@ define({
 },
   
   operationSuccessPending: function(response)
-  {
-    voltmx.application.dismissLoadingScreen();
-    voltmx.print(response);
-    this.addToSegment(response);
-   
-  },
-  
+{
+  voltmx.application.dismissLoadingScreen();
+  voltmx.print(response);
+
+  // ✅ Fallback if no records
+  if (!response.records || response.records.length === 0) {
+    response.records = [{
+      total_completed: "0",
+      total_pending: "0",
+      total_vehicles: "0"
+    }];
+  }
+
+  this.completedVehicles = response.records[0].total_completed;
+  this.pendingVehicles = response.records[0].total_pending;
+  this.totalVehicles = response.records[0].total_vehicles;
+
+  this.view.flxSummary.lblTotalCount.text = this.totalVehicles;
+  this.view.flxSummary.lblCompletedCount.text = this.completedVehicles;
+  this.view.flxSummary.lblPendingCount.text = this.pendingVehicles;
+
+  this.view.lblPendingCount.text = this.pendingVehicles;
+  this.view.lblCompletedCount.text = this.completedVehicles;
+
+  this.addToSegment(response);
+},
   operationFailurePending: function(error)
   {
     voltmx.application.dismissLoadingScreen();

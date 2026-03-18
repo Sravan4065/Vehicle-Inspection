@@ -7,7 +7,7 @@
     },
     "_left_": {
         "type": "string",
-        "value": "3%"
+        "value": "5dp"
     },
     "_margin_": [
         1,
@@ -21,8 +21,8 @@
         0,
         0
     ],
-    "_skin_": "s9ecbcb0bc574d4cbb402cc431c195b3",
-    "_text_": "Status",
+    "_skin_": "sd13fb851fca4ceab20ba993ab0aefe5",
+    "_text_": "1",
     "_width_": {
         "type": "ref",
         "value": "preferred"
@@ -39,10 +39,9 @@
         "type": "string",
         "value": "50%"
     },
-    "containerId": true,
     "containerweight": 100,
     "contentalignment": 4,
-    "id": "lblLocation",
+    "id": "lblCheckNo",
     "info": null,
     "ipad": {
         "psp": {
@@ -55,11 +54,11 @@
         }
     },
     "iscustomlayout": false,
-    "isvisible": false,
-    "kuid": "c546dc848fbe47899c767155422e3ffe",
+    "isvisible": true,
+    "kuid": "d2d1802cc9f14cb182d3882f9bdedb63",
     "name": "kony.ui.Label",
-    "parent": "flxLocation",
-    "pf": "tplCompletedInspections",
+    "parent": "flxItem1",
+    "pf": "frmExteriorCar",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "textstyle": {},
