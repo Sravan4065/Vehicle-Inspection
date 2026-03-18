@@ -2,7 +2,7 @@
     "DNDConfig": null,
     "_height_": {
         "type": "string",
-        "value": "104%"
+        "value": "84%"
     },
     "_left_": {
         "type": "string",
@@ -37,8 +37,7 @@
     "bounces": true,
     "canUpdateUI": true,
     "children": [
-        "flxInnerBody",
-        "btnLoadMore"
+        "flxInnerBody"
     ],
     "clipbounds": true,
     "containerweight": 100,
@@ -46,16 +45,16 @@
     "dragg": false,
     "enablescrolling": true,
     "horizontalscrollindicator": true,
-    "id": "flxScrollBody",
+    "id": "flxScrollContainer",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "h638df3e25e14a749db4ebeed3bfef85",
+    "kuid": "c6c7ef813b7e4703b9fa6d519672956c",
     "layouttype": 2,
     "name": "kony.ui.FlexScrollContainer",
     "pagingenabled": false,
     "parent": "flxBody",
-    "pf": "frmCompletedInspections",
+    "pf": "frmExteriorCar",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainflowhorizontalalignment": false,
@@ -65,5 +64,6 @@
     "track": false,
     "verticalscrollindicator": true,
     "wType": "FlexScrollContainer",
-    "widgetalignment": 1
+    "widgetalignment": 1,
+    "zindex": 1
 }

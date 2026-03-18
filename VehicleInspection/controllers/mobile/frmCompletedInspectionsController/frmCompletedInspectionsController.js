@@ -8,6 +8,195 @@ define({
   onPreShow: function()
   {
     toggleFooterIcons(this.view, "frmCompletedInspections");
-  }
+    this.invokePendingInspectionService();
+  },
+  
+  
+    invokePendingInspectionService: function() {
+  var self = this;
+      checkTokenValidatity(function() {
+    voltmx.application.showLoadingScreen(null, "Loading..",     constants.LOADING_SCREEN_POSITION_ONLY_CENTER, false, true, {         shouldShowLabelInBottom: "true",         separatorHeight: 45,         progressIndicatorType: constants.PROGRESS_INDICATOR_TYPE_SMALL,         progressIndicatorColor: "Gray"     });
+  var serviceName = "fry_int_inspection";
+  var integrationObj = voltmx.sdk.getCurrentInstance()
+                                  .getIntegrationService(serviceName);
+  var operationName = "get-inspection-vehicles";
+
+  var data = {
+      "lot_no": "",
+  "title": "",
+  "type": "",
+  "status": "Completed", // Pending || Completed
+  "page": "1",
+  "page_size": self.pageSize || 5
+  };
+
+  // Headers
+  var headers = {
+      "user_token": voltmx.store.getItem("getUserAccesstoken") 
+  };
+
+  integrationObj.invokeOperation(
+      operationName,
+      headers,
+      data,
+      self.operationSuccessPending.bind(self),
+      self.operationFailurePending.bind(self)
+  );
+      });
+},
+  
+  operationSuccessPending: function(response)
+{
+  voltmx.application.dismissLoadingScreen();
+  voltmx.print(response);
+
+  
+
+ 
+  this.addToSegment(response);
+},
+  operationFailurePending: function(error)
+  {
+    voltmx.application.dismissLoadingScreen();
+    voltmx.print(error);
+  },
+  
+  
+   addToSegment: function(response) {
+    var self = this;
+
+    var records = response && response.records ? response.records : [];
+     
+      if(records.length > 0)
+      {
+       // self.view.lblNorecords.setVisibility(false);
+        self.view.segCompletedInspections.setVisibility(true);
+      }
+     else{
+       // self.view.lblNorecords.setVisibility(true);
+        self.view.segCompletedInspections.setVisibility(false);
+     }
+    var newRecords = records.slice(self.currentOffset);
+     
+    var isArabic = voltmx.i18n.getCurrentLocale() === "ar_AE";
+    
+
+   self.view.segCompletedInspections.widgetDataMap = {
+      "flxCompletedInspections":"flxCompletedInspections",
+      "flxLotModel": "flxLotModel",
+      "flxVehicleIcon":"flxVehicleIcon",
+      "imgVehicleIcon": "imgVehicleIcon",
+      "flxModelAndNumber":"flxModelAndNumber",
+      "lblLotAndModel":"lblLotAndModel",
+     "lblVehicleNumber":"lblVehicleNumber",
+     "flxLocation":"flxLocation",
+     "lblLocation":"lblLocation",
+     "flxDate":"flxDate",
+     "lblDate":"lblDate",
+     "lblDateAndTimeValue":"lblDateAndTimeValue",
+     "flxViewDetailsInwardEntry":"flxViewDetailsInwardEntry",
+     "lblViewDetailsInwardEntry":"lblViewDetailsInwardEntry",
+     "imgFArrowIE":"imgFArrowIE"
+     
+     
+     
+     
+     
+    };
+
+    var data = [];
+
+   if (newRecords.length > 0) {
+//         self.view.lblNorecords.setVisibility(false);
+//         self.view.segMyinspections.setVisibility(true);
+        records.forEach(function(record) {
+
+            data.push({
+                "imgFArrowIE": 
+              {
+                "left": isArabic ? "" : "5%",
+                "right": isArabic ? "4%": ""
+              },
+              "flxModelAndNumber":{
+                "left": isArabic ? "" : "2%",
+                "right": isArabic ? "2%": ""
+              },
+                "lblLotAndModel":{
+                  "text": (record.ID || "") + " " + (record.description
+ || ""),
+                    "left": isArabic ? "" : "2%",
+                "right": isArabic ? "2%": ""
+                }, 
+               "lblVehicleNumber":{
+                  "text": ""
+ || "",
+                    "left": isArabic ? "" : "2%",
+                "right": isArabic ? "2%": ""
+                }, 
+               
+             
+                 "flxDate":{
+                "left": isArabic ? "" : "2%",
+                "right": isArabic ? "2%": ""
+              },
+                "lblDate":{
+                  "text": "Date",
+                    "left": isArabic ? "" : "2%",
+                "right": isArabic ? "2%": ""
+                }, 
+               "lblDateAndTimeValue":{
+                  "text": record.requested_time
+
+ || "",
+                    "left": isArabic ? "" : "2%",
+                "right": isArabic ? "2%": ""
+                }, 
+           
+              
+             
+                 
+                "flxViewDetailsInwardEntry": {
+                    "left": isArabic ? "5%" : "",
+                    "right": isArabic ? "" : "5%",
+                    "onClick": function() {
+                        self.openDetails(record.object_id,record);
+                    }
+                },
+              "imgFArrowIE":{
+              "left": isArabic ? "5%" : "",
+                    "right": isArabic ? "" : "5%",
+              "src":"view.png"
+            }
+            });
+
+        });
+
+    }
+    else
+      {
+//         self.view.lblNorecords.setVisibility(true);
+//         self.view.segMyinspections.setVisibility(false);
+      }
+     
+       if (records.length < self.pageSize) {
+    self.view.btnLoadMore.setVisibility(false);
+} else {
+    self.view.btnLoadMore.setVisibility(true);
+}
+     self.currentOffset += newRecords.length;
+
+    self.view.segCompletedInspections.addAll(data);
+},
+  openDetails: function(objectId,record)
+  {
+    var self = this;
+    new voltmx.mvc.Navigation("frmVehicleInspectionReport").navigate(
+    {
+      "objectId": objectId,
+       "vehicleDetails": record,
+      "isPending": self.isPending
+    });
+  },
+  
 
  });

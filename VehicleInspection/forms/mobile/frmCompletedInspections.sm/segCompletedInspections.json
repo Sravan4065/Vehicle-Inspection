@@ -9,381 +9,48 @@
         {
             "imgFArrowIE": {
                 "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "viewwhite.png"
+                "src": "",
+                "type": "Image"
             },
             "imgVehicleIcon": {
                 "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "caricon.png"
+                "src": "",
+                "type": "Image"
             },
             "lblDate": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Date & Time"
+                "text": "",
+                "type": "Label"
             },
             "lblDateAndTimeValue": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "24/04/2025, 9:00 AM"
+                "text": "",
+                "type": "Label"
             },
             "lblLocation": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Status"
+                "text": "",
+                "type": "Label"
             },
             "lblLotAndModel": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "41281 Nissan Altima 2020"
+                "text": "",
+                "type": "Label"
             },
             "lblStatus": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Passed"
+                "text": "",
+                "type": "Label"
             },
             "lblVehicleNumber": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "1HGBH41JXMN109999"
+                "text": "",
+                "type": "Label"
             },
             "lblViewDetailsInwardEntry": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "View"
-            }
-        },
-        {
-            "imgFArrowIE": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "viewwhite.png"
-            },
-            "imgVehicleIcon": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "caricon.png"
-            },
-            "lblDate": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Date & Time"
-            },
-            "lblDateAndTimeValue": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "24/04/2025, 9:00 AM"
-            },
-            "lblLocation": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Status"
-            },
-            "lblLotAndModel": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "41281 Nissan Altima 2020"
-            },
-            "lblStatus": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Passed"
-            },
-            "lblVehicleNumber": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "1HGBH41JXMN109999"
-            },
-            "lblViewDetailsInwardEntry": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "View"
-            }
-        },
-        {
-            "imgFArrowIE": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "viewwhite.png"
-            },
-            "imgVehicleIcon": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "caricon.png"
-            },
-            "lblDate": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Date & Time"
-            },
-            "lblDateAndTimeValue": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "24/04/2025, 9:00 AM"
-            },
-            "lblLocation": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Status"
-            },
-            "lblLotAndModel": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "41281 Nissan Altima 2020"
-            },
-            "lblStatus": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Passed"
-            },
-            "lblVehicleNumber": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "1HGBH41JXMN109999"
-            },
-            "lblViewDetailsInwardEntry": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "View"
-            }
-        },
-        {
-            "imgFArrowIE": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "viewwhite.png"
-            },
-            "imgVehicleIcon": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "caricon.png"
-            },
-            "lblDate": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Date & Time"
-            },
-            "lblDateAndTimeValue": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "24/04/2025, 9:00 AM"
-            },
-            "lblLocation": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Status"
-            },
-            "lblLotAndModel": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "41281 Nissan Altima 2020"
-            },
-            "lblStatus": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Passed"
-            },
-            "lblVehicleNumber": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "1HGBH41JXMN109999"
-            },
-            "lblViewDetailsInwardEntry": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "View"
-            }
-        },
-        {
-            "imgFArrowIE": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "viewwhite.png"
-            },
-            "imgVehicleIcon": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "caricon.png"
-            },
-            "lblDate": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Date & Time"
-            },
-            "lblDateAndTimeValue": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "24/04/2025, 9:00 AM"
-            },
-            "lblLocation": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Status"
-            },
-            "lblLotAndModel": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "41281 Nissan Altima 2020"
-            },
-            "lblStatus": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Passed"
-            },
-            "lblVehicleNumber": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "1HGBH41JXMN109999"
-            },
-            "lblViewDetailsInwardEntry": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "View"
-            }
-        },
-        {
-            "imgFArrowIE": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "viewwhite.png"
-            },
-            "imgVehicleIcon": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "caricon.png"
-            },
-            "lblDate": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Date & Time"
-            },
-            "lblDateAndTimeValue": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "24/04/2025, 9:00 AM"
-            },
-            "lblLocation": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Status"
-            },
-            "lblLotAndModel": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "41281 Nissan Altima 2020"
-            },
-            "lblStatus": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Passed"
-            },
-            "lblVehicleNumber": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "1HGBH41JXMN109999"
-            },
-            "lblViewDetailsInwardEntry": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "View"
-            }
-        },
-        {
-            "imgFArrowIE": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "viewwhite.png"
-            },
-            "imgVehicleIcon": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "caricon.png"
-            },
-            "lblDate": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Date & Time"
-            },
-            "lblDateAndTimeValue": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "24/04/2025, 9:00 AM"
-            },
-            "lblLocation": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Status"
-            },
-            "lblLotAndModel": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "41281 Nissan Altima 2020"
-            },
-            "lblStatus": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Passed"
-            },
-            "lblVehicleNumber": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "1HGBH41JXMN109999"
-            },
-            "lblViewDetailsInwardEntry": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "View"
-            }
-        },
-        {
-            "imgFArrowIE": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "viewwhite.png"
-            },
-            "imgVehicleIcon": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "caricon.png"
-            },
-            "lblDate": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Date & Time"
-            },
-            "lblDateAndTimeValue": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "24/04/2025, 9:00 AM"
-            },
-            "lblLocation": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Status"
-            },
-            "lblLotAndModel": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "41281 Nissan Altima 2020"
-            },
-            "lblStatus": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Passed"
-            },
-            "lblVehicleNumber": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "1HGBH41JXMN109999"
-            },
-            "lblViewDetailsInwardEntry": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "View"
-            }
-        },
-        {
-            "imgFArrowIE": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "viewwhite.png"
-            },
-            "imgVehicleIcon": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "caricon.png"
-            },
-            "lblDate": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Date & Time"
-            },
-            "lblDateAndTimeValue": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "24/04/2025, 9:00 AM"
-            },
-            "lblLocation": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Status"
-            },
-            "lblLotAndModel": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "41281 Nissan Altima 2020"
-            },
-            "lblStatus": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Passed"
-            },
-            "lblVehicleNumber": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "1HGBH41JXMN109999"
-            },
-            "lblViewDetailsInwardEntry": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "View"
-            }
-        },
-        {
-            "imgFArrowIE": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "viewwhite.png"
-            },
-            "imgVehicleIcon": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "caricon.png"
-            },
-            "lblDate": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Date & Time"
-            },
-            "lblDateAndTimeValue": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "24/04/2025, 9:00 AM"
-            },
-            "lblLocation": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Status"
-            },
-            "lblLotAndModel": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "41281 Nissan Altima 2020"
-            },
-            "lblStatus": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Passed"
-            },
-            "lblVehicleNumber": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "1HGBH41JXMN109999"
-            },
-            "lblViewDetailsInwardEntry": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "View"
+                "text": "",
+                "type": "Label"
             }
         }
     ],
@@ -424,7 +91,7 @@
         "value": "50%"
     },
     "containerweight": 100,
-    "counter": "09",
+    "counter": "00",
     "focusedindex": null,
     "focuseditem": null,
     "groupcells": false,
@@ -458,7 +125,7 @@
     "retainflexpositionproperties": false,
     "retainselection": false,
     "rowTemplateId": "g9de89be95684ecab2a6dd0c7d8b7d60",
-    "rowcounter": 9,
+    "rowcounter": 0,
     "rowfocusskin": "sb4cbb0437db46f8863eedda6fd864f8",
     "rowskin": "s87cc27d14a9433a9b4a99cdf72f69f3",
     "rowtemplate": "flxCompletedInspections",
@@ -470,7 +137,7 @@
     "selectedindex": null,
     "selectedindices": null,
     "selecteditems": null,
-    "selectedsectionindex": 0,
+    "selectedsectionindex": null,
     "selectionbehavior": "default",
     "separatorcolor": "aaaaaa00",
     "separatorrequired": true,

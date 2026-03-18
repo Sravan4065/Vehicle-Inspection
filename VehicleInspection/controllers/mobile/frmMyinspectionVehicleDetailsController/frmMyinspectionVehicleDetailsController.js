@@ -221,7 +221,7 @@ onNavigate: function(context){
         "fxlNotes",
         "flxStatus",
         "flxInspectionReport",
-        "flxSaveclose"
+        
     ];
 
     for (var j = 0; j < flexList.length; j++) {
