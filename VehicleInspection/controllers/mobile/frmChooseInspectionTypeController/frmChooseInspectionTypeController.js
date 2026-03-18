@@ -5,6 +5,7 @@ define({
     var self = this;
     this.serviceId = context.type_service_id;
     this.objectId = context.object_id;
+    this.name = context.description;
     this.view.preShow = this.onPreShow.bind(this);
     this.view.segInspectionItems.onRowClick = this.onRowClickAction.bind(this);
   },
@@ -13,6 +14,7 @@ define({
   {
 //     this.insertIntoSegInspectionItems();
     this.invokeSelectedInspectionPackages();
+    this.view.flxHeading.lblImages.text = this.name;
   },
   
   invokeSelectedInspectionPackages: function()

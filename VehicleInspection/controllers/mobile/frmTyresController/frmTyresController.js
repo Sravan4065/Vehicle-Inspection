@@ -207,63 +207,156 @@ while (i < 6) {
     };  
   },
   
-  onRowClickSeg1: function()
-  {
-    var self = this;
+//   onRowClickSeg1: function()
+//   {
+//     var self = this;
     
+//     var selectedRowItems = self.view.details.segVehicleDetails.selectedRowItems;
+    
+//     if(selectedRowItems && selectedRowItems[0])
+//       {
+//     self.view.details.txbData.text = selectedRowItems[0].lblData;
+//       }
+    
+//     self.view.details.flxSegment.setVisibility(false);
+//   },
+  
+//    onRowClickSeg2: function()
+//   {
+//     var self = this;
+    
+//     var selectedRowItems = self.view.details1.segVehicleDetails.selectedRowItems;
+    
+//     if(selectedRowItems && selectedRowItems[0])
+//       {
+//     self.view.details1.txbData.text = selectedRowItems[0].lblData;
+//       }
+    
+//      self.view.details1.flxSegment.setVisibility(false);
+//   },
+  
+//    onRowClickSeg3: function()
+//   {
+//     var self = this;
+    
+//     var selectedRowItems = self.view.details2.segVehicleDetails.selectedRowItems;
+    
+//     if(selectedRowItems && selectedRowItems[0])
+//       {
+//     self.view.details2.txbData.text = selectedRowItems[0].lblData;
+//       }
+    
+//      self.view.details2.flxSegment.setVisibility(false);
+    
+//                   var index = self.currentIndex;
+//               if (typeof index === "undefined" || !self.records[index]) {
+//                 voltmx.print("Error: currentIndex is undefined or invalid");
+//                 return;
+//               }
+
+//               var record = self.records[index];
+//               var id = record.id;
+
+//               if(!self.inspectionData){
+//                 self.inspectionData = {};
+//               }
+
+//               if(!self.inspectionData[id]){
+//                 self.inspectionData[id] = {
+                  
+//                   manufacture_date: selectedRowItems[0].lblData
+                  
+
+//                 };
+//               }
+//   },
+  
+  onRowClickSeg1: function() {
+    var self = this;
     var selectedRowItems = self.view.details.segVehicleDetails.selectedRowItems;
-    
-    if(selectedRowItems && selectedRowItems[0])
-      {
-    self.view.details.txbData.text = selectedRowItems[0].lblData;
-      }
-    
-    self.view.details.flxSegment.setVisibility(false);
-  },
-  
-   onRowClickSeg2: function()
-  {
+
+    if (selectedRowItems && selectedRowItems[0] && self.currentRecord && self.currentRecord.id) {
+        var id = self.currentRecord.id;
+        var value = selectedRowItems[0].lblData || "";
+
+        if (!self.inspectionData[id]) {
+            self.inspectionData[id] = {
+                id: Number(id),
+                insp_pac_lov_id: Number(self.currentRecord.insp_pac_lov_id),
+                item_name: self.currentRecord.item_name,
+                position: self.currentRecord.position,
+                manufacturer: value,
+                size: self.currentRecord.size || "",
+                manufacture_date: self.currentRecord.manufacture_date || "",
+                condition_rating: Number(self.currentRecord.condition_rating) || 0,
+                notes: self.currentRecord.notes || ""
+            };
+        } else {
+            self.inspectionData[id].manufacturer = value;
+        }
+
+        self.view.details.txbData.text = value;
+        self.view.details.flxSegment.setVisibility(false);
+    }
+},
+
+onRowClickSeg2: function() {
     var self = this;
-    
     var selectedRowItems = self.view.details1.segVehicleDetails.selectedRowItems;
-    
-    if(selectedRowItems && selectedRowItems[0])
-      {
-    self.view.details1.txbData.text = selectedRowItems[0].lblData;
-      }
-    
-     self.view.details1.flxSegment.setVisibility(false);
-  },
-  
-   onRowClickSeg3: function()
-  {
+
+    if (selectedRowItems && selectedRowItems[0] && self.currentRecord && self.currentRecord.id) {
+        var id = self.currentRecord.id;
+        var value = selectedRowItems[0].lblData || "";
+
+        if (!self.inspectionData[id]) {
+            self.inspectionData[id] = {
+                id: Number(id),
+                insp_pac_lov_id: Number(self.currentRecord.insp_pac_lov_id),
+                item_name: self.currentRecord.item_name,
+                position: self.currentRecord.position,
+                manufacturer: self.currentRecord.manufacturer || "",
+                size: value,
+                manufacture_date: self.currentRecord.manufacture_date || "",
+                condition_rating: Number(self.currentRecord.condition_rating) || 0,
+                notes: self.currentRecord.notes || ""
+            };
+        } else {
+            self.inspectionData[id].size = value;
+        }
+
+        self.view.details1.txbData.text = value;
+        self.view.details1.flxSegment.setVisibility(false);
+    }
+},
+
+onRowClickSeg3: function() {
     var self = this;
-    
     var selectedRowItems = self.view.details2.segVehicleDetails.selectedRowItems;
-    
-    if(selectedRowItems && selectedRowItems[0])
-      {
-    self.view.details2.txbData.text = selectedRowItems[0].lblData;
-      }
-    
-     self.view.details2.flxSegment.setVisibility(false);
-  },
-  
-//  callRate: function (context) {
- 
-//   var widgetId = context.id;
 
-//   var rating = parseInt(widgetId.replace("flxStar", ""), 10);
+    if (selectedRowItems && selectedRowItems[0] && self.currentRecord && self.currentRecord.id) {
+        var id = self.currentRecord.id;
+        var value = selectedRowItems[0].lblData || "";
 
- 
-//   for (var i = 1; i <= 5; i++) {
-//     if (i <= rating) {
-//       this.view["imgStar" + i].src = "greenstar.png";
-//     } else {
-//       this.view["imgStar" + i].src = "ashstar.png";
-//     }
-//   }
-// },
+        if (!self.inspectionData[id]) {
+            self.inspectionData[id] = {
+                id: Number(id),
+                insp_pac_lov_id: Number(self.currentRecord.insp_pac_lov_id),
+                item_name: self.currentRecord.item_name,
+                position: self.currentRecord.position,
+                manufacturer: self.currentRecord.manufacturer || "",
+                size: self.currentRecord.size || "",
+                manufacture_date: value,
+                condition_rating: Number(self.currentRecord.condition_rating) || 0,
+                notes: self.currentRecord.notes || ""
+            };
+        } else {
+            self.inspectionData[id].manufacture_date = value;
+        }
+
+        self.view.details2.txbData.text = value;
+        self.view.details2.flxSegment.setVisibility(false);
+    }
+},
   
 
   createUIBox: function()
