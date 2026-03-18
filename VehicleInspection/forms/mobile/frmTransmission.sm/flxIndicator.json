@@ -57,6 +57,7 @@
                     "value": "50%"
                 }
             },
+            "isVisible": false,
             "width": {
                 "Default": {
                     "type": "string",
@@ -173,7 +174,7 @@
     "info": null,
     "iscustomlayout": false,
     "isdatareferenced": false,
-    "isvisible": true,
+    "isvisible": false,
     "kuid": "ef9fe3e887ef4599ac5110402accdff8",
     "layouttype": 3,
     "masterType": 0,

@@ -80,7 +80,8 @@
                 "kuid": "de346ee504054eef9b9294f30403b8fa",
                 "srcKUID": "i81d685650c047e0a36b27249031670f",
                 "wType": "FlexContainer"
-            }
+            },
+            "isVisible": false
         },
         "flxTextbox": {
             "__events__": {},

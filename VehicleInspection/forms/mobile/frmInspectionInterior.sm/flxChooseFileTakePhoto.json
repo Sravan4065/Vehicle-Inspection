@@ -36,13 +36,13 @@
     "areflexpropsreferenced": false,
     "autogrowmode": 0,
     "canUpdateUI": true,
-    "clipbounds": true,
+    "clipbounds": false,
     "containerweight": 0,
     "dataDiffs": {
         "camTakeAPhoto": {
             "__events__": {},
             "__info__": {
-                "kuid": "cf9f67df5bd54a1d9b5ff71ee15d1253",
+                "kuid": "b978eaf4a48641168aa0bcc49c9cf778",
                 "srcKUID": "ed2d77d4ca504c84a92643f111082438",
                 "wType": "Camera"
             }
@@ -51,7 +51,7 @@
             "__events__": {},
             "__info__": {
                 "isRoot": true,
-                "kuid": "fce201554cd54b6bafcbaabb58bb48d4",
+                "kuid": "ie470d2a02204bfcaa0a397d01f9deb4",
                 "srcKUID": "c8bfe999c628412789e57526c3a50675",
                 "wType": "FlexContainer"
             },
@@ -60,7 +60,7 @@
         "flxChooseFromLibrary": {
             "__events__": {},
             "__info__": {
-                "kuid": "b41eda55ad7343539930d1c4a8b15fa7",
+                "kuid": "d645765e58b3431087a541ece4b093c7",
                 "srcKUID": "a98d9a4b73f24ebd94c7096cecb3fabd",
                 "wType": "FlexContainer"
             }
@@ -68,7 +68,7 @@
         "flxChooseOne": {
             "__events__": {},
             "__info__": {
-                "kuid": "d68b67c1fcd140e8893967a7073707d6",
+                "kuid": "af91da95611b4fe1946de645981bb220",
                 "srcKUID": "b142d1d024304d3f9f654a21b2d6d633",
                 "wType": "FlexContainer"
             }
@@ -76,7 +76,7 @@
         "flxTakeAPhoto": {
             "__events__": {},
             "__info__": {
-                "kuid": "c439385bf9bf405495e01574f8484086",
+                "kuid": "d88493ede8b547bc8605fa8dd9366efc",
                 "srcKUID": "ie34300517304221b8a532647cde9bfa",
                 "wType": "FlexContainer"
             }
@@ -84,7 +84,7 @@
         "flxULDark": {
             "__events__": {},
             "__info__": {
-                "kuid": "ge528c54c560446ea62c933a40d98340",
+                "kuid": "g2f225887f2647a6ad737e2934b5ee6e",
                 "srcKUID": "f25366f183f44c5b803dc5463bb81970",
                 "wType": "FlexContainer"
             }
@@ -92,7 +92,7 @@
         "flxULLight": {
             "__events__": {},
             "__info__": {
-                "kuid": "j680f9aac16143359cc9061ca6d7775d",
+                "kuid": "jf62349f5e51472093e155d0ef0f9c1e",
                 "srcKUID": "e384b28b2cb44dadba8b34c8a0b2d7e7",
                 "wType": "FlexContainer"
             }
@@ -100,7 +100,7 @@
         "flxULSummary": {
             "__events__": {},
             "__info__": {
-                "kuid": "d40c489319a549b4bc98f8869d1f17ce",
+                "kuid": "c169a984444e49f2b4b022ce93cc7038",
                 "srcKUID": "a22510afed644c198e966a1e4c2bee8b",
                 "wType": "FlexContainer"
             }
@@ -108,7 +108,7 @@
         "flxUploadPopup": {
             "__events__": {},
             "__info__": {
-                "kuid": "d09d7034b6d74c3f91ce327acb114fa7",
+                "kuid": "c9050ed27f7143d5aef765669c1e5a5d",
                 "srcKUID": "a541308a847f4e189a659d9a8ff03582",
                 "wType": "FlexContainer"
             }
@@ -116,23 +116,25 @@
         "imgChooseFromLibrary": {
             "__events__": {},
             "__info__": {
-                "kuid": "dd611b8b34a3428abfcadca86e46b8b4",
+                "kuid": "acfb534931a0469aa330e3896aa29198",
                 "srcKUID": "jd0e72058bd24ee6b653f8c3084a5904",
                 "wType": "Image"
-            }
+            },
+            "src": "choosefromlibraryicon.png"
         },
         "imgTakeAPhoto": {
             "__events__": {},
             "__info__": {
-                "kuid": "d1e0cabf341d4cb2b21956c08d7fb1fc",
+                "kuid": "b5c65d5790ef44309fd6cafb98b7188c",
                 "srcKUID": "b9b58ec16c7042a5acbc14a2b3c576bc",
                 "wType": "Image"
-            }
+            },
+            "src": "takephoto.png"
         },
         "lblChooseFromLibrary": {
             "__events__": {},
             "__info__": {
-                "kuid": "jfcbe37c21474952aaf5ac565d4e924a",
+                "kuid": "f1a4404644284e758bf11d181267c3f5",
                 "srcKUID": "c19379fddc784409a3641b900f8c8678",
                 "wType": "Label"
             }
@@ -140,7 +142,7 @@
         "lblTakeAPhoto": {
             "__events__": {},
             "__info__": {
-                "kuid": "i4b74ff1263940db94a93e1b3f0c9623",
+                "kuid": "bb82cc1581ae45dab04453cbbea766cb",
                 "srcKUID": "eab4a3bc9dcb4e34b7b65dbb8f8ef63d",
                 "wType": "Label"
             }
@@ -148,7 +150,7 @@
         "lblUploadYour": {
             "__events__": {},
             "__info__": {
-                "kuid": "c4690712cdd04f49a396d99da6396fd4",
+                "kuid": "e0640470036e4429809747268f98a059",
                 "srcKUID": "d0d0694efa514e8c88608109eea12941",
                 "wType": "Label"
             }
@@ -160,7 +162,7 @@
     "iscustomlayout": false,
     "isdatareferenced": false,
     "isvisible": false,
-    "kuid": "fce201554cd54b6bafcbaabb58bb48d4",
+    "kuid": "ie470d2a02204bfcaa0a397d01f9deb4",
     "layouttype": 2,
     "masterType": 0,
     "name": "kony.ui.UserWidgetInstance",

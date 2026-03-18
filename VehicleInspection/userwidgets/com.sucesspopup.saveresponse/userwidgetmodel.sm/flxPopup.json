@@ -2,7 +2,7 @@
     "DNDConfig": null,
     "_height_": {
         "type": "string",
-        "value": "35%"
+        "value": "300dp"
     },
     "_left_": {
         "type": "string",
@@ -47,7 +47,7 @@
         "lblUPdatedsucessfully",
         "btnClose"
     ],
-    "clipbounds": false,
+    "clipbounds": true,
     "containerweight": 100,
     "enablescrolling": true,
     "id": "flxPopup",
@@ -55,7 +55,7 @@
     "iscustomlayout": false,
     "isvisible": true,
     "kuid": "bf43ffb367af42a7ac744ca949d13c33",
-    "layouttype": 2,
+    "layouttype": 4,
     "name": "kony.ui.FlexContainer",
     "parent": "saveresponse",
     "pf": "userwidgetmodel",

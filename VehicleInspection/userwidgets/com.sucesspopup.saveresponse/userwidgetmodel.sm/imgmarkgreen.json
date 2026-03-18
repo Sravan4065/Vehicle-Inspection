@@ -4,7 +4,7 @@
     "_base64_": null,
     "_height_": {
         "type": "string",
-        "value": "34.96%"
+        "value": "60dp"
     },
     "_left_": {
         "type": "string",
@@ -26,20 +26,16 @@
     "_src_": "mark.png",
     "_top_": {
         "type": "string",
-        "value": "0"
+        "value": "50dp"
     },
     "_width_": {
         "type": "string",
-        "value": "37.95%"
+        "value": "60dp"
     },
     "canUpdateUI": true,
     "centerx": {
         "type": "string",
         "value": "50%"
-    },
-    "centery": {
-        "type": "string",
-        "value": "33%"
     },
     "containerweight": 100,
     "id": "imgmarkgreen",

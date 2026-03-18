@@ -28,6 +28,16 @@ define({
     {
       self.view.flxChooseFileTakePhoto.setVisibility(true);
     }
+    
+    if(this.view.saveresponse)
+      {
+        this.view.saveresponse.setVisibility(false);
+      }
+    
+    this.view.saveresponse.btnClose.onClick = () =>
+    {
+      this.view.saveresponse.setVisibility(false);
+    }
 
     this.view.flxChooseFileTakePhoto.flxChooseFromLibrary.onClick = this.flxChooseFromLibraryOnClickAction.bind(this);
     this.view.flxChooseFileTakePhoto.camTakeAPhoto.onCapture = this.camOnCaptureAction.bind(this);
@@ -102,7 +112,7 @@ define({
     var self = this;
     var isArabic = voltmx.i18n.getCurrentLocale() === "ar_AE";
     self.view.flxInspectionSubTypes.removeAll();
-    self.records = records;
+//     self.records = records;
     for(var i=0;i<records.length;i++){
       var basicProperties = {
         id: "flxItem"+i,
@@ -413,7 +423,7 @@ define({
 
               // self.inspectionData[id].image_url_id = imageLog.id;
 
-              self.inspectionData[id].__newImageThisSession = true;
+//               self.inspectionData[id].__newImageThisSession = true;
 
               var obj = {
                 file_name: payload.file_name,
@@ -472,7 +482,7 @@ define({
 
     var appkey = voltmx.store.getItem("ALWATANEYA_DEVELOPMENT_PUBLIC_APP_KEY");
 
-    var appsecret = voltmx.store.setItem("ALWATANEYA_DEVELOPMENT_PUBLIC_APP_SECRET");
+    var appsecret = voltmx.store.getItem("ALWATANEYA_DEVELOPMENT_PUBLIC_APP_SECRET");
 
     var encodeVal = base64Encode(appkey + ":" + appsecret);
 
@@ -546,11 +556,13 @@ define({
             voltmx.print("tStore cleared after successful save");
 
             // Inside success block
-            Object.keys(self.inspectionData).forEach(function(key) {
-              delete self.inspectionData[key].__newImageThisSession;
-            });
+//             Object.keys(self.inspectionData).forEach(function(key) {
+//               delete self.inspectionData[key].__newImageThisSession;
+//             });
 
-            alert(message);
+//             alert(message);
+            self.view.saveresponse.setVisibility(true);
+            self.view.saveresponse.lblUPdatedsucessfully.text = message;
           }
 
         } catch (e) {
@@ -562,39 +574,37 @@ define({
       }
 
     };
-
-    //     var data = 
-    //         {
-    //           "object_id": self.objectId,
-    //           "inspection_details": Object.values(self.inspectionData)
-    //         }
-
+    
     var inspectionDetails = [];
 
-    Object.keys(self.inspectionData).forEach(function(key) {
-      var item = self.inspectionData[key];
+    // Send only items user touched this session (i.e., in inspectionData)
+    Object.keys(self.inspectionData).forEach(function(id) {
+        var item = self.inspectionData[id];
 
-      var payloadItem = {
-        id: item.id && item.id !== "" && item.id !== null ? Number(item.id) : undefined,
-        insp_pac_lov_id: Number(item.insp_pac_lov_id),
-        item_name: item.item_name,
-        rating: item.rating !== undefined ? Number(item.rating) : undefined,
-        notes: item.notes || "",
-        repair_estimate_aed: item.repair_estimate_aed ? Number(item.repair_estimate_aed) : undefined
-      };
-
-      // Only send image_url_id if NEW upload happened
-      if (item.__newImageThisSession) {
-        payloadItem.image_url_id = item.image_url_id;
-      }
-
-      inspectionDetails.push(payloadItem);
+        var payloadItem = {
+            id: item.id && item.id !== "" && item.id !== null ? Number(item.id) : undefined,
+            insp_pac_lov_id: Number(item.insp_pac_lov_id),
+            item_name: item.item_name || "",
+            rating: item.rating !== undefined ? Number(item.rating) : undefined,
+            notes: item.notes || "",
+            repair_estimate_aed: item.repair_estimate_aed ? Number(item.repair_estimate_aed) : undefined,
+//             image_url_id: item.image_url_id || null   // send whatever is there (old or new)
+        };
+    
+      if (item.image_url_id && !isNaN(Number(item.image_url_id)) && Number(item.image_url_id) > 0) {
+        payloadItem.image_url_id = Number(item.image_url_id);
+    }
+       
+        inspectionDetails.push(payloadItem);
     });
 
-    var data = {
-      "object_id": self.objectId,
-      "inspection_details": inspectionDetails
-    };
+        var data = 
+            {
+              "object_id": self.objectId,
+              "inspection_details": inspectionDetails
+            }
+
+
     request.send(JSON.stringify(data));
 
 
@@ -798,6 +808,24 @@ define({
       {
         if(response.records.length > 0)
         {
+          self.records = response.records;
+          self.inspectionData = {};
+        self.records.forEach(function(record) {
+            var id = record.id;
+            if (id) {  // only process existing records
+                self.inspectionData[id] = {
+                    id: Number(id),
+                    insp_pac_lov_id: Number(record.insp_pac_lov_id),
+                    item_name: record.item_name,
+                    rating: record.rating || 0,                     // preserved from backend
+                    notes: record.notes || "",                      // preserved
+                    repair_estimate_aed: Number(record.repair_estimate_aed) || 0,
+                    image_url_id: record.image_url_id || null       // preserved from backend
+                };
+            }
+        });
+          
+          
           self.createUIWithRecords(response.records);
         }
         else

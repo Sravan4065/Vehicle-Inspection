@@ -37,14 +37,14 @@
     "children": [
         "flxPopup"
     ],
-    "clipbounds": false,
+    "clipbounds": true,
     "containerweight": 100,
     "enablescrolling": true,
     "id": "saveresponse",
     "info": null,
     "iscustomlayout": false,
     "ismodalcontainer": true,
-    "isvisible": false,
+    "isvisible": true,
     "kuid": "dbc81a67456d4be284f1101e8723c958",
     "layouttype": 2,
     "name": "kony.ui.FlexContainer",

@@ -1,9 +1,13 @@
 {
     "@class": "com.kony.gen.viz.model.component.KVizButton",
     "DNDConfig": null,
+    "_bottom_": {
+        "type": "string",
+        "value": "10dp"
+    },
     "_height_": {
-        "type": "ref",
-        "value": "preferred"
+        "type": "string",
+        "value": "35dp"
     },
     "_left_": {
         "type": "string",
@@ -25,7 +29,7 @@
     "_text_": "",
     "_top_": {
         "type": "string",
-        "value": "84.89%"
+        "value": "37dp"
     },
     "_width_": {
         "type": "string",
@@ -38,8 +42,11 @@
     },
     "containerweight": 100,
     "contentalignment": 5,
+    "disabledSkins": {
+        "focusSkin": "s4ec7cfbb99d4ca7a00f788aa71ee43c"
+    },
     "displaytext": true,
-    "focusskin": "s4ec7cfbb99d4ca7a00f788aa71ee43c",
+    "focusskin": null,
     "id": "btnClose",
     "info": null,
     "iscustomlayout": false,
