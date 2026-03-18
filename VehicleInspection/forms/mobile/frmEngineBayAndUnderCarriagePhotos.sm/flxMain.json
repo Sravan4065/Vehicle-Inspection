@@ -47,7 +47,8 @@
         "flxBody",
         "flxAddDetailsAndUpload",
         "flxChooseFileTakePhoto",
-        "flxCompleteButton"
+        "flxCompleteButton",
+        "saveresponse"
     ],
     "clipbounds": false,
     "containerweight": 100,

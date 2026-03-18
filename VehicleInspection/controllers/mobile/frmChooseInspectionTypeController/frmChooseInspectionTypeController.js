@@ -104,6 +104,15 @@ voltmx.application.showLoadingScreen(null,"LoadingScreen",constants.LOADING_SCRE
       }
       )
                     });
+    
+    data.push(
+    {
+      "key": "21",
+       "lblServiceType": "Miscellaneous",
+        "imgRight": "imgchevronright.png",
+        "lov_id": "2182"
+    }
+    )
 
     self.view.segInspectionItems.setData(data);
   }

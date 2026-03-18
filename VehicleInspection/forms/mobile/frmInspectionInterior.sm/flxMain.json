@@ -34,13 +34,21 @@
     "allboxes": [],
     "autogrowmode": 0,
     "canUpdateUI": true,
+    "centerx": {
+        "type": "string",
+        "value": "50%"
+    },
+    "centery": {
+        "type": "string",
+        "value": "50%"
+    },
     "children": [
         "flxHeader",
-        "flxSubHeader",
-        "flxIndicator",
         "flxBody",
-        "flxFooter",
-        "flxChooseFileTakePhoto"
+        "flxfooter",
+        "flxAddDetailsAndUpload",
+        "flxChooseFileTakePhoto",
+        "saveresponse"
     ],
     "clipbounds": false,
     "containerweight": 100,
@@ -49,7 +57,7 @@
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "i85c8fd2d28d4472a87b5592587d0cb9",
+    "kuid": "ee2e074fc0f14b26bca66d813fd66e4c",
     "layouttype": 2,
     "name": "kony.ui.FlexContainer",
     "parent": "frmInspectionInterior",
