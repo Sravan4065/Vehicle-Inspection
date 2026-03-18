@@ -1,8 +1,9 @@
 define({ 
 
- onNavigate: function()
+ onNavigate: function(context)
   {
     this.createUI();
+    this.context = context;
     this.view.preShow = this.onPreShow.bind(this);
   },
   
@@ -15,6 +16,9 @@ define({
     this.view.flxChooseFileTakePhoto.flxChooseFromLibrary.onClick = this.flxChooseFromLibraryOnClickAction.bind(this);
      this.view.flxChooseFileTakePhoto.camTakeAPhoto.onCapture = this.camOnCaptureAction.bind(this);
     this.view.flxChooseFileTakePhoto.onClick = this.camOnCaptureAction.bind(this);
+    
+    this.view.lblSelectedvaluedata.text = this.context.record.model;
+    this.view.lblCategoryValue.text = this.context.subCat;
   },
   
   createUI: function()
@@ -22,7 +26,7 @@ define({
     
     this.view.flxDynamicImageViews.removeAll();
     
-    for(var i=0;i<8;i++)
+    for(var i=0;i<2;i++)
       {
         var flxRow;
         if(i%2 === 0){

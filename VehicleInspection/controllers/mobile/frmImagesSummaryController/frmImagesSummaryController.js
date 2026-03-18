@@ -292,7 +292,7 @@ define({
                     "left": isArabic ? "5%" : "",
                     "right": isArabic ? "" : "5%",
                     "onClick": function() {
-                        self.openDetails(record.object_id);
+                        self.openDetails(record);
                     }
                 }
             });
@@ -316,14 +316,13 @@ define({
     self.view.segImagesLIst.addAll(data);
 },
   
-   openDetails: function(objectId)
+   openDetails: function(record)
   {
     var self = this;
-    new voltmx.mvc.Navigation("frmImageCatageory").navigate(
-    {
-      "objectId": objectId,
-      "isPending": self.isPending
-    });
+  
+    NavigationManager.push("frmImageCatageory", {
+      "record": record
+    })
   },
   
     adjustRTL: function()
