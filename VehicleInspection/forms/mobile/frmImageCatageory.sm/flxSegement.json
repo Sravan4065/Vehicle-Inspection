@@ -2,7 +2,7 @@
     "DNDConfig": null,
     "_height_": {
         "type": "string",
-        "value": "73%"
+        "value": "72%"
     },
     "_left_": {
         "type": "string",
@@ -37,7 +37,7 @@
     "children": [
         "Segimagcatageory"
     ],
-    "clipbounds": false,
+    "clipbounds": true,
     "containerweight": 100,
     "enablescrolling": true,
     "id": "flxSegement",

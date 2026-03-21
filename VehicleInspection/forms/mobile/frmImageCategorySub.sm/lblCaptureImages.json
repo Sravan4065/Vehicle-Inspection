@@ -25,7 +25,7 @@
     "_text_": "Capture Images",
     "_top_": {
         "type": "string",
-        "value": "12dp"
+        "value": "15dp"
     },
     "_width_": {
         "type": "ref",

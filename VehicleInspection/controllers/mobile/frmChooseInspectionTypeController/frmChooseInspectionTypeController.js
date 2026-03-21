@@ -112,7 +112,7 @@ voltmx.application.showLoadingScreen(null,"LoadingScreen",constants.LOADING_SCRE
       "key": "21",
        "lblServiceType": "Miscellaneous",
         "imgRight": "imgchevronright.png",
-        "lov_id": "2182"
+        "lov_id": "36"
     }
     )
 
@@ -129,71 +129,71 @@ voltmx.application.showLoadingScreen(null,"LoadingScreen",constants.LOADING_SCRE
       "object_id" : self.objectId,
       "lovId": selectedRow[0].lov_id || ""
     }
-    if(selectedRow && selectedRow[0].key)
+    if(selectedRow && selectedRow[0].lov_id)
       {
-        switch(selectedRow[0].key)
+        switch(selectedRow[0].lov_id)
           {
-            case "6":
+            case "21":
 //               NavigationManager.push("frmVehicledetailsInspectionType",selectedRow[0].lov_id);
                 NavigationManager.push("frmVehicledetailsInspectionType",navObj);
               break;
-              case "7":
+              case "22":
 //               new voltmx.mvc.Navigation("frmEngineInspectionType").navigate();
                NavigationManager.push("frmEngineInspectionType",navObj);
               break;
-              case "8":
+              case "23":
 //               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
                NavigationManager.push("frmTransmission",navObj);
               break;
-              case "9":
+              case "24":
 //               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
                NavigationManager.push("frmElectricalSystemCondition",navObj);
               break;
-              case "10":
+              case "25":
 //               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
                NavigationManager.push("frmSuspensionCondition",navObj);
               break;
-              case "11":
+              case "26":
 //               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
                NavigationManager.push("frmBrakeSystemCondition",navObj);
               break;
-              case "12":
+              case "27":
 //               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
                NavigationManager.push("frmRimsCondition",navObj);
               break;
-              case "13":
+              case "28":
 //               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
                NavigationManager.push("frmTyres",navObj);
               break;
-              case "14":
+              case "29":
 //               new voltmx.mvc.Navigation("frmChassisDamageReport").navigate();
                NavigationManager.push("frmChassisDamageReport",navObj);
               break;
-               case "15":
+               case "30":
 //               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
                NavigationManager.push("frmInspectionExterior",navObj);
               break;
-              case "16":
+              case "31":
 //               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
                NavigationManager.push("frmInspectionInterior",navObj);
                break;
-               case "17":
+               case "32":
 //               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
                NavigationManager.push("frmVehicleSummaryreport",navObj);
               break;
-               case "18":
+               case "33":
 //               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
                NavigationManager.push("frmServiceHistoryandManuals",navObj);
               break;
-               case "19":
+               case "34":
 //               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
                NavigationManager.push("frmPaintCondition",navObj);
               break;
-               case "20":
+               case "35":
 //               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
                NavigationManager.push("frmEngineBayAndUnderCarriagePhotos",navObj);
               break;
-               case "21":
+               case "36":
 //               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
                NavigationManager.push("frmMiscellaneous",navObj);
               break;

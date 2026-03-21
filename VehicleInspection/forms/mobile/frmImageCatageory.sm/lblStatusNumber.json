@@ -23,6 +23,10 @@
     ],
     "_skin_": "se7bd885a6dd487da04265d5a6d6daef",
     "_text_": "CAR001",
+    "_top_": {
+        "type": "string",
+        "value": "5dp"
+    },
     "_width_": {
         "type": "ref",
         "value": "preferred"
@@ -35,10 +39,6 @@
         }
     },
     "canUpdateUI": true,
-    "centery": {
-        "type": "string",
-        "value": "44%"
-    },
     "containerweight": 100,
     "contentalignment": 4,
     "id": "lblStatusNumber",
