@@ -48,7 +48,7 @@
     "id": "flxAddNotes",
     "info": null,
     "iscustomlayout": false,
-    "isvisible": true,
+    "isvisible": false,
     "kuid": "e300aef7f09d43f4889702f776af76b9",
     "layouttype": 4,
     "name": "kony.ui.FlexContainer",

@@ -237,6 +237,14 @@ define({
       this.view.flxfooter.lblimages.text =voltmx.i18n.getLocalizedString("Images");
 
       this.view.flxfooter.lblprofile.text =voltmx.i18n.getLocalizedString("Profile");
+    
+      this.view.lblUsername.text = voltmx.store.getItem("username");
+    
+      this.view.lblRole.text = voltmx.store.getItem("jobTitle");
+    
+      this.view.lblRoleValue.text = voltmx.store.getItem("jobTitle");
+    
+      this.view.lblEmailValue.text = voltmx.store.getItem("email");
 
   }
  

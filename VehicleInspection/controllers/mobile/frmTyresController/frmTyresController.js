@@ -74,6 +74,12 @@ navToButtonSpecific: function(record, index) {
     // Store current record/index for rating updates
     self.currentRecord = record;
     self.currentIndex = index;
+  
+if (record.file_url && record.file_url !== "") {
+    self.view.imgItem.src = record.file_url;
+} else {
+    self.view.imgItem.src = "defaulticon.png";
+}
 },
 
 callRate: function(context) {
@@ -206,70 +212,6 @@ while (i < 6) {
       this.view.saveresponse.setVisibility(false);
     };  
   },
-  
-//   onRowClickSeg1: function()
-//   {
-//     var self = this;
-    
-//     var selectedRowItems = self.view.details.segVehicleDetails.selectedRowItems;
-    
-//     if(selectedRowItems && selectedRowItems[0])
-//       {
-//     self.view.details.txbData.text = selectedRowItems[0].lblData;
-//       }
-    
-//     self.view.details.flxSegment.setVisibility(false);
-//   },
-  
-//    onRowClickSeg2: function()
-//   {
-//     var self = this;
-    
-//     var selectedRowItems = self.view.details1.segVehicleDetails.selectedRowItems;
-    
-//     if(selectedRowItems && selectedRowItems[0])
-//       {
-//     self.view.details1.txbData.text = selectedRowItems[0].lblData;
-//       }
-    
-//      self.view.details1.flxSegment.setVisibility(false);
-//   },
-  
-//    onRowClickSeg3: function()
-//   {
-//     var self = this;
-    
-//     var selectedRowItems = self.view.details2.segVehicleDetails.selectedRowItems;
-    
-//     if(selectedRowItems && selectedRowItems[0])
-//       {
-//     self.view.details2.txbData.text = selectedRowItems[0].lblData;
-//       }
-    
-//      self.view.details2.flxSegment.setVisibility(false);
-    
-//                   var index = self.currentIndex;
-//               if (typeof index === "undefined" || !self.records[index]) {
-//                 voltmx.print("Error: currentIndex is undefined or invalid");
-//                 return;
-//               }
-
-//               var record = self.records[index];
-//               var id = record.id;
-
-//               if(!self.inspectionData){
-//                 self.inspectionData = {};
-//               }
-
-//               if(!self.inspectionData[id]){
-//                 self.inspectionData[id] = {
-                  
-//                   manufacture_date: selectedRowItems[0].lblData
-                  
-
-//                 };
-//               }
-//   },
   
   onRowClickSeg1: function() {
     var self = this;
@@ -508,7 +450,7 @@ voltmx.application.showLoadingScreen(null,"LoadingScreen",constants.LOADING_SCRE
               condition_rating: Number(record.condition_rating) || 0,
               notes: record.notes || "",
               repair_estimate_aed: Number(record.repair_estimate_aed) || 0,
-              image_url_id: record.image_url_id || null
+              image_url_id: record.file_url || null
             };
           }
         });

@@ -4,17 +4,15 @@ define({
    onNavigate: function(context)
   {
     this.view.preShow = this.onPreShow.bind(this);
-    this.context = context;
+    this.context = context.record
   },
   
   onPreShow: function()
   {
     toggleFooterIcons(this.view, "frmImageCatageory");
     
-    this.view.Segimagcatageory.onRowClick =  () =>
-    {
-      NavigationManager.push("frmImageCategorySub");
-    }
+    this.view.Segimagcatageory.onRowClick =  this.onRowClickAction.bind(this);
+   
     
     this.view.lblSelectedvaluedata.text = this.context.model;
     this.view.lblStatusNumber.text = this.context.lot_no;
@@ -97,12 +95,12 @@ define({
     onRowClickAction: function()
   {
     var self = this;
-    var selectedRow = self.view.segInspectionItems && 
-        self.view.segInspectionItems.selectedRowItems;
+    var selectedRow = self.view.Segimagcatageory && 
+        self.view.Segimagcatageory.selectedRowItems;
   
     if(selectedRow && selectedRow[0].key)
       {
-        switch(selectedRow[0].key)
+        switch(String(selectedRow[0].key))
           {
             case "1":
 //               NavigationManager.push("frmVehicledetailsInspectionType",selectedRow[0].lov_id);
