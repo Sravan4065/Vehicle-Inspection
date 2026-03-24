@@ -54,7 +54,7 @@
     "kuid": "e3a6fa0c80bf44779d7af40082b94d5f",
     "layouttype": 2,
     "name": "kony.ui.FlexContainer",
-    "parent": "CopyflxActivity0beaec1c75dde4e",
+    "parent": "flxActivity1",
     "pf": "tepSegImagesData",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
