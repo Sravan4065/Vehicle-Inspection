@@ -20,7 +20,41 @@ define({
   setDataToSeg: function()
   {
     var self = this;
-
+    var isArabic = voltmx.i18n.getCurrentLocale() === "ar_AE"
+    var activitiesConfig = [
+  {
+    title:  voltmx.i18n.getLocalizedString("Inward Entry"),
+    count: "4 pending",
+    desc: voltmx.i18n.getLocalizedString("Vehicle reception and barcode printing"),
+    icon: "inwardentrygreen.png",
+    skin: "sknFlxDBFCE7Radius5px",
+    nav: "frmInwardEntrySummary"
+  },
+  {
+    title: voltmx.i18n.getLocalizedString("Vehicle Inspection"),
+    count: "7 pending",
+    desc: voltmx.i18n.getLocalizedString("Vehicle inspection process"),
+    icon: "viicon.png",
+    skin: "sknFlxffd5daRadius5px",
+    nav: "frmMyInspectionsSummary"
+  },
+  {
+    title:  voltmx.i18n.getLocalizedString("Images"),
+    count: "4 pending",
+    desc: voltmx.i18n.getLocalizedString("Vehicle images uploads"),
+    icon: "imagesicon.png",
+    skin: "sknFlxDBFCE7Radius5px",
+    nav: "frmImagesSummary"
+  },
+  {
+    title: voltmx.i18n.getLocalizedString("Washing"),
+    count: "3 pending",
+    desc: voltmx.i18n.getLocalizedString("Vehicle washing process"),
+    icon: "carwashicon.png",
+    skin: "sknFlxe0e7ffRadius5px",
+    nav: "frmWashingSummary"
+  }
+];
   if (self.view && self.view.segActivities) {
 
   self.view.segActivities.widgetDataMap = {
@@ -34,55 +68,54 @@ define({
     flxViewDetailsInwardEntry: "flxViewDetailsInwardEntry",
     lblViewDetailsInwardEntry: "lblViewDetailsInwardEntry",
     imgFArrowIE: "imgFArrowIE",
-    flxInwardEntry: "flxInwardEntry"
+    flxInwardEntry: "flxInwardEntry",
+    flxInwardEntryRight: "flxInwardEntryRight"
 };
 
-
-    var data = [
-
-      {
-    flxInwardIcon:{skin: "sknFlxDBFCE7Radius5px"},
-    lblInwardEntry: { text: "Inward Entry" },
-    lblInwardCount: { text: "4 pending" },
-    lblVehicleInspectionAndBarCode: { text: "Vehicle Inspection & Barcode printing" },
-    lblViewDetailsInwardEntry: { text: "View Details" },
-    imgInwardIcon: { src: "inwardentrygreen.png" },
-    imgFArrowIE: { src: "frontarrowwhite.png" },
-    flxViewDetailsInwardEntry: { onClick: self.navToRelatedActivity.bind(self,"frmInwardEntrySummary")}
-},
-      {
-    flxInwardIcon:{skin: "sknFlxffd5daRadius5px"},
-    lblInwardEntry: { text: "Vehicle Inspection" },
-    lblInwardCount: { text: "7 pending" },
-    lblVehicleInspectionAndBarCode: { text: "Vehicle inspection process" },
-    lblViewDetailsInwardEntry: { text: "View Details" },
-    imgInwardIcon: { src: "viicon.png" },
-    imgFArrowIE: { src: "frontarrowwhite.png" },
-    flxViewDetailsInwardEntry: { onClick: self.navToRelatedActivity.bind(self,"frmMyInspectionsSummary")}
-
-},
-       {
-    flxInwardIcon:{skin: "sknFlxDBFCE7Radius5px"},
-    lblInwardEntry: { text: "Images" },
-    lblInwardCount: { text: "4 pending" },
-    lblVehicleInspectionAndBarCode: { text: "Vehicle images uploads" },
-    lblViewDetailsInwardEntry: { text: "View Details" },
-    imgInwardIcon: { src: "imagesicon.png" },
-    imgFArrowIE: { src: "frontarrowwhite.png" },
-    flxViewDetailsInwardEntry: { onClick: self.navToRelatedActivity.bind(self,"frmImagesSummary")}
-
-},
-       {
-    flxInwardIcon:{skin: "sknFlxe0e7ffRadius5px"},
-    lblInwardEntry: { text: "Washing" },
-    lblInwardCount: { text: "3 pending" },
-    lblVehicleInspectionAndBarCode: { text: "Vehicle washing process" },
-    lblViewDetailsInwardEntry: { text: "View Details" },
-    imgInwardIcon: { src: "carwashicon.png" },
-    imgFArrowIE: { src: "frontarrowwhite.png" },
-    flxViewDetailsInwardEntry: { onClick: self.navToRelatedActivity.bind(self,"frmWashingSummary")}
-}
-    ];
+    var data = [];
+    activitiesConfig.forEach(function (item) {
+      data.push({
+        flxInwardIcon: { 
+          skin: item.skin,
+          left: isArabic ? "" : "4%",
+          right: isArabic ? "4%" : ""
+        },
+        flxInwardEntryRight: {
+          left: isArabic ? "" : "23%",
+          right: isArabic ? "23%" : ""
+        },
+        lblInwardEntry: { 
+          text: item.title,
+          left: isArabic ? "" : "0%",
+          right: isArabic ? "0%" : ""
+                        },
+        lblInwardCount: { 
+          text: item.count,
+         
+        },
+        
+        flxInwardCount: {
+          left: isArabic ? "0%" : "",
+          right: isArabic ? "" : "0%"
+        },
+        lblVehicleInspectionAndBarCode: { 
+          text: item.desc,
+          left: isArabic ? "" : "2%",
+          right: isArabic ? "2%" : "",
+          contentAlignment: isArabic
+              ? constants.CONTENT_ALIGN_MIDDLE_RIGHT
+              : constants.CONTENT_ALIGN_MIDDLE_LEFT
+        },
+        lblViewDetailsInwardEntry: { text: voltmx.i18n.getLocalizedString("View Details") },
+        imgInwardIcon: { src: item.icon },
+        imgFArrowIE: { src: "frontarrowwhite.png" },
+        flxViewDetailsInwardEntry: {
+          left: isArabic ? "5%" : "",
+          right: isArabic ? "" : "5%",
+          onClick: self.navToRelatedActivity.bind(self, item.nav)
+        }
+      });
+    });
 
     self.view.segActivities.setData(data);
   }
@@ -95,7 +128,7 @@ define({
         
       },
   adjustRTL: function(){
-
+    var self = this;
     var isArabic = voltmx.i18n.getCurrentLocale() === "ar_AE";
 
     var labelAlignment = isArabic ?constants.CONTENT_ALIGN_MIDDLE_RIGHT : constants.CONTENT_ALIGN_MIDDLE_LEFT;
@@ -103,6 +136,41 @@ define({
     var textAlign =  isArabic ? constants.TEXT_ALIGN_RIGHT : constants.TEXT_ALIGN_LEFT;
 
     var direction = isArabic;
+    
+    if(isArabic)
+      {
+        self.view.lblWelcomeBack.left = "";
+        self.view.lblWelcomeBack.right = "5%";
+        
+        self.view.lblHeresisOverView.left = "";
+        self.view.lblHeresisOverView.right = "5%";
+        
+        self.view.lblMainCategories.left = "";
+        self.view.lblMainCategories.right = "0%";
+        
+        self.view.flxViewAll.left = "0%";
+        self.view.flxViewAll.right = "";
+        
+        self.view.lblSelectACategory.left = "";
+        self.view.lblSelectACategory.right = "5%";
+      }
+    else
+      {
+        self.view.lblWelcomeBack.left = "5%";
+        self.view.lblWelcomeBack.right = "";
+        
+        self.view.lblHeresisOverView.left = "5%";
+        self.view.lblHeresisOverView.right = "";
+        
+        self.view.lblMainCategories.left = "0%";
+        self.view.lblMainCategories.right = "";
+        
+        self.view.flxViewAll.left = "";
+        self.view.flxViewAll.right = "0%";
+        
+        self.view.lblSelectACategory.left = "5%";
+        self.view.lblSelectACategory.right = "";
+      }
 
 
     var labelList =[
@@ -171,7 +239,14 @@ define({
 
     this.view.flxHeader.lblInspectionIQ.text = voltmx.i18n.getLocalizedString("InspectioniQ");
 
+    if(voltmx.store.getItem("isLogin"))
+      {
+   this.view.lblWelcomeBack.text = voltmx.i18n.getLocalizedString("Welcome back") + " " + voltmx.store.getItem("username");
+      }
+    else
+      {
     this.view.lblWelcomeBack.text = voltmx.i18n.getLocalizedString("Welcome back");
+      }
 
       this.view.lblHeresisOverView = voltmx.i18n.getLocalizedString("Here’s your overview for today");
 
@@ -192,7 +267,10 @@ define({
       this.view.flxfooter.lblimages.text =voltmx.i18n.getLocalizedString("Images");
 
       this.view.flxfooter.lblprofile.text =voltmx.i18n.getLocalizedString("Profile");
-
+     
+      this.view.lblHeresisOverView.text = voltmx.i18n.getLocalizedString("Here’s your overview for today");
+    
+      this.view.lblMainCategories.text = voltmx.i18n.getLocalizedString("Main Categories");
   }
  
  });

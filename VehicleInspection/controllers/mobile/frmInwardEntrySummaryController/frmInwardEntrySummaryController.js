@@ -103,7 +103,7 @@ define({
       "language": "en",
       "oracle_num": "",
       "in_yard": "0",      // pending = 0 || completed = 1
-      "days": "7",         // default value
+      "days": "150",         // default value
       "page_number": "1",
       "page_size": self.pageSize || 5
   };
@@ -124,22 +124,21 @@ define({
 },
   
   operationSuccessPending: function(response)
-  {
-    voltmx.application.dismissLoadingScreen();
-    voltmx.print(response);
-    
-     
-      if (!response.records || response.records.length === 0) {
-    response.records = [{
-      total_completed: "0",
-      total_pending: "0",
-      total_vehicles: "0"
-    }];
-  }
+{
+  voltmx.application.dismissLoadingScreen();
+  voltmx.print(response);
 
-  this.completedVehicles = response.records[0].total_completed;
-  this.pendingVehicles = response.records[0].total_pending;
-  this.totalVehicles = response.records[0].total_vehicles;
+  var record = (response.records && response.records.length > 0)
+    ? response.records[0]
+    : {
+        total_completed: "0",
+        total_pending: "0",
+        total_vehicles: "0"
+      };
+
+  this.completedVehicles = record.total_completed;
+  this.pendingVehicles = record.total_pending;
+  this.totalVehicles = record.total_vehicles;
 
   this.view.flxSummary.lblTotalCount.text = this.totalVehicles;
   this.view.flxSummary.lblCompletedCount.text = this.completedVehicles;
@@ -148,8 +147,8 @@ define({
   this.view.lblPendingCount.text = this.pendingVehicles;
   this.view.lblCompletedCount.text = this.completedVehicles;
 
-    this.addToSegment(response);
-  },
+  this.addToSegment(response);
+},
   
   operationFailurePending: function(error)
   {
@@ -174,7 +173,7 @@ define({
       "language": "en",
       "oracle_num": "",
       "in_yard": "1",      // pending = 0 || completed = 1
-      "days": "7",         // default value
+      "days": "150",         // default value
       "page_number": "1",
       "page_size": self.pageSize || 5
   };
@@ -309,7 +308,7 @@ define({
 }
      self.currentOffset += newRecords.length;
 
-    self.view.segInwardEntryList.setData(data);
+    self.view.segInwardEntryList.addAll(data);
 },
   
   receiveVehicle: function(objectId) {
@@ -425,6 +424,15 @@ define({
         self.view.lblSummaryOfVehicleInspection.left = "0dp";
         self.view.lblSummaryOfVehicleInspection.right = "";
       }
+    
+    this.view.flxSummary.lblActivityName.text = voltmx.i18n.getLocalizedString("Inward Entries");
+    this.view.flxSummary.lblTotalVehicles.text = voltmx.i18n.getLocalizedString("Total Vehicles");
+    this.view.flxSummary.lblCompletedVehicles.text = voltmx.i18n.getLocalizedString("Completed Vehicles");
+    this.view.flxSummary.lblPendingVehicles.text = voltmx.i18n.getLocalizedString("Pending Vehicles");
+    this.view.lblSummaryOfVehicleInspection.text = voltmx.i18n.getLocalizedString("Summary of Vehicle Inspections");
+    this.view.lblPendingVehicles.text = voltmx.i18n.getLocalizedString("Pending Vehicles");
+    this.view.lblCompletedVehicles.text = voltmx.i18n.getLocalizedString("Completed Vehicles");
+    
   }
   
 
