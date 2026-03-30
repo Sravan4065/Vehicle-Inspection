@@ -111,7 +111,8 @@ define({
     
 
   adjustRTL: function(){
-
+    var self = this;
+    
     var isArabic = voltmx.i18n.getCurrentLocale() === "ar_AE";
 
     var labelAlignment = isArabic ?constants.CONTENT_ALIGN_MIDDLE_RIGHT : constants.CONTENT_ALIGN_MIDDLE_LEFT;
@@ -119,6 +120,53 @@ define({
     var textAlign =  isArabic ? constants.TEXT_ALIGN_RIGHT : constants.TEXT_ALIGN_LEFT;
 
     var direction = isArabic;
+    
+    if(isArabic)
+      {
+        self.view.flxEmailIcon.left = null;
+        self.view.flxEmailIcon.right = "0dp";
+        
+         self.view.flxEmailAndValue.left = null;
+        self.view.flxEmailAndValue.right = "25%";
+        
+        self.view.flxRoleIcon.left = null;
+        self.view.flxRoleIcon.right = "0dp";
+        
+        self.view.flxRoleAndValue.left = null;
+        self.view.flxRoleAndValue.right = "25%";
+        
+        self.view.flxProfile.left = null;
+        self.view.flxProfile.right = "0dp";
+        
+        self.view.flxUnameRole.left = null;
+        self.view.flxUnameRole.right = "25%";
+        
+         self.view.flxRole.left = null;
+        self.view.flxRole.right = "0dp";
+      }
+    else
+      {
+        self.view.flxEmailIcon.left = "0dp";
+        self.view.flxEmailIcon.right = null;
+        
+        self.view.flxEmailAndValue.left = "25%";
+        self.view.flxEmailAndValue.right = null;
+        
+        self.view.flxRoleIcon.left = "0dp";
+        self.view.flxRoleIcon.right = null;
+        
+        self.view.flxRoleAndValue.left = "25%";
+        self.view.flxRoleAndValue.right = null;
+        
+        self.view.flxProfile.left = "0dp";
+        self.view.flxProfile.right = null;
+        
+        self.view.flxUnameRole.left = "25%";
+        self.view.flxUnameRole.right = null;
+        
+        self.view.flxRole.left = "0dp";
+        self.view.flxRole.right = null;
+      }
 
 
     var labelList =[
@@ -161,9 +209,9 @@ define({
 
       "lblHelpSupport",
 
-      "lblLogout"
+      "lblLogout",
 
-
+      
 
 
 ];
@@ -190,7 +238,9 @@ define({
 
       "flxAppSettings",
 
-
+      "flxLanguageToggle",
+      
+      "flxHeading"
 
       ];
 
@@ -245,6 +295,9 @@ define({
       this.view.lblRoleValue.text = voltmx.store.getItem("jobTitle");
     
       this.view.lblEmailValue.text = voltmx.store.getItem("email");
+    this.view.lblSettings.text =  voltmx.i18n.getLocalizedString("Settings");
+    this.view.lblLanguageToggle.text = voltmx.i18n.getLocalizedString("Language Toggle");
+    this.view.flxHeading.lblImages.text = voltmx.i18n.getLocalizedString("Profile");
 
   }
  

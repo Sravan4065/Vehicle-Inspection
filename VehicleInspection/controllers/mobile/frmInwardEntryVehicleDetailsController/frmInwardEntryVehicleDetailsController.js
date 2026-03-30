@@ -25,6 +25,19 @@ onNavigate: function(context){
       
     this.vehicleDetails(objectId);
     this.view.btnReceiveVehicle.onClick = this.onReceiveClick.bind(this);
+    this.view.flxVehicleReceived.setVisibility(false);
+      this.view.flxVehicleReceived.flxReturnToList.onClick = () =>{
+      self.view.flxVehicleReceived.setVisibility(false);
+      NavigationManager.pop();
+    }
+      this.view.flxHeading.flxBack.onClick  = () =>{
+       self.view.flxVehicleReceived.setVisibility(false);
+      NavigationManager.pop();
+    }
+      this.view.flxVehicleReceived.flxCross.onClick  = () =>{
+        self.view.flxVehicleReceived.setVisibility(false);
+      NavigationManager.pop();
+    }
   },
   
   vehicleDetails: function(objectId) {
@@ -40,7 +53,7 @@ onNavigate: function(context){
         "auction_id": "",
         "job_title": role,
         "user_id": "",
-        "language": "ar"
+        "language": voltmx.i18n.getCurrentLocale() === "ar_AE" ? "ar" : "en"
     };
 
    
@@ -124,7 +137,9 @@ onNavigate: function(context){
   {
 
     voltmx.print(response);
- 
+    
+    if(response && response.data && response.data.object_id)
+     self.view.flxVehicleReceived.setVisibility(true);
 
   }
 
