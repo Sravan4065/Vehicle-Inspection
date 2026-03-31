@@ -1,0 +1,289 @@
+{
+  "com": {
+    "technohub": {
+      "mlkitbarcode": {
+        "MLKitBarcodeScanner": {
+          "!url": "",
+          "!type": "fn(context: Context, view: +java.lang.Object, formats: +java.newArray, resultCallback: Function)",
+          "prototype": {
+            "removeRectOfInterest": {
+              "!type": "fn() -> void",
+              "!url": ""
+            },
+            "addResultCallback": {
+              "!type": "fn(callback: Function) -> void",
+              "!url": ""
+            },
+            "setupSquareOfInterest": {
+              "!type": "fn() -> void",
+              "!url": ""
+            },
+            "restartSession": {
+              "!type": "fn() -> void",
+              "!url": ""
+            },
+            "notifyAll": {
+              "!type": "fn() -> void",
+              "!url": "http://developer.android.com/reference/java/lang/Object.html#notifyAll()"
+            },
+            "higlightCodes": {
+              "!type": "fn(codes: +java.newArray) -> void",
+              "!url": ""
+            },
+            "resultFromImage": {
+              "!type": "fn(imageBase64: string) -> void",
+              "!url": ""
+            },
+            "setupCustomRectOfInterest": {
+              "!type": "fn(frame: +java.newArray, image: string) -> void",
+              "!url": ""
+            },
+            "enableFlash": {
+              "!type": "fn(enable: +java.lang.Boolean) -> void",
+              "!url": ""
+            },
+            "equals": {
+              "!type": "fn(arg0: +java.lang.Object) -> bool",
+              "!url": "http://developer.android.com/reference/java/lang/Object.html#equals(java.lang.Object)"
+            },
+            "notify": {
+              "!type": "fn() -> void",
+              "!url": "http://developer.android.com/reference/java/lang/Object.html#notify()"
+            },
+            "zoomOut": {
+              "!type": "fn() -> void",
+              "!url": ""
+            },
+            "wait": {
+              "!type": "fn() -> void",
+              "!url": "http://developer.android.com/reference/java/lang/Object.html#wait()"
+            },
+            "toString": {
+              "!type": "fn() -> string",
+              "!url": "http://developer.android.com/reference/java/lang/Object.html#toString()"
+            },
+            "setupRectOfInterest": {
+              "!type": "fn() -> void",
+              "!url": ""
+            },
+            "enableContinuosScan": {
+              "!type": "fn(enable: +java.lang.Boolean) -> void",
+              "!url": ""
+            },
+            "hashCode": {
+              "!type": "fn() -> number",
+              "!url": "http://developer.android.com/reference/java/lang/Object.html#hashCode()"
+            },
+            "startCamera": {
+              "!type": "fn() -> void",
+              "!url": ""
+            },
+            "zoomIn": {
+              "!type": "fn() -> void",
+              "!url": ""
+            },
+            "stopSession": {
+              "!type": "fn() -> void",
+              "!url": ""
+            },
+            "getClass": {
+              "!type": "fn() -> +java.lang.Class",
+              "!url": "http://developer.android.com/reference/java/lang/Object.html#getClass()"
+            },
+            "startSession": {
+              "!type": "fn() -> void",
+              "!url": ""
+            },
+            "isFlashSupports": {
+              "!type": "fn() -> bool",
+              "!url": ""
+            }
+          }
+        },
+        "BarcodeBoxView": {
+          "!url": "",
+          "!type": "fn(context: Context)",
+          "prototype": {
+            "hashCode": {
+              "!type": "fn() -> number",
+              "!url": "http://developer.android.com/reference/java/lang/Object.html#hashCode()"
+            },
+            "getClass": {
+              "!type": "fn() -> +java.lang.Class",
+              "!url": "http://developer.android.com/reference/java/lang/Object.html#getClass()"
+            },
+            "notify": {
+              "!type": "fn() -> void",
+              "!url": "http://developer.android.com/reference/java/lang/Object.html#notify()"
+            },
+            "notifyAll": {
+              "!type": "fn() -> void",
+              "!url": "http://developer.android.com/reference/java/lang/Object.html#notifyAll()"
+            },
+            "equals": {
+              "!type": "fn(arg0: +java.lang.Object) -> bool",
+              "!url": "http://developer.android.com/reference/java/lang/Object.html#equals(java.lang.Object)"
+            },
+            "wait": {
+              "!type": "fn() -> void",
+              "!url": "http://developer.android.com/reference/java/lang/Object.html#wait()"
+            },
+            "toString": {
+              "!type": "fn() -> string",
+              "!url": "http://developer.android.com/reference/java/lang/Object.html#toString()"
+            }
+          }
+        },
+        "FrameMetadata": {
+          "!url": "",
+          "Builder": {
+            "!url": "",
+            "!type": "fn()",
+            "prototype": {
+              "notifyAll": {
+                "!type": "fn() -> void",
+                "!url": "http://developer.android.com/reference/java/lang/Object.html#notifyAll()"
+              },
+              "toString": {
+                "!type": "fn() -> string",
+                "!url": "http://developer.android.com/reference/java/lang/Object.html#toString()"
+              },
+              "equals": {
+                "!type": "fn(arg0: +java.lang.Object) -> bool",
+                "!url": "http://developer.android.com/reference/java/lang/Object.html#equals(java.lang.Object)"
+              },
+              "setRotation": {
+                "!type": "fn(rotation: number) -> +com.technohub.mlkitbarcode.FrameMetadata.Builder",
+                "!url": ""
+              },
+              "wait": {
+                "!type": "fn() -> void",
+                "!url": "http://developer.android.com/reference/java/lang/Object.html#wait()"
+              },
+              "setWidth": {
+                "!type": "fn(width: number) -> +com.technohub.mlkitbarcode.FrameMetadata.Builder",
+                "!url": ""
+              },
+              "setHeight": {
+                "!type": "fn(height: number) -> +com.technohub.mlkitbarcode.FrameMetadata.Builder",
+                "!url": ""
+              },
+              "hashCode": {
+                "!type": "fn() -> number",
+                "!url": "http://developer.android.com/reference/java/lang/Object.html#hashCode()"
+              },
+              "build": {
+                "!type": "fn() -> +com.technohub.mlkitbarcode.FrameMetadata",
+                "!url": ""
+              },
+              "getClass": {
+                "!type": "fn() -> +java.lang.Class",
+                "!url": "http://developer.android.com/reference/java/lang/Object.html#getClass()"
+              },
+              "notify": {
+                "!type": "fn() -> void",
+                "!url": "http://developer.android.com/reference/java/lang/Object.html#notify()"
+              }
+            }
+          },
+          "prototype": {
+            "notifyAll": {
+              "!type": "fn() -> void",
+              "!url": "http://developer.android.com/reference/java/lang/Object.html#notifyAll()"
+            },
+            "toString": {
+              "!type": "fn() -> string",
+              "!url": "http://developer.android.com/reference/java/lang/Object.html#toString()"
+            },
+            "equals": {
+              "!type": "fn(arg0: +java.lang.Object) -> bool",
+              "!url": "http://developer.android.com/reference/java/lang/Object.html#equals(java.lang.Object)"
+            },
+            "getRotation": {
+              "!type": "fn() -> number",
+              "!url": ""
+            },
+            "wait": {
+              "!type": "fn() -> void",
+              "!url": "http://developer.android.com/reference/java/lang/Object.html#wait()"
+            },
+            "getHeight": {
+              "!type": "fn() -> number",
+              "!url": ""
+            },
+            "getWidth": {
+              "!type": "fn() -> number",
+              "!url": ""
+            },
+            "hashCode": {
+              "!type": "fn() -> number",
+              "!url": "http://developer.android.com/reference/java/lang/Object.html#hashCode()"
+            },
+            "getClass": {
+              "!type": "fn() -> +java.lang.Class",
+              "!url": "http://developer.android.com/reference/java/lang/Object.html#getClass()"
+            },
+            "notify": {
+              "!type": "fn() -> void",
+              "!url": "http://developer.android.com/reference/java/lang/Object.html#notify()"
+            }
+          }
+        },
+        "BitmapUtils": {
+          "!url": "",
+          "!type": "fn()",
+          "convertPixelsToDp": {
+            "!type": "fn(px: +java.lang.Float, context: Context) -> number",
+            "!url": ""
+          },
+          "convertDpToPixel": {
+            "!type": "fn(dp: +java.lang.Float, context: Context) -> number",
+            "!url": ""
+          },
+          "getBitmap": {
+            "!type": "fn(data: +java.nio.ByteBuffer, metadata: +com.technohub.mlkitbarcode.FrameMetadata) -> Bitmap",
+            "!url": ""
+          },
+          "toBitmap": {
+            "!type": "fn(image: Image) -> Bitmap",
+            "!url": ""
+          },
+          "getBitmapFromContentUri": {
+            "!type": "fn(contentResolver: ContentResolver, imageUri: Uri) -> Bitmap",
+            "!url": ""
+          },
+          "prototype": {
+            "hashCode": {
+              "!type": "fn() -> number",
+              "!url": "http://developer.android.com/reference/java/lang/Object.html#hashCode()"
+            },
+            "getClass": {
+              "!type": "fn() -> +java.lang.Class",
+              "!url": "http://developer.android.com/reference/java/lang/Object.html#getClass()"
+            },
+            "notify": {
+              "!type": "fn() -> void",
+              "!url": "http://developer.android.com/reference/java/lang/Object.html#notify()"
+            },
+            "notifyAll": {
+              "!type": "fn() -> void",
+              "!url": "http://developer.android.com/reference/java/lang/Object.html#notifyAll()"
+            },
+            "equals": {
+              "!type": "fn(arg0: +java.lang.Object) -> bool",
+              "!url": "http://developer.android.com/reference/java/lang/Object.html#equals(java.lang.Object)"
+            },
+            "wait": {
+              "!type": "fn() -> void",
+              "!url": "http://developer.android.com/reference/java/lang/Object.html#wait()"
+            },
+            "toString": {
+              "!type": "fn() -> string",
+              "!url": "http://developer.android.com/reference/java/lang/Object.html#toString()"
+            }
+          }
+        }
+      }
+    }
+  }
+}
