@@ -1,5 +1,7 @@
 {
+    "@class": "com.kony.gen.viz.model.component.KVizUserWidget",
     "DNDConfig": null,
+    "_children_": [],
     "_height_": {
         "type": "string",
         "value": "42.79%"
@@ -14,7 +16,7 @@
         0,
         0
     ],
-    "_orientation_": 6,
+    "_orientation_": 1,
     "_padding_": [
         0,
         0,
@@ -31,32 +33,22 @@
         "type": "string",
         "value": "100%"
     },
-    "allboxes": [],
-    "autogrowmode": 0,
     "canUpdateUI": true,
-    "children": [
-        "Button0g0d19b0b8fc841",
-        "bgNativeContainer",
-        "Label0f31f4b37bd1f48"
-    ],
-    "clipbounds": true,
-    "containerweight": 100,
-    "enablescrolling": true,
+    "containerweight": 0,
+    "data": {},
     "id": "MLKitBCScanner",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "u028f1d6c04e44fd898a6496d2585b2e",
-    "layouttype": 2,
-    "name": "kony.ui.FlexContainer",
-    "parent": "userwidgetmodel",
-    "pf": "userwidgetmodel",
+    "kuid": "b6951f3c7e054554828bb1bf56680685",
+    "masterType": 1,
+    "name": "kony.ui.UserWidgetInstance",
+    "parent": "frmBarcodeNFIcheck",
+    "pf": "frmBarcodeNFIcheck",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainflowhorizontalalignment": false,
-    "snapgridsize": 10,
-    "snaptogrid": true,
-    "wType": "FlexContainer",
-    "widgetalignment": 1,
+    "sourceUserWidget": "u028f1d6c04e44fd898a6496d2585b2e",
+    "wType": "UserWidgetInstance",
     "zindex": 1
 }

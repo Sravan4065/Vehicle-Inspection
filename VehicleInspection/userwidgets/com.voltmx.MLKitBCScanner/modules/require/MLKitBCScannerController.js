@@ -426,7 +426,12 @@ callback: function(data) {
         alert(JSON.stringify(resultObj));
        var value = resultObj.displayValue || "";
 
-this.view.Label0f31f4b37bd1f48.text = value;
+// this.view.Label0f31f4b37bd1f48.text = value;
+      
+      NavigationManager.push("frmInwardEntryVehicleDetails",{
+      "objectId": value,
+      "isPending": false
+    })
     
 this.view.bgNativeContainer.setVisibility(false);
        

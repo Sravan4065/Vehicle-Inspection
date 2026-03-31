@@ -7,7 +7,7 @@
     },
     "_left_": {
         "type": "string",
-        "value": "55dp"
+        "value": "45dp"
     },
     "_margin_": [
         6,
@@ -21,11 +21,11 @@
         0,
         0
     ],
-    "_skin_": "s3fb6a977abc425ea1f2681d40acec19",
+    "_skin_": "s3d82706cd5b449b850eaa1abdceeff6",
     "_text_": "Button",
     "_top_": {
         "type": "string",
-        "value": "10dp"
+        "value": "50dp"
     },
     "_width_": {
         "type": "string",
@@ -36,16 +36,17 @@
     "contentalignment": 5,
     "displaytext": true,
     "focusskin": "s4ec7cfbb99d4ca7a00f788aa71ee43c",
-    "id": "Button0g0d19b0b8fc841",
-    "ide_onClick": "AS_Button_ae43e08f789c4ba082cb1db1ae42e65f",
+    "id": "Button0a7c9624fe09044",
+    "ide_onClick": "AS_Button_b1ef418a9331445b86f80ac0f44f0580",
     "info": null,
     "iscustomlayout": false,
-    "isvisible": true,
-    "kuid": "u625e7ecc9f44c0fba16345201ef7470",
+    "isvisible": false,
+    "kuid": "hd6eb5e1939d442e9febf403a7260723",
     "name": "kony.ui.Button",
-    "parent": "MLKitBCScanner",
-    "pf": "userwidgetmodel",
+    "parent": "frmBarcodeNFIcheck",
+    "pf": "frmBarcodeNFIcheck",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
-    "wType": "Button"
+    "wType": "Button",
+    "zindex": 1
 }
