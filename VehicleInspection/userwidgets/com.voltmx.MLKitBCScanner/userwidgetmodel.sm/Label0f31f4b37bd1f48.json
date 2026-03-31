@@ -54,7 +54,7 @@
         }
     },
     "iscustomlayout": false,
-    "isvisible": true,
+    "isvisible": false,
     "kuid": "u9593a0928a0456faff12745ee9a6643",
     "name": "kony.ui.Label",
     "parent": "MLKitBCScanner",

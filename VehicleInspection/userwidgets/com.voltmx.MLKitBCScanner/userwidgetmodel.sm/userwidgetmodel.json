@@ -39,9 +39,7 @@
     "device": "iPhone11",
     "displayorientation": 3,
     "enabledforidletimeout": false,
-    "globalUserWidgetRefs": [
-        "u6ca07376fc54807a20df8c59b85a4ef"
-    ],
+    "globalUserWidgetRefs": [],
     "id": "userwidgetmodel",
     "info": null,
     "initdone": false,
