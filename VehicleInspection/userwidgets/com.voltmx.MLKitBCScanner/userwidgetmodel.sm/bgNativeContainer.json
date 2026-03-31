@@ -1,0 +1,79 @@
+{
+    "@class": "com.kony.gen.viz.model.component.KVizNativeContainer",
+    "DNDConfig": null,
+    "_height_": {
+        "type": "string",
+        "value": "55.73%"
+    },
+    "_left_": {
+        "type": "string",
+        "value": "10dp"
+    },
+    "_margin_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_padding_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_top_": {
+        "type": "string",
+        "value": "70dp"
+    },
+    "_width_": {
+        "type": "string",
+        "value": "95.41%"
+    },
+    "canUpdateUI": true,
+    "containerweight": 0,
+    "desktopweb": {
+        "render": false
+    },
+    "id": "bgNativeContainer",
+    "info": null,
+    "iscustomlayout": false,
+    "isvisible": false,
+    "kiosk": {
+        "render": false
+    },
+    "kuid": "u2654498e8e6450292b216d2c5796fa5",
+    "name": "kony.ui.NativeContainer",
+    "parent": "MLKitBCScanner",
+    "pf": "userwidgetmodel",
+    "retaincontentalignment": false,
+    "retainflexpositionproperties": false,
+    "spaan": {
+        "render": false
+    },
+    "spaandroidtablet": {
+        "render": false
+    },
+    "spaip": {
+        "render": false
+    },
+    "spaipad": {
+        "render": false
+    },
+    "spawindowstablet": {
+        "render": false
+    },
+    "spawinphone8": {
+        "render": false
+    },
+    "wType": "NativeContainer",
+    "watchos": {
+        "render": false
+    },
+    "windows8": {
+        "render": false
+    },
+    "winphone8": {
+        "render": false
+    },
+    "zindex": 1
+}

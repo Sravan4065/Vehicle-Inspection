@@ -1,0 +1,255 @@
+{
+    "classname": "MLKitBCScanner",
+    "definitions": {
+        "apis": {
+            "custom": [
+                {
+                    "group": "General",
+                    "kuid": "a6dc17afb3dc49e6b0c37b695d9e9820",
+                    "paramList": [],
+                    "propertyKey": "startSession",
+                    "pw": {
+                        "displayName": "startSession",
+                        "uiRepresentation": "Label-Label-Button-Button"
+                    },
+                    "srcWgtKUID": "u028f1d6c04e44fd898a6496d2585b2e",
+                    "type": "event"
+                },
+                {
+                    "group": "General",
+                    "kuid": "jfcf0f938b1e41788933e881037467eb",
+                    "paramList": [],
+                    "propertyKey": "stopSession",
+                    "pw": {
+                        "displayName": "stopSession",
+                        "uiRepresentation": "Label-Label-Button-Button"
+                    },
+                    "srcWgtKUID": "u028f1d6c04e44fd898a6496d2585b2e",
+                    "type": "event"
+                },
+                {
+                    "group": "General",
+                    "kuid": "d2e776c6ca614f2a9ca304fc62e2dd09",
+                    "paramList": [],
+                    "propertyKey": "restartSession",
+                    "pw": {
+                        "displayName": "restartSession",
+                        "uiRepresentation": "Label-Label-Button-Button"
+                    },
+                    "srcWgtKUID": "u028f1d6c04e44fd898a6496d2585b2e",
+                    "type": "event"
+                },
+                {
+                    "group": "General",
+                    "kuid": "d86c5ae983c0444b812ce363f51a9dc2",
+                    "paramList": [],
+                    "propertyKey": "addResultCallback",
+                    "pw": {
+                        "displayName": "addResultCallback",
+                        "uiRepresentation": "Label-Label-Button-Button"
+                    },
+                    "srcWgtKUID": "u028f1d6c04e44fd898a6496d2585b2e",
+                    "type": "event"
+                },
+                {
+                    "group": "General",
+                    "kuid": "g1fed5d3c80d466cb0835a137b21714c",
+                    "paramList": [],
+                    "propertyKey": "enableFlash",
+                    "pw": {
+                        "displayName": "enableFlash",
+                        "uiRepresentation": "Label-Label-Button-Button"
+                    },
+                    "srcWgtKUID": "u028f1d6c04e44fd898a6496d2585b2e",
+                    "type": "event"
+                },
+                {
+                    "group": "General",
+                    "kuid": "h6c56a881a46419eba0707e14f5e3d33",
+                    "paramList": [],
+                    "propertyKey": "setupRectOfInterest",
+                    "pw": {
+                        "displayName": "setupRectOfInterest",
+                        "uiRepresentation": "Label-Label-Button-Button"
+                    },
+                    "srcWgtKUID": "u028f1d6c04e44fd898a6496d2585b2e",
+                    "type": "event"
+                },
+                {
+                    "group": "General",
+                    "kuid": "c805a78c7394461faa587f75773afeb8",
+                    "paramList": [],
+                    "propertyKey": "removeRectofInterest",
+                    "pw": {
+                        "displayName": "removeRectofInterest",
+                        "uiRepresentation": "Label-Label-Button-Button"
+                    },
+                    "srcWgtKUID": "u028f1d6c04e44fd898a6496d2585b2e",
+                    "type": "event"
+                },
+                {
+                    "group": "General",
+                    "kuid": "f0b3395e0ca44be398f6e8079c5e4941",
+                    "paramList": [],
+                    "propertyKey": "addInitCompleteCallback",
+                    "pw": {
+                        "displayName": "addInitCompleteCallback",
+                        "uiRepresentation": "Label-Label-Button-Button"
+                    },
+                    "srcWgtKUID": "u028f1d6c04e44fd898a6496d2585b2e",
+                    "type": "event"
+                },
+                {
+                    "group": "General",
+                    "kuid": "b0301cff740f458bb95babeca31e033b",
+                    "paramList": [],
+                    "propertyKey": "setupSquareOfInterest",
+                    "pw": {
+                        "displayName": "setupSquareOfInterest",
+                        "uiRepresentation": "Label-Label-Button-Button"
+                    },
+                    "srcWgtKUID": "u028f1d6c04e44fd898a6496d2585b2e",
+                    "type": "event"
+                },
+                {
+                    "group": "General",
+                    "kuid": "c4467a72cd354c50ba6add3a263e0f17",
+                    "paramList": [],
+                    "propertyKey": "zoomIn",
+                    "pw": {
+                        "displayName": "zoomIn",
+                        "uiRepresentation": "Label-Label-Button-Button"
+                    },
+                    "srcWgtKUID": "u028f1d6c04e44fd898a6496d2585b2e",
+                    "type": "event"
+                },
+                {
+                    "group": "General",
+                    "kuid": "g19a04893c5c480983154be655081635",
+                    "paramList": [],
+                    "propertyKey": "zoomOut",
+                    "pw": {
+                        "displayName": "zoomOut",
+                        "uiRepresentation": "Label-Label-Button-Button"
+                    },
+                    "srcWgtKUID": "u028f1d6c04e44fd898a6496d2585b2e",
+                    "type": "event"
+                },
+                {
+                    "group": "General",
+                    "kuid": "j78b932756f947419214edc16c320c79",
+                    "paramList": [],
+                    "propertyKey": "isFlashSupports",
+                    "pw": {
+                        "displayName": "isFlashSupports",
+                        "uiRepresentation": "Label-Label-Button-Button"
+                    },
+                    "srcWgtKUID": "u028f1d6c04e44fd898a6496d2585b2e",
+                    "type": "event"
+                },
+                {
+                    "group": "General",
+                    "kuid": "ea10fc1fa9404781980198abbeafa072",
+                    "paramList": [],
+                    "propertyKey": "setupCustomRectOfInterest",
+                    "pw": {
+                        "displayName": "setupCustomRectOfInterest",
+                        "uiRepresentation": "Label-Label-Button-Button"
+                    },
+                    "srcWgtKUID": "u028f1d6c04e44fd898a6496d2585b2e",
+                    "type": "event"
+                },
+                {
+                    "group": "General",
+                    "kuid": "ba1b016d61c14cebab3bb24b8a16a285",
+                    "paramList": [],
+                    "propertyKey": "isCameraPermissionAllowed",
+                    "pw": {
+                        "displayName": "isCameraPermissionAllowed",
+                        "uiRepresentation": "Label-Label-Button-Button"
+                    },
+                    "srcWgtKUID": "u028f1d6c04e44fd898a6496d2585b2e",
+                    "type": "event"
+                },
+                {
+                    "group": "General",
+                    "kuid": "e3dd373118ac49af85e066853ca2387e",
+                    "paramList": [],
+                    "propertyKey": "higlightCodes",
+                    "pw": {
+                        "displayName": "higlightCodes",
+                        "uiRepresentation": "Label-Label-Button-Button"
+                    },
+                    "srcWgtKUID": "u028f1d6c04e44fd898a6496d2585b2e",
+                    "type": "event"
+                }
+            ],
+            "passthrough": []
+        },
+        "events": {
+            "custom": [],
+            "passthrough": []
+        },
+        "groups": {
+            "apis": [
+                "General"
+            ],
+            "events": [],
+            "properties": [],
+            "widgets": []
+        },
+        "properties": {
+            "custom": [
+                {
+                    "access": "Write",
+                    "defaultValue": "[]",
+                    "group": "General",
+                    "kuid": "h0ca426b3580428db48c14d2aea45c6a",
+                    "originalPropertyKey": "codeFormats",
+                    "propertyIndex": 1,
+                    "propertyKey": "codeFormats",
+                    "pw": {
+                        "dependencyConditions": {},
+                        "displayName": "codeFormats",
+                        "uiConfig": {
+                            "Button": {
+                                "dataRetrieverId": "jsonEditor-Retriever",
+                                "dataUpdaterId": "jsonEditor-Updater",
+                                "popupId": "jsonEditor-Popup",
+                                "type": "jsonEditor"
+                            }
+                        },
+                        "uiRepresentation": "Label-Button"
+                    },
+                    "srcWgtKUID": "u028f1d6c04e44fd898a6496d2585b2e",
+                    "type": "json",
+                    "value": ""
+                },
+                {
+                    "access": "Write",
+                    "defaultValue": true,
+                    "group": "General",
+                    "kuid": "f95b88cc37e24642915f8f4c52582594",
+                    "originalPropertyKey": "enableContinuousScan",
+                    "propertyIndex": 2,
+                    "propertyKey": "enableContinuousScan",
+                    "pw": {
+                        "dependencyConditions": {},
+                        "displayName": "enableContinuousScan",
+                        "uiRepresentation": "Label-Radiobuttongroup"
+                    },
+                    "srcWgtKUID": "u028f1d6c04e44fd898a6496d2585b2e",
+                    "type": "boolean",
+                    "value": "true/false"
+                }
+            ],
+            "passthrough": []
+        },
+        "widgets": {
+            "expose": [],
+            "passthrough": []
+        }
+    },
+    "namespace": "com.voltmx",
+    "version": "2.1.3"
+}
