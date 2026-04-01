@@ -23,7 +23,9 @@ define({
     for (let i = 1; i <= 2; i++) {
       this.view["details" + i].segVehicleDetails.onRowClick =
         this.onRowClickAction.bind(this);
-    } 
+    }
+    this.view.details1.txbData.setEnabled(false);
+    this.view.details2.txbData.setEnabled(false);
   },
 
 

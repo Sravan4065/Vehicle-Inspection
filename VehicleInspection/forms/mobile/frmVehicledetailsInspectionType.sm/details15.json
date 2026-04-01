@@ -74,7 +74,8 @@
                 "kuid": "d00acbd7c0cd447fb7b548df6cb82011",
                 "srcKUID": "c6340dee896b4876bb7ecce4d50050ce",
                 "wType": "FlexContainer"
-            }
+            },
+            "isVisible": false
         },
         "flxName": {
             "__events__": {},

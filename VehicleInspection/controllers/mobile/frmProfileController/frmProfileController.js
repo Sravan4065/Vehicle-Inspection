@@ -6,6 +6,10 @@ define({
     this.view.preShow = this.onPreShow.bind(this);
     this.view.flxLanguageToggle.onClick = this.changeApplicationCurrentLocale.bind(this);
     this.view.flxLogout.onClick = this.logoutSession.bind(this);
+    this.view.flxBarCodeScanner.onClick = () =>
+    {
+      NavigationManager.push("frmBarCodeScan");
+    }
   },
   
   onPreShow: function()
@@ -240,7 +244,9 @@ define({
 
       "flxLanguageToggle",
       
-      "flxHeading"
+      "flxHeading",
+      
+      "flxBarCodeScanner"
 
       ];
 
@@ -298,6 +304,7 @@ define({
     this.view.lblSettings.text =  voltmx.i18n.getLocalizedString("Settings");
     this.view.lblLanguageToggle.text = voltmx.i18n.getLocalizedString("Language Toggle");
     this.view.flxHeading.lblImages.text = voltmx.i18n.getLocalizedString("Profile");
+    this.view.lblBarCodeScanner.text = voltmx.i18n.getLocalizedString("Bar Code Scanner");
 
   }
  

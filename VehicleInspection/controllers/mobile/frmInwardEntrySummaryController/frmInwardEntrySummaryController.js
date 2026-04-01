@@ -18,10 +18,10 @@ define({
     this.currentOffset = 0;
     this.view.segInwardEntryList.setData([]);
     this.showPendingVehicles();
-    this.view.segInwardEntryList.onRowClick = () =>
-    {
-      NavigationManager.push("frmInwardEntryVehicleDetails");
-    },
+//     this.view.segInwardEntryList.onRowClick = () =>
+//     {
+//       NavigationManager.push("frmInwardEntryVehicleDetails");
+//     },
       
       this.view.flxPendingVehicles.onClick = () =>
     {
@@ -246,10 +246,14 @@ define({
         newRecords.forEach(function(record) {
 
             data.push({
+               "flxLotModel": 
+              {
+                "reverseLayoutDirection": isArabic
+              },
                 "flxVehicleIcon": 
               {
                 "left": isArabic ? "" : "5%",
-                "right": isArabic ? "4%": ""
+                "right": isArabic ? "5%": ""
               },
               "flxModelAndNumber":{
                 "left": isArabic ? "" : "2%",
@@ -281,7 +285,7 @@ define({
                    "isVisible": !self.isPending,
                    "reverseLayoutDirection": isArabic
                 },
-                "lblViewDetailsInwardEntry": "View Details",
+                "lblViewDetailsInwardEntry": voltmx.i18n.getLocalizedString("View Details"),
                  
                 "flxViewDetailsInwardEntry": {
                     "left": isArabic ? "5%" : "",
@@ -359,11 +363,15 @@ define({
   openDetails: function(objectId)
   {
     var self = this;
-    new voltmx.mvc.Navigation("frmInwardEntryVehicleDetails").navigate(
-    {
+    NavigationManager.push("frmInwardEntryVehicleDetails", {
       "objectId": objectId,
       "isPending": self.isPending
-    });
+    })
+//     new voltmx.mvc.Navigation("frmInwardEntryVehicleDetails").navigate(
+//     {
+//       "objectId": objectId,
+//       "isPending": self.isPending
+//     });
   },
   
   adjustRTL: function()
@@ -371,7 +379,9 @@ define({
     var self = this;
     var isArabic = voltmx.i18n.getCurrentLocale() === "ar_AE";
     
-    self.view.flxULSummary.reverseLayoutDirection = isArabic;
+    this.view.flxULSummary.reverseLayoutDirection = isArabic;
+    this.view.flxHeading.reverseLayoutDirection = isArabic;
+    this.view.flxSearchComponent.tbxSearchBy.contentAlignment = isArabic ? constants.CONTENT_ALIGN_MIDDLE_RIGHT : constants.CONTENT_ALIGN_MIDDLE_LEFT;
     if(isArabic)
       {
         self.view.flxSummary.lblActivityName.left = "";
@@ -397,6 +407,12 @@ define({
         
         self.view.lblSummaryOfVehicleInspection.left = "";
         self.view.lblSummaryOfVehicleInspection.right = "0dp";
+        
+        self.view.flxSearchComponent.tbxSearchBy.left = "";
+        self.view.flxSearchComponent.tbxSearchBy.right = "4%";
+        
+        self.view.flxSearchComponent.flxSearch.left = "4%";
+        self.view.flxSearchComponent.flxSearch.right = "";
       }
     else
       {
@@ -423,7 +439,13 @@ define({
         
         self.view.lblSummaryOfVehicleInspection.left = "0dp";
         self.view.lblSummaryOfVehicleInspection.right = "";
-      }
+        
+        self.view.flxSearchComponent.tbxSearchBy.left = "4%";
+        self.view.flxSearchComponent.tbxSearchBy.right = "";
+        
+        self.view.flxSearchComponent.flxSearch.left = "";
+        self.view.flxSearchComponent.flxSearch.right = "4%";
+   }
     
     this.view.flxSummary.lblActivityName.text = voltmx.i18n.getLocalizedString("Inward Entries");
     this.view.flxSummary.lblTotalVehicles.text = voltmx.i18n.getLocalizedString("Total Vehicles");
@@ -432,6 +454,8 @@ define({
     this.view.lblSummaryOfVehicleInspection.text = voltmx.i18n.getLocalizedString("Summary of Vehicle Inspections");
     this.view.lblPendingVehicles.text = voltmx.i18n.getLocalizedString("Pending Vehicles");
     this.view.lblCompletedVehicles.text = voltmx.i18n.getLocalizedString("Completed Vehicles");
+    this.view.flxSearchComponent.tbxSearchBy.text = voltmx.i18n.getLocalizedString("Search by ID");
+    this.view.btnLoadMore.text = voltmx.i18n.getLocalizedString("Load More");
     
   }
   

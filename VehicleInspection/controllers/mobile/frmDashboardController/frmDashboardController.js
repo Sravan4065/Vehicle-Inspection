@@ -7,6 +7,7 @@ define({
     this.view.flxViewAll.onClick = () =>
     {
       new voltmx.mvc.Navigation("frmActivityist").navigate();
+      NavigationManager.push("frmActivityist");
     }
   },
   

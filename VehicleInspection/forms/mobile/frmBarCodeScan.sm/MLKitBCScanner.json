@@ -1,12 +1,14 @@
 {
+    "@class": "com.kony.gen.viz.model.component.KVizUserWidget",
     "DNDConfig": null,
+    "_children_": [],
     "_height_": {
-        "type": "ref",
-        "value": "preferred"
+        "type": "string",
+        "value": "42.79%"
     },
     "_left_": {
         "type": "string",
-        "value": "0"
+        "value": "0dp"
     },
     "_margin_": [
         0,
@@ -14,7 +16,7 @@
         0,
         0
     ],
-    "_orientation_": 6,
+    "_orientation_": 1,
     "_padding_": [
         0,
         0,
@@ -25,41 +27,32 @@
     "_skin_": "s2fd193c7b034a0ebdbf7d1fee1d0155",
     "_top_": {
         "type": "string",
-        "value": "200dp"
+        "value": "204dp"
     },
     "_width_": {
         "type": "string",
-        "value": "95%"
+        "value": "100%"
     },
-    "allboxes": [],
-    "autogrowmode": 1,
     "canUpdateUI": true,
     "centerx": {
         "type": "string",
         "value": "50%"
     },
-    "children": [
-        "imgmarkgreen",
-        "lblUPdatedsucessfully",
-        "btnClose"
-    ],
-    "clipbounds": true,
-    "containerweight": 100,
-    "enablescrolling": true,
-    "id": "flxPopup",
+    "containerweight": 0,
+    "data": {},
+    "id": "MLKitBCScanner",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "bf43ffb367af42a7ac744ca949d13c33",
-    "layouttype": 4,
-    "name": "kony.ui.FlexContainer",
-    "parent": "saveresponse",
-    "pf": "userwidgetmodel",
+    "kuid": "a02c26ebd0024c9eb157c9f01d3172e6",
+    "masterType": 1,
+    "name": "kony.ui.UserWidgetInstance",
+    "parent": "flxMain",
+    "pf": "frmBarCodeScan",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainflowhorizontalalignment": false,
-    "snapgridsize": 10,
-    "snaptogrid": true,
-    "wType": "FlexContainer",
-    "widgetalignment": 1
+    "sourceUserWidget": "u028f1d6c04e44fd898a6496d2585b2e",
+    "wType": "UserWidgetInstance",
+    "zindex": 1
 }

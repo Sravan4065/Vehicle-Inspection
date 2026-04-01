@@ -23,7 +23,7 @@
         0
     ],
     "_skin_": "sb8f9ecd82a04b66a15ce7fd3be4cb0b",
-    "_src_": "internet.png",
+    "_src_": "scanner.png",
     "_top_": {
         "type": "string",
         "value": "0"
@@ -42,15 +42,15 @@
         "value": "50%"
     },
     "containerweight": 100,
-    "id": "imgLanguageToggle",
+    "id": "CopyimgLanguageToggle0h51a57e244714c",
     "imagescalemode": 1,
     "info": null,
     "invokedProperty": "src",
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "a88d40557d8240128c687b17fb2240a4",
+    "kuid": "ab5d13aef234415a86b86327443accb1",
     "name": "kony.ui.Image2",
-    "parent": "flxLanguageToggleIcon",
+    "parent": "flxBarCodeScannerIcon",
     "pf": "frmProfile",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,

@@ -13,7 +13,9 @@ define({
     toggleFooterIcons(this.view, "frmVehicleSummaryreport");
     //     this.clearData();
 //     this.setDataToSeg();  
-    
+    this.view.details1.txbData.text = "";
+    this.view.details2.txbData.text = "";
+    this.view.details3.txbData.text = "";
     this.getInspectionMiscellaneousList();
 
   
@@ -156,7 +158,8 @@ define({
       voltmx.print("Invalid response");
       return;
     }
-
+    
+    
     var res = response.records[0];
 
     this.view.details1.txbData.text = res.mechanical;

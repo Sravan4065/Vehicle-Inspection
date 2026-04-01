@@ -21,6 +21,14 @@ define({
     this.invokeGetEditSpecDetails();
     this.view.details1.segVehicleDetails.onRowClick = this.segOnRowClickActionCategory.bind(this);
     this.view.details2.segVehicleDetails.onRowClick = this.segOnRowClickSubCategoryAction.bind(this);
+    this.view.details1.txbData.setEnabled(false);
+    this.view.details2.txbData.setEnabled(false);
+    this.view.details3.txbData.setEnabled(false);
+    this.view.details5.txbData.setEnabled(false);
+    this.view.details8.txbData.setEnabled(false);
+    this.view.details11.txbData.setEnabled(false);
+    this.view.details15.txbData.setEnabled(false);
+    
   },
 
   toggleDetails: function (context) {
@@ -261,7 +269,11 @@ define({
     var self = this;
     self.recordData = record;
     var master = self.specValues.data[0];
-
+ 
+    
+    voltmx.store.setItem("categoriesSelectedRowId",record.category_id);
+    voltmx.store.setItem("SubCategorySelectedRowId",record.sub_category_id);
+    
     // Mapping values
     var bodyType        = self.getValueFromList(master.body_type, record.body_type);
     var color           = self.getValueFromList(master.color, record.colors);
@@ -270,7 +282,8 @@ define({
     var branch          = self.getValueFromList(master.branch, record.branch);
     var fuel            = self.getValueFromList(master.fuel_type, record.fuel);
     var keys            = self.getValueFromList(master.keys, record.no_of_keys);
-    var yearMake        = self.getValueFromList(master.year_make, record.year_of_making);
+    var yearMake        =  record.year_of_making;
+//         self.getValueFromList(master.year_make, record.year_of_making);
 
     // technical_features (assuming multiple or single id)
     var technicalFeatures = "";
@@ -465,8 +478,8 @@ define({
       "user_id": voltmx.store.getItem("userId") || "",
       "commission": parseInt(record.commission || "0", 10),
 
-      "category_id": voltmx.store.getItem("categoriesSelectedRowId") || null,
-      "sub_category_id": voltmx.store.getItem("SubCategorySelectedRowId") || null,
+      "category_id": Number(voltmx.store.getItem("categoriesSelectedRowId")) || null,
+      "sub_category_id": Number(voltmx.store.getItem("SubCategorySelectedRowId")) || null,
 
       "target_selling_price": parseInt(record.target_selling_price || "0", 10),
 

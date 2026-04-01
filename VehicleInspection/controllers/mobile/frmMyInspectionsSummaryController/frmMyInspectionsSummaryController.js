@@ -258,8 +258,13 @@ define({
   openDetails: function(objectId,record)
   {
     var self = this;
-    new voltmx.mvc.Navigation("frmMyinspectionVehicleDetails").navigate(
-    {
+//     new voltmx.mvc.Navigation("frmMyinspectionVehicleDetails").navigate(
+//     {
+//       "objectId": objectId,
+//        "vehicleDetails": record,
+//       "isPending": self.isPending
+//     });
+    NavigationManager.push("frmMyinspectionVehicleDetails", {
       "objectId": objectId,
        "vehicleDetails": record,
       "isPending": self.isPending
