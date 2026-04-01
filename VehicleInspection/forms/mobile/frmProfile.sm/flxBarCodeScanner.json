@@ -1,8 +1,8 @@
 {
     "DNDConfig": null,
     "_height_": {
-        "type": "ref",
-        "value": "preferred"
+        "type": "string",
+        "value": "60dp"
     },
     "_left_": {
         "type": "string",
@@ -22,37 +22,37 @@
         0
     ],
     "_percent_": true,
-    "_skin_": "s43b3f0daddb4853bfc5983bfb525431",
+    "_skin_": "s1751d7921d04544ae3f197d87696100",
     "_top_": {
         "type": "string",
-        "value": "0"
+        "value": "12dp"
     },
     "_width_": {
         "type": "string",
-        "value": "100%"
+        "value": "90%"
     },
     "allboxes": [],
-    "autogrowmode": 1,
+    "autogrowmode": 0,
     "canUpdateUI": true,
+    "centerx": {
+        "type": "string",
+        "value": "50%"
+    },
     "children": [
-        "flxLanguageToggle",
-        "flxBarCodeScanner",
-        "flxAppSettings",
-        "flxNotifications",
-        "flxPrivacySecurity",
-        "flxHelpSupport"
+        "flxBarCodeScannerIcon",
+        "lblBarCodeScanner"
     ],
     "clipbounds": true,
     "containerweight": 100,
     "enablescrolling": true,
-    "id": "flxSettingItems",
+    "id": "flxBarCodeScanner",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "b31d0bd1fea84b27bcc25a6f4b5f0cfe",
-    "layouttype": 4,
+    "kuid": "e2b4f7c1f85a495ab82df06f7af3e7fe",
+    "layouttype": 3,
     "name": "kony.ui.FlexContainer",
-    "parent": "flxSettings",
+    "parent": "flxSettingItems",
     "pf": "frmProfile",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,

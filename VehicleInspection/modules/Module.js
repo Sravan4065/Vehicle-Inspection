@@ -516,3 +516,34 @@ if (response.DAM_PASSWORD) {
     voltmx.print("Failed to retrieve client app properties: " + JSON.stringify(error));
   });
 }
+
+function convertUTCtoUserTime(utcString) {
+  try {
+    if (!utcString) return null;
+
+    // Convert backend string to ISO format with UTC 'Z'
+    let isoString = utcString.replace(" ", "T").replace(".0", "") + "Z";
+    let utcDate = new Date(isoString);
+
+    if (isNaN(utcDate.getTime())) {
+      voltmx.print("Invalid UTC string: " + utcString);
+      return null;
+    }
+
+    // Create a Date object in local device timezone
+    // Simply returning the utcDate works, since JS Date automatically converts UTC → local
+//     return utcDate.toString();
+    const datePart = utcDate.toLocaleDateString('en-GB');     // DD/MM/YYYY (good for India/Dubai)
+        const timePart = utcDate.toLocaleTimeString('en-US', { 
+            hour: '2-digit', 
+            minute: '2-digit', 
+            second: '2-digit',
+            hour12: true 
+        });
+
+        return datePart + " " + timePart;
+  } catch (e) {
+    voltmx.print("Error converting UTC to local date: " + e.message);
+    return null;
+  }
+}

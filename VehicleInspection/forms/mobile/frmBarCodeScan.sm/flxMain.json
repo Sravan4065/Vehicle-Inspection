@@ -1,8 +1,8 @@
 {
     "DNDConfig": null,
     "_height_": {
-        "type": "ref",
-        "value": "preferred"
+        "type": "string",
+        "value": "100%"
     },
     "_left_": {
         "type": "string",
@@ -32,28 +32,25 @@
         "value": "100%"
     },
     "allboxes": [],
-    "autogrowmode": 1,
+    "autogrowmode": 0,
     "canUpdateUI": true,
     "children": [
-        "flxLanguageToggle",
-        "flxBarCodeScanner",
-        "flxAppSettings",
-        "flxNotifications",
-        "flxPrivacySecurity",
-        "flxHelpSupport"
+        "flxHeader",
+        "flxHeading",
+        "MLKitBCScanner"
     ],
-    "clipbounds": true,
+    "clipbounds": false,
     "containerweight": 100,
     "enablescrolling": true,
-    "id": "flxSettingItems",
+    "id": "flxMain",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "b31d0bd1fea84b27bcc25a6f4b5f0cfe",
+    "kuid": "ab4eff8f6a114a5eb99bb543e4aec4fe",
     "layouttype": 4,
     "name": "kony.ui.FlexContainer",
-    "parent": "flxSettings",
-    "pf": "frmProfile",
+    "parent": "frmBarCodeScan",
+    "pf": "frmBarCodeScan",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainflowhorizontalalignment": false,

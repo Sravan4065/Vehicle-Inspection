@@ -22,7 +22,7 @@
         0
     ],
     "_skin_": "s3fb6a977abc425ea1f2681d40acec19",
-    "_text_": "Button",
+    "_text_": "Scan",
     "_top_": {
         "type": "string",
         "value": "10dp"
@@ -32,6 +32,10 @@
         "value": "300dp"
     },
     "canUpdateUI": true,
+    "centerx": {
+        "type": "string",
+        "value": "50%"
+    },
     "containerweight": 100,
     "contentalignment": 5,
     "displaytext": true,

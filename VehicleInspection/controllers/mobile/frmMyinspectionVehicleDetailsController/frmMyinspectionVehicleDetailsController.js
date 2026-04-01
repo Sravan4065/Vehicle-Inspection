@@ -17,6 +17,10 @@ onNavigate: function(context){
      NavigationManager.push("frmChooseInspectionType",self.vehicleDetails);
    }
    this.populateDetails();
+   this.view.btnClose.onClick = () =>
+   {
+     NavigationManager.pop();
+   }
  },
   
   adjustRTL: function () {
@@ -265,7 +269,7 @@ onNavigate: function(context){
 },
   
   populateDetails: function(){
-
+    var self = this;
     this.view.lblIdData.text = (this.vehicleDetails && this.vehicleDetails.ID) ? this.vehicleDetails.ID : "N/A";
 
     this.view.lblDescriptionData.text = (this.vehicleDetails && this.vehicleDetails.description) ? this.vehicleDetails.description : "N/A";
@@ -274,11 +278,22 @@ onNavigate: function(context){
 
     this.view.lblServiceTypeData.text = (this.vehicleDetails && this.vehicleDetails.service_type) ? this.vehicleDetails.service_type : "N/A";
 
-    this.view.lblRequestedtimedata.text = (this.vehicleDetails && this.vehicleDetails.requested_time) ? this.vehicleDetails.requested_time : "N/A";
+    this.view.lblRequestedtimedata.text = (this.vehicleDetails && this.vehicleDetails.requested_time) ? convertUTCtoUserTime(this.vehicleDetails.requested_time) : "N/A";
 
     this.view.lblNotesData.text = (this.vehicleDetails && this.vehicleDetails.notes) ? this.vehicleDetails.notes : "N/A";
 
     this.view.lblStatusData.text = (this.vehicleDetails && this.vehicleDetails.status) ? this.vehicleDetails.status : "N/A";
+    
+    if(this.vehicleDetails && this.vehicleDetails.status &&  this.vehicleDetails.status.toLowerCase() === "pending")
+      {
+        self.view.lblStatusData.skin = "sknLblDubaid32437Medium";
+         self.view.lblInspectionReportData.skin = "sknLblDubaid32437Medium";
+      }
+    else
+      {
+        self.view.lblStatusData.skin = "sknlblDubai231f2016pxRegular";
+         self.view.lblInspectionReportData.skin = "sknlblDubai231f2016pxRegular";
+      }
 
     this.view.lblInspectionReportData.text = (this.vehicleDetails && this.vehicleDetails.status) ? this.vehicleDetails.status : "N/A";
   },

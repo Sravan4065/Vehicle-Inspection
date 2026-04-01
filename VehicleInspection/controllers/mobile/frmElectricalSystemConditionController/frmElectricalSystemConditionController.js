@@ -555,6 +555,7 @@ define({
 //             });
 
 //             alert(message);
+            message = "Inspection details saved successfully";
             self.view.saveresponse.setVisibility(true);
             self.view.saveresponse.lblUPdatedsucessfully.text = message;
           }

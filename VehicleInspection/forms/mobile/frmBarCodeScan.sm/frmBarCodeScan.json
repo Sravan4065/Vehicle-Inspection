@@ -18,7 +18,7 @@
     "_pxMenuIndex": [
         0,
         1,
-        26
+        1
     ],
     "_skin_": "sfbe0b910dfe4363bf286a9d2ada7748",
     "_title_": null,
@@ -44,17 +44,17 @@
     "controllerInfo": {
         "default": {
             "channel": "mobile",
-            "name": "frmMyinspectionVehicleDetailsController"
+            "name": "frmBarCodeScanController"
         }
     },
-    "currentLocale": "en_IN",
+    "currentLocale": "default",
     "desktopweb": {
         "needAppMenu": false
     },
     "device": "iPhone14",
     "displayorientation": 1,
     "enabledforidletimeout": false,
-    "id": "frmMyinspectionVehicleDetails",
+    "id": "frmBarCodeScan",
     "info": null,
     "initdone": false,
     "inputaccessoryviewtype": 4,
@@ -72,7 +72,7 @@
             "titleBarAttributes": {
                 "barStyle": 0,
                 "hidesBackButton": false,
-                "kuid": "e176737dc7244eef8dab26207035180f",
+                "kuid": "h06c650a98ac4bf095821de38d053adb",
                 "leftBarButtonItems": [],
                 "leftItemsSupplementBackButton": true,
                 "prompt": "",
@@ -83,7 +83,7 @@
                         "info": {
                             "title": "Edit"
                         },
-                        "kuid": "a3b297cd4cae4051b4c7c0e7c3a6df2e",
+                        "kuid": "b4e8f9491b1f4ba09bdf717f7005e360",
                         "style": 0,
                         "tintColor": "4b88f100",
                         "type": 1
@@ -100,7 +100,7 @@
     "kiosk": {
         "needAppMenu": false
     },
-    "kuid": "e18696b7018a4cb98b4cd1febe6ef445",
+    "kuid": "dd1de8a61ca740c3b340a6a9bfc20006",
     "layouttype": 2,
     "name": "kony.ui.Form2",
     "needappmenu": false,

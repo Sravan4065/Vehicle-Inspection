@@ -553,6 +553,33 @@ define({
             }
             voltmx.store.setItem("tStore", "");  
             self.tempStore = [];       
+            
+            // ====================== FIX START ======================
+                    // After upsert, server returns the final id for every record
+                    // (especially important for brand-new records that had no id).
+                    // We update the local inspectionData so that any further changes
+                    // in the same session send the correct id (exactly like a page reload).
+//                     if (details && details.length > 0) {
+//                         var detailMap = {};
+//                         details.forEach(function (detail) {
+//                             if (detail && detail.insp_pac_lov_id != null) {
+//                                 detailMap[detail.insp_pac_lov_id] = detail;
+//                             }
+//                         });
+
+//                         Object.keys(self.inspectionData).forEach(function (key) {
+//                             var item = self.inspectionData[key];
+//                             var lovId = item.insp_pac_lov_id;
+//                             if (lovId != null && detailMap[lovId]) {
+//                                 var returned = detailMap[lovId];
+//                                 if (returned.id != null) {
+//                                     item.id = Number(returned.id);   // now future saves will send this id
+//                                 }
+//                             }
+//                         });
+//                     }
+                    // ====================== FIX END ======================
+            self.invokeGetInspectionDetailsList();
             voltmx.print("tStore cleared after successful save");
 
             // Inside success block
@@ -561,6 +588,7 @@ define({
 //             });
 
 //             alert(message);
+            message = "Inspection details saved successfully";
             self.view.saveresponse.setVisibility(true);
             self.view.saveresponse.lblUPdatedsucessfully.text = message;
           }
