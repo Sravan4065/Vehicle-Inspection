@@ -272,9 +272,10 @@ define({
                 }, 
                 "lblVehicleNumber": record.chassis_number || "",
                 "lblLocation": record.location || "",
-                "lblDate": record.yard_received_date || "",
+                "lblDate": record.created_on
+ || "",
                 "flxLocation": {
-                   "isVisible": !self.isPending,
+                  // "isVisible": !self.isPending,
                    "reverseLayoutDirection": isArabic
                 },
                 "flxViewDetailsInwardEntry":
@@ -283,7 +284,7 @@ define({
                    "right": isArabic ? "" : "5%"
                 },
                 "flxDate": {
-                   "isVisible": !self.isPending,
+                  // "isVisible": !self.isPending,
                    "reverseLayoutDirection": isArabic
                 },
                 "lblViewDetailsInwardEntry": "View Details",

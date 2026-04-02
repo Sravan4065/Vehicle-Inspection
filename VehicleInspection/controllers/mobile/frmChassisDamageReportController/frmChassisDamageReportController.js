@@ -11,7 +11,7 @@ define({
     this.lovId = context.lovId;
     this.objectId = context.object_id;
     this.view.flxHeadingWithButton.btnSaveResponse.onClick =this.submitOnClickAction.bind(this);
-  //  this.view.saveresponse.btnClose.onClick = this.closepopup();
+   // this.view.saveresponse.btnClose.onClick = this.closepopup();
     
   
   },
@@ -26,6 +26,15 @@ define({
   {
     toggleFooterIcons(this.view, "frmChassisDamageReport");
     this.invokePaintCondition();
+      if(this.view.saveresponse)
+      {
+        this.view.saveresponse.setVisibility(false);
+      }
+    
+    this.view.saveresponse.btnClose.onClick = () =>
+    {
+      this.view.saveresponse.setVisibility(false);
+    }
   },
 
   createCheckBoxes: function (totalItems,response) {
@@ -184,9 +193,12 @@ define({
         try {
           var response = JSON.parse(request.responseText);
           voltmx.print("API Response: " + JSON.stringify(response));
-          this.view.saveresponse.setVisibility(true);
+          self.view.saveresponse.setVisibility(true);
+           self.view.saveresponse.lblUPdatedsucessfully.text = "Panel list saved Sucessfully";
+           alert("Response saved successfully");
         } catch (e) {
           voltmx.print("API Error: " + e);
+          alert("Something went wrong");
         }
       }
     };
@@ -206,6 +218,7 @@ define({
     }
 
     self.selectedChecks = selectedArr.join(",");
+    
     var panels = [];
     var numbers = self.selectedChecks ? self.selectedChecks.split(",") : [];
     numbers.forEach(function(num){
@@ -223,7 +236,7 @@ define({
 
 
       if(self.panelIdMap[num]){
-        panelObj.id = Number(self.panelIdMap[num]);;
+        panelObj.id = Number(self.panelIdMap[num]);
       }
 
       panels.push(panelObj);
@@ -231,9 +244,13 @@ define({
 
     var requestPayload = {
       "object_id": self.objectId,
-      "inspection_body_panels":panels
+      "inspection_body_panels":panels,
+      //"insp_pac_lov_id":Number(self.lovId)
     };
-
+    if (!self.selectedChecks || self.selectedChecks.length === 0) {
+    alert("Please select at least one panel");
+    return; // stop API call
+}
     var requestData = JSON.stringify(requestPayload);
     request.send(requestData);
   },

@@ -24,6 +24,15 @@ define({
 
   onPreShow: function()
   {
+       if(this.view.saveresponse)
+      {
+        this.view.saveresponse.setVisibility(false);
+      }
+    
+    this.view.saveresponse.btnClose.onClick = () =>
+    {
+      this.view.saveresponse.setVisibility(false);
+    }
     toggleFooterIcons(this.view, "frmChassisDamageReport");
     this.invokePaintCondition();
   },
@@ -184,7 +193,8 @@ define({
         try {
           var response = JSON.parse(request.responseText);
           voltmx.print("API Response: " + JSON.stringify(response));
-          this.view.saveresponse.setVisibility(true);
+          self.view.saveresponse.setVisibility(true);
+            self.view.saveresponse.lblUPdatedsucessfully.text = "Panel list saved Sucessfully";
         } catch (e) {
           voltmx.print("API Error: " + e);
         }
@@ -231,8 +241,13 @@ define({
 
     var requestPayload = {
       "object_id": self.objectId,
-      "inspection_body_panels":panels
+      "inspection_body_panels":panels,
+     // "insp_pac_lov_id":Number(self.lovId)
     };
+        if (!self.selectedChecks || self.selectedChecks.length === 0) {
+    alert("Please select at least one panel");
+    return; // stop API call
+}
 
     var requestData = JSON.stringify(requestPayload);
     request.send(requestData);
