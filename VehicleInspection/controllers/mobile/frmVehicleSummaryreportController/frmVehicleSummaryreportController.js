@@ -101,55 +101,89 @@ define({
     request.send(JSON.stringify(data));
   },
 
-  getInspectionMiscellaneousList: function(){
+//   getInspectionMiscellaneousList: function(){
+//     var self = this;
+//     checkTokenValidatity(function() {
+//       voltmx.application.showLoadingScreen(null, "Loading..",     constants.LOADING_SCREEN_POSITION_ONLY_CENTER, false, true, {         shouldShowLabelInBottom: "true",         separatorHeight: 45,         progressIndicatorType: constants.PROGRESS_INDICATOR_TYPE_SMALL,         progressIndicatorColor: "Gray"     });
+//       var serviceName = "fry_int_inspection";
+//       var integrationObj = voltmx.sdk.getCurrentInstance().getIntegrationService(serviceName);
+//       var operationName = "get-inspection-miscellaneous-list";
+
+//       var data = {
+//         "object_id": self.objectId
+//       }
+//       // Headers
+//       var headers = {
+//         "user_token": voltmx.store.getItem("getUserAccesstoken") 
+//       };
+
+//       integrationObj.invokeOperation(
+//         operationName,
+//         headers,
+//         data,
+//         self.operationSuccessPending.bind(self),
+//         self.operationFailurePending.bind(self)
+//       );
+//     });
+//   },
+
+
+
+
+
+//   operationSuccessPending: function(response)
+//   {
+//     voltmx.application.dismissLoadingScreen();
+//     voltmx.print(response);
+//     this.addToLabel(response);
+//   },
+
+
+
+
+
+//   operationFailurePending: function(error)
+//   {
+//     voltmx.print(voltmx.store.getItem("getUserAccesstoken"));
+//     voltmx.application.dismissLoadingScreen();
+//     voltmx.print(error);
+//   },
+
+getInspectionMiscellaneousList: function(){
     var self = this;
-    checkTokenValidatity(function() {
-      voltmx.application.showLoadingScreen(null, "Loading..",     constants.LOADING_SCREEN_POSITION_ONLY_CENTER, false, true, {         shouldShowLabelInBottom: "true",         separatorHeight: 45,         progressIndicatorType: constants.PROGRESS_INDICATOR_TYPE_SMALL,         progressIndicatorColor: "Gray"     });
-      var serviceName = "fry_int_inspection";
-      var integrationObj = voltmx.sdk.getCurrentInstance().getIntegrationService(serviceName);
-      var operationName = "get-inspection-miscellaneous-list";
+    voltmx.application.showLoadingScreen(null,"LoadingScreen",constants.LOADING_SCREEN_POSITION_ONLY_CENTER, false,true,null);
 
-      var data = {
-        "object_id": self.objectId
-      }
-      // Headers
-      var headers = {
-        "user_token": voltmx.store.getItem("getUserAccesstoken") 
-      };
+    var serviceName = "fry_int_inspection";
+    var integrationObj =  voltmx.sdk.getCurrentInstance().getIntegrationService(serviceName);
+    var operationName = "get-inspection-miscellaneous-list";
+    var headers = 
+        {
+          "user_token": voltmx.store.getItem("getUserAccesstoken")
+        }
 
-      integrationObj.invokeOperation(
-        operationName,
-        headers,
-        data,
-        self.operationSuccessPending.bind(self),
-        self.operationFailurePending.bind(self)
-      );
-    });
-  },
+    var data = 
+        {
+          
+          "object_id": self.objectId,
+           "insp_pac_lov_id": self.lovId
+        }
+    integrationObj.invokeOperation(operationName, headers, data, successCallback, failureCallback)
 
-
-
-
-
-  operationSuccessPending: function(response)
-  {
-    voltmx.application.dismissLoadingScreen();
+    function successCallback(response)
+    {
+      
+        
+      voltmx.application.dismissLoadingScreen();
     voltmx.print(response);
-    this.addToLabel(response);
+    self.addToLabel(response);
+    }
+
+    function failureCallback(error)
+    {
+      voltmx.application.dismissLoadingScreen();
+      voltmx.print(error);
+    }
   },
-
-
-
-
-
-  operationFailurePending: function(error)
-  {
-    voltmx.print(voltmx.store.getItem("getUserAccesstoken"));
-    voltmx.application.dismissLoadingScreen();
-    voltmx.print(error);
-  },
-
-
 
 
   addToLabel: function(response){

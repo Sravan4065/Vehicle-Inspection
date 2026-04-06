@@ -51,6 +51,7 @@
                 "srcKUID": "f55b13451ca848fd9dee6df988be37bf",
                 "wType": "FlexContainer"
             },
+            "isVisible": false,
             "top": {
                 "Default": {
                     "type": "string",
@@ -148,7 +149,7 @@
     "info": null,
     "iscustomlayout": false,
     "isdatareferenced": false,
-    "isvisible": true,
+    "isvisible": false,
     "kuid": "afea0bcc628e4c9ba70e83671de8024c",
     "layouttype": 2,
     "masterType": 0,

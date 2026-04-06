@@ -42,7 +42,7 @@
         "btnCompleteInspection": {
             "__events__": {},
             "__info__": {
-                "kuid": "j3a57ec14536404e953e69f110556ab5",
+                "kuid": "h3f0623cfafe46868f354318e7ae72ee",
                 "srcKUID": "c514d9f02c614629ba68c995e6a844ee",
                 "wType": "Button"
             },
@@ -52,11 +52,10 @@
             "__events__": {},
             "__info__": {
                 "isRoot": true,
-                "kuid": "ad4478ff403a4e9e87cd6c0a33272b57",
+                "kuid": "ced9761d737c4cd39be2cba0e2a87f0e",
                 "srcKUID": "c47cbf99dddb4356985d8758741b10a4",
                 "wType": "FlexContainer"
-            },
-            "isVisible": false
+            }
         }
     },
     "enablescrolling": true,
@@ -64,13 +63,13 @@
     "info": null,
     "iscustomlayout": false,
     "isdatareferenced": false,
-    "isvisible": false,
-    "kuid": "ad4478ff403a4e9e87cd6c0a33272b57",
+    "isvisible": true,
+    "kuid": "ced9761d737c4cd39be2cba0e2a87f0e",
     "layouttype": 2,
     "masterType": 0,
     "name": "kony.ui.UserWidgetInstance",
     "parent": "flxMain",
-    "pf": "frmEngineBayAndUnderCarriagePhotos",
+    "pf": "frmMiscellaneous",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainflowhorizontalalignment": false,

@@ -24,7 +24,7 @@
         "Front Right",
         "Fuel Type",
         "Help & Support",
-        "Here’s your overview for today",
+        "Heres your overview for today",
         "ID",
         "Images",
         "Inspected By",
@@ -96,7 +96,9 @@
         "Washing",
         "Welcome back",
         "Year",
-        "Year Of Month"
+        "Year Of Month",
+        "vehicleImageUploads",
+        "vehicleWashingprocess"
     ],
     "locales": {
         "ar_AE": {
@@ -125,7 +127,7 @@
                 "Front Right": "الجبهة اليمنى",
                 "Fuel Type": "نوع الوقود",
                 "Help & Support": "المساعدة والدعم",
-                "Here’s your overview for today": "إليكم ملخص أحداث اليوم",
+                "Heres your overview for today": "إليكم ملخص أحداث اليوم",
                 "ID": "بطاقة تعريف",
                 "Images": "الصور",
                 "Inspected By": "تم التفتيش بواسطة",
@@ -197,7 +199,9 @@
                 "Washing": "غسل",
                 "Welcome back": "مرحبًا بعودتك",
                 "Year": "سنة",
-                "Year Of Month": "سنة الشهر"
+                "Year Of Month": "سنة الشهر",
+                "vehicleImageUploads": "تحميل صور المركبات",
+                "vehicleWashingprocess": "عملية غسيل المركبات"
             },
             "isCustomLocale": false,
             "isSelected": true,
@@ -233,7 +237,7 @@
                 "Front Right": "Front Right",
                 "Fuel Type": "Fuel Type",
                 "Help & Support": "Help & Support",
-                "Here’s your overview for today": "Here’s your overview for today",
+                "Heres your overview for today": "Here’s your overview for today",
                 "ID": "ID",
                 "Images": "Images",
                 "Inspected By": "Inspected By",
@@ -305,7 +309,9 @@
                 "Washing": "Washing",
                 "Welcome back": "Welcome back",
                 "Year": "Year",
-                "Year Of Month": "Year Of Month"
+                "Year Of Month": "Year Of Month",
+                "vehicleImageUploads": "Vehicle Images uploads",
+                "vehicleWashingprocess": "Vehicles washing process"
             },
             "isCustomLocale": false,
             "isSelected": true,

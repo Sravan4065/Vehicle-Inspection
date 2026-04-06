@@ -33,7 +33,22 @@ define({
       {
         this.view.saveresponse.setVisibility(false);
       }
+    if(this.view.flxSuccessUpload)
+      {
+        this.view.flxSuccessUpload.setVisibility(false);
+      }
     
+    this.view.flxSuccessUpload.flxClose.onClick = () =>
+    {
+      this.view.flxSuccessUpload.setVisibility(false);
+    }
+
+    
+    this.view.flxSuccessUpload.btnClose.onClick = () =>
+    {
+      this.view.flxSuccessUpload.setVisibility(false);
+    }
+
     this.view.saveresponse.btnClose.onClick = () =>
     {
       this.view.saveresponse.setVisibility(false);
@@ -382,7 +397,8 @@ define({
         if(response){
           if(response.message === "Success"){
             self.view.flxAddDetailsAndUpload.setVisibility(false);
-            alert(response.message || "Upload Successful");
+//             alert(response.message || "Upload Successful");
+            self.view.flxSuccessUpload.setVisibility(true);
             var parsed = JSON.parse(response.response || "[]");
 
             if(parsed && parsed.length > 0){
@@ -653,6 +669,7 @@ define({
       self.view.flxAddDetailsAndUpload.flxUploadImages.setVisibility(false);
       self.view.flxAddDetailsAndUpload.imgUploadedImg.imageWhileDownloading = "loading.gif";
       self.view.flxAddDetailsAndUpload.imgUploadedImg.src = record.file_url;
+      self.view.flxAddDetailsAndUpload.lblImgName.text = record.file_name;
 
     }
     else
@@ -776,8 +793,11 @@ define({
       var filefullname = filename + filetype;
       this.fileDetails = [];
       this.fileDetails.push({
-        filename: filefullname,
-        base64: base64Image
+          "is_thumbnail":"false",
+          "inspection_category": self.record.value_en,
+          "inspection_subcategory":self.record.item_name,
+        "filename": filefullname,
+        "base64": base64Image
       });
 
 

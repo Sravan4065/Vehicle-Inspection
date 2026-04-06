@@ -1,6 +1,8 @@
 define({ 
 
-  onNavigate: function(){
+  onNavigate: function(context){
+    this.objectId = context.object_id;
+    this.lovId = context.lovId;
     this.view.preShow =this.onPreShow.bind(this);
     this.view.flxHeadingWithButton.btnSaveResponse.onClick = this.btnSaveResponseOnClickAction.bind(this);
   },
@@ -23,6 +25,8 @@ define({
       this.view["details" + i].segVehicleDetails.onRowClick =
         this.onRowClickAction.bind(this);
     } 
+    
+    this.view.flxCompleteButton.btnCompleteInspection.onClick = this.completeInspection.bind(this);
   },
 
 
@@ -241,7 +245,7 @@ define({
 //       signature_image_id: parseInt(self.view.details8.txbData.text) || 0
 //     };
     var data = {
-  object_id: "00-408A-983B-2678369F3102_73642",
+  object_id: self.objectId,
   tool_kit: (self.view.details1.txbData.text || "").trim(),
   damaged_areas: (self.view.details2.txbData.text || "").trim(),
   estimated_repair_cost: parseFloat(self.view.details3.txbData.text) || 0,
@@ -354,7 +358,8 @@ define({
       //   };
 
       var data = {
-        "object_id": "4D908BC2-AD33-4784-8420-3BB403CB6BF4"
+        "object_id": self.objectId,
+        "insp_pac_lov_id": self.lovId
       }
       // Headers
       var headers = {
@@ -546,6 +551,70 @@ define({
 
     segment.setData(segData);
 
+  },
+  
+  completeInspection: function()
+  {
+     var self = this;
+    
+//     self.view.flxVehicleReceived.setVisibility(true);
+
+  var serviceName = "ms_fleet";
+
+  var integrationObj = voltmx.sdk.getCurrentInstance()
+
+                                  .getIntegrationService(serviceName);
+
+  var operationName = "fleet-wfstatus";
+ 
+  var data = {
+    
+  "object_id": self.objectId,
+  "action_name": "Done"
+    
+  };
+ 
+  // Headers
+
+  var headers = {
+
+      "user_token": voltmx.store.getItem("getUserAccesstoken") 
+
+  };
+//  integrationObj.invokeOperation
+  integrationObj.invokeOperation(
+
+      operationName,
+
+      headers,
+
+      data,
+    
+    operationSuccessCompleted,   // ✅ pass reference
+    
+    operationFailureCompleted
+
+  );
+
+
+  function operationSuccessCompleted(response)
+
+  {
+
+    voltmx.print(response);
+    
+    if(response && response.data && response.data.object_id)
+     self.view.flxVehicleReceived.setVisibility(true);
+
+  }
+
+  function operationFailureCompleted(error)
+
+  {
+
+    voltmx.print(error);
+
+  }
   }
   // addToSegment: function(response){
 

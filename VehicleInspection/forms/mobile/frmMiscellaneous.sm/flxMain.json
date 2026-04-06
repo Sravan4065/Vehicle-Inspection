@@ -37,7 +37,8 @@
     "children": [
         "flxHeader",
         "flxBody",
-        "flxFoooter"
+        "flxFoooter",
+        "flxCompleteButton"
     ],
     "clipbounds": true,
     "containerweight": 100,

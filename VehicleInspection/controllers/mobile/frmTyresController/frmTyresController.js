@@ -456,14 +456,19 @@ voltmx.application.showLoadingScreen(null,"LoadingScreen",constants.LOADING_SCRE
         });
               
               self.createButtons(response.records);
+              self.view.flxScrollContainer.setVisibility(true);
             }
           else
             {
+              self.view.flxDirections.removeAll();
+              self.view.flxScrollContainer.setVisibility(false);
               voltmx.print("no records");
             }
         }
       else
         {
+          self.view.flxDirections.removeAll();
+          self.view.flxScrollContainer.setVisibility(false);
           voltmx.print("Invalid response");
         }
     }

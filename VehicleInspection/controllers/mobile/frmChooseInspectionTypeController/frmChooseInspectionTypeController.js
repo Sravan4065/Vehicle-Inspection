@@ -48,11 +48,13 @@ voltmx.application.showLoadingScreen(null,"LoadingScreen",constants.LOADING_SCRE
             }
           else
             {
+              self.view.segInspectionItems.setData([]);
               voltmx.print("no records");
             }
         }
       else
         {
+          self.view.segInspectionItems.setData([]);
           voltmx.print("Invalid response");
         }
     }
@@ -107,14 +109,14 @@ voltmx.application.showLoadingScreen(null,"LoadingScreen",constants.LOADING_SCRE
       )
                     });
     
-    data.push(
-    {
-      "key": "21",
-       "lblServiceType": "Miscellaneous",
-        "imgRight": "imgchevronright.png",
-        "lov_id": "36"
-    }
-    )
+//     data.push(
+//     {
+//       "key": "21",
+//        "lblServiceType": "Miscellaneous",
+//         "imgRight": "imgchevronright.png",
+//         "lov_id": "36"
+//     }
+//     )
 
     self.view.segInspectionItems.setData(data);
   }
@@ -193,7 +195,7 @@ voltmx.application.showLoadingScreen(null,"LoadingScreen",constants.LOADING_SCRE
 //               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
                NavigationManager.push("frmEngineBayAndUnderCarriagePhotos",navObj);
               break;
-               case "36":
+               case "44":
 //               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
                NavigationManager.push("frmMiscellaneous",navObj);
               break;

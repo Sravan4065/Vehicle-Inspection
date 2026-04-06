@@ -16,7 +16,7 @@
         "actions": [{
             "id": "ADD_SNIPPET_a84dbfc184bb4e5982f20c1b27798971",
             "type": "ADD_SNIPPET",
-            "codeSnippet": "// new voltmx.mvc.Navigation(\"frmProfile\").navigate();\nNavigationManager.push(\"frmProfile\");",
+            "codeSnippet": "// new voltmx.mvc.Navigation(\"frmProfile\").navigate();\nvar isLogin = voltmx.store.getItem(\"isLogin\");\nif(isLogin)\nNavigationManager.push(\"frmProfile\");\nelse\nNavigationManager.push(\"frmLogin\");",
             "parentId": null
         }]
     }
