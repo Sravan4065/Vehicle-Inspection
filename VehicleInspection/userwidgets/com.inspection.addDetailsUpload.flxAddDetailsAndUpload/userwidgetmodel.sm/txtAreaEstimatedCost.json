@@ -72,7 +72,7 @@
     "securetextentry": false,
     "showoprogressindicator": false,
     "showprogressindicator": false,
-    "textinputmode": "A",
+    "textinputmode": "N",
     "tooltip": "",
     "viewtype": "default",
     "wType": "TextArea"

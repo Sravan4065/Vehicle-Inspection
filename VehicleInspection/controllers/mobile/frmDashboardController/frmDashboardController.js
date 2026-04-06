@@ -42,7 +42,7 @@ define({
   {
     title:  voltmx.i18n.getLocalizedString("Images"),
     count: "4 pending",
-    desc: voltmx.i18n.getLocalizedString("Vehicle images uploads"),
+    desc: voltmx.i18n.getLocalizedString("vehicleImageUploads"),
     icon: "imagesicon.png",
     skin: "sknFlxDBFCE7Radius5px",
     nav: "frmImagesSummary"
@@ -50,7 +50,7 @@ define({
   {
     title: voltmx.i18n.getLocalizedString("Washing"),
     count: "3 pending",
-    desc: voltmx.i18n.getLocalizedString("Vehicle washing process"),
+    desc: voltmx.i18n.getLocalizedString("vehicleWashingprocess"),
     icon: "carwashicon.png",
     skin: "sknFlxe0e7ffRadius5px",
     nav: "frmWashingSummary"
@@ -125,7 +125,10 @@ define({
   navToRelatedActivity: function(navigatingFormName) 
       { 
 //         new voltmx.mvc.Navigation(navigatingFormName).navigate();
-        NavigationManager.push(navigatingFormName);
+        if(voltmx.store.getItem("isLogin"))
+         NavigationManager.push(navigatingFormName);
+        else
+        NavigationManager.push("frmLogin");
         
       },
   adjustRTL: function(){
@@ -257,7 +260,7 @@ define({
 
       this.view.lblViewAll.text =voltmx.i18n.getLocalizedString("View All");
 
-      this.view.lblSelectACategory.text =voltmx.i18n.getLocalizedString("Main Categories");
+      this.view.lblSelectACategory.text =voltmx.i18n.getLocalizedString("Select a category to begin your workflow");
 
       this.view.flxfooter.lblHome.text =voltmx.i18n.getLocalizedString("Dashboard");
 
@@ -269,7 +272,7 @@ define({
 
       this.view.flxfooter.lblprofile.text =voltmx.i18n.getLocalizedString("Profile");
      
-      this.view.lblHeresisOverView.text = voltmx.i18n.getLocalizedString("Here’s your overview for today");
+      this.view.lblHeresisOverView.text = voltmx.i18n.getLocalizedString("Heres your overview for today");
     
       this.view.lblMainCategories.text = voltmx.i18n.getLocalizedString("Main Categories");
   }

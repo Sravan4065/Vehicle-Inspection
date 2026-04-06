@@ -46,7 +46,7 @@ define({
     if(self.isPending)
       {
         self.pageSize += 5;
-        self.invokePendingInwardService();
+        self.invokePendingInspectionService();
       }
     else
       {

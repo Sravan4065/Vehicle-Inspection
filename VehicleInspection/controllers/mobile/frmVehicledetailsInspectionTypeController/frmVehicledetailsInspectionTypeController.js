@@ -458,8 +458,8 @@ define({
     var payload = {
       "object_id": self.objectId,
 
-      "is_technical": record.is_technical,
-      "is_washed": record.is_washed,
+      "is_technical": Number(record.is_technical),
+      "is_washed": Number(record.is_washed),
 
       "milage": parseInt(self.view.details9.txbData.text.trim() || "0", 10) || 0,
 
@@ -521,7 +521,7 @@ define({
       // ✅ FIXED
       "document": Number(record.document) || null,
 
-      "is_minimum_commission_applied": record.min_commission,
+      "is_minimum_commission_applied": record.min_commission === "true" ? true : false,
 
       "details": []
     };
@@ -591,6 +591,7 @@ define({
           }
 
           // SUCCESS HANDLING
+          alert(response.message);
           voltmx.print("Save successful → " + JSON.stringify(response));
           // → you can add navigation / toast / refresh here
 
