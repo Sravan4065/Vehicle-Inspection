@@ -1,0 +1,67 @@
+{
+    "DNDConfig": null,
+    "_height_": {
+        "type": "string",
+        "value": "75%"
+    },
+    "_margin_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_orientation_": 6,
+    "_padding_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_percent_": true,
+    "_skin_": "sf2ebf6b89a44d44ac536a8235ef2e99",
+    "_top_": {
+        "type": "string",
+        "value": "2%"
+    },
+    "_width_": {
+        "type": "string",
+        "value": "94%"
+    },
+    "allboxes": [],
+    "autogrowmode": 0,
+    "canUpdateUI": true,
+    "centerx": {
+        "type": "string",
+        "value": "50%"
+    },
+    "children": [
+        "natConSignaturePad"
+    ],
+    "clipbounds": true,
+    "containerweight": 100,
+    "enablescrolling": true,
+    "id": "flxCanvas",
+    "info": null,
+    "iscustomlayout": false,
+    "isvisible": true,
+    "kuid": "ud32eaedd11e42e180b2e7814cec9082",
+    "layouttype": 2,
+    "maxheight": {
+        "type": "string",
+        "value": "279dp"
+    },
+    "maxwidth": {
+        "type": "string",
+        "value": "336dp"
+    },
+    "name": "kony.ui.FlexContainer",
+    "parent": "signaturecapture",
+    "pf": "userwidgetmodel",
+    "retaincontentalignment": false,
+    "retainflexpositionproperties": false,
+    "snapgridsize": 10,
+    "snaptogrid": true,
+    "wType": "FlexContainer",
+    "widgetalignment": 1,
+    "zindex": 1
+}
