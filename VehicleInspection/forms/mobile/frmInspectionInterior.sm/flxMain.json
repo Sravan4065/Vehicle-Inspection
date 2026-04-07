@@ -48,7 +48,8 @@
         "flxfooter",
         "flxAddDetailsAndUpload",
         "flxChooseFileTakePhoto",
-        "saveresponse"
+        "saveresponse",
+        "flxSuccessUpload"
     ],
     "clipbounds": false,
     "containerweight": 100,

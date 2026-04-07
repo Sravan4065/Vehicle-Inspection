@@ -18,6 +18,11 @@ define({
       this.view["details" + i].segVehicleDetails.onRowClick =
         this.onRowClickAction.bind(this);
     }
+    this.view.details4.txbData.setEnabled(false);
+     this.view.details6.txbData.setEnabled(false);
+     this.view.details9.txbData.setEnabled(false);
+     this.view.details10.txbData.setEnabled(false);
+     this.view.details12.txbData.setEnabled(false);
     this.invokeGetEditSpecDetails();
     this.view.details1.segVehicleDetails.onRowClick = this.segOnRowClickActionCategory.bind(this);
     this.view.details2.segVehicleDetails.onRowClick = this.segOnRowClickSubCategoryAction.bind(this);
@@ -28,7 +33,7 @@ define({
     this.view.details8.txbData.setEnabled(false);
     this.view.details11.txbData.setEnabled(false);
     this.view.details15.txbData.setEnabled(false);
-    
+//     4,6,9,10,12
   },
 
   toggleDetails: function (context) {

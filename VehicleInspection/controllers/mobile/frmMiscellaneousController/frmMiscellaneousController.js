@@ -3,8 +3,12 @@ define({
   onNavigate: function(context){
     this.objectId = context.object_id;
     this.lovId = context.lovId;
+        this.services_id = context.services_id;
+
     this.view.preShow =this.onPreShow.bind(this);
     this.view.flxHeadingWithButton.btnSaveResponse.onClick = this.btnSaveResponseOnClickAction.bind(this);
+    this.existingId = null;
+    this.fullExistingData = null;
   },
   // this.view.flxHeadingWithButton.btnSaveResponse
 
@@ -14,6 +18,13 @@ define({
     toggleFooterIcons(this.view, "frmVehicledetailsInspectionType");
     //     this.clearData();
     this.masterfleetspecvalues();
+    this.view.details1.txbData.text = "";
+this.view.details2.txbData.text = "";
+this.view.details3.txbData.text = "";
+this.view.details4.txbData.text = "";
+this.view.details5.txbData.text = "";
+this.view.details6.txbData.text = "";
+this.view.details7.txbData.text = "";
     this.getInspectionMiscellaneousList();
     this.setDataToSeg();  
 
@@ -244,17 +255,27 @@ define({
 //       city: self.view.details7.txbData.text || "",
 //       signature_image_id: parseInt(self.view.details8.txbData.text) || 0
 //     };
-    var data = {
-  object_id: self.objectId,
-  tool_kit: (self.view.details1.txbData.text || "").trim(),
-  damaged_areas: (self.view.details2.txbData.text || "").trim(),
-  estimated_repair_cost: parseFloat(self.view.details3.txbData.text) || 0,
-  service_provider: (self.view.details4.txbData.text || "").trim(),
-  technician_id: (self.view.details5.txbData.text || "").trim(),
-  branch: (self.view.details6.txbData.text || "").trim(),
-  city: (self.view.details7.txbData.text || "").trim(),
-  signature_image_id: parseInt(self.view.details8.txbData.text) || 0
-};
+    
+    var data = self.fullExistingData ? 
+               JSON.parse(JSON.stringify(self.fullExistingData)) :   // deep copy
+               {};
+    data.tool_kit = (self.view.details1.txbData.text || "").trim();
+data.damaged_areas = (self.view.details2.txbData.text || "").trim();
+data.estimated_repair_cost = parseFloat(self.view.details3.txbData.text) || 0;
+data.service_provider = (self.view.details4.txbData.text || "").trim();
+data.technician_id = (self.view.details5.txbData.text || "").trim();
+data.branch = (self.view.details6.txbData.text || "").trim();
+data.city = (self.view.details7.txbData.text || "").trim();
+// data.signature_image_id = parseInt(self.view.details8.txbData.text) || 0;
+    
+    
+    data.object_id = self.objectId;
+    data.services_id = Number(self.services_id);
+
+     if(self.existingId)
+      {
+        data.id = self.existingId
+      }
 
     voltmx.print("Payload: " + JSON.stringify(data));
 
@@ -278,7 +299,8 @@ define({
           //         }
 
           if (responseJSON.success) {
-            alert(responseJSON.message);
+//             alert(responseJSON.message);
+            alert("Saved successfully");
           } else {
             alert("Failed to save response");
           }
@@ -382,9 +404,32 @@ define({
 
   operationSuccessPending: function(response)
   {
+    var self = this;
     voltmx.application.dismissLoadingScreen();
     voltmx.print(response);
-    this.addToLabel(response);
+    if (response && 
+    response.records && 
+    response.records.length > 0) 
+{
+    const firstRecord = response.records[0];
+    
+    // Check if 'id' exists and is not empty
+    if (firstRecord.id && 
+        String(firstRecord.id).trim() !== "") 
+    {
+        self.existingId = Number(firstRecord.id);  
+         self.fullExistingData = firstRecord;
+    } 
+    else 
+    {
+        self.existingId = null;   
+    }
+} 
+else 
+{
+    self.existingId = null;   
+}
+    self.addToLabel(response);
   },
 
 
@@ -415,6 +460,8 @@ define({
     this.view.details3.txbData.text = res.estimated_repair_cost;
     this.view.details6.txbData.text = res.branch;
     this.view.details7.txbData.text = res.city;
+     this.view.details4.txbData.text = res.service_provider;
+     this.view.details5.txbData.text = res.technician_id;
   },
   // -----------------------------------------------------------------------
 

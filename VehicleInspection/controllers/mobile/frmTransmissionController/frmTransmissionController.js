@@ -12,8 +12,8 @@ define({
     this.inspectionData = {};
 
   },
-  
- onPreShow: function()
+
+  onPreShow: function()
   {
     var self = this;
     toggleFooterIcons(this.view, "frmEngineInspectionType"); 
@@ -33,7 +33,22 @@ define({
       {
         this.view.saveresponse.setVisibility(false);
       }
+    if(this.view.flxSuccessUpload)
+      {
+        this.view.flxSuccessUpload.setVisibility(false);
+      }
     
+    this.view.flxSuccessUpload.flxClose.onClick = () =>
+    {
+      this.view.flxSuccessUpload.setVisibility(false);
+    }
+
+    
+    this.view.flxSuccessUpload.btnClose.onClick = () =>
+    {
+      this.view.flxSuccessUpload.setVisibility(false);
+    }
+
     this.view.saveresponse.btnClose.onClick = () =>
     {
       this.view.saveresponse.setVisibility(false);
@@ -106,7 +121,7 @@ define({
     this.view.flxAddDetailsAndUpload.btnSubmitUpload.onClick = this.onAddDetailsSubmit.bind(this);
     this.invokeGetInspectionDetailsList();
   },
-  
+
   createUIWithRecords: function(records)
   {
     var self = this;
@@ -313,7 +328,8 @@ define({
   onOptionSelect: function (index, selectedRating) {
 
     var record = this.records[index];
-    var id = record.id;
+//     var id = record.id;
+    var key = record.item_name;
 
     var flxItem = this.view["flxItem" + index];
 
@@ -342,23 +358,37 @@ define({
     // Store selected rating locally per item
     //     this.selectedRatings[index] = selectedRating;
 
-    if(!this.inspectionData){
-      this.inspectionData = {};
-    }
+//     if(!this.inspectionData){
+//       this.inspectionData = {};
+//     }
 
-    if(!this.inspectionData[id]){
-      this.inspectionData[id] = {
-        id: Number(id),
-        insp_pac_lov_id: Number(record.insp_pac_lov_id),
-        item_name: record.item_name
-      };
-    }
+//     if(!this.inspectionData[id]){
+//       this.inspectionData[id] = {
+//         id: Number(id),
+//         insp_pac_lov_id: Number(record.insp_pac_lov_id),
+//         item_name: record.item_name
+//       };
+//     }
 
-    this.inspectionData[id].rating = selectedRating;
+//     this.inspectionData[id].rating = selectedRating;
+if (!this.inspectionData[key]) {
+  this.inspectionData[key] = {
+    id: record.id ? Number(record.id) : null,
+    insp_pac_lov_id: Number(record.insp_pac_lov_id),
+    item_name: record.item_name
+  };
+}
 
+this.inspectionData[key].rating = selectedRating;
 
     this.view.forceLayout();
   },
+
+  //   onAddDetailsSubmit: function()
+  //   {
+  //     var self = this;
+  //     ImageUploadAndDeletion.uploadImage(self.objectId,self.fileDetails);
+  //   },
 
   onAddDetailsSubmit: function()
   {
@@ -376,7 +406,8 @@ define({
         if(response){
           if(response.message === "Success"){
             self.view.flxAddDetailsAndUpload.setVisibility(false);
-            alert(response.message || "Upload Successful");
+//             alert(response.message || "Upload Successful");
+            self.view.flxSuccessUpload.setVisibility(true);
             var parsed = JSON.parse(response.response || "[]");
 
             if(parsed && parsed.length > 0){
@@ -392,32 +423,48 @@ define({
               }
 
               var record = self.records[index];
-              var id = record.id;
+//               var id = record.id;
+              var key = record.item_name;
 
-              if(!self.inspectionData){
-                self.inspectionData = {};
-              }
+//               if(!self.inspectionData){
+//                 self.inspectionData = {};
+//               }
 
-              if(!self.inspectionData[id]){
-                self.inspectionData[id] = {
-                  id: Number(id),
-                  insp_pac_lov_id: Number(record.insp_pac_lov_id),
-                  item_name: record.item_name,
-                  notes: self.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text,
-                  repair_estimate_aed: Number(self.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text),
-                  image_url_id: imageLog.id
-                };
-              }
-              else
-              {
-                self.inspectionData[id].notes = self.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text;
-                self.inspectionData[id].repair_estimate_aed = Number(self.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text);
-                self.inspectionData[id].image_url_id = imageLog.id;
-              }
+//               if(!self.inspectionData[id]){
+//                 self.inspectionData[id] = {
+//                   id: Number(id),
+//                   insp_pac_lov_id: Number(record.insp_pac_lov_id),
+//                   item_name: record.item_name,
+//                   notes: self.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text,
+//                   repair_estimate_aed: Number(self.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text),
+//                   image_url_id: imageLog.id
+//                 };
+//               }
+//               else
+//               {
+//                 self.inspectionData[id].notes = self.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text;
+//                 self.inspectionData[id].repair_estimate_aed = Number(self.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text);
+//                 self.inspectionData[id].image_url_id = imageLog.id;
+//               }
+              if (!self.inspectionData[key]) {
+  self.inspectionData[key] = {
+    id: record.id ? Number(record.id) : null,
+    insp_pac_lov_id: Number(record.insp_pac_lov_id),
+    item_name: record.item_name,
+    notes: self.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text,
+    repair_estimate_aed: Number(self.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text),
+    image_url_id: imageLog.id
+  };
+} else {
+  self.inspectionData[key].notes =
+    self.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text;
 
-              // self.inspectionData[id].image_url_id = imageLog.id;
+  self.inspectionData[key].repair_estimate_aed =
+    Number(self.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text);
 
-//               self.inspectionData[id].__newImageThisSession = true;
+  self.inspectionData[key].image_url_id = imageLog.id;
+}
+         
 
               var obj = {
                 file_name: payload.file_name,
@@ -547,6 +594,33 @@ define({
             }
             voltmx.store.setItem("tStore", "");  
             self.tempStore = [];       
+            
+            // ====================== FIX START ======================
+                    // After upsert, server returns the final id for every record
+                    // (especially important for brand-new records that had no id).
+                    // We update the local inspectionData so that any further changes
+                    // in the same session send the correct id (exactly like a page reload).
+//                     if (details && details.length > 0) {
+//                         var detailMap = {};
+//                         details.forEach(function (detail) {
+//                             if (detail && detail.insp_pac_lov_id != null) {
+//                                 detailMap[detail.insp_pac_lov_id] = detail;
+//                             }
+//                         });
+
+//                         Object.keys(self.inspectionData).forEach(function (key) {
+//                             var item = self.inspectionData[key];
+//                             var lovId = item.insp_pac_lov_id;
+//                             if (lovId != null && detailMap[lovId]) {
+//                                 var returned = detailMap[lovId];
+//                                 if (returned.id != null) {
+//                                     item.id = Number(returned.id);   // now future saves will send this id
+//                                 }
+//                             }
+//                         });
+//                     }
+                    // ====================== FIX END ======================
+            self.invokeGetInspectionDetailsList();
             voltmx.print("tStore cleared after successful save");
 
             // Inside success block
@@ -555,6 +629,7 @@ define({
 //             });
 
 //             alert(message);
+            message = "Inspection details saved successfully";
             self.view.saveresponse.setVisibility(true);
             self.view.saveresponse.lblUPdatedsucessfully.text = message;
           }
@@ -579,7 +654,7 @@ define({
             id: item.id && item.id !== "" && item.id !== null ? Number(item.id) : undefined,
             insp_pac_lov_id: Number(item.insp_pac_lov_id),
             item_name: item.item_name || "",
-            rating: item.rating !== undefined ? Number(item.rating) : undefined,
+//             rating: item.rating !== undefined ? Number(item.rating) : undefined,
             notes: item.notes || "",
             repair_estimate_aed: item.repair_estimate_aed ? Number(item.repair_estimate_aed) : undefined,
 //             image_url_id: item.image_url_id || null   // send whatever is there (old or new)
@@ -588,7 +663,9 @@ define({
       if (item.image_url_id && !isNaN(Number(item.image_url_id)) && Number(item.image_url_id) > 0) {
         payloadItem.image_url_id = Number(item.image_url_id);
     }
-       
+        if (item.rating && !isNaN(Number(item.rating)) && Number(item.rating) > 0) {
+        payloadItem.rating = Number(item.rating);
+    }
         inspectionDetails.push(payloadItem);
     });
 
@@ -619,6 +696,7 @@ define({
       self.view.flxAddDetailsAndUpload.flxUploadImages.setVisibility(false);
       self.view.flxAddDetailsAndUpload.imgUploadedImg.imageWhileDownloading = "loading.gif";
       self.view.flxAddDetailsAndUpload.imgUploadedImg.src = record.file_url;
+      self.view.flxAddDetailsAndUpload.lblImgName.text = record.file_name;
 
     }
     else
@@ -742,8 +820,11 @@ define({
       var filefullname = filename + filetype;
       this.fileDetails = [];
       this.fileDetails.push({
-        filename: filefullname,
-        base64: base64Image
+          "is_thumbnail":"false",
+          "inspection_category": self.record.value_en,
+          "inspection_subcategory":self.record.item_name,
+        "filename": filefullname,
+        "base64": base64Image
       });
 
 
@@ -805,18 +886,28 @@ define({
           self.records = response.records;
           self.inspectionData = {};
         self.records.forEach(function(record) {
-            var id = record.id;
-            if (id) {  // only process existing records
-                self.inspectionData[id] = {
-                    id: Number(id),
-                    insp_pac_lov_id: Number(record.insp_pac_lov_id),
-                    item_name: record.item_name,
-                    rating: record.rating || 0,                     // preserved from backend
-                    notes: record.notes || "",                      // preserved
-                    repair_estimate_aed: Number(record.repair_estimate_aed) || 0,
-                    image_url_id: record.image_url_id || null       // preserved from backend
-                };
-            }
+//             var id = record.id;
+          var key = record.item_name;
+//             if (id) {  // only process existing records
+//                 self.inspectionData[id] = {
+//                     id: Number(id),
+//                     insp_pac_lov_id: Number(record.insp_pac_lov_id),
+//                     item_name: record.item_name,
+//                     rating: record.rating || 0,                     // preserved from backend
+//                     notes: record.notes || "",                      // preserved
+//                     repair_estimate_aed: Number(record.repair_estimate_aed) || 0,
+//                     image_url_id: record.image_url_id || null       // preserved from backend
+//                 };
+//             }
+           self.inspectionData[key] = {
+    id: record.id ? Number(record.id) : null,
+    insp_pac_lov_id: Number(record.insp_pac_lov_id),
+    item_name: record.item_name,
+    rating: record.rating || 0,
+    notes: record.notes || "",
+    repair_estimate_aed: Number(record.repair_estimate_aed) || 0,
+    image_url_id: record.image_url_id || null
+  };
         });
           
           
@@ -956,6 +1047,6 @@ define({
 
       this.view.flxHeadingWithButton.imgBack.transform = voltmx.ui.makeAffineTransform();
     }
-  },
-  
- });
+  }
+
+});
