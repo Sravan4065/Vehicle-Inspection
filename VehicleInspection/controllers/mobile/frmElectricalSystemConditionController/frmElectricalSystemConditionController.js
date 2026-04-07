@@ -16,6 +16,7 @@ define({
   onPreShow: function()
   {
     var self = this;
+    self.view.flxHeadingWithButton.btnSaveResponse.setEnabled(true);
     toggleFooterIcons(this.view, "frmEngineInspectionType"); 
 
     this.fileDetails = [];
@@ -514,7 +515,7 @@ this.inspectionData[key].rating = selectedRating;
     var self = this;
 
     var baseURL = voltmx.store.getItem("BASE_URL");
-
+    self.view.flxHeadingWithButton.btnSaveResponse.setEnabled(false);
     if (baseURL && !baseURL.endsWith("/")) {
 
       baseURL += "/";
@@ -548,7 +549,7 @@ this.inspectionData[key].rating = selectedRating;
         try {
 
           var response = JSON.parse(request.responseText);
-
+           self.view.flxHeadingWithButton.btnSaveResponse.setEnabled(true);
           voltmx.print("API Response: " + JSON.stringify(response));
 
           if (response && response.error) {
