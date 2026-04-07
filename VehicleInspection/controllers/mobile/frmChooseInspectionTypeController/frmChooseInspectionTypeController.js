@@ -104,7 +104,8 @@ voltmx.application.showLoadingScreen(null,"LoadingScreen",constants.LOADING_SCRE
         "key": record.id,
         "lblServiceType": record.value_en,
         "imgRight": "imgchevronright.png",
-        "lov_id": record.master_lov_id
+        "lov_id": record.master_lov_id,
+        "services_id": record.services_id
       }
       )
                     });
@@ -129,7 +130,8 @@ voltmx.application.showLoadingScreen(null,"LoadingScreen",constants.LOADING_SCRE
         self.view.segInspectionItems.selectedRowItems;
     var navObj = {
       "object_id" : self.objectId,
-      "lovId": selectedRow[0].lov_id || ""
+      "lovId": selectedRow[0].lov_id || "",
+      "services_id": selectedRow[0].services_id || ""
     }
     if(selectedRow && selectedRow[0].lov_id)
       {

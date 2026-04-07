@@ -5,6 +5,9 @@ define({
     this.view.flxHeadingWithButton.btnSaveResponse.onClick = this.btnSaveResponseOnClickAction.bind(this);
      this.lovId = context.lovId;
     this.objectId = context.object_id;
+    this.services_id = context.services_id;
+    this.existingId = null;
+    this.fullExistingData = null;
   },
 
 
@@ -91,11 +94,24 @@ define({
     request.setRequestHeader("Authorization", "Basic "+encodeVal);
     request.setRequestHeader("user_token", token);
 
-    var data = {
-  object_id: self.objectId,
-  service_history : (self.view.details1.txbData.text || "").trim(),
-  user_manual : (self.view.details2.txbData.text || "").trim(),
-};
+    var data = self.fullExistingData ? 
+               JSON.parse(JSON.stringify(self.fullExistingData)) :   // deep copy
+               {};
+    data.service_history = (self.view.details1.txbData.text || "").trim();
+    data.user_manual     = (self.view.details2.txbData.text || "").trim();
+    
+    data.object_id = self.objectId;
+    data.services_id = Number(self.services_id || 0);
+//     var data = {
+//   object_id: self.objectId,
+//   services_id: Number(self.services_id),
+//   service_history : (self.view.details1.txbData.text || "").trim(),
+//   user_manual : (self.view.details2.txbData.text || "").trim(),
+// };
+    if(self.existingId)
+      {
+        data.id = self.existingId
+      }
 
     voltmx.print("Payload: " + JSON.stringify(data));
 
@@ -196,7 +212,8 @@ define({
   getInspectionMiscellaneousList: function(){
     var self = this;
     voltmx.application.showLoadingScreen(null,"LoadingScreen",constants.LOADING_SCREEN_POSITION_ONLY_CENTER, false,true,null);
-
+   self.existingId = null;
+    self.fullExistingData = null;
     var serviceName = "fry_int_inspection";
     var integrationObj =  voltmx.sdk.getCurrentInstance().getIntegrationService(serviceName);
     var operationName = "get-inspection-miscellaneous-list";
@@ -218,6 +235,28 @@ define({
         
       voltmx.application.dismissLoadingScreen();
     voltmx.print(response);
+       if (response && 
+    response.records && 
+    response.records.length > 0) 
+{
+    const firstRecord = response.records[0];
+    
+    // Check if 'id' exists and is not empty
+    if (firstRecord.id && 
+        String(firstRecord.id).trim() !== "") 
+    {
+        self.existingId = Number(firstRecord.id);  
+         self.fullExistingData = firstRecord;
+    } 
+    else 
+    {
+        self.existingId = null;   
+    }
+} 
+else 
+{
+    self.existingId = null;   
+}
     self.addToLabel(response);
     }
 

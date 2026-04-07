@@ -328,7 +328,8 @@ define({
   onOptionSelect: function (index, selectedRating) {
 
     var record = this.records[index];
-    var id = record.id;
+//     var id = record.id;
+    var key = record.item_name;
 
     var flxItem = this.view["flxItem" + index];
 
@@ -357,20 +358,28 @@ define({
     // Store selected rating locally per item
     //     this.selectedRatings[index] = selectedRating;
 
-    if(!this.inspectionData){
-      this.inspectionData = {};
-    }
+//     if(!this.inspectionData){
+//       this.inspectionData = {};
+//     }
 
-    if(!this.inspectionData[id]){
-      this.inspectionData[id] = {
-        id: Number(id),
-        insp_pac_lov_id: Number(record.insp_pac_lov_id),
-        item_name: record.item_name
-      };
-    }
+//     if(!this.inspectionData[id]){
+//       this.inspectionData[id] = {
+//         id: Number(id),
+//         insp_pac_lov_id: Number(record.insp_pac_lov_id),
+//         item_name: record.item_name
+//       };
+//     }
 
-    this.inspectionData[id].rating = selectedRating;
+//     this.inspectionData[id].rating = selectedRating;
+if (!this.inspectionData[key]) {
+  this.inspectionData[key] = {
+    id: record.id ? Number(record.id) : null,
+    insp_pac_lov_id: Number(record.insp_pac_lov_id),
+    item_name: record.item_name
+  };
+}
 
+this.inspectionData[key].rating = selectedRating;
 
     this.view.forceLayout();
   },
@@ -414,32 +423,48 @@ define({
               }
 
               var record = self.records[index];
-              var id = record.id;
+//               var id = record.id;
+              var key = record.item_name;
 
-              if(!self.inspectionData){
-                self.inspectionData = {};
-              }
+//               if(!self.inspectionData){
+//                 self.inspectionData = {};
+//               }
 
-              if(!self.inspectionData[id]){
-                self.inspectionData[id] = {
-                  id: Number(id),
-                  insp_pac_lov_id: Number(record.insp_pac_lov_id),
-                  item_name: record.item_name,
-                  notes: self.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text,
-                  repair_estimate_aed: Number(self.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text),
-                  image_url_id: imageLog.id
-                };
-              }
-              else
-              {
-                self.inspectionData[id].notes = self.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text;
-                self.inspectionData[id].repair_estimate_aed = Number(self.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text);
-                self.inspectionData[id].image_url_id = imageLog.id;
-              }
+//               if(!self.inspectionData[id]){
+//                 self.inspectionData[id] = {
+//                   id: Number(id),
+//                   insp_pac_lov_id: Number(record.insp_pac_lov_id),
+//                   item_name: record.item_name,
+//                   notes: self.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text,
+//                   repair_estimate_aed: Number(self.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text),
+//                   image_url_id: imageLog.id
+//                 };
+//               }
+//               else
+//               {
+//                 self.inspectionData[id].notes = self.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text;
+//                 self.inspectionData[id].repair_estimate_aed = Number(self.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text);
+//                 self.inspectionData[id].image_url_id = imageLog.id;
+//               }
+              if (!self.inspectionData[key]) {
+  self.inspectionData[key] = {
+    id: record.id ? Number(record.id) : null,
+    insp_pac_lov_id: Number(record.insp_pac_lov_id),
+    item_name: record.item_name,
+    notes: self.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text,
+    repair_estimate_aed: Number(self.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text),
+    image_url_id: imageLog.id
+  };
+} else {
+  self.inspectionData[key].notes =
+    self.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text;
 
-              // self.inspectionData[id].image_url_id = imageLog.id;
+  self.inspectionData[key].repair_estimate_aed =
+    Number(self.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text);
 
-//               self.inspectionData[id].__newImageThisSession = true;
+  self.inspectionData[key].image_url_id = imageLog.id;
+}
+         
 
               var obj = {
                 file_name: payload.file_name,
@@ -629,7 +654,7 @@ define({
             id: item.id && item.id !== "" && item.id !== null ? Number(item.id) : undefined,
             insp_pac_lov_id: Number(item.insp_pac_lov_id),
             item_name: item.item_name || "",
-            rating: item.rating !== undefined ? Number(item.rating) : undefined,
+//             rating: item.rating !== undefined ? Number(item.rating) : undefined,
             notes: item.notes || "",
             repair_estimate_aed: item.repair_estimate_aed ? Number(item.repair_estimate_aed) : undefined,
 //             image_url_id: item.image_url_id || null   // send whatever is there (old or new)
@@ -638,7 +663,9 @@ define({
       if (item.image_url_id && !isNaN(Number(item.image_url_id)) && Number(item.image_url_id) > 0) {
         payloadItem.image_url_id = Number(item.image_url_id);
     }
-       
+        if (item.rating && !isNaN(Number(item.rating)) && Number(item.rating) > 0) {
+        payloadItem.rating = Number(item.rating);
+    }
         inspectionDetails.push(payloadItem);
     });
 
@@ -859,18 +886,28 @@ define({
           self.records = response.records;
           self.inspectionData = {};
         self.records.forEach(function(record) {
-            var id = record.id;
-            if (id) {  // only process existing records
-                self.inspectionData[id] = {
-                    id: Number(id),
-                    insp_pac_lov_id: Number(record.insp_pac_lov_id),
-                    item_name: record.item_name,
-                    rating: record.rating || 0,                     // preserved from backend
-                    notes: record.notes || "",                      // preserved
-                    repair_estimate_aed: Number(record.repair_estimate_aed) || 0,
-                    image_url_id: record.image_url_id || null       // preserved from backend
-                };
-            }
+//             var id = record.id;
+          var key = record.item_name;
+//             if (id) {  // only process existing records
+//                 self.inspectionData[id] = {
+//                     id: Number(id),
+//                     insp_pac_lov_id: Number(record.insp_pac_lov_id),
+//                     item_name: record.item_name,
+//                     rating: record.rating || 0,                     // preserved from backend
+//                     notes: record.notes || "",                      // preserved
+//                     repair_estimate_aed: Number(record.repair_estimate_aed) || 0,
+//                     image_url_id: record.image_url_id || null       // preserved from backend
+//                 };
+//             }
+           self.inspectionData[key] = {
+    id: record.id ? Number(record.id) : null,
+    insp_pac_lov_id: Number(record.insp_pac_lov_id),
+    item_name: record.item_name,
+    rating: record.rating || 0,
+    notes: record.notes || "",
+    repair_estimate_aed: Number(record.repair_estimate_aed) || 0,
+    image_url_id: record.image_url_id || null
+  };
         });
           
           
@@ -1013,3 +1050,764 @@ define({
   }
 
 });
+
+// define({
+
+//   onNavigate: function(context) {
+//     this.adjustRTL();
+//     this.lovId = context.lovId;
+//     this.objectId = context.object_id;
+//     this.view.preShow = this.onPreShow.bind(this);
+//     this.flxSelectedItems = {};
+//     this.inspectionData = {}; // keyed by record INDEX (stable, unique, works for both fresh and existing)
+//   },
+
+//   onPreShow: function() {
+//     var self = this;
+//     toggleFooterIcons(this.view, "frmEngineInspectionType");
+
+//     this.fileDetails = [];
+//     this.tempStore = this.tempStore || [];
+
+//     this.view.flxAddDetailsAndUpload.flxCloseAddDetails.onClick = function() {
+//       self.view.flxAddDetailsAndUpload.setVisibility(false);
+//     };
+
+//     this.view.flxAddDetailsAndUpload.flxUploadImages.onClick = function() {
+//       self.view.flxChooseFileTakePhoto.setVisibility(true);
+//     };
+
+//     if (this.view.saveresponse) {
+//       this.view.saveresponse.setVisibility(false);
+//     }
+//     if (this.view.flxSuccessUpload) {
+//       this.view.flxSuccessUpload.setVisibility(false);
+//     }
+
+//     this.view.flxSuccessUpload.flxClose.onClick = function() {
+//       self.view.flxSuccessUpload.setVisibility(false);
+//     };
+
+//     this.view.flxSuccessUpload.btnClose.onClick = function() {
+//       self.view.flxSuccessUpload.setVisibility(false);
+//     };
+
+//     this.view.saveresponse.btnClose.onClick = function() {
+//       self.view.saveresponse.setVisibility(false);
+//     };
+
+//     this.view.flxChooseFileTakePhoto.flxChooseFromLibrary.onClick = this.flxChooseFromLibraryOnClickAction.bind(this);
+//     this.view.flxChooseFileTakePhoto.camTakeAPhoto.onCapture = this.camOnCaptureAction.bind(this);
+//     this.view.flxChooseFileTakePhoto.flxTakeAPhoto.onClick = this.camOnCaptureAction.bind(this);
+
+//     this.view.flxAddDetailsAndUpload.flxRetake.onClick = function() {
+//       self.view.flxChooseFileTakePhoto.setVisibility(true);
+//     };
+
+//     this.view.flxChooseFileTakePhoto.onClick = function() {
+//       self.view.flxChooseFileTakePhoto.setVisibility(false);
+//     };
+
+//     this.view.flxAddDetailsAndUpload.setVisibility(false);
+
+//     this.view.flxHeadingWithButton.flxBack.onClick = function() {
+//       var tStore = voltmx.store.getItem("tStore");
+
+//       if (tStore && tStore.length > 0) {
+//         var alertConfig = {
+//           message: "Do you want to discard the changes?",
+//           alertType: constants.ALERT_TYPE_CONFIRMATION,
+//           alertTitle: "Confirmation",
+//           yesLabel: "Yes",
+//           noLabel: "No",
+//           alertHandler: function(response) {
+//             if (response) {
+//               ImageUploadAndDeletion.deleteImage(tStore, function(res, error) {
+//                 if (error) {
+//                   alert("Image deletion failed");
+//                   voltmx.print("Delete Error: " + JSON.stringify(error));
+//                   return;
+//                 }
+//                 if (res) {
+//                   voltmx.print("Delete Response: " + JSON.stringify(res));
+//                   if (res.opstatus === 0) {
+//                     voltmx.store.setItem("tStore", "");
+//                     NavigationManager.pop();
+//                   } else {
+//                     alert("Failed to delete image");
+//                   }
+//                 } else {
+//                   alert("Invalid response from server");
+//                 }
+//               });
+//             }
+//           }
+//         };
+//         voltmx.ui.Alert(alertConfig, {});
+//       } else {
+//         NavigationManager.pop();
+//       }
+//     };
+
+//     this.view.flxHeadingWithButton.btnSaveResponse.onClick = this.onSaveResponseClick.bind(this);
+//     this.view.flxAddDetailsAndUpload.btnSubmitUpload.onClick = this.onAddDetailsSubmit.bind(this);
+//     this.invokeGetInspectionDetailsList();
+//   },
+
+//   createUIWithRecords: function(records) {
+//     var self = this;
+//     var isArabic = voltmx.i18n.getCurrentLocale() === "ar_AE";
+//     self.view.flxInspectionSubTypes.removeAll();
+
+//     for (var i = 0; i < records.length; i++) {
+//       var flxItem = new voltmx.ui.FlexContainer(
+//         {
+//           id: "flxItem" + i,
+//           isVisible: true,
+//           width: "90%",
+//           height: "200dp",
+//           left: "0dp",
+//           top: "6dp",
+//           centerX: "50%",
+//           layoutType: voltmx.flex.FLOW_VERTICAL,
+//           clipBounds: true,
+//           skin: "sknFlxFFFFFFd2d5daBorderRadius8px"
+//         },
+//         {}, {}
+//       );
+
+//       var lblSubType = new voltmx.ui.Label(
+//         {
+//           id: "lblSubType" + i,
+//           isVisible: true,
+//           text: records[i].item_name || "N/A",
+//           left: isArabic ? "" : "3%",
+//           right: isArabic ? "3%" : "",
+//           top: "10dp",
+//           width: voltmx.flex.USE_PREFERRED_SIZE,
+//           skin: "sknLblDubai00000014pxMedium"
+//         },
+//         {}, {}
+//       );
+
+//       var lblSelectCondition = new voltmx.ui.Label(
+//         {
+//           id: "lblSelectCondition" + i,
+//           isVisible: true,
+//           text: "Select Condition",
+//           skin: "sknLblDubai00000012pxRegular",
+//           left: isArabic ? "" : "3%",
+//           right: isArabic ? "3%" : "",
+//           top: "5dp",
+//           width: voltmx.flex.USE_PREFERRED_SIZE
+//         },
+//         {}, {}
+//       );
+
+//       var flxSelectOptions = new voltmx.ui.FlexContainer(
+//         {
+//           id: "flxSelectOptions" + i,
+//           isVisible: true,
+//           clipBounds: true,
+//           width: "94%",
+//           height: "36dp",
+//           centerX: "50%",
+//           top: "10dp",
+//           layoutType: voltmx.flex.FLOW_HORIZONTAL,
+//           skin: "sknFlxBasic"
+//         },
+//         {}, {}
+//       );
+
+//       // FIX: read rating from inspectionData (index-keyed) so UI reflects
+//       // already-saved or freshly-picked ratings correctly after a refresh
+//       var recordRating = (self.inspectionData[i] && Number(self.inspectionData[i].rating)) || 0;
+
+//       for (var rating = 1; rating <= 10; rating++) {
+//         var flxSkin   = recordRating >= rating ? "sknFlx61b35cBorder4px"          : "sknFlxFFFFFFd2d5daBorderRadius4px";
+//         var labelSkin = recordRating >= rating ? "sknlblDubaiffffff16pxMedium"     : "sknlblDubai231f2016pxMedium";
+
+//         var flxRate = new voltmx.ui.FlexContainer(
+//           {
+//             id: "flxRate" + i + "_" + rating,
+//             isVisible: true,
+//             width: "9%",
+//             height: "100%",
+//             left: "1%",
+//             centerY: "50%",
+//             layoutType: voltmx.flex.FREE_FORM,
+//             clipBounds: true,
+//             skin: flxSkin,
+//             // FIX: bind index (i) at loop-creation time using a closure wrapper
+//             onClick: this.onOptionSelect.bind(this, i, rating)
+//           },
+//           {}, {}
+//         );
+
+//         var lblRateItem = new voltmx.ui.Label(
+//           {
+//             id: "RateItem" + i + "_" + rating,
+//             isVisible: true,
+//             text: rating.toString(),
+//             skin: labelSkin,
+//             centerY: "50%",
+//             centerX: "50%",
+//             width: voltmx.flex.USE_PREFERRED_SIZE
+//           },
+//           {}, {}
+//         );
+
+//         flxRate.add(lblRateItem);
+//         flxSelectOptions.add(flxRate);
+//       }
+
+//       var flxAddDetails = new voltmx.ui.FlexContainer(
+//         {
+//           id: "flxAddDetails" + i,
+//           isVisible: true,
+//           clipBounds: true,
+//           layoutType: voltmx.flex.FREE_FORM,
+//           skin: "sknFlxFFFFFFd2d5daBorderRadius8px",
+//           width: "94%",
+//           height: "45dp",
+//           centerX: "50%",
+//           top: "10dp",
+//           bottom: "5dp",
+//           onClick: this.showAddDetails.bind(this, records[i], i)
+//         },
+//         {}, {}
+//       );
+
+//       var imgAdd = new voltmx.ui.Image2(
+//         {
+//           id: "imgAdd" + i,
+//           isVisible: true,
+//           left: isArabic ? "" : "38%",
+//           right: isArabic ? "38%" : "",
+//           centerY: "50%",
+//           width: "18dp",
+//           height: "18dp",
+//           src: "addicon.png"
+//         },
+//         {}, {}
+//       );
+
+//       var lblAddDetails = new voltmx.ui.Label(
+//         {
+//           id: "lblAddDetails" + i,
+//           isVisible: true,
+//           text: "Add Details",
+//           skin: "sknLblDubai00000012pxMedium",
+//           left: isArabic ? "" : "50%",
+//           right: isArabic ? "50%" : "",
+//           centerY: "50%",
+//           width: voltmx.flex.USE_PREFERRED_SIZE
+//         },
+//         {}, {}
+//       );
+
+//       flxAddDetails.add(imgAdd, lblAddDetails);
+//       flxItem.add(lblSubType, lblSelectCondition, flxSelectOptions, flxAddDetails);
+//       this.view.flxInspectionSubTypes.add(flxItem);
+//     }
+//   },
+
+//   onOptionSelect: function(index, selectedRating) {
+//     // FIX: use index as the stable key instead of record.id
+//     // record.id is undefined for fresh (never-saved) items, causing all fresh
+//     // items to collide under the same undefined key → only the last one survives
+//     var record = this.records[index];
+
+//     var flxItem = this.view["flxItem" + index];
+
+//     for (var rating = 1; rating <= 10; rating++) {
+//       var flxRate  = flxItem["flxSelectOptions" + index]["flxRate"  + index + "_" + rating];
+//       var lblRate  = flxRate["RateItem" + index + "_" + rating];
+
+//       if (rating <= selectedRating) {
+//         flxRate.skin = "sknFlx61b35cBorder4px";
+//         lblRate.skin = "sknlblDubaiffffff16pxMedium";
+//       } else {
+//         flxRate.skin = "sknFlxFFFFFFd2d5daBorderRadius4px";
+//         lblRate.skin = "sknlblDubai231f2016pxMedium";
+//       }
+//     }
+
+//     if (!this.inspectionData) {
+//       this.inspectionData = {};
+//     }
+
+//     // FIX: initialise entry if not present (covers fresh items that have no id)
+//     if (!this.inspectionData[index]) {
+//       this.inspectionData[index] = {
+//         // id intentionally omitted for fresh records; backend infers "insert"
+//         insp_pac_lov_id: Number(record.insp_pac_lov_id),
+//         item_name: record.item_name,
+//         notes: "",
+//         repair_estimate_aed: 0
+//       };
+//       // Only set id when the backend already assigned one
+//       if (record.id) {
+//         this.inspectionData[index].id = Number(record.id);
+//       }
+//     }
+
+//     this.inspectionData[index].rating = selectedRating;
+//     this.view.forceLayout();
+//   },
+
+//   onAddDetailsSubmit: function() {
+//     var self = this;
+
+//     ImageUploadAndDeletion.uploadImage(
+//       self.objectId,
+//       self.fileDetails,
+//       function(response, error) {
+
+//         if (error) {
+//           alert("Image upload failed");
+//           return;
+//         }
+
+//         if (!response) {
+//           alert("Invalid response");
+//           return;
+//         }
+
+//         if (response.message === "Success") {
+//           self.view.flxAddDetailsAndUpload.setVisibility(false);
+//           self.view.flxSuccessUpload.setVisibility(true);
+
+//           var parsed = JSON.parse(response.response || "[]");
+//           if (parsed && parsed.length > 0) {
+//             var item      = parsed[0];
+//             var payload   = JSON.parse(item.object_image_payload    || "{}");
+//             var imageLog  = JSON.parse(item.object_image_loged_result || "{}");
+//             var index     = self.currentIndex;
+
+//             if (typeof index === "undefined" || !self.records[index]) {
+//               voltmx.print("Error: currentIndex is undefined or invalid");
+//               return;
+//             }
+
+//             var record = self.records[index];
+
+//             if (!self.inspectionData) {
+//               self.inspectionData = {};
+//             }
+
+//             // FIX: use index as key (consistent with onOptionSelect)
+//             if (!self.inspectionData[index]) {
+//               self.inspectionData[index] = {
+//                 insp_pac_lov_id: Number(record.insp_pac_lov_id),
+//                 item_name: record.item_name
+//               };
+//               if (record.id) {
+//                 self.inspectionData[index].id = Number(record.id);
+//               }
+//             }
+
+//             self.inspectionData[index].notes               = self.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text;
+//             self.inspectionData[index].repair_estimate_aed = Number(self.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text) || 0;
+//             self.inspectionData[index].image_url_id        = imageLog.id;
+
+//             var obj = {
+//               file_name:  payload.file_name,
+//               file_url:   payload.file_url,
+//               object_id:  payload.object_id,
+//               image_id:   imageLog.id
+//             };
+
+//             // FIX: use self.tempStore throughout (this context is wrong in callback)
+//             if (!self.tempStore) {
+//               self.tempStore = [];
+//             }
+//             self.tempStore.push(obj);
+//             voltmx.store.setItem("tStore", self.tempStore);
+//             voltmx.print("Temp Store: " + JSON.stringify(self.tempStore));
+//           }
+//         } else {
+//           if (response.response) {
+//             var parsed   = JSON.parse(response.response || "[]");
+//             var errCode  = parsed[0] && parsed[0].error_code;
+//             alert(errCode === 409 ? "File already exists" : "Failed");
+//           }
+//         }
+//       }
+//     );
+//   },
+
+//   onSaveResponseClick: function() {
+//     var self = this;
+
+//     var baseURL = voltmx.store.getItem("BASE_URL");
+//     if (baseURL && !baseURL.endsWith("/")) {
+//       baseURL += "/";
+//     }
+
+//     var appkey    = voltmx.store.getItem("ALWATANEYA_DEVELOPMENT_PUBLIC_APP_KEY");
+//     var appsecret = voltmx.store.getItem("ALWATANEYA_DEVELOPMENT_PUBLIC_APP_SECRET");
+//     var encodeVal = base64Encode(appkey + ":" + appsecret);
+
+//     var url = baseURL + "services/ms_inspection/api/v1/upsert-inspection-details";
+
+//     var request = new voltmx.net.HttpRequest();
+//     request.open("POST", url);
+//     request.setRequestHeader("Authorization",  "Basic " + encodeVal);
+//     request.setRequestHeader("Content-Type",   "application/json");
+//     request.setRequestHeader("user_token",     voltmx.store.getItem("getUserAccesstoken"));
+
+//     request.onReadyStateChange = function() {
+//       if (request.readyState !== 4) return;
+
+//       try {
+//         var response = JSON.parse(request.responseText);
+//         voltmx.print("API Response: " + JSON.stringify(response));
+
+//         if (response && response.error) {
+//           var errMsg = response.error.message || "Request failed";
+//           if (response.error.details) {
+//             var details = response.error.details;
+//             for (var key in details) {
+//               errMsg = details[key];
+//               break;
+//             }
+//           }
+//           alert(errMsg);
+//           return;
+//         }
+
+//         if (response && response.success) {
+//           voltmx.store.setItem("tStore", "");
+//           self.tempStore = [];
+//           self.invokeGetInspectionDetailsList();
+//           voltmx.print("tStore cleared after successful save");
+
+//           self.view.saveresponse.setVisibility(true);
+//           self.view.saveresponse.lblUPdatedsucessfully.text = "Inspection details saved successfully";
+//         }
+
+//       } catch (e) {
+//         voltmx.print("API Error: " + e);
+//       }
+//     };
+
+//     // Build payload — iterate over index-keyed inspectionData
+//     var inspectionDetails = [];
+//     Object.keys(self.inspectionData).forEach(function(index) {
+//       var item = self.inspectionData[index];
+
+//       var payloadItem = {
+//         insp_pac_lov_id:     Number(item.insp_pac_lov_id),
+//         item_name:           item.item_name || "",
+// //         rating:              item.rating    !== undefined ? Number(item.rating) : undefined,
+//         notes:               item.notes     || "",
+//         repair_estimate_aed: item.repair_estimate_aed ? Number(item.repair_estimate_aed) : undefined
+//       };
+
+//        if (item.rating && !isNaN(Number(item.rating)) && Number(item.rating) > 0) {
+//         payloadItem.rating = Number(item.rating);
+//       }
+//       // Only include id when it exists (existing record → update)
+//       if (item.id && !isNaN(Number(item.id)) && Number(item.id) > 0) {
+//         payloadItem.id = Number(item.id);
+//       }
+
+//       // Only include image_url_id when valid
+//       if (item.image_url_id && !isNaN(Number(item.image_url_id)) && Number(item.image_url_id) > 0) {
+//         payloadItem.image_url_id = Number(item.image_url_id);
+//       }
+
+//       inspectionDetails.push(payloadItem);
+//     });
+
+//     var data = {
+//       object_id:          self.objectId,
+//       inspection_details: inspectionDetails
+//     };
+
+//     request.send(JSON.stringify(data));
+//   },
+
+//   showAddDetails: function(record, index) {
+//     var self = this;
+//     this.record       = record;
+//     this.currentIndex = index;
+//     this.view.flxAddDetailsAndUpload.setVisibility(true);
+
+//     // FIX: read notes/cost from inspectionData[index] first (reflects in-session
+//     // edits), fall back to the raw record for the initial open
+//     var cached = self.inspectionData[index];
+//     this.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text         = (cached && cached.repair_estimate_aed) || record.repair_estimate_aed || "";
+//     this.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text    = (cached && cached.notes)               || record.notes             || "";
+
+//     if (record.file_url) {
+//       self.view.flxAddDetailsAndUpload.flxUploadedImage.setVisibility(true);
+//       self.view.flxAddDetailsAndUpload.flxUploadImages.setVisibility(false);
+//       self.view.flxAddDetailsAndUpload.imgUploadedImg.imageWhileDownloading = "loading.gif";
+//       self.view.flxAddDetailsAndUpload.imgUploadedImg.src = record.file_url;
+//       self.view.flxAddDetailsAndUpload.lblImgName.text    = record.file_name;
+//     } else {
+//       self.view.flxAddDetailsAndUpload.flxUploadedImage.setVisibility(false);
+//       self.view.flxAddDetailsAndUpload.flxUploadImages.setVisibility(true);
+//     }
+//   },
+
+//   flxChooseFromLibraryOnClickAction: function() {
+//     var self = this;
+
+//     voltmx.phone.openMediaGallery(function(rawbytes) {
+//       // FIX: removed incorrect `this.index` reference — `self` is the controller
+//       if (!rawbytes) return;
+
+//       voltmx.print("JsonRawBytes: " + JSON.stringify(rawbytes));
+
+//       var filename = "";
+//       try {
+//         var resourcePath = rawbytes.getResourcePath && rawbytes.getResourcePath();
+//         if (resourcePath) {
+//           var normalizedPath = resourcePath.replace(/\\/g, "/");
+//           filename = normalizedPath.substring(normalizedPath.lastIndexOf("/") + 1);
+//           if (!filename || filename.trim() === "") {
+//             filename = "image_from_gallery_" + new Date().getTime();
+//           }
+//         } else {
+//           filename = "image_from_gallery_" + new Date().getTime();
+//         }
+//       } catch (e) {
+//         voltmx.print("Error getting resource path: " + e.message);
+//         filename = "image_from_gallery_" + new Date().getTime();
+//       }
+
+//       var base64Data  = voltmx.convertToBase64(rawbytes);
+//       var sizeInBytes = self.estimateBase64Size(base64Data);
+
+//       if (sizeInBytes > 10 * 1024 * 1024) {
+//         alert("Image too large. Please select an image smaller than 10 MB.");
+//         return;
+//       }
+
+//       var filetype    = detectFileType(base64Data) || ".jpg";
+//       var filefullname = filename + filetype;
+
+//       self.fileDetails = [];
+//       self.fileDetails.push({
+//         "is_thumbnail":          "false",
+//         "inspection_category":   self.record.value_en,
+//         "inspection_subcategory": self.record.item_name,
+//         "filename":              filefullname,
+//         "base64":                base64Data
+//       });
+
+//       self.selectedPdfBase64 = base64Data;
+
+//       self.view.flxChooseFileTakePhoto.setVisibility(false);
+//       self.view.flxAddDetailsAndUpload.flxUploadedImage.setVisibility(true);
+//       self.view.flxAddDetailsAndUpload.flxUploadImages.setVisibility(false);
+//       self.view.flxAddDetailsAndUpload.imgUploadedImg.base64 = base64Data;
+//       self.view.flxAddDetailsAndUpload.lblImgName.text       = filename;
+
+//       voltmx.print("Base64 Image Uploaded: " + base64Data);
+//     }, {}, {
+//       action:   voltmx.phone.ACTION_OPEN_MEDIA_GALLERY,
+//       format:   voltmx.phone.MEDIA_DOCUMENT_RAW,
+//       mimetype: "image/*"
+//     });
+//   },
+
+//   camOnCaptureAction: function() {
+//     var self     = this;
+//     var rawBytes = this.view.flxChooseFileTakePhoto.camTakeAPhoto.rawBytes;
+
+//     if (!rawBytes) {
+//       voltmx.print("No image captured from camera.");
+//       return;
+//     }
+
+//     var filename = "";
+//     try {
+//       var resourcePath = rawBytes.getResourcePath && rawBytes.getResourcePath();
+//       if (resourcePath) {
+//         var normalizedPath = resourcePath.replace(/\\/g, "/");
+//         filename = normalizedPath.substring(normalizedPath.lastIndexOf("/") + 1);
+//         if (!filename || filename.trim() === "") {
+//           filename = "captured_image_" + new Date().getTime();
+//         }
+//       } else {
+//         filename = "captured_image_" + new Date().getTime();
+//       }
+//     } catch (e) {
+//       voltmx.print("Error extracting filename: " + e.message);
+//       filename = "captured_image_" + new Date().getTime();
+//     }
+
+//     var base64Image = voltmx.convertToBase64(rawBytes);
+//     var sizeInBytes = this.estimateBase64Size(base64Image);
+
+//     if (sizeInBytes > 10 * 1024 * 1024) {
+//       alert("Image too large. Please capture an image smaller than 10 MB.");
+//       return;
+//     }
+
+//     var filetype     = detectFileType(base64Image) || ".jpg";
+//     var filefullname = filename + filetype;
+
+//     this.fileDetails = [];
+//     this.fileDetails.push({
+//       "is_thumbnail":           "false",
+//       "inspection_category":    self.record.value_en,
+//       "inspection_subcategory": self.record.item_name,
+//       "filename":               filefullname,
+//       "base64":                 base64Image
+//     });
+
+//     this.selectedPdfBase64 = base64Image;
+
+//     self.view.flxChooseFileTakePhoto.setVisibility(false);
+//     self.view.flxAddDetailsAndUpload.flxUploadedImage.setVisibility(true);
+//     self.view.flxAddDetailsAndUpload.flxUploadImages.setVisibility(false);
+//     self.view.flxAddDetailsAndUpload.imgUploadedImg.base64 = base64Image;
+//     self.view.flxAddDetailsAndUpload.lblImgName.text       = filename;
+//   },
+
+//   estimateBase64Size: function(base64Str) {
+//     if (!base64Str || typeof base64Str !== "string") return 0;
+//     var padding = (base64Str.match(/=*$/) || [""])[0].length;
+//     return Math.floor((base64Str.length * 3) / 4) - padding;
+//   },
+
+//   invokeGetInspectionDetailsList: function() {
+//     var self = this;
+//     voltmx.application.showLoadingScreen(null, "LoadingScreen", constants.LOADING_SCREEN_POSITION_ONLY_CENTER, false, true, null);
+
+//     var serviceName    = "fry_int_inspection";
+//     var integrationObj = voltmx.sdk.getCurrentInstance().getIntegrationService(serviceName);
+//     var operationName  = "get-inspection-details-list";
+
+//     var headers = { "user_token": voltmx.store.getItem("getUserAccesstoken") };
+//     var data    = { "master_lov_id": self.lovId, "object_id": self.objectId };
+
+//     integrationObj.invokeOperation(operationName, headers, data, successCallback, failureCallback);
+
+//     function successCallback(response) {
+//       voltmx.application.dismissLoadingScreen();
+//       voltmx.print(response);
+
+//       if (response && response.records && response.records.length > 0) {
+//         self.records = response.records;
+
+//         // FIX: key inspectionData by array INDEX (not record.id) so that:
+//         //   - fresh records (no id)  get a stable, unique slot
+//         //   - existing records       still map correctly
+//         //   - insp_pac_lov_id duplicates don't collide
+//         self.inspectionData = {};
+//         self.records.forEach(function(record, index) {
+//           self.inspectionData[index] = {
+//             insp_pac_lov_id:     Number(record.insp_pac_lov_id),
+//             item_name:           record.item_name,
+//             rating:              Number(record.rating)              || 0,
+//             notes:               record.notes                       || "",
+//             repair_estimate_aed: Number(record.repair_estimate_aed) || 0,
+//             image_url_id:        record.image_url_id                || null,
+//             file_url:            record.file_url                    || null,
+//             file_name:           record.file_name                   || null
+//           };
+//           // Only store id when the backend returned one (existing record)
+//           if (record.id) {
+//             self.inspectionData[index].id = Number(record.id);
+//           }
+//         });
+
+//         self.createUIWithRecords(response.records);
+//       } else {
+//         voltmx.print(response ? "no records" : "Invalid response");
+//       }
+//     }
+
+//     function failureCallback(error) {
+//       voltmx.application.dismissLoadingScreen();
+//       voltmx.print(error);
+//     }
+//   },
+
+//   adjustRTL: function() {
+//     var isArabic = voltmx.i18n.getCurrentLocale() === "ar_AE";
+//     this.view.flxIndicator.reverseLayoutDirection              = isArabic;
+//     this.view.flxHeadingWithButton.flxHeading.reverseLayoutDirection = isArabic;
+//     this.view.flxIndicator.flxPass.reverseLayoutDirection      = isArabic;
+//     this.view.flxIndicator.flxNeedsRepair.reverseLayoutDirection    = isArabic;
+//     this.view.flxIndicator.flxNotApplicable.reverseLayoutDirection  = isArabic;
+
+//     this.view.flxAddDetailsAndUpload.lblPleaseEnter.contentAlignment          = isArabic ? constants.CONTENT_ALIGN_MIDDLE_RIGHT : constants.CONTENT_ALIGN_MIDDLE_LEFT;
+//     this.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.contentAlignment = isArabic ? constants.CONTENT_ALIGN_TOP_RIGHT   : constants.CONTENT_ALIGN_TOP_LEFT;
+
+//     if (isArabic) {
+//       this.view.flxHeadingWithButton.btnSaveResponse.right = "";
+//       this.view.flxHeadingWithButton.btnSaveResponse.left  = "5%";
+//       this.view.flxHeadingWithButton.flxBack.left          = "";
+//       this.view.flxHeadingWithButton.flxBack.right         = "5%";
+//       this.view.flxHeadingWithButton.lblImages.left        = "";
+//       this.view.flxHeadingWithButton.lblImages.right       = "3%";
+//       this.view.flxAddDetailsAndUpload.lblAddDetails.left  = "";
+//       this.view.flxAddDetailsAndUpload.lblAddDetails.right = "3%";
+//       this.view.flxAddDetailsAndUpload.flxCloseAddDetails.right = "";
+//       this.view.flxAddDetailsAndUpload.flxCloseAddDetails.left  = "0dp";
+//       this.view.flxAddDetailsAndUpload.lblPleaseEnter.left  = "";
+//       this.view.flxAddDetailsAndUpload.lblPleaseEnter.right = "3%";
+//       this.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.left  = "";
+//       this.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.right = "0dp";
+//       this.view.flxIndicator.flxPass.left         = "";
+//       this.view.flxIndicator.flxPass.right        = "0dp";
+//       this.view.flxIndicator.flxNotApplicable.left  = "";
+//       this.view.flxIndicator.flxNotApplicable.right = "2%";
+//       this.view.flxIndicator.imgPassIcon.left  = "";
+//       this.view.flxIndicator.imgPassIcon.right = "13%";
+//       this.view.flxIndicator.lblPass.left  = "";
+//       this.view.flxIndicator.lblPass.right = "8%";
+//       this.view.flxIndicator.imgNeedsRepair.left  = "";
+//       this.view.flxIndicator.imgNeedsRepair.right = "13%";
+//       this.view.flxIndicator.lblNeedsRepair.left  = "";
+//       this.view.flxIndicator.lblNeedsRepair.right = "8%";
+//       this.view.flxIndicator.imgNotApplicable.left  = "";
+//       this.view.flxIndicator.imgNotApplicable.right = "8%";
+//       this.view.flxIndicator.lblNotApplicable.left  = "";
+//       this.view.flxIndicator.lblNotApplicable.right = "8%";
+//       var flipTransform = voltmx.ui.makeAffineTransform();
+//       flipTransform.scale(-1, 1);
+//       this.view.flxHeadingWithButton.imgBack.transform = flipTransform;
+//     } else {
+//       this.view.flxHeadingWithButton.btnSaveResponse.right = "5%";
+//       this.view.flxHeadingWithButton.btnSaveResponse.left  = "";
+//       this.view.flxHeadingWithButton.flxBack.left          = "5%";
+//       this.view.flxHeadingWithButton.flxBack.right         = "";
+//       this.view.flxHeadingWithButton.lblImages.left        = "3%";
+//       this.view.flxHeadingWithButton.lblImages.right       = "";
+//       this.view.flxAddDetailsAndUpload.lblAddDetails.left  = "3%";
+//       this.view.flxAddDetailsAndUpload.lblAddDetails.right = "";
+//       this.view.flxAddDetailsAndUpload.flxCloseAddDetails.right = "0dp";
+//       this.view.flxAddDetailsAndUpload.flxCloseAddDetails.left  = "";
+//       this.view.flxAddDetailsAndUpload.lblPleaseEnter.left  = "3%";
+//       this.view.flxAddDetailsAndUpload.lblPleaseEnter.right = "";
+//       this.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.left  = "0dp";
+//       this.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.right = "";
+//       this.view.flxIndicator.flxPass.left         = "0%";
+//       this.view.flxIndicator.flxPass.right        = "";
+//       this.view.flxIndicator.flxNotApplicable.left  = "2%";
+//       this.view.flxIndicator.flxNotApplicable.right = "";
+//       this.view.flxIndicator.imgPassIcon.left  = "13%";
+//       this.view.flxIndicator.imgPassIcon.right = "";
+//       this.view.flxIndicator.lblPass.left  = "8%";
+//       this.view.flxIndicator.lblPass.right = "";
+//       this.view.flxIndicator.imgNeedsRepair.left  = "13%";
+//       this.view.flxIndicator.imgNeedsRepair.right = "";
+//       this.view.flxIndicator.lblNeedsRepair.left  = "8%";
+//       this.view.flxIndicator.lblNeedsRepair.right = "";
+//       this.view.flxIndicator.imgNotApplicable.left  = "8%";
+//       this.view.flxIndicator.imgNotApplicable.right = "";
+//       this.view.flxIndicator.lblNotApplicable.left  = "8%";
+//       this.view.flxIndicator.lblNotApplicable.right = "";
+//       this.view.flxHeadingWithButton.imgBack.transform = voltmx.ui.makeAffineTransform();
+//     }
+//   }
+
+// });
