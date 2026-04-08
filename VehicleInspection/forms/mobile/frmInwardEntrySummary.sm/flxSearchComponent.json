@@ -100,7 +100,8 @@
                 "kuid": "f239f0d463a948d9891ba1443612d9e7",
                 "srcKUID": "d2787e0f2b8a473e9ca6bc9ded6b3608",
                 "wType": "TextField"
-            }
+            },
+            "placeholder": "Search by Make, Model, or Vehicle ID"
         }
     },
     "enablescrolling": true,

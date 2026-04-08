@@ -34,7 +34,101 @@ define({
     }
       
     this.view.btnLoadMore.onClick = this.onLoadMoreClick.bind(this);
+    this.view.flxSearchComponent.flxSearch.onClick = this.onSearchClick.bind(this);
+this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.bind(this);
   },
+  
+ onSearchTextChange: function() {
+  var self = this;
+  var text = this.view.flxSearchComponent.tbxSearchBy.text || "";
+
+  this.searchText = text;
+
+  // ✅ cancel previous timer
+  if (this.searchTimer) {
+    voltmx.timer.cancel(this.searchTimer);
+  }
+
+  // ✅ create new timer id
+  this.searchTimer = "searchTimer_" + new Date().getTime();
+
+  voltmx.timer.schedule(this.searchTimer, function() {
+
+    // ❌ if empty → show full data
+    if (!text.trim()) {
+      self.setSegmentData(self.fullData);
+      return;
+    }
+
+    var searchVal = text.toLowerCase();
+
+    var filteredData = self.fullData.filter(function(record) {
+      return (
+        (record.lot_no && record.lot_no.toLowerCase().includes(searchVal)) ||
+        (record.model && record.model.toLowerCase().includes(searchVal)) ||
+        (record.chassis_number && record.chassis_number.toLowerCase().includes(searchVal))
+      );
+    });
+
+    self.setSegmentData(filteredData);
+
+  }, 0.3, false); // 0.3 sec delay
+},
+  onSearchClick: function() {
+  var self = this;
+  var searchVal = (this.searchText || "").toLowerCase();
+
+  if (!searchVal) {
+    // if empty → show full data
+    this.setSegmentData(this.fullData);
+    return;
+  }
+
+  var filteredData = this.fullData.filter(function(record) {
+    return (
+      (record.lot_no && record.lot_no.toLowerCase().includes(searchVal)) ||
+      (record.model && record.model.toLowerCase().includes(searchVal)) ||
+      (record.chassis_number && record.chassis_number.toLowerCase().includes(searchVal))
+    );
+  });
+
+  this.setSegmentData(filteredData);
+},
+  
+  setSegmentData: function(records) {
+  var self = this;
+
+  var isArabic = voltmx.i18n.getCurrentLocale() === "ar_AE";
+
+  var data = [];
+
+  if(records.length > 0){
+    self.view.lblNorecords.setVisibility(false);
+    self.view.segInwardEntryList.setVisibility(true);
+  } else {
+    self.view.lblNorecords.setVisibility(true);
+    self.view.segInwardEntryList.setVisibility(false);
+  }
+
+  records.forEach(function(record) {
+
+    data.push({
+      "lblLotAndModel": (record.lot_no || "") + " " + (record.model || ""),
+      "lblVehicleNumber": record.chassis_number || "",
+      "lblLocation": record.location || "",
+      "lblDate": record.yard_received_date || "",
+      "lblViewDetailsInwardEntry": "View Details",
+      "flxViewDetailsInwardEntry": {
+        "onClick": function() {
+          self.openDetails(record.object_id);
+        }
+      }
+    });
+
+  });
+
+  self.view.segInwardEntryList.setData(data);
+},
   
     onLoadMoreClick: function()
   {
@@ -209,8 +303,9 @@ define({
   
   addToSegment: function(response) {
     var self = this;
-
+   self.fullData = this.fullData || [];
     var records = response && response.records ? response.records : [];
+    this.fullData = records; // store full list
     if(records.length > 0)
       {
         self.view.lblNorecords.setVisibility(false);
@@ -272,19 +367,19 @@ define({
                 "lblVehicleNumber": record.chassis_number || "",
                 "lblLocation": record.location || "",
                 "lblDate": record.yard_received_date || "",
-                "flxLocation": {
-                   "isVisible": !self.isPending,
-                   "reverseLayoutDirection": isArabic
-                },
+//                 "flxLocation": {
+//                    "isVisible": !self.isPending,
+//                    "reverseLayoutDirection": isArabic
+//                 },
                 "flxViewDetailsInwardEntry":
               {
                   "left": isArabic ? "5%" : "",
                    "right": isArabic ? "" : "5%"
                 },
-                "flxDate": {
-                   "isVisible": !self.isPending,
-                   "reverseLayoutDirection": isArabic
-                },
+//                 "flxDate": {
+//                    "isVisible": !self.isPending,
+//                    "reverseLayoutDirection": isArabic
+//                 },
                 "lblViewDetailsInwardEntry": voltmx.i18n.getLocalizedString("View Details"),
                  
                 "flxViewDetailsInwardEntry": {
@@ -312,7 +407,8 @@ define({
 }
      self.currentOffset += newRecords.length;
 
-    self.view.segInwardEntryList.addAll(data);
+   // self.view.segInwardEntryList.addAll(data);
+    self.setSegmentData(records);
 },
   
   receiveVehicle: function(objectId) {
@@ -454,7 +550,7 @@ define({
     this.view.lblSummaryOfVehicleInspection.text = voltmx.i18n.getLocalizedString("Summary of Vehicle Inspections");
     this.view.lblPendingVehicles.text = voltmx.i18n.getLocalizedString("Pending Vehicles");
     this.view.lblCompletedVehicles.text = voltmx.i18n.getLocalizedString("Completed Vehicles");
-    this.view.flxSearchComponent.tbxSearchBy.text = voltmx.i18n.getLocalizedString("Search by ID");
+    //this.view.flxSearchComponent.tbxSearchBy.text = voltmx.i18n.getLocalizedString("Search by ID");
     this.view.btnLoadMore.text = voltmx.i18n.getLocalizedString("Load More");
     
   }

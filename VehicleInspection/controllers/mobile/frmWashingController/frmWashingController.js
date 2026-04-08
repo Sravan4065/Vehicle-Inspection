@@ -4,16 +4,42 @@ define({
   {
     this.context = context;
     this.view.preShow = this.onPreShow.bind(this);
+     this.view.saveresponse.setVisibility(false);
+     this.view.btnCompleteAndSubmit.onClick = this.showpopup.bind(this);
+    var record = this.context && this.context.record ? this.context.record : {};
+
+var model = record.model || "NA";
+var lotNo = record.lot_no || "NA";
+
+
+    this.view.lblSelectedvaluedata.text =model;
+    this.view.lblStatusNumber.text =lotNo;
+
   },
 
   onPreShow: function()
   {
+    this.view.lblStartWashing.text ="Start Washing";
     this.view.flxStarted.setVisibility(false);
+    this.view.btnComplete.setVisibility(false);
     this.view.flxEnded.setVisibility(false);
-    this.view.btnCompleteAndSubmit.setVisibility(true);
+    
+     this.view.btnStart.setVisibility(true);
+    this.view.btnCompleteAndSubmit.setVisibility(false);
     this.view.btnStart.onClick = this.onStartClick.bind(this);
     this.view.btnComplete.onClick =this.onComplete.bind(this);
+   
+    this.view.saveresponse.btnClose.onClick = this.navtowash.bind(this);
+    
 
+  },
+  
+  navtowash: function(){
+    var nav = new voltmx.mvc.Navigation("frmWashingSummary");
+    nav.navigate();
+  },
+  showpopup: function(){
+    this.view.saveresponse.setVisibility(true);
   },
 
   onStartWashing: function()
@@ -29,7 +55,7 @@ define({
       this.view.btnStart.setVisibility(false);
       //     this.view.imgIcon.src = "playicon.png";
       this.view.flxEnded.setVisibility(true);
-      this.view.btnCompleteAndSubmit.setVisibility(true);
+     // this.view.btnCompleteAndSubmit.setVisibility(true);
     }
   },
 
@@ -121,7 +147,7 @@ define({
       self.view.btnStart.setVisibility(false);
       // 1️⃣ Set label value
       self.view.lblStartWashing.text = "Under Washing";
-      alert("Vehicle moved to Under Washing successfully");
+//       alert("Vehicle moved to Under Washing successfully");
 
     } else {
 
@@ -226,8 +252,8 @@ define({
 
       // 1️⃣ Set label value
       self.view.lblStartWashing.text = "Washing Completed";
-
-      alert("Vehicle moved to Under Washing successfully");
+     self.view.btnCompleteAndSubmit.setVisibility(true);
+//       alert("Vehicle moved to Under Washing successfully");
 
     } else {
 

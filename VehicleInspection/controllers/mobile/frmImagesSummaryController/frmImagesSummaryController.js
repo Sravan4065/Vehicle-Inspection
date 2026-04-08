@@ -9,6 +9,7 @@ define({
   
   onPreShow: function()
   {
+    
     toggleFooterIcons(this.view, "frmImagesSummary");
     
 //      this.view.flxHeading.flxBack.onClick = () =>
@@ -21,10 +22,22 @@ define({
    
      this.showPendingVehicles();
     
+//     this.view.segImagesLIst.onRowClick = () =>
+//     {
+//       NavigationManager.push("frmImageCatageory");
+//     }
+    
     this.view.segImagesLIst.onRowClick = () =>
-    {
-      NavigationManager.push("frmImageCatageory");
-    }
+{
+  // ✅ Allow click only for Pending
+  if (this.isPending) {
+    var selectedItem = this.view.segImagesLIst.selectedRowItems[0];
+
+    NavigationManager.push("frmImageCatageory", {
+      "record": selectedItem
+    });
+  }
+}
     
     this.view.flxPendingVehicles.onClick = () =>
     {
@@ -37,7 +50,99 @@ define({
     }
       
        this.view.btnLoadMore.onClick = this.onLoadMoreClick.bind(this);
+     this.view.flxSearchComponent.flxSearch.onClick = this.onSearchClick.bind(this);
+this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.bind(this);
   },
+  
+  onSearchTextChange: function() {
+  var self = this;
+  var text = this.view.flxSearchComponent.tbxSearchBy.text || "";
+
+  this.searchText = text;
+
+  // cancel previous timer
+  if (this.searchTimer) {
+    voltmx.timer.cancel(this.searchTimer);
+  }
+
+  this.searchTimer = "searchTimer_" + new Date().getTime();
+
+  voltmx.timer.schedule(this.searchTimer, function() {
+
+    // ✅ if empty → reload full data
+    if (!text.trim()) {
+      self.setSegmentData(self.fullData);
+      return;
+    }
+
+    var searchVal = text.toLowerCase();
+
+    var filteredData = self.fullData.filter(function(record) {
+      return (
+        (record.lot_no && record.lot_no.toLowerCase().includes(searchVal)) ||
+        (record.model && record.model.toLowerCase().includes(searchVal)) ||
+        (record.chassis_number && record.chassis_number.toLowerCase().includes(searchVal)) ||
+        (record.location && record.location.toLowerCase().includes(searchVal))
+      );
+    });
+
+    self.setSegmentData(filteredData);
+
+  }, 0.3, false);
+},
+  onSearchClick: function() {
+  var self = this;
+  var searchVal = (this.searchText || "").toLowerCase();
+
+  if (!searchVal) {
+    this.setSegmentData(this.fullData);
+    return;
+  }
+
+  var filteredData = this.fullData.filter(function(record) {
+    return (
+      (record.lot_no && record.lot_no.toLowerCase().includes(searchVal)) ||
+      (record.model && record.model.toLowerCase().includes(searchVal)) ||
+      (record.chassis_number && record.chassis_number.toLowerCase().includes(searchVal)) ||
+      (record.location && record.location.toLowerCase().includes(searchVal))
+    );
+  });
+
+  this.setSegmentData(filteredData);
+},
+  setSegmentData: function(records) {
+  var self = this;
+  var isArabic = voltmx.i18n.getCurrentLocale() === "ar_AE";
+
+  var data = [];
+
+  if(records.length > 0){
+    self.view.segImagesLIst.setVisibility(true);
+  } else {
+    self.view.segImagesLIst.setVisibility(false);
+  }
+
+  records.forEach(function(record) {
+
+    data.push({
+      "lblLotAndModel": (record.lot_no || "") + " " + (record.model || ""),
+      "lblVehicleNumber": record.chassis_number || "",
+      "lblLocation": record.location || "",
+      "lblDate": record.created_on || "",
+      "lblViewDetailsInwardEntry": "View Details",
+
+      "flxViewDetailsInwardEntry": {
+        "isVisible": self.isPending, // ✅ keep your existing logic
+        "onClick": function() {
+          self.openDetails(record);
+        }
+      }
+    });
+
+  });
+
+  self.view.segImagesLIst.setData(data);
+},
   
    onLoadMoreClick: function()
   {
@@ -214,8 +319,9 @@ define({
   
   addToSegment: function(response) {
     var self = this;
-
+   self.fullData = this.fullData || [];
     var records = response && response.records ? response.records : [];
+    this.fullData = records;
     if(records.length > 0)
       {
        // self.view.lblNorecords.setVisibility(false);
@@ -290,6 +396,7 @@ define({
                 "lblViewDetailsInwardEntry": "View Details",
                  
                 "flxViewDetailsInwardEntry": {
+                  "isVisible": self.isPending,
                     "left": isArabic ? "5%" : "",
                     "right": isArabic ? "" : "5%",
                     "onClick": function() {
