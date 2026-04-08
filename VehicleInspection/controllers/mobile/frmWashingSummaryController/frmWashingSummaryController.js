@@ -31,8 +31,100 @@ define({
     }
     
      this.view.btnLoadMore.onClick = this.onLoadMoreClick.bind(this);
+    this.view.flxSearchComponent.flxSearch.onClick = this.onSearchClick.bind(this);
+this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.bind(this);
   },
   
+   onSearchTextChange: function() {
+  var self = this;
+  var text = this.view.flxSearchComponent.tbxSearchBy.text || "";
+
+  this.searchText = text;
+
+  // cancel previous timer
+  if (this.searchTimer) {
+    voltmx.timer.cancel(this.searchTimer);
+  }
+
+  this.searchTimer = "searchTimer_" + new Date().getTime();
+
+  voltmx.timer.schedule(this.searchTimer, function() {
+
+    // ✅ if empty → reload full data
+    if (!text.trim()) {
+      self.setSegmentData(self.fullData);
+      return;
+    }
+
+    var searchVal = text.toLowerCase();
+
+    var filteredData = self.fullData.filter(function(record) {
+      return (
+        (record.lot_no && record.lot_no.toLowerCase().includes(searchVal)) ||
+        (record.model && record.model.toLowerCase().includes(searchVal)) ||
+        (record.chassis_number && record.chassis_number.toLowerCase().includes(searchVal)) ||
+        (record.location && record.location.toLowerCase().includes(searchVal))
+      );
+    });
+
+    self.setSegmentData(filteredData);
+
+  }, 0.3, false);
+},
+  onSearchClick: function() {
+  var self = this;
+  var searchVal = (this.searchText || "").toLowerCase();
+
+  if (!searchVal) {
+    this.setSegmentData(this.fullData);
+    return;
+  }
+
+  var filteredData = this.fullData.filter(function(record) {
+    return (
+      (record.lot_no && record.lot_no.toLowerCase().includes(searchVal)) ||
+      (record.model && record.model.toLowerCase().includes(searchVal)) ||
+      (record.chassis_number && record.chassis_number.toLowerCase().includes(searchVal)) ||
+      (record.location && record.location.toLowerCase().includes(searchVal))
+    );
+  });
+
+  this.setSegmentData(filteredData);
+},
+  setSegmentData: function(records) {
+  var self = this;
+  var isArabic = voltmx.i18n.getCurrentLocale() === "ar_AE";
+
+  var data = [];
+
+  if(records.length > 0){
+    self.view.segInwardEntryList.setVisibility(true);
+  } else {
+    self.view.segInwardEntryList.setVisibility(false);
+  }
+
+  records.forEach(function(record) {
+
+    data.push({
+      "lblLotAndModel": (record.lot_no || "") + " " + (record.model || ""),
+      "lblVehicleNumber": record.chassis_number || "",
+      "lblLocation": record.location || "",
+      "lblDate": record.created_on || "",
+      "lblViewDetailsInwardEntry": "View Details",
+
+      "flxViewDetailsInwardEntry": {
+        "isVisible": self.isPending, // ✅ keep your existing logic
+        "onClick": function() {
+          self.openDetails(record);
+        }
+      }
+    });
+
+  });
+
+  self.view.segInwardEntryList.setData(data);
+},
+ 
   onLoadMoreClick: function()
   {
     var self = this;
@@ -193,24 +285,7 @@ define({
     voltmx.application.dismissLoadingScreen();
     voltmx.print(response);
     
-      if (!response.records || response.records.length === 0) {
-    response.records = [{
-      total_completed: "0",
-      total_pending: "0",
-      total_vehicles: "0"
-    }];
-  }
 
-  this.completedVehicles = response.records[0].total_completed;
-  this.pendingVehicles = response.records[0].total_pending;
-  this.totalVehicles = response.records[0].total_vehicles;
-
-  this.view.flxSummary.lblTotalCount.text = this.totalVehicles;
-  this.view.flxSummary.lblCompletedCount.text = this.completedVehicles;
-  this.view.flxSummary.lblPendingCount.text = this.pendingVehicles;
-
-  this.view.lblPendingCount.text = this.pendingVehicles;
-  this.view.lblCompletedCount.text = this.completedVehicles;
 
     this.addToSegment(response);
   },
@@ -223,8 +298,9 @@ define({
   
    addToSegment: function(response) {
     var self = this;
-
+   self.fullData = this.fullData || [];
     var records = response && response.records ? response.records : [];
+     this.fullData = records;
     if(records.length > 0)
       {
         self.view.lblNorecords.setVisibility(false);
@@ -281,13 +357,16 @@ define({
                 }, 
                 "lblVehicleNumber": record.chassis_number || "",
                 "lblLocation": record.location || "",
-                "lblDate": record.yard_received_date || "",
+                "lblDate": record.created_on
+
+ || "",
                 "flxLocation": {
                    "isVisible": true,
                    "reverseLayoutDirection": isArabic
                 },
                 "flxViewDetailsInwardEntry":
               {
+                  
                   "left": isArabic ? "5%" : "",
                    "right": isArabic ? "" : "5%"
                 },
@@ -298,10 +377,11 @@ define({
                 "lblViewDetailsInwardEntry": "View Details",
                  
                 "flxViewDetailsInwardEntry": {
+                   "isVisible": self.isPending,
                     "left": isArabic ? "5%" : "",
                     "right": isArabic ? "" : "5%",
                     "onClick": function() {
-                        self.openDetails(record.object_id);
+                        self.openDetails(record.object_id,record);
                     }
                 }
             });
@@ -329,11 +409,13 @@ define({
   
   
   
-  openDetails: function(objectId)
+  openDetails: function(objectId,record)
   {
     new voltmx.mvc.Navigation("frmWashing").navigate(
     {
-      "objectId": objectId
+      "objectId": objectId,
+      "record": record
+      
     });
   },
   

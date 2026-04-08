@@ -97,7 +97,7 @@ define({
 
     if (this.view.details5.segVehicleDetails) {
       this.view.details5.segVehicleDetails.setData(
-        formatData("Test")
+        formatData(spec.trim)
       );
     }
 
@@ -189,7 +189,7 @@ define({
       var operationName = "master-fleet-spec-values";
 
       var data ={
-        "spec_list": "name;size;year_make;roles;customer_rating;horsepower;branch;location;emirates;body_condition;mechanical_condition;body_type;doors;no_of_cylinders;color;transmission_type;warranty;fuel_type;extra;technical_features;investment_center;mileage_type;media;type_of_wheels;seats;general_items;vehicle_source;documents;ownership;administrative_fees;keys;0;Media;Type of wheels;Seats;General items;Vehicle Source;Administrative fees",
+        "spec_list": "name;size;year_make;roles;customer_rating;horsepower;branch;location;emirates;body_condition;mechanical_condition;body_type;doors;no_of_cylinders;color;transmission_type;warranty;fuel_type;extra;technical_features;investment_center;mileage_type;media;type_of_wheels;seats;general_items;vehicle_source;documents;ownership;administrative_fees;keys;0;Media;Type of wheels;Seats;General items;Vehicle Source;Administrative fees;trim",
 
         "widget_name": "fleet_specs_details;fleet_insp_details;users;add_request",
 
@@ -288,6 +288,8 @@ define({
     var fuel            = self.getValueFromList(master.fuel_type, record.fuel);
     var keys            = self.getValueFromList(master.keys, record.no_of_keys);
     var yearMake        =  record.year_of_making;
+    var trim =    self.getValueFromList(master.trim, record.trim);
+
 //         self.getValueFromList(master.year_make, record.year_of_making);
 
     // technical_features (assuming multiple or single id)
@@ -313,6 +315,7 @@ define({
     //     self.view.details13.txbData.text = "";   // as requested
     self.view.details14.txbData.text = technicalFeatures || "";
     self.view.details15.txbData.text = yearMake || "";
+    self.view.details5.txbData.text =trim || "";
     self.getCategories();
   },
 

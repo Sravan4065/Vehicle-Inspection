@@ -4,7 +4,7 @@ define({
    onNavigate: function(context)
   {
     this.view.preShow = this.onPreShow.bind(this);
-    this.context = context.record
+    this.context = context.record;
   },
   
   onPreShow: function()
@@ -41,48 +41,48 @@ define({
     var data = [
 
       {
-    flxInwardIcon:{skin: "sknFlxDBFCE7Radius5px"},
+    flxInwardIcon:{skin: "sknFlxe5e5e7bgborder"},
     lblInwardEntry: { text: "Exterior Photos" },
     lblInwardCount: { text: "4 photos" },
     key: 1,
     lblVehicleInspectionAndBarCode: { text: "Document Interior Condition" },
     lblStatrCapturing: { text: "Start Capturing" },
-    imgInwardIcon: { src: "inwardentrygreen.png" },
+    imgInwardIcon: { src: "interiorphotos.png" },
     imgFArrowIE: { src: "frontarrowwhite.png" },
 //     flxViewDetailsInwardEntry: { onClick: self.navToRelatedActivity.bind(self,"frmInwardEntrySummary")}
 },
       {
-    flxInwardIcon:{skin: "sknFlxffd5daRadius5px"},
+    flxInwardIcon:{skin: "sknFlxe5e5e7bgborder"},
     lblInwardEntry: { text: "Damage Documentation" },
     lblInwardCount: { text: "7 pending" },
       key: 2,
     lblVehicleInspectionAndBarCode: { text: "Close-up photos of any damage" },
     lblStatrCapturing: { text: "Start Capturing" },
-    imgInwardIcon: { src: "viicon.png" },
+    imgInwardIcon: { src: "warningsign.png" },
     imgFArrowIE: { src: "frontarrowwhite.png" },
 //     flxViewDetailsInwardEntry: { onClick: self.navToRelatedActivity.bind(self,"frmMyInspectionsSummary")}
 
 },
        {
-    flxInwardIcon:{skin: "sknFlxDBFCE7Radius5px"},
+    flxInwardIcon:{skin: "sknFlxe5e5e7bgborder"},
     lblInwardEntry: { text: "Engine & Mechanical" },
     lblInwardCount: { text: "4 pending" },
       key: 3,
     lblVehicleInspectionAndBarCode: { text: "Engine bay and mechanical components" },
     lblStatrCapturing: { text: "Start Capturing" },
-    imgInwardIcon: { src: "imagesicon.png" },
+    imgInwardIcon: { src: "settingicon.png" },
     imgFArrowIE: { src: "frontarrowwhite.png" },
 //     flxViewDetailsInwardEntry: { onClick: self.navToRelatedActivity.bind(self,"frmImagesSummary")}
 
 },
        {
-    flxInwardIcon:{skin: "sknFlxe0e7ffRadius5px"},
+    flxInwardIcon:{skin: "sknFlxe5e5e7bgborder"},
     lblInwardEntry: { text: "Documents" },
     lblInwardCount: { text: "3 pending" },
      key: 4,
     lblVehicleInspectionAndBarCode: { text: "Vehicle Documents and papers" },
     lblStatrCapturing: { text: "Start Capturing" },
-    imgInwardIcon: { src: "carwashicon.png" },
+    imgInwardIcon: { src: "documents.png" },
     imgFArrowIE: { src: "frontarrowwhite.png" },
 //     flxViewDetailsInwardEntry: { onClick: self.navToRelatedActivity.bind(self,"frmWashingSummary")}
 }
