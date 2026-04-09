@@ -7,7 +7,7 @@
     },
     "_left_": {
         "type": "string",
-        "value": "5%"
+        "value": "0"
     },
     "_margin_": [
         1,
@@ -40,7 +40,7 @@
     },
     "canUpdateUI": true,
     "containerweight": 100,
-    "contentalignment": 4,
+    "contentalignment": 5,
     "id": "lblSelectedvaluedata",
     "info": null,
     "ipad": {
@@ -57,7 +57,7 @@
     "isvisible": true,
     "kuid": "ab337fd6585c4997aee3ffc550b94f42",
     "name": "kony.ui.Label",
-    "parent": "flxSelectedvehicle",
+    "parent": "flxSelectedValueContainer",
     "pf": "frmImageCatageory",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,

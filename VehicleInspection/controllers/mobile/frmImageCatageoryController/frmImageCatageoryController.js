@@ -5,7 +5,163 @@ define({
   {
     this.view.preShow = this.onPreShow.bind(this);
     this.context = context.record;
+    this.adjustRTL();
   },
+  
+  
+  
+  
+  
+  
+  adjustRTL: function () {
+
+    var isArabic = voltmx.i18n.getCurrentLocale() === "ar_AE";
+    var direction = isArabic;
+    var labelAlignment = isArabic ? constants.CONTENT_ALIGN_MIDDLE_RIGHT : constants.CONTENT_ALIGN_MIDDLE_LEFT;
+    var setPosition = function(widget, left, right) {
+        if (!widget) return;
+        widget.left = left || "";
+        widget.right = right || "";
+    };
+
+    var setAlignment = function(widget) {
+        if (!widget) return;
+        widget.contentAlignment = isArabic
+            ? constants.CONTENT_ALIGN_MIDDLE_RIGHT
+            : constants.CONTENT_ALIGN_MIDDLE_LEFT;
+    };
+
+        var flexList = [
+//             "flxHeading",
+             "flxStatusnumber"
+             ];
+          for (var j = 0; j < flexList.length; j++) {
+              var flx = this.view[flexList[j]];
+             if (!flx) continue;
+            setPosition(
+            flx,
+            isArabic ? "80%" : "",
+            isArabic ? "" : "80%"
+              );
+              if (this.view[flexList[j]]) {
+                  this.view[flexList[j]].reverseLayoutDirection = direction;
+              }
+          }
+    var labelList = [
+    "lblSelectedVehicle", 
+    "lblSelectedvaluedata", 
+    "lblSelectcatageory",
+    "lblChoosetocapture"
+];
+
+for (var i = 0; i < labelList.length; i++) {
+
+    var lbl = this.view[labelList[i]];
+    if (!lbl) continue;
+
+    lbl.contentAlignment = labelAlignment;
+
+    setPosition(
+        lbl,
+        isArabic ? "" : "0dp",
+        isArabic ? "0dp" : ""
+    );
+}
+    
+   this.view.flxHeading.lblImages.text = voltmx.i18n.getLocalizedString("Images");
+   this.view.lblSelectedVehicle.text = voltmx.i18n.getLocalizedString("Selected Vehicle");
+    this.view.lblSelectcatageory.text = voltmx.i18n.getLocalizedString("Select Image Category");
+    this.view.lblChoosetocapture.text = voltmx.i18n.getLocalizedString("Choose which type of photos to capture");
+
+    // Reverse layout
+this.view.flxHeading.reverseLayoutDirection = isArabic;
+
+      
+    // Button
+//     setPosition(
+//         this.view.flxHeadingWithButton.btnSaveResponse,
+//         isArabic ? "5%" : "",
+//         isArabic ? "" : "5%"
+//     );
+
+    // 🔥 ALL details in one loop
+//     var detailsList = [
+      
+//     ];
+
+//     var self = this;
+
+//     detailsList.forEach(function(id) {
+
+//         var item = self.view[id];
+//         if (!item) return;
+
+//         // Alignment
+//         setAlignment(item.txbData);
+//         setAlignment(item.lblNamedata);
+
+//         // Label position
+//         setPosition(
+//             item.flxStatusnumber,
+//             isArabic ? "80%" : "",
+//             isArabic ? "" : "80%"
+//         );
+
+//         // Data position
+//         setPosition(
+//             item.txbData,
+//             isArabic ? "" : "0dp",
+//             isArabic ? "16dp" : ""
+//         );
+
+//         // Arrow position
+//         if (item.flxArrow) {
+//             setPosition(
+//                 item.flxArrow,
+//                 isArabic ? "8dp" : "",
+//                 isArabic ? "" : "8dp"
+//             );
+//         }
+//     });
+
+    // 🔥 Labels mapping (clean)
+//     var labelsMap = {
+//         lblImages: "Vehicle Details",
+//         btnSaveResponse: "save response",
+//         details1: "Vehicle Make",
+//         details2: "Vehicle Model",
+//         details3: "Vehicle Type",
+//         details4: "Vehicle Color",
+//         details5: "Trim",
+//         details6: "Interior Color",
+//         details8: "Transmission",
+//         details9: "Mileage KM",
+//         details10: "Regional Services",
+//         details11: "Fuel Type",
+//         details12: "No Of Keys",
+//         details15: "Year"
+//     };
+
+    // Apply labels
+//     this.view.flxHeadingWithButton.lblImages.text =
+//         voltmx.i18n.getLocalizedString(labelsMap.lblImages);
+
+//     this.view.flxHeadingWithButton.btnSaveResponse.text =
+//         voltmx.i18n.getLocalizedString(labelsMap.btnSaveResponse);
+
+    this.view.flxHeader1.lblInspectionIQ.text = 
+        voltmx.i18n.getLocalizedString("InspectioniQ");
+    
+//     Object.keys(labelsMap).forEach(function(key) {
+//         if (key.startsWith("details") && self.view[key]) {
+//             self.view[key].lblNamedata.text =
+//                 voltmx.i18n.getLocalizedString(labelsMap[key]);
+//         }
+//     });
+},
+
+  
+  
   
   onPreShow: function()
   {
