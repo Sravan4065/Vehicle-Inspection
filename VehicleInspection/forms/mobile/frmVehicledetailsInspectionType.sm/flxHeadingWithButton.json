@@ -53,6 +53,18 @@
                     "type": "string",
                     "value": "14dp"
                 }
+            },
+            "left": {
+                "Default": {
+                    "type": "string",
+                    "value": ""
+                }
+            },
+            "right": {
+                "Default": {
+                    "type": "string",
+                    "value": "5%"
+                }
             }
         },
         "flxBack": {
@@ -69,7 +81,8 @@
                 "kuid": "a54887c7e0574982b0da41a8906d1155",
                 "srcKUID": "f1a5b4fea22c40debec9edda654d7627",
                 "wType": "FlexContainer"
-            }
+            },
+            "reverseLayoutDirection": false
         },
         "flxHeadingWithButton": {
             "__events__": {},

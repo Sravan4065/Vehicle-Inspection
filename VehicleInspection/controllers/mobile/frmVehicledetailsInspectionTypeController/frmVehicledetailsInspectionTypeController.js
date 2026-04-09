@@ -1,9 +1,123 @@
 define({ 
 
   onNavigate: function(context){
+    this.adjustRTL();
     this.objectId = context.object_id;
     this.view.preShow =this.onPreShow.bind(this);
   },
+  
+  
+  
+  
+  
+  adjustRTL: function () {
+
+    var isArabic = voltmx.i18n.getCurrentLocale() === "ar_AE";
+
+    var setPosition = function(widget, left, right) {
+        if (!widget) return;
+        widget.left = left || "";
+        widget.right = right || "";
+    };
+
+    var setAlignment = function(widget) {
+        if (!widget) return;
+        widget.contentAlignment = isArabic
+            ? constants.CONTENT_ALIGN_MIDDLE_RIGHT
+            : constants.CONTENT_ALIGN_MIDDLE_LEFT;
+    };
+
+    // Reverse layout
+    this.view.flxHeadingWithButton.flxHeading.reverseLayoutDirection = isArabic;
+
+    // Button
+    setPosition(
+        this.view.flxHeadingWithButton.btnSaveResponse,
+        isArabic ? "" : "5%",
+        isArabic ? "5%" : ""
+    );
+
+    // 🔥 ALL details in one loop
+    var detailsList = [
+        "details1","details2","details3","details4","details5",
+        "details6","details8","details9","details10","details11",
+        "details12","details15"
+    ];
+
+    var self = this;
+
+    detailsList.forEach(function(id) {
+
+        var item = self.view[id];
+        if (!item) return;
+
+        // Alignment
+        setAlignment(item.txbData);
+        setAlignment(item.lblNamedata);
+
+        // Label position
+        setPosition(
+            item.flxName,
+            isArabic ? "" : "32dp",
+            isArabic ? "32dp" : ""
+        );
+
+        // Data position
+        setPosition(
+            item.txbData,
+            isArabic ? "" : "0dp",
+            isArabic ? "16dp" : ""
+        );
+
+        // Arrow position
+        if (item.flxArrow) {
+            setPosition(
+                item.flxArrow,
+                isArabic ? "8dp" : "",
+                isArabic ? "" : "8dp"
+            );
+        }
+    });
+
+    // 🔥 Labels mapping (clean)
+    var labelsMap = {
+        lblImages: "Vehicle Details",
+        btnSaveResponse: "save response",
+        details1: "Vehicle Make",
+        details2: "Vehicle Model",
+        details3: "Vehicle Type",
+        details4: "Vehicle Color",
+        details5: "Trim",
+        details6: "Interior Color",
+        details8: "Transmission",
+        details9: "Mileage KM",
+        details10: "Regional Services",
+        details11: "Fuel Type",
+        details12: "No Of Keys",
+        details15: "Year"
+    };
+
+    // Apply labels
+    this.view.flxHeadingWithButton.lblImages.text =
+        voltmx.i18n.getLocalizedString(labelsMap.lblImages);
+
+    this.view.flxHeadingWithButton.btnSaveResponse.text =
+        voltmx.i18n.getLocalizedString(labelsMap.btnSaveResponse);
+
+    this.view.flxHeader1.lblInspectionIQ.text = 
+        voltmx.i18n.getLocalizedString("InspectioniQ");
+    
+    Object.keys(labelsMap).forEach(function(key) {
+        if (key.startsWith("details") && self.view[key]) {
+            self.view[key].lblNamedata.text =
+                voltmx.i18n.getLocalizedString(labelsMap[key]);
+        }
+    });
+},
+
+  
+  
+  
   onPreShow: function(){
     this.invokeMasterFleetSpecValues();
 
@@ -35,6 +149,10 @@ define({
     this.view.details15.txbData.setEnabled(false);
 //     4,6,9,10,12
   },
+  
+  
+  
+  
 
   toggleDetails: function (context) {
     var detailsId = context.parent.parent.id;
@@ -51,6 +169,10 @@ define({
     }
   },
 
+  
+  
+  
+  
   setDataToSeg: function(response) {
 
     var spec = response.data[0];
@@ -166,6 +288,10 @@ define({
 
 
   },
+  
+  
+  
+  
 
   onRowClickAction: function (seg, sectionIndex, rowIndex) {
     var rowData = seg.selectedRowItems[0];
@@ -179,6 +305,10 @@ define({
   },
 
 
+  
+  
+  
+  
   invokeMasterFleetSpecValues: function() {
     var self = this;
     checkTokenValidatity(function() {
