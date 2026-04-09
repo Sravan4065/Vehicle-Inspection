@@ -77,7 +77,7 @@
             "width": {
                 "Default": {
                     "type": "string",
-                    "value": "20%"
+                    "value": "25%"
                 }
             }
         },

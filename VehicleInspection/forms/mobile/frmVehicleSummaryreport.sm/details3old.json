@@ -47,10 +47,11 @@
             "__events__": {},
             "__info__": {
                 "isRoot": true,
-                "kuid": "d5ffcab98fb04287ae7ec73317c83649",
+                "kuid": "a5dbe8ca9f2348b58d72070a80e7ef50",
                 "srcKUID": "f55b13451ca848fd9dee6df988be37bf",
                 "wType": "FlexContainer"
             },
+            "isVisible": false,
             "top": {
                 "Default": {
                     "type": "string",
@@ -61,29 +62,30 @@
         "flxArrow": {
             "__events__": {},
             "__info__": {
-                "kuid": "h56fa15c8a3e435a81cd5b909b4961f6",
+                "kuid": "f05c0823a2134021983b2c58aeb83cde",
                 "srcKUID": "c6340dee896b4876bb7ecce4d50050ce",
                 "wType": "FlexContainer"
-            }
+            },
+            "isVisible": false
         },
         "flxName": {
             "__events__": {},
             "__info__": {
-                "kuid": "ac3ddc6afa914a1eabe8adda827bc527",
+                "kuid": "f6a16fdafecc40ebbd05981d3a409300",
                 "srcKUID": "af4f55790c1942ab9a8e328a44437228",
                 "wType": "FlexContainer"
             },
             "width": {
                 "Default": {
                     "type": "string",
-                    "value": "25%"
+                    "value": "21%"
                 }
             }
         },
         "flxSegment": {
             "__events__": {},
             "__info__": {
-                "kuid": "fbd8d20993334f26bbfdb81f2a9cded7",
+                "kuid": "jf00cb82755e4d9b97e55d4ffebda16f",
                 "srcKUID": "i81d685650c047e0a36b27249031670f",
                 "wType": "FlexContainer"
             }
@@ -91,15 +93,24 @@
         "flxTextbox": {
             "__events__": {},
             "__info__": {
-                "kuid": "ebf774e158484c63916acc08cb65aac8",
+                "kuid": "f96702ae6a724fb9aabbdbb890c1e37a",
                 "srcKUID": "ae8483871dbe422190d63fe28bb6daab",
                 "wType": "FlexContainer"
+            },
+            "autogrowMode": {
+                "Default": 0
+            },
+            "height": {
+                "Default": {
+                    "type": "string",
+                    "value": "80dp"
+                }
             }
         },
         "imgarrow": {
             "__events__": {},
             "__info__": {
-                "kuid": "ed2a28a484fb487daa58d983396b0737",
+                "kuid": "ee91daf4d45244078886cc6c9a95a488",
                 "srcKUID": "jbc1bfbf2d7646e3bbab003dd7da117f",
                 "wType": "Image"
             },
@@ -108,16 +119,16 @@
         "lblNamedata": {
             "__events__": {},
             "__info__": {
-                "kuid": "i0c1186feae5422b8e9f360442ec7149",
+                "kuid": "aa23747871334801a7c7e4c9dd7a1653",
                 "srcKUID": "b007f5d9e1dc4a809572ef3b836312a4",
                 "wType": "Label"
             },
-            "text": "Damaged Areas"
+            "text": "Interior"
         },
         "segVehicleDetails": {
             "__events__": {},
             "__info__": {
-                "kuid": "jd012a527f4242e8b61b8b0c574912d0",
+                "kuid": "e3fb6a8fa06c4064a41a212d1555b87f",
                 "srcKUID": "cfe5a327284c4bd88a6f1de68e7f0c17",
                 "wType": "Segment"
             }
@@ -125,24 +136,24 @@
         "txbData": {
             "__events__": {},
             "__info__": {
-                "kuid": "d5e8a9d7be7c4fe7a6e8b8aa85d49bfa",
+                "kuid": "d677eae146f944029b9bf49cbc8e1544",
                 "srcKUID": "f836dbce2d5943308d153692e8c3cfb3",
                 "wType": "TextField"
             }
         }
     },
     "enablescrolling": true,
-    "id": "details2",
+    "id": "details3old",
     "info": null,
     "iscustomlayout": false,
     "isdatareferenced": false,
-    "isvisible": true,
-    "kuid": "d5ffcab98fb04287ae7ec73317c83649",
+    "isvisible": false,
+    "kuid": "a5dbe8ca9f2348b58d72070a80e7ef50",
     "layouttype": 2,
     "masterType": 0,
     "name": "kony.ui.UserWidgetInstance",
     "parent": "flxInnerBody",
-    "pf": "frmMiscellaneous",
+    "pf": "frmVehicleSummaryreport",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainflowhorizontalalignment": false,

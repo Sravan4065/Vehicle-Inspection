@@ -22,39 +22,39 @@
         0
     ],
     "_percent_": true,
-    "_skin_": "s111fceb475246daa92935c0f316039e",
+    "_skin_": "s7fe05cfc3b9433991f015810c396703",
     "_top_": {
         "type": "string",
-        "value": "2%"
+        "value": "10dp"
     },
     "_width_": {
         "type": "string",
-        "value": "100%"
+        "value": "90%"
     },
     "allboxes": [],
     "autogrowmode": 1,
     "canUpdateUI": true,
+    "centerx": {
+        "type": "string",
+        "value": "50%"
+    },
     "children": [
-        "details1old",
-        "details2old",
-        "details3old",
-        "details1",
-        "details2",
-        "details3",
-        "flxSaveclose"
+        "flxArrow",
+        "flxSegment",
+        "txtAreaDetails"
     ],
-    "clipbounds": true,
+    "clipbounds": false,
     "containerweight": 100,
     "enablescrolling": true,
-    "id": "flxInnerBody",
+    "id": "flxTextbox",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "hd54ea4fb2f64d8aa3c011c0a0dc1395",
+    "kuid": "c52ff81a679e4b679f7c925f7580f7a6",
     "layouttype": 4,
     "name": "kony.ui.FlexContainer",
-    "parent": "flxScrollContainer",
-    "pf": "frmVehicleSummaryreport",
+    "parent": "details",
+    "pf": "userwidgetmodel",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainflowhorizontalalignment": false,

@@ -3,7 +3,7 @@
     "DNDConfig": null,
     "_height_": {
         "type": "string",
-        "value": "40dp"
+        "value": "120dp"
     },
     "_left_": {
         "type": "string",
@@ -16,63 +16,59 @@
         2
     ],
     "_padding_": [
-        2,
-        2,
+        4,
+        4,
         2,
         2
     ],
     "_placeholder_": "",
-    "_skin_": "s1524adf694f44759c9e2aacda62e22b",
+    "_skin_": "sc277e0e57e04f898016af37351d8b36",
     "_text_": "",
     "_top_": {
         "type": "string",
-        "value": "5dp"
+        "value": "0"
     },
     "_width_": {
         "type": "string",
-        "value": "94%"
+        "value": "300dp"
     },
     "autocapitalize": "none",
     "autocomplete": false,
     "autocorrect": false,
     "autofilter": false,
     "canUpdateUI": true,
-    "centerx": {
-        "type": "string",
-        "value": "50%"
-    },
     "closebuttontext": "",
     "containerheight": "",
     "containerheightmode": 1,
     "containerweight": 100,
     "contentalignment": 1,
     "disabledSkins": {},
-    "focusskin": "s1524adf694f44759c9e2aacda62e22b",
-    "id": "txtAreaEstimatedCost",
+    "focusskin": "sc277e0e57e04f898016af37351d8b36",
+    "id": "txtAreaDetails",
     "info": null,
     "iphone": {
         "psp": {
-            "placeholderSkin": "s1524adf694f44759c9e2aacda62e22b"
+            "placeholderSkin": "sc277e0e57e04f898016af37351d8b36"
         }
     },
     "iscustomlayout": false,
     "isvisible": true,
     "keyboardstyle": "A",
     "keyboardtype": "A",
-    "kuid": "i7a7527ce16246f3999ec715e52a5cae",
-    "maxtextlength": 6,
+    "kuid": "bd92c8b26f294b3a82f2c4ec4e505cb4",
     "mode": "A",
     "name": "kony.ui.TextArea2",
     "numberofvisiblelines": 3,
-    "parent": "flxAddDetailsMain",
+    "paddinginpixel": false,
+    "parent": "flxTextbox",
     "pf": "userwidgetmodel",
-    "placeholderskin": "s1524adf694f44759c9e2aacda62e22b",
+    "placeholderskin": "sc277e0e57e04f898016af37351d8b36",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "securetextentry": false,
     "showoprogressindicator": false,
     "showprogressindicator": false,
-    "textinputmode": "N",
+    "textinputmode": "A",
     "tooltip": "",
     "viewtype": "default",
     "wType": "TextArea"

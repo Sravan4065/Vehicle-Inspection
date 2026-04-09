@@ -57,6 +57,8 @@ define({
 
     var self = this;
 
+    if(self.view.details1.txbData.text !== "" && self.view.details2.txbData.text !== "")
+      {
     voltmx.application.showLoadingScreen(
       null,
       "Saving...",
@@ -142,6 +144,7 @@ define({
     };
 
     request.send(JSON.stringify(data));
+      }
   },
 
 

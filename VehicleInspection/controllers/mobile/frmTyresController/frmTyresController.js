@@ -62,6 +62,7 @@ define({
     }
     if (records.length > 0) {
         self.navToButtonSpecific(records[0], 0);
+        
     }
 },
 
@@ -92,6 +93,7 @@ navToButtonSpecific: function(record, index) {
     } else {
         self.view.imgItem.src = "defaulticon.png";
     }
+    self.view.lblItemName.text = record.position;
 },
 
 callRate: function(context) {
@@ -131,6 +133,9 @@ callRate: function(context) {
     var self = this;
    toggleFooterIcons(this.view, "frmTyres");
    
+    for (var n = 1; n <= 5; n++) {
+        self.view["imgStar" + n].src = "ashstar.png";
+    }
    var i=1;
 while (i < 6) {
   this.view["flxStar" + i].onClick =

@@ -1,12 +1,8 @@
 {
     "DNDConfig": null,
     "_height_": {
-        "type": "ref",
-        "value": "preferred"
-    },
-    "_left_": {
         "type": "string",
-        "value": "0"
+        "value": "120dp"
     },
     "_margin_": [
         0,
@@ -22,39 +18,41 @@
         0
     ],
     "_percent_": true,
-    "_skin_": "s111fceb475246daa92935c0f316039e",
+    "_right_": {
+        "type": "string",
+        "value": "0"
+    },
+    "_skin_": "s43b3f0daddb4853bfc5983bfb525431",
     "_top_": {
         "type": "string",
-        "value": "2%"
+        "value": "11dp"
     },
     "_width_": {
         "type": "string",
-        "value": "100%"
+        "value": "90%"
     },
     "allboxes": [],
-    "autogrowmode": 1,
+    "autogrowmode": 0,
     "canUpdateUI": true,
+    "centerx": {
+        "type": "string",
+        "value": "45%"
+    },
     "children": [
-        "details1old",
-        "details2old",
-        "details3old",
-        "details1",
-        "details2",
-        "details3",
-        "flxSaveclose"
+        "segVehicleDetails"
     ],
     "clipbounds": true,
     "containerweight": 100,
     "enablescrolling": true,
-    "id": "flxInnerBody",
+    "id": "flxSegment",
     "info": null,
     "iscustomlayout": false,
-    "isvisible": true,
-    "kuid": "hd54ea4fb2f64d8aa3c011c0a0dc1395",
-    "layouttype": 4,
+    "isvisible": false,
+    "kuid": "i98bcdd0d4c84949ae21be430e942180",
+    "layouttype": 2,
     "name": "kony.ui.FlexContainer",
-    "parent": "flxScrollContainer",
-    "pf": "frmVehicleSummaryreport",
+    "parent": "flxTextbox",
+    "pf": "userwidgetmodel",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainflowhorizontalalignment": false,

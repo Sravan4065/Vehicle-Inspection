@@ -120,6 +120,21 @@ define({
     this.view.flxHeadingWithButton.btnSaveResponse.onClick = this.onSaveResponseClick.bind(this);
     this.view.flxAddDetailsAndUpload.btnSubmitUpload.onClick = this.onAddDetailsSubmit.bind(this);
     this.invokeGetInspectionDetailsList();
+       this.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.onTextChange = function () {
+  
+  var text = self.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text;
+
+  // Allow only valid characters and max 500 length
+  var validText = text.replace(/[^a-zA-Z0-9\s.,\-()\/]/g, "");
+
+  if (validText.length > 500) {
+    validText = validText.substring(0, 500);
+  }
+
+  // Set cleaned text back
+  self.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text = validText;
+
+}.bind(this);
   },
 
   createUIWithRecords: function(records)
