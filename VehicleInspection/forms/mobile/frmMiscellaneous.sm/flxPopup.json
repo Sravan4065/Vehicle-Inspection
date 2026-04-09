@@ -1,8 +1,8 @@
 {
     "DNDConfig": null,
     "_height_": {
-        "type": "string",
-        "value": "100%"
+        "type": "ref",
+        "value": "preferred"
     },
     "_left_": {
         "type": "string",
@@ -22,39 +22,39 @@
         0
     ],
     "_percent_": true,
-    "_skin_": "s43b3f0daddb4853bfc5983bfb525431",
+    "_skin_": "s2fd193c7b034a0ebdbf7d1fee1d0155",
     "_top_": {
         "type": "string",
-        "value": "0"
+        "value": "200dp"
     },
     "_width_": {
         "type": "string",
-        "value": "100%"
+        "value": "95%"
     },
     "allboxes": [],
-    "autogrowmode": 0,
+    "autogrowmode": 1,
     "canUpdateUI": true,
+    "centerx": {
+        "type": "string",
+        "value": "50%"
+    },
     "children": [
-        "flxHeader",
-        "flxBody",
-        "flxFoooter",
-        "flxCompleteButton",
-        "flxSignature",
-        "flxBrowser",
-        "flxPromptGenerate",
-        "flxInspectionDonePopup"
+        "flxClose",
+        "imgmarkgreen",
+        "lblUPdatedsucessfully",
+        "flxCancelAndgenate"
     ],
     "clipbounds": true,
     "containerweight": 100,
     "enablescrolling": true,
-    "id": "flxMain",
+    "id": "flxPopup",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "dd49b8986ff243d08d63848142636f16",
-    "layouttype": 2,
+    "kuid": "bfb26ed84d8347b8b0d31b0a3815be71",
+    "layouttype": 4,
     "name": "kony.ui.FlexContainer",
-    "parent": "frmMiscellaneous",
+    "parent": "flxPromptGenerate",
     "pf": "frmMiscellaneous",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,

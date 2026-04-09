@@ -66,7 +66,7 @@
                 "srcKUID": "c6340dee896b4876bb7ecce4d50050ce",
                 "wType": "FlexContainer"
             },
-            "isVisible": false
+            "isVisible": true
         },
         "flxName": {
             "__events__": {},
@@ -105,7 +105,7 @@
                 "srcKUID": "jbc1bfbf2d7646e3bbab003dd7da117f",
                 "wType": "Image"
             },
-            "src": "downarrow.png"
+            "src": "signature_with_a_pen.png"
         },
         "lblNamedata": {
             "__events__": {},

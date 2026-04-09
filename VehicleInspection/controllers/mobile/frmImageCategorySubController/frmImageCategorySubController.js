@@ -240,7 +240,7 @@ switch (subCatId) {
 
   // ✅ SHOW IMAGE IN UI
   updateImagePreview: function() {
-    for (var i = 0; i < 2; i++) {
+    for (var i = 0; i < 5; i++) {
       var img = this.view["imgItem" + i];
       if (this.uploadedImages[i]) {
         img.base64 = this.uploadedImages[i]; // ✅ show image
@@ -299,15 +299,33 @@ switch (subCatId) {
         var imageRecords  = response.records.filter(function(record) {
     return record.category === "Images" &&  record.inspection_category === subCat;
 });
-          var lastTwoImages = imageRecords.slice(-2); // safest way
+          var lastTwoImages = imageRecords.slice(-5); // safest way
 
       if (lastTwoImages.length > 0 && self.view["imgItem0"]) {
     self.view["imgItem0"].src = lastTwoImages[0].file_url || "";
+    self.view["lblClick0"].text = "Retake";
 }
 
 if (lastTwoImages.length > 1 && self.view["imgItem1"]) {
     self.view["imgItem1"].src = lastTwoImages[1].file_url || "";
+    self.view["lblClick1"].text = "Retake";
 }
+     if (lastTwoImages.length > 2 && self.view["imgItem2"]) {
+    self.view["imgItem2"].src = lastTwoImages[2].file_url || "";
+    self.view["lblClick2"].text = "Retake";
+}
+
+if (lastTwoImages.length > 3 && self.view["imgItem3"]) {
+    self.view["imgItem3"].src = lastTwoImages[3].file_url || "";
+    self.view["lblClick3"].text = "Retake";
+}
+            if (lastTwoImages.length > 4 && self.view["imgItem4"]) {
+    self.view["imgItem4"].src = lastTwoImages[4].file_url || "";
+    self.view["lblClick4"].text = "Retake";
+}
+
+      
+      
           
         }
         else

@@ -6,7 +6,7 @@ define({
         this.services_id = context.services_id;
 
     this.view.preShow =this.onPreShow.bind(this);
-    this.view.flxHeadingWithButton.btnSaveResponse.onClick = this.btnSaveResponseOnClickAction.bind(this);
+    this.view.flxHeadingWithButton.btnSaveResponse.onClick = this.onSubmitClick.bind(this);
     this.existingId = null;
     this.fullExistingData = null;
   },
@@ -15,9 +15,11 @@ define({
 
 
   onPreShow: function(){
+    var self = this;
     toggleFooterIcons(this.view, "frmVehicledetailsInspectionType");
     //     this.clearData();
     this.masterfleetspecvalues();
+    this.view.flxBrowser.setVisibility(false);
     this.view.details1.txbData.text = "";
 this.view.details2.txbData.text = "";
 this.view.details3.txbData.text = "";
@@ -25,6 +27,35 @@ this.view.details4.txbData.text = "";
 this.view.details5.txbData.text = "";
 this.view.details6.txbData.text = "";
 this.view.details7.txbData.text = "";
+    
+    this.view.details1.txbData.setEnabled(false);
+    this.view.details2.txbData.setEnabled(false);
+    this.view.details6.txbData.setEnabled(false);
+    this.view.details7.txbData.setEnabled(false);
+    
+    this.view.flxPromptGenerate.setVisibility(false);
+    
+    this.view.btnCancel.onClick = () =>
+    {
+      self.view.flxPromptGenerate.setVisibility(false);
+    }
+    
+    this.view.flxClose.onClick = () =>
+    {
+      self.view.flxPromptGenerate.setVisibility(false);
+    }
+    
+    this.view.flxInspectionDonePopup.setVisibility(false);
+    this.view.flxCloseSuccess.onClick = () =>
+    {
+      self.view.flxInspectionDonePopup.setVisibility(false);
+    }
+    this.view.btnGoBackToPending.onClick = () =>
+    {
+      NavigationManager.push("frmMyInspectionsSummary");
+    }
+    
+    this.view.btnGenerateReport.onClick = this.generateReport.bind(this);
     this.getInspectionMiscellaneousList();
     this.setDataToSeg();  
 
@@ -37,7 +68,27 @@ this.view.details7.txbData.text = "";
         this.onRowClickAction.bind(this);
     } 
     
-    this.view.flxCompleteButton.btnCompleteInspection.onClick = this.generateReport.bind(this);
+//     this.view.flxCompleteButton.btnCompleteInspection.onClick = this.generateReport.bind(this);
+    this.view.flxCompleteButton.btnCompleteInspection.onClick = () =>{
+      self.view.flxPromptGenerate.setVisibility(true);
+    }
+    this.view.flxSignature.setVisibility(false);
+    this.view.flxArrow.onClick = () =>
+    {
+      self.view.flxSignature.setVisibility(true);
+    }
+    this.view.btnGoBack.onClick = () =>{
+      self.view.flxBrowser.setVisibility(false);
+    }
+    
+    this.view.btnComplete.onClick = this.completeInspection.bind(this);
+    
+//                  //#ifdef android
+//   self.view.flxDownload.onClick =  self.onDownloadButtonClick.bind(self);
+//     //#endif
+//     //#ifdef iphone
+//   self.view.flxDownload.onClick = self.testPDFNFIDownload.bind(self);
+//     //#endif
   },
 
 
@@ -221,6 +272,8 @@ this.view.details7.txbData.text = "";
   btnSaveResponseOnClickAction: function () {
 
     var self = this;
+    
+    
 
     voltmx.application.showLoadingScreen(
       null,
@@ -231,7 +284,16 @@ this.view.details7.txbData.text = "";
       { progressIndicatorType: constants.PROGRESS_INDICATOR_TYPE_SMALL }
     );
 
-    var url = "https://dev2-hcltx.et.ae/services/ms_inspection/api/v1/upsert-inspection-miscellaneous";
+    var baseURL = voltmx.store.getItem("BASE_URL");
+    if (baseURL && !baseURL.endsWith("/")) {
+      baseURL += "/";
+    }
+    var appkey = voltmx.store.getItem("ALWATANEYA_DEVELOPMENT_PUBLIC_APP_KEY");
+    var appsecret = voltmx.store.getItem("ALWATANEYA_DEVELOPMENT_PUBLIC_APP_SECRET");
+    var encodeVal = base64Encode(appkey + ":" + appsecret);
+     var endUrl = "services/ms_inspection/api/v1/upsert-inspection-miscellaneous";
+    var url = baseURL + endUrl;
+//     var url = "https://dev2-hcltx.et.ae/services/ms_inspection/api/v1/upsert-inspection-miscellaneous";
 
     var token = voltmx.store.getItem("getUserAccesstoken");
     voltmx.print("Token: " + token);
@@ -241,7 +303,7 @@ this.view.details7.txbData.text = "";
 
     request.setRequestHeader("Content-Type", "application/json");
     request.setRequestHeader("Accept", "application/json");
-    request.setRequestHeader("Authorization", "Basic MzBjYzcxOWMzNGJlYjU0YWZjOWRkMTc0YTUzMDQwNjc6YmZhMDRlM2JmY2U4ZGU3N2Y2NTQ2N2YyZTM1MjI0NQ==");
+    request.setRequestHeader("Authorization", "Basic "+encodeVal);
     request.setRequestHeader("user_token", token);
 
 //     var data = {
@@ -266,8 +328,14 @@ data.service_provider = (self.view.details4.txbData.text || "").trim();
 data.technician_id = (self.view.details5.txbData.text || "").trim();
 data.branch = (self.view.details6.txbData.text || "").trim();
 data.city = (self.view.details7.txbData.text || "").trim();
-// data.signature_image_id = parseInt(self.view.details8.txbData.text) || 0;
-    
+// data.signature_image_id = Number(self.obj.image_id) || self.fullExistingData.signature_image_id;
+    var imageId = Number(self.obj.image_id);
+
+if (!isNaN(imageId)) {
+    data.signature_image_id = imageId;
+} else {
+    data.signature_image_id = self.fullExistingData.signature_image_id ? Number(self.fullExistingData.signature_image_id) : 0;
+}
     
     data.object_id = self.objectId;
     data.services_id = Number(self.services_id);
@@ -277,6 +345,8 @@ data.city = (self.view.details7.txbData.text || "").trim();
         data.id = self.existingId
       }
 
+    delete data.file_url;
+    delete data.file_name;
     voltmx.print("Payload: " + JSON.stringify(data));
 
     request.onReadyStateChange = function () {
@@ -647,18 +717,23 @@ else
   function operationSuccessCompleted(response)
 
   {
-
+   voltmx.application.dismissLoadingScreen();
     voltmx.print(response);
     
     if(response && response.data && response.data.object_id)
-     self.view.flxVehicleReceived.setVisibility(true);
+      {
+//            self.view.flxBrowser.setVisibility(false);
+        self.view.flxInspectionDonePopup.setVisibility(true);
+        
+      }
+   
 
   }
 
   function operationFailureCompleted(error)
 
   {
-
+   voltmx.application.dismissLoadingScreen();
     voltmx.print(error);
 
   }
@@ -669,6 +744,8 @@ else
      var self = this;
     
 //     self.view.flxVehicleReceived.setVisibility(true);
+      self.view.flxPromptGenerate.setVisibility(false);
+          voltmx.application.showLoadingScreen(null, "Generating Report..",     constants.LOADING_SCREEN_POSITION_ONLY_CENTER, false, true, {         shouldShowLabelInBottom: "true",         separatorHeight: 45,         progressIndicatorType: constants.PROGRESS_INDICATOR_TYPE_SMALL,         progressIndicatorColor: "Gray"     });
 
   var serviceName = "fry_collection";
 
@@ -714,20 +791,30 @@ else
   function operationSuccessCompleted(response)
 
   {
-
+   voltmx.application.dismissLoadingScreen();
     voltmx.print(response);
     
     if(response && response.message === "Success")
       {
         if(response.file_url)
           {
-             //#ifdef android
-    self.onDownloadButtonClick(response.file_url);
-    //#endif
-    //#ifdef iphone
-   self.testPDFNFIDownload(response.file_url);
-    //#endif
+
+            //#ifdef android
+            self.onDownloadButtonClick(response.file_url);
+            //#endif
+            //#ifdef iphone
+            self.testPDFNFIDownload(response.file_url);
+            //#endif            
+           self.completeInspection();
           }
+      }
+    else if(response.dam_response)
+      {
+        var damResponseStr = response.dam_response || response.dam_response_s;
+
+if (damResponseStr && damResponseStr.indexOf("409") !== -1) {
+   alert("File already exists")
+}
       }
     else
       {
@@ -741,7 +828,7 @@ else
   function operationFailureCompleted(error)
 
   {
-
+   voltmx.application.dismissLoadingScreen();
     voltmx.print(error);
 
   }
@@ -755,7 +842,7 @@ else
       try {
       
 
-//           var fileUrl = "https://pdfobject.com/pdf/sample.pdf";
+//           var fileUrl = self.fileUrl;
 //           var fileName = thirdPartyFile.file_name;
          var fileName = "Inspection Report_" + Date.now();
 
@@ -806,8 +893,8 @@ else
       try {
         // Find the first file with type "3rd-Party"
        
-//           var fileUrl = "https://pdfobject.com/pdf/sample.pdf";
-//           var fileName = thirdPartyFile.file_name;
+//            var fileUrl = self.fileUrl;
+        //           var fileName = thirdPartyFile.file_name;
         var  fileName = "Inspection Report_" + Date.now();
 
           // Proceed to download
@@ -828,6 +915,66 @@ else
    
 
 
+  },
+  
+  onSubmitClick: function(){
+  var signature = voltmx.store.getItem("signature");
+
+//   alert(signature);
+          var filefullname = "signature" + new Date().getTime() + ".png";
+
+  this.fileDetails = [{
+    "is_thumbnail": "false",
+    "inspection_category": "inspection",
+    "inspection_subcategory": "inspectionsignature",
+    "filename": filefullname,
+    "base64": signature
+  }];
+
+  this.uploadImages();
+
+
+},
+        uploadImages: function() {
+    var self = this;
+
+    ImageUploadAndDeletion.uploadImage(
+      self.objectId,
+      self.fileDetails,
+      function(response, error){
+
+        if(error){
+          alert("Image upload failed");
+          return;
+        }
+
+        if(response && response.message === "Success"){
+          alert("Upload Successful");
+          
+            var parsed = JSON.parse(response.response || "[]");
+          if(parsed && parsed.length > 0){
+
+              var item = parsed[0];
+
+              var payload = JSON.parse(item.object_image_payload || "{}");
+              var imageLog = JSON.parse(item.object_image_loged_result || "{}");
+            
+             self.obj = {
+                file_name: payload.file_name,
+                file_url: payload.file_url,
+                object_id: payload.object_id,
+                image_id: imageLog.id
+              };
+            
+          }
+          
+          
+          
+          
+          self.btnSaveResponseOnClickAction();
+        }
+      }
+    );
   },
  
 });

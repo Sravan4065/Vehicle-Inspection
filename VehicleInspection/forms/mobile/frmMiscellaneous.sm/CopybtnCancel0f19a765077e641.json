@@ -1,0 +1,56 @@
+{
+    "@class": "com.kony.gen.viz.model.component.KVizButton",
+    "DNDConfig": null,
+    "_height_": {
+        "type": "string",
+        "value": "60%"
+    },
+    "_left_": {
+        "type": "string",
+        "value": "7%"
+    },
+    "_margin_": [
+        6,
+        6,
+        6,
+        6
+    ],
+    "_padding_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_skin_": "s5b3be5a93034ac8b91489deddf04aba",
+    "_text_": "Cancel",
+    "_top_": {
+        "type": "number",
+        "value": "0"
+    },
+    "_width_": {
+        "type": "string",
+        "value": "42%"
+    },
+    "canUpdateUI": true,
+    "centery": {
+        "type": "string",
+        "value": "50%"
+    },
+    "containerweight": 100,
+    "contentalignment": 5,
+    "disabledSkins": {
+        "focusSkin": "s4ec7cfbb99d4ca7a00f788aa71ee43c"
+    },
+    "displaytext": true,
+    "id": "CopybtnCancel0f19a765077e641",
+    "info": null,
+    "iscustomlayout": false,
+    "isvisible": false,
+    "kuid": "h5b32c64502643acb2905630fa8f574e",
+    "name": "kony.ui.Button",
+    "parent": "CopyflxCancelAndgenate0h97b754c67eb4d",
+    "pf": "frmMiscellaneous",
+    "retaincontentalignment": false,
+    "retainflexpositionproperties": false,
+    "wType": "Button"
+}

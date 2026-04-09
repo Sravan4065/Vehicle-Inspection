@@ -135,6 +135,13 @@ var data = self.fullExistingData ?
         data.id = self.existingId
       }
 
+     if(data.signature_image_id)
+      {
+        data.signature_image_id = Number(data.signature_image_id);
+      }
+    
+    delete data.file_url;
+    delete data.file_name;
     voltmx.print("Payload: " + JSON.stringify(data));
 
     request.onReadyStateChange = function () {
@@ -151,7 +158,8 @@ var data = self.fullExistingData ?
           var responseJSON = JSON.parse(request.responseText);
 
           if (responseJSON.success) {
-            alert(responseJSON.message);
+//             alert(responseJSON.message);
+            alert("Saved successfully");
           } else {
             alert("Failed to save response");
           }

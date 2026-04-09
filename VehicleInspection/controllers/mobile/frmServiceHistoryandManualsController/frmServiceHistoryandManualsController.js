@@ -104,6 +104,10 @@ define({
     
     data.object_id = self.objectId;
     data.services_id = Number(self.services_id || 0);
+    if(data.signature_image_id)
+      {
+        data.signature_image_id = Number(data.signature_image_id);
+      }
 //     var data = {
 //   object_id: self.objectId,
 //   services_id: Number(self.services_id),
@@ -115,6 +119,8 @@ define({
         data.id = self.existingId
       }
 
+        delete data.file_url;
+    delete data.file_name;
     voltmx.print("Payload: " + JSON.stringify(data));
 
     request.onReadyStateChange = function () {
@@ -131,7 +137,8 @@ define({
           var responseJSON = JSON.parse(request.responseText);
 
           if (responseJSON.success) {
-            alert(responseJSON.message);
+//             alert(responseJSON.message);
+            alert("Saved successfully");
           } else {
             alert("Failed to save response");
           }
