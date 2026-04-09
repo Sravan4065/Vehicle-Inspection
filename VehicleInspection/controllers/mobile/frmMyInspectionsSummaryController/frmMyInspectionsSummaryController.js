@@ -2,6 +2,7 @@ define({
 
   onNavigate: function()
   {
+     this.adjustRTL();
     this.view.preShow = this.onPreShow.bind(this);
     
   },
@@ -194,8 +195,8 @@ define({
    if (newRecords.length > 0) {
 //         self.view.lblNorecords.setVisibility(false);
 //         self.view.segMyinspections.setVisibility(true);
-        records.forEach(function(record) {
-
+      //  records.forEach(function(record) {
+newRecords.forEach(function(record) {
             data.push({
                 "flxMyInspectionItem": 
               {
@@ -271,7 +272,67 @@ define({
     });
   },
   
-  
+    adjustRTL: function()
+  {
+    var self = this;
+    var isArabic = voltmx.i18n.getCurrentLocale() === "ar_AE";
+    
+    self.view.flxULSummary.reverseLayoutDirection = isArabic;
+    if(isArabic)
+      {
+        self.view.flxSummary.lblActivityName.left = "";
+        self.view.flxSummary.lblActivityName.right = "5%";
+        
+        self.view.flxSummary.lblTotalVehicles.left = "";
+        self.view.flxSummary.lblTotalVehicles.right = "0dp";
+        
+        self.view.flxSummary.lblCompletedVehicles.left = "";
+        self.view.flxSummary.lblCompletedVehicles.right = "0dp";
+        
+        self.view.flxSummary.lblPendingVehicles.left = "";
+        self.view.flxSummary.lblPendingVehicles.right = "0dp";
+        
+        self.view.flxSummary.lblTotalCount.left = "0dp";
+        self.view.flxSummary.lblTotalCount.right = "";
+        
+        self.view.flxSummary.lblCompletedCount.left = "0dp";
+        self.view.flxSummary.lblCompletedCount.right = "";
+        
+        self.view.flxSummary.lblPendingCount.left = "0dp";
+        self.view.flxSummary.lblPendingCount.right = "";
+        
+        self.view.lblSummaryOfVehicleInspection.left = "";
+        self.view.lblSummaryOfVehicleInspection.right = "0dp";
+      }
+    else
+      {
+        self.view.flxSummary.lblActivityName.left = "5%";
+        self.view.flxSummary.lblActivityName.right = "";
+        
+        self.view.flxSummary.lblTotalVehicles.left = "0dp";
+        self.view.flxSummary.lblTotalVehicles.right = "";
+        
+         self.view.flxSummary.lblCompletedVehicles.left = "0dp";
+        self.view.flxSummary.lblCompletedVehicles.right = "";
+        
+        self.view.flxSummary.lblPendingVehicles.left = "0dp";
+        self.view.flxSummary.lblPendingVehicles.right = "";
+        
+        self.view.flxSummary.lblTotalCount.left = "";
+        self.view.flxSummary.lblTotalCount.right = "0dp";
+        
+        self.view.flxSummary.lblCompletedCount.left = "";
+        self.view.flxSummary.lblCompletedCount.right = "0dp";
+        
+        self.view.flxSummary.lblPendingCount.left = "";
+        self.view.flxSummary.lblPendingCount.right = "0dp";
+        
+        self.view.lblSummaryOfVehicleInspection.left = "0dp";
+        self.view.lblSummaryOfVehicleInspection.right = "";
+      }
+  }
+
+ 
   
   
 

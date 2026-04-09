@@ -4,6 +4,7 @@ define({
   {
     this.adjustRTL();
     this.view.preShow = this.onPreShow.bind(this);
+    
     this.view.flxViewAll.onClick = () =>
     {
       new voltmx.mvc.Navigation("frmActivityist").navigate();
@@ -15,8 +16,20 @@ define({
   {
     NavigationManager.init("frmDashboard");
     toggleFooterIcons(this.view, "frmDashboard");
-    this.setDataToSeg();
+    
+     this.invokeImagespending();
+  this.invokePendingInwardService();
+  this.invokePendingInspectionService();
+  this.invokePendingWashingservice();
+    this.totalCompletedAll = 0;
+this.totalPendingAll = 0;
+ 
   },
+  
+  updateFinalCounts: function() {
+  this.view.lblAssignedCount.text = this.totalCompletedAll.toString();
+  this.view.lblPendingCount.text = this.totalPendingAll.toString();
+},
 
   setDataToSeg: function()
   {
@@ -25,7 +38,7 @@ define({
     var activitiesConfig = [
   {
     title:  voltmx.i18n.getLocalizedString("Inward Entry"),
-    count: "4 pending",
+    count: (this.inwardPending || 0) + " pending",
     desc: voltmx.i18n.getLocalizedString("Vehicle reception and barcode printing"),
     icon: "inwardentrygreen.png",
     skin: "sknFlxDBFCE7Radius5px",
@@ -33,7 +46,7 @@ define({
   },
   {
     title: voltmx.i18n.getLocalizedString("Vehicle Inspection"),
-    count: "7 pending",
+    count: (this.inspectionPending || 0) + " pending",
     desc: voltmx.i18n.getLocalizedString("Vehicle inspection process"),
     icon: "viicon.png",
     skin: "sknFlxffd5daRadius5px",
@@ -41,7 +54,7 @@ define({
   },
   {
     title:  voltmx.i18n.getLocalizedString("Images"),
-    count: "4 pending",
+     count: (this.imagesPending || 0) + " pending",
     desc: voltmx.i18n.getLocalizedString("vehicleImageUploads"),
     icon: "imagesicon.png",
     skin: "sknFlxDBFCE7Radius5px",
@@ -49,7 +62,7 @@ define({
   },
   {
     title: voltmx.i18n.getLocalizedString("Washing"),
-    count: "3 pending",
+    count: (this.washingPending || 0) + " pending",
     desc: voltmx.i18n.getLocalizedString("vehicleWashingprocess"),
     icon: "carwashicon.png",
     skin: "sknFlxe0e7ffRadius5px",
@@ -275,6 +288,286 @@ define({
       this.view.lblHeresisOverView.text = voltmx.i18n.getLocalizedString("Heres your overview for today");
     
       this.view.lblMainCategories.text = voltmx.i18n.getLocalizedString("Main Categories");
+  },
+  ///////////////////////////////////
+ ////// All page sevice calls
+    invokeImagespending: function() {
+  var self = this;
+    checkTokenValidatity(function() {
+    voltmx.application.showLoadingScreen(null, "Loading..",     constants.LOADING_SCREEN_POSITION_ONLY_CENTER, false, true, {         shouldShowLabelInBottom: "true",         separatorHeight: 45,         progressIndicatorType: constants.PROGRESS_INDICATOR_TYPE_SMALL,         progressIndicatorColor: "Gray"     });
+  var serviceName = "fry_int_inspection";
+  var integrationObj = voltmx.sdk.getCurrentInstance()
+                                  .getIntegrationService(serviceName);
+  var operationName = "get-photo-vehicle";
+
+  var data = {
+    "lot_no": "",
+  "model": "",
+  "chassis_number": "",
+  "location": "",
+  "is_photo_done": "0",
+  "days": "7",
+  "page": "1",
+  "page_size": self.pageSize || 5
+  };
+
+  // Headers
+  var headers = {
+      "user_token": voltmx.store.getItem("getUserAccesstoken") 
+  };
+
+  integrationObj.invokeOperation(
+      operationName,
+      headers,
+      data,
+      self.operationSuccessPendingimages.bind(self),
+      self.operationFailurePendingimages.bind(self)
+  );
+    });
+},
+  
+  operationSuccessPendingimages: function(response)
+  {
+    voltmx.application.dismissLoadingScreen();
+    voltmx.print(response);
+     
+      if (!response.records || response.records.length === 0) {
+    response.records = [{
+      total_completed: "0",
+      total_pending: "0",
+      total_vehicles: "0"
+    }];
   }
+
+  this.completedVehicles = response.records[0].total_completed;
+  this.pendingVehicles = response.records[0].total_pending;
+  this.totalVehicles = response.records[0].total_vehicles;
+    
+    this.totalCompletedAll += parseInt(this.totalVehicles || 0);
+this.totalPendingAll += parseInt(this.pendingVehicles || 0);
+    this.imagesPending = parseInt(this.pendingVehicles || 0);
+
+this.updateFinalCounts();
+    this.setDataToSeg();
+
+  },
+  
+  operationFailurePendingimages: function(error)
+  {
+    voltmx.application.dismissLoadingScreen();
+    voltmx.print(error);
+  },
+
+  ////////////////////inward 
+  
+   invokePendingInwardService: function() {
+  var self = this;
+    checkTokenValidatity(function() {
+    voltmx.application.showLoadingScreen(null, "Loading..",     constants.LOADING_SCREEN_POSITION_ONLY_CENTER, false, true, {         shouldShowLabelInBottom: "true",         separatorHeight: 45,         progressIndicatorType: constants.PROGRESS_INDICATOR_TYPE_SMALL,         progressIndicatorColor: "Gray"     });
+  var serviceName = "fry_int_inspection";
+  var integrationObj = voltmx.sdk.getCurrentInstance()
+                                  .getIntegrationService(serviceName);
+  var operationName = "get-inyard-vehicles";
+
+  var data = {
+      "lot_no": "",
+      "title": "",
+      "chassis_number": "",
+      "language": "en",
+      "oracle_num": "",
+      "in_yard": "0",      // pending = 0 || completed = 1
+      "days": "150",         // default value
+      "page_number": "1",
+      "page_size": self.pageSize || 5
+  };
+
+  // Headers
+  var headers = {
+      "user_token": voltmx.store.getItem("getUserAccesstoken") 
+  };
+
+  integrationObj.invokeOperation(
+      operationName,
+      headers,
+      data,
+      self.operationSuccessPendinginward.bind(self),
+      self.operationFailurePendinginward.bind(self)
+  );
+    });
+},
+  
+  operationSuccessPendinginward: function(response)
+{
+  voltmx.application.dismissLoadingScreen();
+  voltmx.print(response);
+
+  var record = (response.records && response.records.length > 0)
+    ? response.records[0]
+    : {
+        total_completed: "0",
+        total_pending: "0",
+        total_vehicles: "0"
+      };
+
+  this.completedVehicles = record.total_completed;
+  this.pendingVehicles = record.total_pending;
+  this.totalVehicles = record.total_vehicles;
+  
+  this.totalCompletedAll += parseInt(this.totalVehicles || 0);
+this.totalPendingAll += parseInt(this.pendingVehicles || 0);
+this.updateFinalCounts();
+  this.inwardPending = parseInt(this.pendingVehicles || 0);
+  this.setDataToSeg();
+
+
+},
+  
+  operationFailurePendinginward: function(error)
+  {
+    voltmx.application.dismissLoadingScreen();
+    voltmx.print(error);
+  },
+ /////////////myinspections
+  
+    invokePendingInspectionService: function() {
+  var self = this;
+      checkTokenValidatity(function() {
+    voltmx.application.showLoadingScreen(null, "Loading..",     constants.LOADING_SCREEN_POSITION_ONLY_CENTER, false, true, {         shouldShowLabelInBottom: "true",         separatorHeight: 45,         progressIndicatorType: constants.PROGRESS_INDICATOR_TYPE_SMALL,         progressIndicatorColor: "Gray"     });
+  var serviceName = "fry_int_inspection";
+  var integrationObj = voltmx.sdk.getCurrentInstance()
+                                  .getIntegrationService(serviceName);
+  var operationName = "get-inspection-vehicles";
+
+  var data = {
+      "lot_no": "",
+  "title": "",
+  "type": "",
+  "status": "Pending", // Pending || Completed
+  "page": "1",
+  "page_size": self.pageSize || 5
+  };
+
+  // Headers
+  var headers = {
+      "user_token": voltmx.store.getItem("getUserAccesstoken") 
+  };
+
+  integrationObj.invokeOperation(
+      operationName,
+      headers,
+      data,
+      self.operationSuccessPendingmyinspection.bind(self),
+      self.operationFailurePendingmyinspection.bind(self)
+  );
+      });
+},
+  
+  operationSuccessPendingmyinspection: function(response)
+{
+  voltmx.application.dismissLoadingScreen();
+  voltmx.print(response);
+
+  // ✅ Fallback if no records
+  if (!response.records || response.records.length === 0) {
+    response.records = [{
+      total_completed: "0",
+      total_pending: "0",
+      total_vehicles: "0"
+    }];
+  }
+
+  this.completedVehicles = response.records[0].total_completed;
+  this.pendingVehicles = response.records[0].total_pending;
+  this.totalVehicles = response.records[0].total_vehicles;
+ this.totalCompletedAll += parseInt(this.totalVehicles || 0);
+this.totalPendingAll += parseInt(this.pendingVehicles || 0);
+this.updateFinalCounts();
+  this.inspectionPending = parseInt(this.pendingVehicles || 0);
+  this.setDataToSeg();
+
+
+},
+  operationFailurePendingmyinspection: function(error)
+  {
+    voltmx.application.dismissLoadingScreen();
+    voltmx.print(error);
+  },
+  
+  
+  
+  
+   invokePendingWashingservice: function() {
+  var self = this;
+    checkTokenValidatity(function() {
+    voltmx.application.showLoadingScreen(null, "Loading..",     constants.LOADING_SCREEN_POSITION_ONLY_CENTER, false, true, {         shouldShowLabelInBottom: "true",         separatorHeight: 45,         progressIndicatorType: constants.PROGRESS_INDICATOR_TYPE_SMALL,         progressIndicatorColor: "Gray"     });
+  var serviceName = "fry_int_inspection";
+  var integrationObj = voltmx.sdk.getCurrentInstance()
+                                  .getIntegrationService(serviceName);
+  var operationName = "get-washing-vehicles";
+
+  var data = {
+     "lot_no": "",
+  "model": "",
+  "chassis_number": "",
+  "location": "",
+  "is_washed": "0",  // pending = 0 || completed = 1
+  "days": "150",           // default value
+  "page_number": "1",
+  "page_size": self.pageSize || 5
+  };
+
+  // Headers
+  var headers = {
+      "user_token": voltmx.store.getItem("getUserAccesstoken") 
+  };
+
+  integrationObj.invokeOperation(
+      operationName,
+      headers,
+      data,
+      self.operationSuccessPendingwashing.bind(self),
+      self.operationFailurePendingwashing.bind(self)
+  );
+    });
+},
+  
+  operationSuccessPendingwashing: function(response)
+  {
+    voltmx.application.dismissLoadingScreen();
+    voltmx.print(response);
+     if (!response.records || response.records.length === 0) {
+    response.records = [{
+      total_completed: "0",
+      total_pending: "0",
+      total_vehicles: "0"
+    }];
+  }
+
+  this.completedVehicles = response.records[0].total_completed;
+  this.pendingVehicles = response.records[0].total_pending;
+  this.totalVehicles = response.records[0].total_vehicles;
+    
+    this.totalCompletedAll += parseInt(this.totalVehicles || 0);
+this.totalPendingAll += parseInt(this.pendingVehicles || 0);
+this.updateFinalCounts();
+    this.washingPending = parseInt(this.pendingVehicles || 0);
+    
+    this.setDataToSeg();
+
+ 
+  
+  },
+  
+  operationFailurePendingwashing: function(error)
+  {
+    voltmx.application.dismissLoadingScreen();
+    voltmx.print(error);
+  },
+ 
+  
+  
+  
+  
+  /////////////////////////////////////////////////////////
  
  });

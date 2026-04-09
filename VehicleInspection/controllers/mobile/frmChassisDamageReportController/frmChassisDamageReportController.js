@@ -195,7 +195,7 @@ define({
           voltmx.print("API Response: " + JSON.stringify(response));
           self.view.saveresponse.setVisibility(true);
            self.view.saveresponse.lblUPdatedsucessfully.text = "Panel list saved Sucessfully";
-           alert("Response saved successfully");
+           
         } catch (e) {
           voltmx.print("API Error: " + e);
           alert("Something went wrong");
