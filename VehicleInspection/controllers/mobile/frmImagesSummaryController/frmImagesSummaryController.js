@@ -491,6 +491,28 @@ this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.
         self.view.lblSummaryOfVehicleInspection.left = "0dp";
         self.view.lblSummaryOfVehicleInspection.right = "";
       }
+    
+    self.view.flxHeading.lblImages.text =voltmx.i18n.getLocalizedString("Images");
+     self.view.flxSummary.lblActivityName.text =voltmx.i18n.getLocalizedString("Images");
+    self.view.flxSummary.lblTotalVehicles.text =voltmx.i18n.getLocalizedString("Total Vehicles");
+    self.view.flxSummary.lblCompletedVehicles.text =voltmx.i18n.getLocalizedString("Completed Vehicles");
+    self.view.flxSummary.lblPendingVehicles.text = voltmx.i18n.getLocalizedString("Pending Vehicles");
+  // self.view.lblSummaryOfVehicleInspection.text =voltmx.i18n.getLocalizedString("SummaryofvehicleImages");
+    self.view.lblPendingVehicles.text =voltmx.i18n.getLocalizedString("Pending Vehicles");
+    self.view.lblCompletedVehicles.text =voltmx.i18n.getLocalizedString("Completed Vehicles");
+  
+  self.view.btnLoadMore.text = voltmx.i18n.getLocalizedString("Load More");
+   this.view.flxfooter.lblHome.text =voltmx.i18n.getLocalizedString("Dashboard");
+
+      this.view.flxfooter.lblinspections.text =voltmx.i18n.getLocalizedString("Inspections");
+
+      this.view.flxfooter.lblinward.text =voltmx.i18n.getLocalizedString("Inward");
+
+      this.view.flxfooter.lblimages.text =voltmx.i18n.getLocalizedString("Images");
+
+      this.view.flxfooter.lblprofile.text =voltmx.i18n.getLocalizedString("Profile");
+  
+  
   }
 
  

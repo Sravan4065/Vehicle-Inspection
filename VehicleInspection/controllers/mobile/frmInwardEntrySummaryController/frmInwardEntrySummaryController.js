@@ -330,7 +330,8 @@ this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.
         "lblVehicleNumber": "lblVehicleNumber",
         "lblLocation": "lblLocation",
         "lblDate": "lblDate",
-        "lblViewDetailsInwardEntry": "lblViewDetailsInwardEntry"
+        "lblViewDetailsInwardEntry": "lblViewDetailsInwardEntry",
+      "imgCalendarIcon":"imgCalendarIcon"
     };
 
     var data = [];
@@ -365,21 +366,28 @@ this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.
                 "right": isArabic ? "2%": ""
                 }, 
                 "lblVehicleNumber": record.chassis_number || "",
-                "lblLocation": record.location || "",
-                "lblDate": record.yard_received_date || "",
+                "lblLocation": record.location || "N/A",
+              "lblDate": {
+  "text": record.yard_received_date || "",
+  "isVisible": !self.isPending   // ✅ hide for pending
+},
+               // "lblDate": record.yard_received_date || "",
 //                 "flxLocation": {
 //                    "isVisible": !self.isPending,
 //                    "reverseLayoutDirection": isArabic
 //                 },
+              "imgCalendarIcon": {
+  "isVisible": !self.isPending
+},
                 "flxViewDetailsInwardEntry":
               {
                   "left": isArabic ? "5%" : "",
                    "right": isArabic ? "" : "5%"
                 },
-//                 "flxDate": {
-//                    "isVisible": !self.isPending,
-//                    "reverseLayoutDirection": isArabic
-//                 },
+                "flxDate": {
+  "isVisible": !self.isPending,   // ✅ key line
+  "reverseLayoutDirection": isArabic
+},
                 "lblViewDetailsInwardEntry": voltmx.i18n.getLocalizedString("View Details"),
                  
                 "flxViewDetailsInwardEntry": {
@@ -509,6 +517,8 @@ this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.
         
         self.view.flxSearchComponent.flxSearch.left = "4%";
         self.view.flxSearchComponent.flxSearch.right = "";
+         this.view.flxSearchComponent.flxSearch.left = "4%";
+        this.view.flxSearchComponent.flxSearch.right = "";
       }
     else
       {
@@ -541,8 +551,12 @@ this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.
         
         self.view.flxSearchComponent.flxSearch.left = "";
         self.view.flxSearchComponent.flxSearch.right = "4%";
+          this.view.flxSearchComponent.flxSearch.right = "4%";
+        this.view.flxSearchComponent.flxSearch.left = "";
+      //  this.view.flxHeading.imgBack.transform = voltmx.ui.makeAffineTransform();
+      
    }
-    
+    this.view.flxHeading.lblImages.text = voltmx.i18n.getLocalizedString("Inward Entry");
     this.view.flxSummary.lblActivityName.text = voltmx.i18n.getLocalizedString("Inward Entries");
     this.view.flxSummary.lblTotalVehicles.text = voltmx.i18n.getLocalizedString("Total Vehicles");
     this.view.flxSummary.lblCompletedVehicles.text = voltmx.i18n.getLocalizedString("Completed Vehicles");
@@ -552,7 +566,15 @@ this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.
     this.view.lblCompletedVehicles.text = voltmx.i18n.getLocalizedString("Completed Vehicles");
     //this.view.flxSearchComponent.tbxSearchBy.text = voltmx.i18n.getLocalizedString("Search by ID");
     this.view.btnLoadMore.text = voltmx.i18n.getLocalizedString("Load More");
-    
+     this.view.flxfooter.lblHome.text =voltmx.i18n.getLocalizedString("Dashboard");
+
+      this.view.flxfooter.lblinspections.text =voltmx.i18n.getLocalizedString("Inspections");
+
+      this.view.flxfooter.lblinward.text =voltmx.i18n.getLocalizedString("Inward");
+
+      this.view.flxfooter.lblimages.text =voltmx.i18n.getLocalizedString("Images");
+
+      this.view.flxfooter.lblprofile.text =voltmx.i18n.getLocalizedString("Profile");
   }
   
 

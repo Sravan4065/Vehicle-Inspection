@@ -38,7 +38,7 @@ this.totalPendingAll = 0;
     var activitiesConfig = [
   {
     title:  voltmx.i18n.getLocalizedString("Inward Entry"),
-    count: (this.inwardPending || 0) + " pending",
+    count: (this.inwardPending || 0) +  voltmx.i18n.getLocalizedString("Pending"),
     desc: voltmx.i18n.getLocalizedString("Vehicle reception and barcode printing"),
     icon: "inwardentrygreen.png",
     skin: "sknFlxDBFCE7Radius5px",
@@ -46,7 +46,7 @@ this.totalPendingAll = 0;
   },
   {
     title: voltmx.i18n.getLocalizedString("Vehicle Inspection"),
-    count: (this.inspectionPending || 0) + " pending",
+    count: (this.inspectionPending || 0) + voltmx.i18n.getLocalizedString("Pending"),
     desc: voltmx.i18n.getLocalizedString("Vehicle inspection process"),
     icon: "viicon.png",
     skin: "sknFlxffd5daRadius5px",
@@ -54,7 +54,7 @@ this.totalPendingAll = 0;
   },
   {
     title:  voltmx.i18n.getLocalizedString("Images"),
-     count: (this.imagesPending || 0) + " pending",
+     count: (this.imagesPending || 0) + voltmx.i18n.getLocalizedString("Pending"),
     desc: voltmx.i18n.getLocalizedString("vehicleImageUploads"),
     icon: "imagesicon.png",
     skin: "sknFlxDBFCE7Radius5px",
@@ -62,7 +62,7 @@ this.totalPendingAll = 0;
   },
   {
     title: voltmx.i18n.getLocalizedString("Washing"),
-    count: (this.washingPending || 0) + " pending",
+    count: (this.washingPending || 0) + voltmx.i18n.getLocalizedString("Pending"),
     desc: voltmx.i18n.getLocalizedString("vehicleWashingprocess"),
     icon: "carwashicon.png",
     skin: "sknFlxe0e7ffRadius5px",

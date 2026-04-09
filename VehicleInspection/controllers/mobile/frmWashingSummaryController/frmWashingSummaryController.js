@@ -544,6 +544,27 @@ this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.
         this.view.flxSearchComponent.flxSearch.left = "";
         this.view.flxHeading.imgBack.transform = voltmx.ui.makeAffineTransform();
       }
+    
+    this.view.flxHeading.lblImages.text = voltmx.i18n.getLocalizedString("Washing");
+
+      this.view.flxSummary.lblActivityName.text = voltmx.i18n.getLocalizedString("Washing");
+    this.view.flxSummary.lblTotalVehicles.text = voltmx.i18n.getLocalizedString("Total Vehicles");
+    this.view.flxSummary.lblCompletedVehicles.text = voltmx.i18n.getLocalizedString("Completed Vehicles");
+    this.view.flxSummary.lblPendingVehicles.text = voltmx.i18n.getLocalizedString("Pending Vehicles");
+    this.view.lblSummaryOfVehicleInspection.text = voltmx.i18n.getLocalizedString("Summaryofwashingvehicles");
+    this.view.lblPendingVehicles.text = voltmx.i18n.getLocalizedString("Pending Vehicles");
+    this.view.lblCompletedVehicles.text = voltmx.i18n.getLocalizedString("Completed Vehicles");
+    //this.view.flxSearchComponent.tbxSearchBy.text = voltmx.i18n.getLocalizedString("Search by ID");
+    this.view.btnLoadMore.text = voltmx.i18n.getLocalizedString("Load More");
+   this.view.flxfooter.lblHome.text =voltmx.i18n.getLocalizedString("Dashboard");
+
+      this.view.flxfooter.lblinspections.text =voltmx.i18n.getLocalizedString("Inspections");
+
+      this.view.flxfooter.lblinward.text =voltmx.i18n.getLocalizedString("Inward");
+
+      this.view.flxfooter.lblimages.text =voltmx.i18n.getLocalizedString("Images");
+
+      this.view.flxfooter.lblprofile.text =voltmx.i18n.getLocalizedString("Profile");
   },
   
  });
