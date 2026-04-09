@@ -61,14 +61,36 @@ define({
     this.createUI();
   },
 
-  // ✅ FIXED SIDE-BY-SIDE UI
   createUI: function() {
     var self = this;
     self.view.flxDynamicImageViews.removeAll();
+  
 
-    var viewNames = ["Front View", "Rear View"];
+    var subCatId = self.context.subCatId;
+var viewNames = [];
 
-    // 🔥 Only ONE ROW
+switch (subCatId) {
+
+  case "1": // Exterior Images
+    viewNames = ["Front View", "Rear View", "Side View", "Interior", "Odometer"];
+    break;
+
+  case "2": // Damage Documentation
+    viewNames = ["Front Damage", "Rear Damage", "Left Side Damage", "Right Side Damage", "Close-up Damage"];
+    break;
+
+  case "3": // Engine and Mechanical
+    viewNames = ["Engine Bay", "Battery", "Radiator", "Underbody", "Exhaust"];
+    break;
+
+  case "4": // Documents
+    viewNames = ["RC Document", "Insurance", "PUC Certificate", "Invoice", "Other Docs"];
+    break;
+
+  default:
+    viewNames = [];
+    break;
+}
     var flxRow = new voltmx.ui.FlexContainer({
       id: "flxRow",
       height: "220dp",
@@ -77,7 +99,7 @@ define({
       layoutType: voltmx.flex.FREE_FORM
     }, {}, {});
 
-    for (var i = 0; i < 2; i++) {
+    for (var i = 0; i < 5; i++) {
       let index = i;
       let viewName = viewNames[i];
 
@@ -107,7 +129,8 @@ define({
         width: "100%",
         centerX: "50%",
         centerY: "50%",
-        src: "defaulticon.png"
+        src: "defaulticon.png",
+        dynamicImageLoading: true
       }, { imageScaleMode: constants.IMAGE_SCALE_MODE_FIT_TO_DIMENSIONS }, {});
 
       flxImgItem.add(imgItem);

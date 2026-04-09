@@ -37,7 +37,7 @@ this.view.details7.txbData.text = "";
         this.onRowClickAction.bind(this);
     } 
     
-    this.view.flxCompleteButton.btnCompleteInspection.onClick = this.completeInspection.bind(this);
+    this.view.flxCompleteButton.btnCompleteInspection.onClick = this.generateReport.bind(this);
   },
 
 
@@ -662,43 +662,172 @@ else
     voltmx.print(error);
 
   }
+  },
+  
+  generateReport: function()
+  {
+     var self = this;
+    
+//     self.view.flxVehicleReceived.setVisibility(true);
+
+  var serviceName = "fry_collection";
+
+  var integrationObj = voltmx.sdk.getCurrentInstance()
+
+                                  .getIntegrationService(serviceName);
+
+  var operationName = "GenerateTechnicalReport";
+ 
+  var data = {
+    
+   "moduleName": "GenerateTechnicalReport",
+    "user_token": voltmx.store.getItem("getUserAccesstoken"),
+    "moduleType": "Fleet",
+    "user_id": voltmx.store.getItem("userId"),
+    "object_id": self.objectId
+    
+  };
+ 
+  // Headers
+
+  var headers = {
+
+//       "user_token": voltmx.store.getItem("getUserAccesstoken") 
+
+  };
+//  integrationObj.invokeOperation
+  integrationObj.invokeOperation(
+
+      operationName,
+
+      headers,
+
+      data,
+    
+    operationSuccessCompleted,  
+    
+    operationFailureCompleted
+
+  );
+
+
+  function operationSuccessCompleted(response)
+
+  {
+
+    voltmx.print(response);
+    
+    if(response && response.message === "Success")
+      {
+        if(response.file_url)
+          {
+             //#ifdef android
+    self.onDownloadButtonClick(response.file_url);
+    //#endif
+    //#ifdef iphone
+   self.testPDFNFIDownload(response.file_url);
+    //#endif
+          }
+      }
+    else
+      {
+        self.showToast(response.message);
+      }
+    
+   
+
   }
-  // addToSegment: function(response){
 
-  //     if(!response || !response.records || response.records.length === 0){
-  //         voltmx.print("Invalid response");
-  //         return;
-  //     }
+  function operationFailureCompleted(error)
 
-  //     var self = this;
+  {
 
-  //     var segmentMap = {
-  //         "tool_kit": self.view.details1.segVehicleDetails,
-  //         "damaged_areas": self.view.details2.segVehicleDetails,
-  //         "estimated_repair_cost": self.view.details3.segVehicleDetails,
-  //         "branch": self.view.details6.segVehicleDetails,
-  //         "city": self.view.details7.segVehicleDetails,
-  //         "user_manual": self.view.details8.segVehicleDetails
-  //     };
+    voltmx.print(error);
 
-  //     response.records.forEach(function(rec){
+  }
+  },
+  
+    onDownloadButtonClick: function (fileUrl) {
+    var self = this;
+  
 
-  //         for(var key in rec){
+   
+      try {
+      
 
-  //             var value = rec[key];
-  //             var segWidget = segmentMap[key];
+//           var fileUrl = "https://pdfobject.com/pdf/sample.pdf";
+//           var fileName = thirdPartyFile.file_name;
+         var fileName = "Inspection Report_" + Date.now();
 
-  //             if(segWidget && value){
+          try {
+            // Proceed to download using Java interop
+            var DownloadClass = java.import("com.example.pdffiledownload.FileDownloadHandler");
+            var ActivityContext = java.import("com.konylabs.android.KonyMain").getActivityContext();
 
-  //                 var segData = [{
-  //                     lblData: value
-  //                 }];
+            DownloadClass.downloadFile(ActivityContext, fileUrl, fileName);
+            // Optionally show confirmation to user
+            // voltmx.ui.Alert("Download started for: " + fileName);
+          } catch (downloadError) {
+            self.showToast("Download failed: " + downloadError.message);
+          }
+        } 
+      catch (e) {
+        self.showToast("Unexpected error while checking files: " + e.message);
+      }
+    
+  },
 
-  //                 segWidget.setData(segData);
-  //             }
-  //         }
+  showToast: function(message) {
+    var platform = voltmx.os.deviceInfo().name.toLowerCase();
 
-  //     });
+    if (platform === "android") {
+      var toast = new voltmx.ui.Toast({
+        text: message,
+        duration: constants.TOAST_LENGTH_SHORT,
+        alignConfig: {
+          widget: voltmx.application.getCurrentForm(),
+          position: constants.TOAST_POS_BOTTOM // or TOAST_POS_TOP / CENTER
+        }
+      });
+      toast.show();
+    } else if (platform === "iphone" || platform === "ipad") {
+      alert(message);
+    } else {
+      // Fallback for other platforms (optional)
+      voltmx.print("Toast not supported on this platform: " + platform);
+    }
+  },
 
-  // }
+
+  testPDFNFIDownload: function(fileUrl)
+  {
+
+ 
+      try {
+        // Find the first file with type "3rd-Party"
+       
+//           var fileUrl = "https://pdfobject.com/pdf/sample.pdf";
+//           var fileName = thirdPartyFile.file_name;
+        var  fileName = "Inspection Report_" + Date.now();
+
+          // Proceed to download
+          var FileDownloadHandlerNFI = objc.import("PDFDownloadNFI");
+          var DownloadPDFViewController = objc.import("DownloadPDFViewController");
+          if (!DownloadPDFViewController) {
+            voltmx.print("Error: Failed to import PDFDownloadNFI");
+          }
+          else{
+            var downloadObject = DownloadPDFViewController.alloc().jsinit();
+            downloadObject.downloadAndPreviewPDFFileName(fileUrl,fileName);
+          }
+
+       
+      } catch (e) {
+        alert("Download error: " + e.message);
+      }
+   
+
+
+  },
+ 
 });

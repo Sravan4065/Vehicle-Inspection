@@ -106,28 +106,32 @@ define({
 //               NavigationManager.push("frmVehicledetailsInspectionType",selectedRow[0].lov_id);
                 NavigationManager.push("frmImageCategorySub",{
       record: self.context,
-      subCat: "Exterior Images"
+      subCat: "Exterior Images",
+      subCatId: "1",
     });
               break;
               case "2":
 //               new voltmx.mvc.Navigation("frmEngineInspectionType").navigate();
                  NavigationManager.push("frmImageCategorySub",{
       record: self.context,
-      subCat: "Damage Documentation"
+      subCat: "Damage Documentation",
+      subCatId: "2",
     });
               break;
               case "3":
 //               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
                   NavigationManager.push("frmImageCategorySub",{
       record: self.context,
-      subCat: "Engine and Mechanical"
+      subCat: "Engine and Mechanical",
+      subCatId: "3",
     });
               break;
               case "4":
 //               new voltmx.mvc.Navigation("frmVehicledetailsInspectionType").navigate();
                  NavigationManager.push("frmImageCategorySub",{
       record: self.context,
-      subCat: "Documents"
+      subCat: "Documents",
+      subCatId: "4",
     });
               break;
             default:

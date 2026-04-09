@@ -16,11 +16,59 @@ define({
     toggleFooterIcons(this.view, "frmVehicleSummaryreport");
     //     this.clearData();
 //     this.setDataToSeg();  
-    this.view.details1.txbData.text = "";
-    this.view.details2.txbData.text = "";
-    this.view.details3.txbData.text = "";
+    this.view.details1.txtAreaDetails.text = "";
+    this.view.details2.txtAreaDetails.text = "";
+    this.view.details3.txtAreaDetails.text = "";
     this.getInspectionMiscellaneousList();
 
+    
+    this.view.details1.txtAreaDetails.onTextChange = function () {
+  
+  var text = this.view.details1.txtAreaDetails.text;
+
+  // Allow only valid characters and max 500 length
+  var validText = text.replace(/[^a-zA-Z0-9\s.,\-()\/]/g, "");
+
+  if (validText.length > 500) {
+    validText = validText.substring(0, 500);
+  }
+
+  // Set cleaned text back
+  this.view.details1.txtAreaDetails.text = validText;
+
+}.bind(this);
+    
+    this.view.details2.txtAreaDetails.onTextChange = function () {
+  
+  var text = this.view.details2.txtAreaDetails.text;
+
+  // Allow only valid characters and max 500 length
+  var validText = text.replace(/[^a-zA-Z0-9\s.,\-()\/]/g, "");
+
+  if (validText.length > 500) {
+    validText = validText.substring(0, 500);
+  }
+
+  // Set cleaned text back
+  this.view.details2.txtAreaDetails.text = validText;
+
+}.bind(this);
+    
+    this.view.details3.txtAreaDetails.onTextChange = function () {
+  
+  var text = this.view.details3.txtAreaDetails.text;
+
+  // Allow only valid characters and max 500 length
+  var validText = text.replace(/[^a-zA-Z0-9\s.,\-()\/]/g, "");
+
+  if (validText.length > 500) {
+    validText = validText.substring(0, 500);
+  }
+
+  // Set cleaned text back
+  this.view.details3.txtAreaDetails.text = validText;
+
+}.bind(this);
   
   },
 
@@ -71,17 +119,17 @@ var data = self.fullExistingData ?
 //     var data = {
 //   object_id: self.objectId,
 //   services_id: Number(self.services_id),
-//   mechanical : (self.view.details1.txbData.text || "").trim(),
-//   exterior : (self.view.details2.txbData.text || "").trim(),
-//   interior : (self.view.details3.txbData.text || "").trim(),
+//   mechanical : (self.view.details1.txtAreaDetails.text || "").trim(),
+//   exterior : (self.view.details2.txtAreaDetails.text || "").trim(),
+//   interior : (self.view.details3.txtAreaDetails.text || "").trim(),
   
 // };
     data.object_id = self.objectId;
     data.services_id = Number(self.services_id || 0);
     
-    data.mechanical = (self.view.details1.txbData.text || "").trim();
-    data.exterior   = (self.view.details2.txbData.text || "").trim();
-    data.interior   = (self.view.details3.txbData.text || "").trim();
+    data.mechanical = (self.view.details1.txtAreaDetails.text || "").trim();
+    data.exterior   = (self.view.details2.txtAreaDetails.text || "").trim();
+    data.interior   = (self.view.details3.txtAreaDetails.text || "").trim();
     if(self.existingId)
       {
         data.id = self.existingId
@@ -236,9 +284,9 @@ else
     
     var res = response.records[0];
 
-    this.view.details1.txbData.text = res.mechanical;
-    this.view.details2.txbData.text = res.exterior;
-    this.view.details3.txbData.text = res.interior;
+    this.view.details1.txtAreaDetails.text = res.mechanical;
+    this.view.details2.txtAreaDetails.text = res.exterior;
+    this.view.details3.txtAreaDetails.text = res.interior;
   },
   // -----------------------------------------------------------------------
 

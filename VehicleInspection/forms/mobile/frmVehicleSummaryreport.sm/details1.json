@@ -47,8 +47,8 @@
             "__events__": {},
             "__info__": {
                 "isRoot": true,
-                "kuid": "d4fd3032275d4a4eae500a6dea1a7f1a",
-                "srcKUID": "f55b13451ca848fd9dee6df988be37bf",
+                "kuid": "gb97f64e6a2c4954aecc69e5ee4f35ff",
+                "srcKUID": "c8c604b4fdf441929d179562f6913882",
                 "wType": "FlexContainer"
             },
             "top": {
@@ -61,8 +61,8 @@
         "flxArrow": {
             "__events__": {},
             "__info__": {
-                "kuid": "f92619dd94ad4473bc4e52b45e094263",
-                "srcKUID": "c6340dee896b4876bb7ecce4d50050ce",
+                "kuid": "ea9ca34826c3474b8e7da492aa217c38",
+                "srcKUID": "a597fe54339a49f5a7ccb0c923cf1682",
                 "wType": "FlexContainer"
             },
             "isVisible": false
@@ -70,64 +70,40 @@
         "flxName": {
             "__events__": {},
             "__info__": {
-                "kuid": "f3c772caf7c14b109677d242ee159a34",
-                "srcKUID": "af4f55790c1942ab9a8e328a44437228",
+                "kuid": "c95d70fefba94376b42416b5a8ddf0b8",
+                "srcKUID": "e8aaa51747894367a0139d8430dd23d0",
                 "wType": "FlexContainer"
-            },
-            "width": {
-                "Default": {
-                    "type": "string",
-                    "value": "21%"
-                }
             }
         },
         "flxSegment": {
             "__events__": {},
             "__info__": {
-                "kuid": "g20ea4f72deb473c9a77a4f37cce306c",
-                "srcKUID": "i81d685650c047e0a36b27249031670f",
+                "kuid": "b7957bcb2bd64bd89c42bbde7e2921d3",
+                "srcKUID": "i98bcdd0d4c84949ae21be430e942180",
                 "wType": "FlexContainer"
-            },
-            "clipBounds": true,
-            "isVisible": false
+            }
         },
         "flxTextbox": {
             "__events__": {},
             "__info__": {
-                "kuid": "d513092927464169a4fbce91a0bb12d8",
-                "srcKUID": "ae8483871dbe422190d63fe28bb6daab",
+                "kuid": "b883717c6f694a398d1eef79f06c19fb",
+                "srcKUID": "c52ff81a679e4b679f7c925f7580f7a6",
                 "wType": "FlexContainer"
-            },
-            "autogrowMode": {
-                "Default": 0
-            },
-            "height": {
-                "Default": {
-                    "type": "string",
-                    "value": "80dp"
-                }
-            },
-            "maxHeight": {
-                "Default": {
-                    "type": "string",
-                    "value": ""
-                }
             }
         },
         "imgarrow": {
             "__events__": {},
             "__info__": {
-                "kuid": "ac93d198c0c240cea0b3801d7b53ebcc",
-                "srcKUID": "jbc1bfbf2d7646e3bbab003dd7da117f",
+                "kuid": "cd3ccfe10a894668938a1bf95eb6cae2",
+                "srcKUID": "a7cdcb18385a47e6ac091906c0285809",
                 "wType": "Image"
-            },
-            "src": "downarrow.png"
+            }
         },
         "lblNamedata": {
             "__events__": {},
             "__info__": {
-                "kuid": "a68d2842fa7249d886f33ca628299830",
-                "srcKUID": "b007f5d9e1dc4a809572ef3b836312a4",
+                "kuid": "cc739de6c58b4d95b24fd2adee094aef",
+                "srcKUID": "dd173fdd6b884bfeade558c6ff15eac5",
                 "wType": "Label"
             },
             "text": "Mechanical"
@@ -135,17 +111,24 @@
         "segVehicleDetails": {
             "__events__": {},
             "__info__": {
-                "kuid": "cb4cc135108b41f18b35471d1873db1f",
-                "srcKUID": "cfe5a327284c4bd88a6f1de68e7f0c17",
+                "kuid": "ca3ceeee6eb647cdb9b03842e3a8f799",
+                "srcKUID": "e71bbfdda36f48f2b4295d4dff653be0",
                 "wType": "Segment"
             }
         },
-        "txbData": {
+        "txtAreaDetails": {
             "__events__": {},
             "__info__": {
-                "kuid": "ha9216f0de974fe28bdef0b2eca778bc",
-                "srcKUID": "f836dbce2d5943308d153692e8c3cfb3",
-                "wType": "TextField"
+                "kuid": "d5c6e01198264e9dad3d5dfc03eb5db5",
+                "srcKUID": "bd92c8b26f294b3a82f2c4ec4e505cb4",
+                "wType": "TextArea"
+            },
+            "placeholder": "",
+            "width": {
+                "Default": {
+                    "type": "string",
+                    "value": "90%"
+                }
             }
         }
     },
@@ -155,7 +138,7 @@
     "iscustomlayout": false,
     "isdatareferenced": false,
     "isvisible": true,
-    "kuid": "d4fd3032275d4a4eae500a6dea1a7f1a",
+    "kuid": "gb97f64e6a2c4954aecc69e5ee4f35ff",
     "layouttype": 2,
     "masterType": 0,
     "name": "kony.ui.UserWidgetInstance",
@@ -166,7 +149,7 @@
     "retainflowhorizontalalignment": false,
     "snapgridsize": 10,
     "snaptogrid": true,
-    "sourceUserWidget": "f55b13451ca848fd9dee6df988be37bf",
+    "sourceUserWidget": "c8c604b4fdf441929d179562f6913882",
     "wType": "UserWidgetInstance",
     "zindex": 1
 }
