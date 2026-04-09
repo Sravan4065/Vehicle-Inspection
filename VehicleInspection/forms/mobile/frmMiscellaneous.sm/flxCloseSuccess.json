@@ -2,11 +2,7 @@
     "DNDConfig": null,
     "_height_": {
         "type": "string",
-        "value": "100%"
-    },
-    "_left_": {
-        "type": "string",
-        "value": "0"
+        "value": "45dp"
     },
     "_margin_": [
         0,
@@ -22,6 +18,10 @@
         0
     ],
     "_percent_": true,
+    "_right_": {
+        "type": "string",
+        "value": "0"
+    },
     "_skin_": "s43b3f0daddb4853bfc5983bfb525431",
     "_top_": {
         "type": "string",
@@ -29,32 +29,25 @@
     },
     "_width_": {
         "type": "string",
-        "value": "100%"
+        "value": "15%"
     },
     "allboxes": [],
     "autogrowmode": 0,
     "canUpdateUI": true,
     "children": [
-        "flxHeader",
-        "flxBody",
-        "flxFoooter",
-        "flxCompleteButton",
-        "flxSignature",
-        "flxBrowser",
-        "flxPromptGenerate",
-        "flxInspectionDonePopup"
+        "CopyimgCross0je38211630d941"
     ],
-    "clipbounds": true,
+    "clipbounds": false,
     "containerweight": 100,
     "enablescrolling": true,
-    "id": "flxMain",
+    "id": "flxCloseSuccess",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "dd49b8986ff243d08d63848142636f16",
+    "kuid": "dd36a97c84ba4e1a822e0ca6fc222ce2",
     "layouttype": 2,
     "name": "kony.ui.FlexContainer",
-    "parent": "frmMiscellaneous",
+    "parent": "CopyflxPopup0f596d5f143904d",
     "pf": "frmMiscellaneous",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,

@@ -206,11 +206,30 @@ get_user_object &&
       voltmx.store.setItem("email", email);
       voltmx.store.setItem("userEmail", email);
       
+     var allowedRoles = [
+    "inspection_executive",
+    "washing_assistant",
+    "awa_supervisor",
+    "admin",
+    "yard_assistant",
+    "awa_manager"
+];
       var roles = jobtitle
         ? jobtitle.split(";").map(function(r) {
             return r.trim().toLowerCase();
           })
         : [];
+      
+      //
+      var isAllowed = roles.some(function(role) {
+    return allowedRoles.includes(role.trim());
+});
+
+if (!isAllowed) {
+ self.clearUserSession();
+  new voltmx.mvc.Navigation("frmLogin").navigate();
+  return;
+}   
 
       var defaultMode = roles.indexOf("buyer") !== -1 ? "buyer" : "seller";
       voltmx.store.setItem("mode", defaultMode);
@@ -242,7 +261,7 @@ get_user_object &&
     options
   );
 
-  new voltmx.mvc.Navigation("frmLoginScreen").navigate();
+  new voltmx.mvc.Navigation("frmLogin").navigate();
 }
 
 

@@ -142,7 +142,9 @@ while (i < 6) {
     this.callRate.bind(this);
   i++;
 }
-   
+   this.view.details.txbData.setEnabled(false);
+   this.view.details1.txbData.setEnabled(false);
+    this.view.details2.txbData.setEnabled(false);
     this.createUIBox();
     this.masterfleetspecvalues();
     this.invokeGetInspectionTyresList();
@@ -345,7 +347,9 @@ onRowClickSeg3: function() {
       width: "100%",
       centerX: "50%",
       centerY: "50%",
-      src: "defaulticon.png"
+      src: "defaulticon.png",
+      dynamicImageLoading: true,
+      "imageWhileDownloading": "loading.gif"
     }, {imageScaleMode: constants.IMAGE_SCALE_MODE_FIT_TO_DIMENSIONS}, {})
      
       flxImgItem.add(imgItem);
@@ -450,7 +454,7 @@ voltmx.application.showLoadingScreen(null,"LoadingScreen",constants.LOADING_SCRE
                     condition_rating: Number(record.condition_rating) || 0,
                     notes: record.notes || "",
                     repair_estimate_aed: Number(record.repair_estimate_aed) || 0,
-                    image_url_id: record.file_url || null
+                    image_url_id: record.image_url_id || null
                   };
                 }
               });
@@ -772,6 +776,7 @@ uploadImage: function()
             if (details.length > 0 && details[0].object_images) {
               message = "Inspection details and image uploaded successfully";
             }
+            message = "Inspection details saved successfully";
             voltmx.store.setItem("tStore", "");
             self.tempStore = [];
             voltmx.print("tStore cleared after successful save");
