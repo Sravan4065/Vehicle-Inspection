@@ -12,6 +12,7 @@ onNavigate: function(context){
     var self = this;
     var objectId = this.context.objectId;
     var isPending = this.context.isPending;
+    
     if(isPending) 
       {
          self.view.flxRequestFooter.setVisibility(true);
@@ -22,8 +23,9 @@ onNavigate: function(context){
         self.view.flxRequestFooter.setVisibility(false);
         self.view.flxBody.height = "90%";
       }
-      
+    this.view.flxVehicleReceived.setVisibility(false);
     this.vehicleDetails(objectId);
+   this.view.flxVehicleReceived.flxPrintBarCode.onClick = this.onPrintBarCodeClick.bind(this);
     this.view.btnReceiveVehicle.onClick = this.onReceiveClick.bind(this);
     this.view.flxVehicleReceived.setVisibility(false);
       this.view.flxVehicleReceived.flxReturnToList.onClick = () =>{
@@ -40,6 +42,15 @@ onNavigate: function(context){
     }
   },
   
+ 
+  onPrintBarCodeClick: function()
+  {
+    var self = this;
+    self.view.flxVehicleReceived.setVisibility(false);
+    NavigationManager.push("frmBarCodeFromInward",{
+      objectId: self.context.objectId
+    })
+  },
   vehicleDetails: function(objectId) {
 
     var serviceName = "fry_int_common";
@@ -139,8 +150,16 @@ onNavigate: function(context){
     voltmx.print(response);
     
     if(response && response.data && response.data.object_id)
+      {
      self.view.flxVehicleReceived.setVisibility(true);
-
+        if(self.context && self.context.record)
+          {
+     self.view.flxVehicleReceived.lblVehicleNumberValue.text = self.context.record.chassis_number
+     self.view.flxVehicleReceived.lblVehicleValue.text = self.context.record.model
+     self.view.flxVehicleReceived.lblReceivedByValue.text = voltmx.store.getItem('username');
+     self.view.flxVehicleReceived.lblReceivedAtValue.text = self.currentTimeFormat(Date.now());
+          }
+      }
   }
 
   function operationFailureCompleted(error)
@@ -154,6 +173,42 @@ onNavigate: function(context){
     
     
   },
+  
+  currentTimeFormat: function(ts)
+  {
+    var d = new Date(ts);
+
+var day = String(d.getDate()).padStart(2, '0');
+var month = String(d.getMonth() + 1).padStart(2, '0');
+var year = String(d.getFullYear()).slice(-2);
+
+var hours = String(d.getHours()).padStart(2, '0');
+var minutes = String(d.getMinutes()).padStart(2, '0');
+
+var formatted = day + "/" + month + "/" + year + " " + hours + ":" + minutes;
+
+return formatted;
+  },
+  
+  convertUTCToLocal: function(utcDateStr) {
+    if (!utcDateStr) return "";
+
+    // Fix format (important for parsing)
+    var formatted = utcDateStr.replace(" ", "T");
+
+    // Create date object (treated as UTC)
+    var date = new Date(formatted + "Z");
+
+    var day = String(date.getDate()).padStart(2, '0');
+    var month = String(date.getMonth() + 1).padStart(2, '0');
+    var year = date.getFullYear();
+
+    var hours = String(date.getHours()).padStart(2, '0');
+    var minutes = String(date.getMinutes()).padStart(2, '0');
+    var seconds = String(date.getSeconds()).padStart(2, '0');
+
+    return day + "-" + month + "-" + year + " " + hours + ":" + minutes + ":" + seconds;
+},
   
   setDataToLabels: function(metadata)
   {
