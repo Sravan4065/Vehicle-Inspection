@@ -1,20 +1,34 @@
 define({ 
+onNavigate: function(context) {
+  this.context = context;
+  this.view.postShow = this.onPostShow.bind(this);
+},
 
-   onNavigate: function(context)
-  {
-    this.context = context
-    this.view.preShow = this.onPreShow.bind(this);
-  },
-  onPreShow: function()
-  {
-    this.generate();
-  },
-    generate: function() {
-      var self = this;
-        this.view.barcodegenerator.dataToEncode = self.context.objectId,
-       this.view.barcodegenerator.barcodeFormat = "CODE128",
-        this.view.barcodegenerator.displayValue = true,
-        this.view.barcodegenerator.generate();
-       // this.view.barcodegenerator.displayValue = true;
-    },
+onPostShow: function() {
+  var self = this;
+
+  voltmx.timer.schedule("barcodeTimer", function() {
+    self.generate();
+  }, 0.8, false); // delay in seconds
+},
+
+generate: function() {
+  var barcodeWidget = this.view.barcodegenerator;
+
+  var value = String(this.context.objectId || "123456");
+
+  voltmx.print("Generating barcode for: " + value);
+
+  barcodeWidget.setVisibility(true);
+  barcodeWidget.dataToEncode = value;
+  barcodeWidget.barcodeFormat = "CODE128";
+  barcodeWidget.displayValue = true;
+
+  barcodeWidget.generate();
+
+  // second trigger (important)
+  voltmx.timer.schedule("barcodeTimer2", function() {
+    barcodeWidget.generate();
+  }, 0.3, false);
+}
  });

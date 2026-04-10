@@ -35,7 +35,12 @@
     },
     "canUpdateUI": true,
     "containerweight": 0,
-    "data": {},
+    "data": {
+        "barcodeWidth": "1",
+        "barcodefontSize": "5",
+        "barcodefontStyle": "bold",
+        "displayValue": false
+    },
     "id": "barcodegenerator",
     "info": null,
     "iscustomlayout": false,
