@@ -22,7 +22,11 @@
         0
     ],
     "_percent_": true,
-    "_skin_": "s97b96ce5740427a8a21fddf5575fbbc",
+    "_right_": {
+        "type": "string",
+        "value": "4%"
+    },
+    "_skin_": "s175688994e34f1aadc549cd3efcc72c",
     "_top_": {
         "type": "string",
         "value": "19dp"

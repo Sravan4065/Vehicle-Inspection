@@ -29,11 +29,15 @@
     },
     "_width_": {
         "type": "string",
-        "value": "100%"
+        "value": "97%"
     },
     "allboxes": [],
     "autogrowmode": 0,
     "canUpdateUI": true,
+    "centerx": {
+        "type": "string",
+        "value": "50%"
+    },
     "children": [
         "flxBack",
         "lblImages"

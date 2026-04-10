@@ -9,7 +9,7 @@
             },
             "imgInwardIcon": {
                 "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "inwardentrygreen.png"
+                "src": "interiorphotos.png"
             },
             "lblInwardCount": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
@@ -21,7 +21,7 @@
             },
             "lblStatrCapturing": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "View Details"
+                "text": "Start Capturing"
             },
             "lblVehicleInspectionAndBarCode": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
@@ -35,7 +35,7 @@
             },
             "imgInwardIcon": {
                 "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "inwardentrygreen.png"
+                "src": "interiorphotos.png"
             },
             "lblInwardCount": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
@@ -47,7 +47,7 @@
             },
             "lblStatrCapturing": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "View Details"
+                "text": "Start Capturing"
             },
             "lblVehicleInspectionAndBarCode": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
@@ -61,7 +61,7 @@
             },
             "imgInwardIcon": {
                 "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "inwardentrygreen.png"
+                "src": "interiorphotos.png"
             },
             "lblInwardCount": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
@@ -73,7 +73,7 @@
             },
             "lblStatrCapturing": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "View Details"
+                "text": "Start Capturing"
             },
             "lblVehicleInspectionAndBarCode": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
@@ -87,7 +87,7 @@
             },
             "imgInwardIcon": {
                 "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "inwardentrygreen.png"
+                "src": "interiorphotos.png"
             },
             "lblInwardCount": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
@@ -99,7 +99,7 @@
             },
             "lblStatrCapturing": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "View Details"
+                "text": "Start Capturing"
             },
             "lblVehicleInspectionAndBarCode": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
@@ -113,7 +113,7 @@
             },
             "imgInwardIcon": {
                 "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "inwardentrygreen.png"
+                "src": "interiorphotos.png"
             },
             "lblInwardCount": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
@@ -125,7 +125,7 @@
             },
             "lblStatrCapturing": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "View Details"
+                "text": "Start Capturing"
             },
             "lblVehicleInspectionAndBarCode": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
@@ -139,7 +139,7 @@
             },
             "imgInwardIcon": {
                 "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "inwardentrygreen.png"
+                "src": "interiorphotos.png"
             },
             "lblInwardCount": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
@@ -151,7 +151,7 @@
             },
             "lblStatrCapturing": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "View Details"
+                "text": "Start Capturing"
             },
             "lblVehicleInspectionAndBarCode": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
@@ -165,7 +165,7 @@
             },
             "imgInwardIcon": {
                 "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "inwardentrygreen.png"
+                "src": "interiorphotos.png"
             },
             "lblInwardCount": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
@@ -177,7 +177,7 @@
             },
             "lblStatrCapturing": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "View Details"
+                "text": "Start Capturing"
             },
             "lblVehicleInspectionAndBarCode": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
@@ -191,7 +191,7 @@
             },
             "imgInwardIcon": {
                 "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "inwardentrygreen.png"
+                "src": "interiorphotos.png"
             },
             "lblInwardCount": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
@@ -203,7 +203,7 @@
             },
             "lblStatrCapturing": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "View Details"
+                "text": "Start Capturing"
             },
             "lblVehicleInspectionAndBarCode": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
@@ -217,7 +217,7 @@
             },
             "imgInwardIcon": {
                 "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "inwardentrygreen.png"
+                "src": "interiorphotos.png"
             },
             "lblInwardCount": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
@@ -229,7 +229,7 @@
             },
             "lblStatrCapturing": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "View Details"
+                "text": "Start Capturing"
             },
             "lblVehicleInspectionAndBarCode": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
@@ -243,7 +243,7 @@
             },
             "imgInwardIcon": {
                 "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "inwardentrygreen.png"
+                "src": "interiorphotos.png"
             },
             "lblInwardCount": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
@@ -255,7 +255,7 @@
             },
             "lblStatrCapturing": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "View Details"
+                "text": "Start Capturing"
             },
             "lblVehicleInspectionAndBarCode": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
@@ -333,7 +333,7 @@
     "rowcounter": 9,
     "rowfocusskin": "sb4cbb0437db46f8863eedda6fd864f8",
     "rowskin": "s87cc27d14a9433a9b4a99cdf72f69f3",
-    "rowtemplate": "flxImagesData",
+    "rowtemplate": "flxActivity1",
     "screenlevelwidget": false,
     "seccounter": 0,
     "sectionheaderskin": "sa779cd8b039405584aff5e9ef1f42da",
@@ -342,23 +342,24 @@
     "selectedindex": null,
     "selectedindices": null,
     "selecteditems": null,
-    "selectedsectionindex": 0,
+    "selectedsectionindex": null,
     "selectionbehavior": "default",
     "separatorcolor": "aaaaaa00",
     "separatorrequired": true,
-    "separatorthickness": 1,
+    "separatorthickness": 0,
     "showscrollbars": false,
     "viewtype": "tableview",
     "vizProps": {},
     "wType": "Segment",
     "widgetalignment": 5,
     "widgetdatamap": {
-        "CopyflxActivity0beaec1c75dde4e": "CopyflxActivity0beaec1c75dde4e",
+        "flxActivity1": "flxActivity1",
         "flxInwardCount": "flxInwardCount",
         "flxInwardEntry": "flxInwardEntry",
         "flxInwardEntryRight": "flxInwardEntryRight",
         "flxInwardEntryRightTop": "flxInwardEntryRightTop",
         "flxInwardIcon": "flxInwardIcon",
+        "flxStartCapturing": "flxStartCapturing",
         "flxViewDetailsInwardEntry": "flxViewDetailsInwardEntry",
         "imgFArrowIE": "imgFArrowIE",
         "imgInwardIcon": "imgInwardIcon",

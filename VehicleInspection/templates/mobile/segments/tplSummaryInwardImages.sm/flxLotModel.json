@@ -2,7 +2,7 @@
     "DNDConfig": null,
     "_height_": {
         "type": "string",
-        "value": "70dp"
+        "value": "65dp"
     },
     "_left_": {
         "type": "string",
@@ -29,11 +29,15 @@
     },
     "_width_": {
         "type": "string",
-        "value": "100%"
+        "value": "92%"
     },
     "allboxes": [],
     "autogrowmode": 0,
     "canUpdateUI": true,
+    "centerx": {
+        "type": "string",
+        "value": "50%"
+    },
     "children": [
         "flxVehicleIcon",
         "flxModelAndNumber"
@@ -54,6 +58,7 @@
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainflowhorizontalalignment": false,
+    "reverselayoutdirection": false,
     "snapgridsize": 10,
     "snaptogrid": true,
     "wType": "FlexContainer",

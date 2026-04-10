@@ -6,7 +6,7 @@
     },
     "_height_": {
         "type": "string",
-        "value": "38dp"
+        "value": "45dp"
     },
     "_margin_": [
         0,
@@ -33,14 +33,17 @@
     },
     "_width_": {
         "type": "string",
-        "value": "90%"
+        "value": "93%"
     },
     "allboxes": [],
     "autogrowmode": 0,
     "canUpdateUI": true,
+    "centerx": {
+        "type": "string",
+        "value": "50%"
+    },
     "children": [
-        "lblStatrCapturing",
-        "imgFArrowIE"
+        "flxStartCapturing"
     ],
     "clipbounds": false,
     "containerId": true,
@@ -58,6 +61,7 @@
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainflowhorizontalalignment": false,
+    "reverselayoutdirection": false,
     "snapgridsize": 10,
     "snaptogrid": true,
     "wType": "FlexContainer",
