@@ -138,7 +138,7 @@ define({
 
           if (responseJSON.success) {
 //             alert(responseJSON.message);
-            alert("Saved successfully");
+            alert("Inspection details Saved Successfully");
           } else {
             alert("Failed to save response");
           }

@@ -4,7 +4,7 @@ define({
     this.objectId = context.object_id;
     this.lovId = context.lovId;
         this.services_id = context.services_id;
-
+    voltmx.store.removeItem("signature");
     this.view.preShow =this.onPreShow.bind(this);
     this.view.flxHeadingWithButton.btnSaveResponse.onClick = this.onSubmitClick.bind(this);
     this.existingId = null;
@@ -57,7 +57,7 @@ this.view.details7.txbData.text = "";
     
     this.view.btnGenerateReport.onClick = this.generateReport.bind(this);
     this.getInspectionMiscellaneousList();
-    this.setDataToSeg();  
+//     this.setDataToSeg();  
 
     for (let i = 1; i <= 16; i++) {
       this.view["details" + i].flxArrow.onClick =
@@ -273,9 +273,20 @@ this.view.details7.txbData.text = "";
 
     var self = this;
     
-    
+    var allFilled = true;
 
-    voltmx.application.showLoadingScreen(
+for (var i = 1; i <= 7; i++) {
+  var value = self.view["details" +i].txbData.text;
+
+  if (!value || value.trim() === "") {
+    allFilled = false;
+    break;
+  }
+}
+
+if (allFilled) {
+  
+   voltmx.application.showLoadingScreen(
       null,
       "Saving...",
       constants.LOADING_SCREEN_POSITION_ONLY_CENTER,
@@ -306,17 +317,6 @@ this.view.details7.txbData.text = "";
     request.setRequestHeader("Authorization", "Basic "+encodeVal);
     request.setRequestHeader("user_token", token);
 
-//     var data = {
-//       object_id: "00-408A-983B-2678369F3102_73642",
-//       tool_kit: self.view.details1.txbData.text || "",
-//       damaged_areas: self.view.details2.txbData.text || "",
-//       estimated_repair_cost: parseFloat(self.view.details3.txbData.text) || 0,
-//       service_provider: self.view.details4.txbData.text || "",
-//       technician_id: self.view.details5.txbData.text || "",
-//       branch: self.view.details6.txbData.text || "",
-//       city: self.view.details7.txbData.text || "",
-//       signature_image_id: parseInt(self.view.details8.txbData.text) || 0
-//     };
     
     var data = self.fullExistingData ? 
                JSON.parse(JSON.stringify(self.fullExistingData)) :   // deep copy
@@ -329,7 +329,7 @@ data.technician_id = (self.view.details5.txbData.text || "").trim();
 data.branch = (self.view.details6.txbData.text || "").trim();
 data.city = (self.view.details7.txbData.text || "").trim();
 // data.signature_image_id = Number(self.obj.image_id) || self.fullExistingData.signature_image_id;
-    var imageId = Number(self.obj.image_id);
+    var imageId = self.obj && self.obj.image_id && Number(self.obj.image_id);
 
 if (!isNaN(imageId)) {
     data.signature_image_id = imageId;
@@ -362,15 +362,10 @@ if (!isNaN(imageId)) {
 
           var responseJSON = JSON.parse(request.responseText);
 
-          //         if (responseJSON.opstatus === 0) {
-          //           alert("Response saved successfully");
-          //         } else {
-          //           alert("Failed to save response");
-          //         }
-
+  
           if (responseJSON.success) {
-//             alert(responseJSON.message);
             alert("Saved successfully");
+            voltmx.store.removeItem("signature");
           } else {
             alert("Failed to save response");
           }
@@ -383,6 +378,12 @@ if (!isNaN(imageId)) {
     };
 
     request.send(JSON.stringify(data));
+  
+} else {
+  alert('Please fill all fields');
+}
+
+   
   },
 
 
@@ -917,23 +918,59 @@ if (damResponseStr && damResponseStr.indexOf("409") !== -1) {
 
   },
   
-  onSubmitClick: function(){
-  var signature = voltmx.store.getItem("signature");
+//   onSubmitClick: function(){
+//     var self = this;
+//   var signature = voltmx.store.getItem("signature");
+// if(signature){
+// //   alert(signature);
+//           var filefullname = "signature" + new Date().getTime() + ".png";
 
-//   alert(signature);
-          var filefullname = "signature" + new Date().getTime() + ".png";
+//   this.fileDetails = [{
+//     "is_thumbnail": "false",
+//     "inspection_category": "inspection",
+//     "inspection_subcategory": "inspectionsignature",
+//     "filename": filefullname,
+//     "base64": signature
+//   }];
 
-  this.fileDetails = [{
-    "is_thumbnail": "false",
-    "inspection_category": "inspection",
-    "inspection_subcategory": "inspectionsignature",
-    "filename": filefullname,
-    "base64": signature
-  }];
-
-  this.uploadImages();
+//   self.uploadImages();
+// }
+//     else
+//       {
+//         alert("Signature is mandatory");
+//       }
 
 
+// },
+  
+  onSubmitClick: function() {
+  var self = this;
+
+  var signature = voltmx.store.getItem("signature"); // new drawn
+  var existingSignatureId = self.fullExistingData && self.fullExistingData.signature_image_id;
+
+  if (signature) {
+
+    var filefullname = "signature" + new Date().getTime() + ".png";
+
+    this.fileDetails = [{
+      "is_thumbnail": "false",
+      "inspection_category": "inspection",
+      "inspection_subcategory": "inspectionsignature",
+      "filename": filefullname,
+      "base64": signature
+    }];
+
+    self.uploadImages();
+    return;
+  }
+
+  if (existingSignatureId) {
+    self.btnSaveResponseOnClickAction();
+    return;
+  }
+
+  alert("Signature is mandatory");
 },
         uploadImages: function() {
     var self = this;

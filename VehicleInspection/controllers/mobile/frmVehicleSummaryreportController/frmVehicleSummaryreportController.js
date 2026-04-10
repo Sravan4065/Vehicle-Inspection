@@ -76,6 +76,8 @@ define({
 
     var self = this;
 
+    if(self.view.details1.txtAreaDetails.text !== "" && self.view.details2.txtAreaDetails.text !== "" && self.view.details3.txtAreaDetails.text !== "")
+      {
     voltmx.application.showLoadingScreen(
       null,
       "Saving...",
@@ -159,7 +161,7 @@ var data = self.fullExistingData ?
 
           if (responseJSON.success) {
 //             alert(responseJSON.message);
-            alert("Saved successfully");
+            alert("Inspection details Saved Successfully");
           } else {
             alert("Failed to save response");
           }
@@ -172,6 +174,12 @@ var data = self.fullExistingData ?
     };
 
     request.send(JSON.stringify(data));
+      }
+    else
+      {
+         alert("Please fill all fields");
+      }
+   
   },
 
 //   getInspectionMiscellaneousList: function(){

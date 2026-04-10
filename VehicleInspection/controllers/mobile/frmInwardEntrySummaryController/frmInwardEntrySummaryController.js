@@ -130,7 +130,7 @@ this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.
 },
       "flxViewDetailsInwardEntry": {
         "onClick": function() {
-          self.openDetails(record.object_id);
+          self.openDetails(record.object_id,record);
         }
       }
     });
@@ -410,7 +410,7 @@ this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.
                     "left": isArabic ? "5%" : "",
                     "right": isArabic ? "" : "5%",
                     "onClick": function() {
-                        self.openDetails(record.object_id);
+                        self.openDetails(record.object_id,record);
                     }
                 }
             });
@@ -480,12 +480,13 @@ this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.
   }
  
 },
-  openDetails: function(objectId)
+  openDetails: function(objectId,record)
   {
     var self = this;
     NavigationManager.push("frmInwardEntryVehicleDetails", {
       "objectId": objectId,
-      "isPending": self.isPending
+      "isPending": self.isPending,
+       "record": record
     })
 //     new voltmx.mvc.Navigation("frmInwardEntryVehicleDetails").navigate(
 //     {
