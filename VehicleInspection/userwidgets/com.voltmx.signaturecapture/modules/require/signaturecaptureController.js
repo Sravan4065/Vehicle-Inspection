@@ -194,12 +194,17 @@ defineGetter(this, "objectId", function() {
       var imgName = response;
       var img = voltmx.image.createImage(imgName);
       img.writeToMediaGallery(config);
-      var signatureBase64 = this.getSignatureFromDevice();
-       alert("Signature Base64:\n" + signatureBase64);
+//       var signatureBase64 = this.getSignatureFromDevice();
+      var signatureBase64 = voltmx.convertToBase64(response);
+//        alert("Signature Base64:\n" + signatureBase64);
       voltmx.store.setItem("signature", signatureBase64);
-      this.view.setVisibility(false);
-
-      voltmx.ui.Alert({message:"Successfully saved to device gallery!!!",alertType:constants.ALERT_TYPE_INFO},{});
+//       this.view.setVisibility(false);
+      var currentForm = voltmx.application.getCurrentForm();
+      if (currentForm && currentForm.flxSignature) {
+        currentForm.flxSignature.setVisibility(false);
+      }
+      
+//       voltmx.ui.Alert({message:"Successfully saved to device gallery!!!",alertType:constants.ALERT_TYPE_INFO},{});
     }, 
     
 
