@@ -6,6 +6,10 @@
         "type": "string",
         "value": "12dp"
     },
+    "_left_": {
+        "type": "string",
+        "value": "10%"
+    },
     "_margin_": [
         0,
         0,
@@ -20,7 +24,7 @@
     ],
     "_right_": {
         "type": "string",
-        "value": "29%"
+        "value": "10%"
     },
     "_skin_": "sb8f9ecd82a04b66a15ce7fd3be4cb0b",
     "_src_": "frontarrowwhite.png",
@@ -47,7 +51,7 @@
     "isvisible": true,
     "kuid": "d4ceaa98f7234d7cb76203dd028c5a4e",
     "name": "kony.ui.Image2",
-    "parent": "flxViewDetailsInwardEntry",
+    "parent": "flxStartCapturing",
     "pf": "tepSegImagesData",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,

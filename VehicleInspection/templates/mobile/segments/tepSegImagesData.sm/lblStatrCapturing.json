@@ -5,10 +5,6 @@
         "type": "ref",
         "value": "preferred"
     },
-    "_left_": {
-        "type": "string",
-        "value": "10%"
-    },
     "_margin_": [
         1,
         1,
@@ -24,8 +20,8 @@
     "_skin_": "s8e4a2c4d5ee4285b49cc479a338e439",
     "_text_": "Start Capturing",
     "_width_": {
-        "type": "string",
-        "value": "31.45%"
+        "type": "ref",
+        "value": "preferred"
     },
     "_wrapping_": 2,
     "android": {
@@ -35,17 +31,13 @@
         }
     },
     "canUpdateUI": true,
-    "centerx": {
-        "type": "string",
-        "value": "50%"
-    },
     "centery": {
         "type": "string",
         "value": "50%"
     },
     "containerId": true,
     "containerweight": 100,
-    "contentalignment": 4,
+    "contentalignment": 5,
     "id": "lblStatrCapturing",
     "info": null,
     "ipad": {
@@ -62,7 +54,7 @@
     "isvisible": true,
     "kuid": "a99d80f8063a415da5830b7a6897089e",
     "name": "kony.ui.Label",
-    "parent": "flxViewDetailsInwardEntry",
+    "parent": "flxStartCapturing",
     "pf": "tepSegImagesData",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,

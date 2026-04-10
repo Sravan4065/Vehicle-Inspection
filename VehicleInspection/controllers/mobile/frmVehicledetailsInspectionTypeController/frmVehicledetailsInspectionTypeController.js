@@ -33,8 +33,8 @@ define({
     // Button
     setPosition(
         this.view.flxHeadingWithButton.btnSaveResponse,
-        isArabic ? "" : "5%",
-        isArabic ? "5%" : ""
+        isArabic ? "5%" : "",
+        isArabic ? "" : "5%"
     );
 
     // 🔥 ALL details in one loop
