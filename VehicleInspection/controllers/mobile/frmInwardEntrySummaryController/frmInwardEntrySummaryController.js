@@ -2,6 +2,7 @@ define({
 
   onNavigate: function()
   {
+    this.isSearchActive = false;
     this.adjustRTL();
     this.view.preShow = this.onPreShow.bind(this);
     
@@ -41,7 +42,7 @@ this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.
  onSearchTextChange: function() {
   var self = this;
   var text = this.view.flxSearchComponent.tbxSearchBy.text || "";
-
+ this.isSearchActive = !!text.trim();
   this.searchText = text;
 
   // ✅ cancel previous timer
@@ -77,7 +78,7 @@ this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.
   onSearchClick: function() {
   var self = this;
   var searchVal = (this.searchText || "").toLowerCase();
-
+  this.isSearchActive = !!searchVal;
   if (!searchVal) {
     // if empty → show full data
     this.setSegmentData(this.fullData);
@@ -97,6 +98,11 @@ this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.
   
   setSegmentData: function(records) {
   var self = this;
+     if (self.isSearchActive) {
+        self.view.btnLoadMore.setVisibility(false);
+    } else {
+        self.view.btnLoadMore.setVisibility(true);
+    }
 
   var isArabic = voltmx.i18n.getCurrentLocale() === "ar_AE";
 
@@ -116,8 +122,12 @@ this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.
       "lblLotAndModel": (record.lot_no || "") + " " + (record.model || ""),
       "lblVehicleNumber": record.chassis_number || "",
       "lblLocation": record.location || "",
-      "lblDate": record.yard_received_date || "",
+      "lblDate": self.convertUTCToLocal(record.yard_received_date),
       "lblViewDetailsInwardEntry": "View Details",
+      "imgCalendarIcon": {
+     "isVisible": !self.isPending,
+  "src": "calendar.png"   // optional if already set in template
+},
       "flxViewDetailsInwardEntry": {
         "onClick": function() {
           self.openDetails(record.object_id);
@@ -133,6 +143,10 @@ this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.
     onLoadMoreClick: function()
   {
     var self = this;
+    if (self.isSearchActive) {
+        return;
+    }
+
     if(self.isPending)
       {
         self.pageSize += 5;
@@ -367,17 +381,19 @@ this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.
                 }, 
                 "lblVehicleNumber": record.chassis_number || "",
                 "lblLocation": record.location || "N/A",
-              "lblDate": {
-  "text": record.yard_received_date || "",
-  "isVisible": !self.isPending   // ✅ hide for pending
-},
-               // "lblDate": record.yard_received_date || "",
+//               "lblDate": {
+//   "text": self.getCurrentDate() || "",
+// //   "isVisible": !self.isPending   // ✅ hide for pending
+// },
+             "lblDate": self.convertUTCToLocal(record.yard_received_date),
 //                 "flxLocation": {
 //                    "isVisible": !self.isPending,
 //                    "reverseLayoutDirection": isArabic
 //                 },
               "imgCalendarIcon": {
-  "isVisible": !self.isPending
+  "isVisible": !self.isPending,
+                src: "calendar.png"
+                
 },
                 "flxViewDetailsInwardEntry":
               {
@@ -557,7 +573,7 @@ this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.
       
    }
     this.view.flxHeading.lblImages.text = voltmx.i18n.getLocalizedString("Inward Entry");
-    this.view.flxSummary.lblActivityName.text = voltmx.i18n.getLocalizedString("Inward Entries");
+    this.view.flxSummary.lblActivityName.text = voltmx.i18n.getLocalizedString("Summary of Vehicle Inward");
     this.view.flxSummary.lblTotalVehicles.text = voltmx.i18n.getLocalizedString("Total Vehicles");
     this.view.flxSummary.lblCompletedVehicles.text = voltmx.i18n.getLocalizedString("Completed Vehicles");
     this.view.flxSummary.lblPendingVehicles.text = voltmx.i18n.getLocalizedString("Pending Vehicles");
@@ -575,7 +591,26 @@ this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.
       this.view.flxfooter.lblimages.text =voltmx.i18n.getLocalizedString("Images");
 
       this.view.flxfooter.lblprofile.text =voltmx.i18n.getLocalizedString("Profile");
-  }
+  },
   
+convertUTCToLocal: function(utcDateStr) {
+    if (!utcDateStr) return "";
+
+    // Fix format (important for parsing)
+    var formatted = utcDateStr.replace(" ", "T");
+
+    // Create date object (treated as UTC)
+    var date = new Date(formatted + "Z");
+
+    var day = String(date.getDate()).padStart(2, '0');
+    var month = String(date.getMonth() + 1).padStart(2, '0');
+    var year = date.getFullYear();
+
+    var hours = String(date.getHours()).padStart(2, '0');
+    var minutes = String(date.getMinutes()).padStart(2, '0');
+    var seconds = String(date.getSeconds()).padStart(2, '0');
+
+    return day + "-" + month + "-" + year + " " + hours + ":" + minutes + ":" + seconds;
+}
 
  });

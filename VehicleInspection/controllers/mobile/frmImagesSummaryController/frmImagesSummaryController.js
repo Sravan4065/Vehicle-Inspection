@@ -2,6 +2,7 @@ define({
 
   onNavigate: function()
   {
+    this.isSearchActive = false;
     this.adjustRTL();
     this.view.preShow = this.onPreShow.bind(this);
     
@@ -59,7 +60,7 @@ this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.
   var text = this.view.flxSearchComponent.tbxSearchBy.text || "";
 
   this.searchText = text;
-
+  this.isSearchActive = !!text.trim();
   // cancel previous timer
   if (this.searchTimer) {
     voltmx.timer.cancel(this.searchTimer);
@@ -93,7 +94,7 @@ this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.
   onSearchClick: function() {
   var self = this;
   var searchVal = (this.searchText || "").toLowerCase();
-
+  this.isSearchActive = !!searchVal;
   if (!searchVal) {
     this.setSegmentData(this.fullData);
     return;
@@ -112,6 +113,11 @@ this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.
 },
   setSegmentData: function(records) {
   var self = this;
+        if (self.isSearchActive) {
+        self.view.btnLoadMore.setVisibility(false);
+    } else {
+        self.view.btnLoadMore.setVisibility(true);
+    }
   var isArabic = voltmx.i18n.getCurrentLocale() === "ar_AE";
 
   var data = [];
@@ -147,6 +153,9 @@ this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.
    onLoadMoreClick: function()
   {
     var self = this;
+    if (self.isSearchActive) {
+        return;
+    }
     if(self.isPending)
       {
         self.pageSize += 5;
