@@ -66,21 +66,61 @@ define({
     }
 },
 
+// navToButtonSpecific: function(record, index) {
+//     var self = this;
+//     self.record = record;
+//     var widgets = self.view.flxDirections.widgets();
+//     for (var i = 0; i < widgets.length; i++) {
+//         widgets[i].skin = "sknBtnebebeb18px";
+//     }
+//     self.view["btnFrontleft" + index].skin = "sknBtnd3243018px";
+
+//     this.view.details.txbData.text = record.manufacturer || "";
+//     this.view.details1.txbData.text = record.size || "";
+//     this.view.details2.txbData.text = record.manufacture_date || "";
+//     this.view.txsumreport3.text = record.notes || "";
+
+//     var rating = parseInt(record.condition_rating || "0", 10);
+//     for (var j = 1; j <= 5; j++) {
+//         self.view["imgStar" + j].src = (j <= rating) ? "greenstar.png" : "ashstar.png";
+//     }
+
+//     self.currentRecord = record;
+//     self.currentIndex = index;
+
+//     if (record.file_url && record.file_url !== "") {
+//         self.view.imgItem.src = record.file_url;
+//     } else {
+//         self.view.imgItem.src = "defaulticon.png";
+//     }
+//     self.view.lblItemName.text = record.position;
+// },
 navToButtonSpecific: function(record, index) {
     var self = this;
-    self.record = record;
+    var key = self.getRecordKey(record);
+    
+    // Use latest data from inspectionData (session), fallback to original record
+    var displayData = (key && self.inspectionData && self.inspectionData[key]) 
+                      ? self.inspectionData[key] 
+                      : record;
+
+    self.record = record;  // kept for upload & other references
+
+    // Highlight active button
     var widgets = self.view.flxDirections.widgets();
     for (var i = 0; i < widgets.length; i++) {
         widgets[i].skin = "sknBtnebebeb18px";
     }
     self.view["btnFrontleft" + index].skin = "sknBtnd3243018px";
 
-    this.view.details.txbData.text = record.manufacturer || "";
-    this.view.details1.txbData.text = record.size || "";
-    this.view.details2.txbData.text = record.manufacture_date || "";
-    this.view.txsumreport3.text = record.notes || "";
+    // Populate ALL fields from latest data
+    this.view.details.txbData.text = displayData.manufacturer || "";
+    this.view.details1.txbData.text = displayData.size || "";
+    this.view.details2.txbData.text = displayData.manufacture_date || "";
+    this.view.txsumreport3.text = displayData.notes || "";   // ← Remarks now persist
 
-    var rating = parseInt(record.condition_rating || "0", 10);
+    // Stars from latest rating
+    var rating = parseInt(displayData.condition_rating || "0", 10);
     for (var j = 1; j <= 5; j++) {
         self.view["imgStar" + j].src = (j <= rating) ? "greenstar.png" : "ashstar.png";
     }
@@ -88,14 +128,15 @@ navToButtonSpecific: function(record, index) {
     self.currentRecord = record;
     self.currentIndex = index;
 
-    if (record.file_url && record.file_url !== "") {
-        self.view.imgItem.src = record.file_url;
+    // Image from latest uploaded URL
+    if (displayData.file_url && displayData.file_url !== "") {
+        self.view.imgItem.src = displayData.file_url;
     } else {
         self.view.imgItem.src = "defaulticon.png";
     }
+
     self.view.lblItemName.text = record.position;
 },
-
 callRate: function(context) {
     var self = this;
     var widgetId = context.id;
@@ -145,6 +186,7 @@ while (i < 6) {
    this.view.details.txbData.setEnabled(false);
    this.view.details1.txbData.setEnabled(false);
     this.view.details2.txbData.setEnabled(false);
+    this.view.txsumreport3.onTextChange = this.onNotesChange.bind(this);
     this.createUIBox();
     this.masterfleetspecvalues();
     this.invokeGetInspectionTyresList();
@@ -454,7 +496,8 @@ voltmx.application.showLoadingScreen(null,"LoadingScreen",constants.LOADING_SCRE
                     condition_rating: Number(record.condition_rating) || 0,
                     notes: record.notes || "",
                     repair_estimate_aed: Number(record.repair_estimate_aed) || 0,
-                    image_url_id: record.image_url_id || null
+                    image_url_id: record.image_url_id || null,
+                    file_url: record.file_url || null
                   };
                 }
               });
@@ -690,6 +733,7 @@ uploadImage: function()
               else
               {
                 self.inspectionData[key].image_url_id = imageLog.id;
+                self.inspectionData[key].file_url = payload.file_url || "";
               }
               var obj = {
                 file_name: payload.file_name,
@@ -821,4 +865,30 @@ uploadImage: function()
             }
     request.send(JSON.stringify(data));
   },
+  
+  onNotesChange: function() {
+    var self = this;
+    if (!self.currentRecord) return;
+
+    var key = self.getRecordKey(self.currentRecord);
+    if (!key) return;
+
+    if (!self.inspectionData) self.inspectionData = {};
+    if (!self.inspectionData[key]) {
+        self.inspectionData[key] = {
+            id: self.currentRecord.id ? Number(self.currentRecord.id) : undefined,
+            insp_pac_lov_id: Number(self.currentRecord.insp_pac_lov_id),
+            item_name: self.currentRecord.item_name,
+            position: self.currentRecord.position,
+            manufacturer: self.currentRecord.manufacturer || "",
+            size: self.currentRecord.size || "",
+            manufacture_date: self.currentRecord.manufacture_date || "",
+            condition_rating: Number(self.currentRecord.condition_rating) || 0,
+            notes: "",
+            file_url: null
+        };
+    }
+
+    self.inspectionData[key].notes = self.view.txsumreport3.text || "";
+},
  });

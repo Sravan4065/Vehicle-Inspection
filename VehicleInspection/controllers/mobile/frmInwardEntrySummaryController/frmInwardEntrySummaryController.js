@@ -2,7 +2,7 @@ define({
 
   onNavigate: function()
   {
-    this.isSearchActive = false;
+//     this.isSearchActive = false;
     this.adjustRTL();
     this.view.preShow = this.onPreShow.bind(this);
     
@@ -15,7 +15,7 @@ define({
 //     {
 //       NavigationManager.pop();
 //     }
-    this.pageSize = 5;
+    this.pageSize = 10;
     this.currentOffset = 0;
     this.view.segInwardEntryList.setData([]);
     this.showPendingVehicles();
@@ -36,125 +36,24 @@ define({
       
     this.view.btnLoadMore.onClick = this.onLoadMoreClick.bind(this);
     this.view.flxSearchComponent.flxSearch.onClick = this.onSearchClick.bind(this);
-this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.bind(this);
+// this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.bind(this);
   },
   
- onSearchTextChange: function() {
-  var self = this;
-  var text = this.view.flxSearchComponent.tbxSearchBy.text || "";
- this.isSearchActive = !!text.trim();
-  this.searchText = text;
 
-  // ✅ cancel previous timer
-  if (this.searchTimer) {
-    voltmx.timer.cancel(this.searchTimer);
-  }
-
-  // ✅ create new timer id
-  this.searchTimer = "searchTimer_" + new Date().getTime();
-
-  voltmx.timer.schedule(this.searchTimer, function() {
-
-    // ❌ if empty → show full data
-    if (!text.trim()) {
-      self.setSegmentData(self.fullData);
-      return;
-    }
-
-    var searchVal = text.toLowerCase();
-
-    var filteredData = self.fullData.filter(function(record) {
-      return (
-        (record.lot_no && record.lot_no.toLowerCase().includes(searchVal)) ||
-        (record.model && record.model.toLowerCase().includes(searchVal)) ||
-        (record.chassis_number && record.chassis_number.toLowerCase().includes(searchVal))
-      );
-    });
-
-    self.setSegmentData(filteredData);
-
-  }, 0.3, false); // 0.3 sec delay
-},
-  onSearchClick: function() {
-  var self = this;
-  var searchVal = (this.searchText || "").toLowerCase();
-  this.isSearchActive = !!searchVal;
-  if (!searchVal) {
-    // if empty → show full data
-    this.setSegmentData(this.fullData);
-    return;
-  }
-
-  var filteredData = this.fullData.filter(function(record) {
-    return (
-      (record.lot_no && record.lot_no.toLowerCase().includes(searchVal)) ||
-      (record.model && record.model.toLowerCase().includes(searchVal)) ||
-      (record.chassis_number && record.chassis_number.toLowerCase().includes(searchVal))
-    );
-  });
-
-  this.setSegmentData(filteredData);
-},
-  
-  setSegmentData: function(records) {
-  var self = this;
-     if (self.isSearchActive) {
-        self.view.btnLoadMore.setVisibility(false);
-    } else {
-        self.view.btnLoadMore.setVisibility(true);
-    }
-
-  var isArabic = voltmx.i18n.getCurrentLocale() === "ar_AE";
-
-  var data = [];
-
-  if(records.length > 0){
-    self.view.lblNorecords.setVisibility(false);
-    self.view.segInwardEntryList.setVisibility(true);
-  } else {
-    self.view.lblNorecords.setVisibility(true);
-    self.view.segInwardEntryList.setVisibility(false);
-  }
-
-  records.forEach(function(record) {
-
-    data.push({
-      "lblLotAndModel": (record.lot_no || "") + " " + (record.model || ""),
-      "lblVehicleNumber": record.chassis_number || "",
-      "lblLocation": record.location || "",
-      "lblDate": self.convertUTCToLocal(record.yard_received_date),
-      "lblViewDetailsInwardEntry": "View Details",
-      "imgCalendarIcon": {
-     "isVisible": !self.isPending,
-  "src": "calendar.png"   // optional if already set in template
-},
-      "flxViewDetailsInwardEntry": {
-        "onClick": function() {
-          self.openDetails(record.object_id,record);
-        }
-      }
-    });
-
-  });
-
-  self.view.segInwardEntryList.setData(data);
-},
   
     onLoadMoreClick: function()
   {
     var self = this;
-    if (self.isSearchActive) {
-        return;
-    }
+   
 
     if(self.isPending)
       {
-        self.pageSize += 5;
+        self.pageSize += 10;
         self.invokePendingInwardService();
       }
     else
       {
-        self.pageSize += 5;
+        self.pageSize += 10;
         self.invokeCompletedInwardService();
       }
   },
@@ -162,7 +61,7 @@ this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.
    showPendingVehicles: function()
   {
     this.isPending = true;
-    this.pageSize = 5;
+    this.pageSize = 10;
     this.currentOffset = 0;
     this.view.segInwardEntryList.setData([]);
     this.invokePendingInwardService();
@@ -180,7 +79,7 @@ this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.
   showCompletedVehicles: function()
   {
     this.isPending = false;
-    this.pageSize = 5;
+    this.pageSize = 10;
     this.currentOffset = 0;
     this.view.segInwardEntryList.setData([]);
     this.invokeCompletedInwardService();
@@ -213,7 +112,7 @@ this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.
       "in_yard": "0",      // pending = 0 || completed = 1
       "days": "150",         // default value
       "page_number": "1",
-      "page_size": self.pageSize || 5
+      "page_size": self.pageSize || 10
   };
 
   // Headers
@@ -283,7 +182,7 @@ this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.
       "in_yard": "1",      // pending = 0 || completed = 1
       "days": "150",         // default value
       "page_number": "1",
-      "page_size": self.pageSize || 5
+      "page_size": self.pageSize || 10
   };
 
   // Headers
@@ -317,9 +216,9 @@ this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.
   
   addToSegment: function(response) {
     var self = this;
-   self.fullData = this.fullData || [];
+//    self.fullData = this.fullData || [];
     var records = response && response.records ? response.records : [];
-    this.fullData = records; // store full list
+//     this.fullData = records; // store full list
     if(records.length > 0)
       {
         self.view.lblNorecords.setVisibility(false);
@@ -431,8 +330,8 @@ this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.
 }
      self.currentOffset += newRecords.length;
 
-   // self.view.segInwardEntryList.addAll(data);
-    self.setSegmentData(records);
+   self.view.segInwardEntryList.addAll(data);
+//     self.setSegmentData(records);
 },
   
   receiveVehicle: function(objectId) {

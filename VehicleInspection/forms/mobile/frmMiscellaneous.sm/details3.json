@@ -129,7 +129,9 @@
                 "kuid": "adf65da5b19f4f42a70a0d8fdf3985b6",
                 "srcKUID": "f836dbce2d5943308d153692e8c3cfb3",
                 "wType": "TextField"
-            }
+            },
+            "maxTextLength": "",
+            "text": ""
         }
     },
     "enablescrolling": true,

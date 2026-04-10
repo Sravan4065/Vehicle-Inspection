@@ -28,6 +28,12 @@ this.view.details5.txbData.text = "";
 this.view.details6.txbData.text = "";
 this.view.details7.txbData.text = "";
     
+   this.view.details3.txbData.textInputMode = constants.TEXTBOX_INPUT_MODE_NUMERIC;
+
+this.view.details3.txbData.onTextChange = function() {
+  var text = this.view.details3.txbData.text || "";
+  this.view.details3.txbData.text = text.replace(/[^0-9]/g, "");
+}.bind(this);
     this.view.details1.txbData.setEnabled(false);
     this.view.details2.txbData.setEnabled(false);
     this.view.details6.txbData.setEnabled(false);

@@ -529,6 +529,25 @@ this.inspectionData[key].rating = selectedRating;
 
     var self = this;
 
+    var isValid = true;
+
+for (var key in self.inspectionData) {
+
+  var item = self.inspectionData[key];
+
+  var hasNotes = item.notes && item.notes.trim() !== "";
+  var hasEstimate = item.repair_estimate_aed && Number(item.repair_estimate_aed) > 0;
+  var hasImage = item.image_url_id;
+  var hasRating = item.rating && Number(item.rating) > 0;
+
+  if (!(hasNotes && hasEstimate && hasImage && hasRating)) {
+    isValid = false;
+    break;
+  }
+}
+    
+    
+    if(isValid){
     var baseURL = voltmx.store.getItem("BASE_URL");
     self.view.flxHeadingWithButton.btnSaveResponse.setEnabled(false);
     if (baseURL && !baseURL.endsWith("/")) {
@@ -657,6 +676,7 @@ this.inspectionData[key].rating = selectedRating;
         }
 
       }
+    
 
     };
     
@@ -694,7 +714,11 @@ this.inspectionData[key].rating = selectedRating;
 
     request.send(JSON.stringify(data));
 
-
+    }
+    else
+      {
+        alert('All fields are mandatory');
+      }
 
   },
 
