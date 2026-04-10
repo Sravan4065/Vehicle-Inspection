@@ -1,0 +1,381 @@
+{
+    "classname": "barcodegenerator",
+    "definitions": {
+        "apis": {
+            "custom": [
+                {
+                    "group": "General",
+                    "kuid": "a46e0baad0b741be9a324f4a42152974",
+                    "paramList": [],
+                    "propertyKey": "generate",
+                    "pw": {
+                        "displayName": "generate",
+                        "uiRepresentation": "Label-Label-Button-Button"
+                    },
+                    "srcWgtKUID": "ud15f18027494a8a941bf4c2763b9a4e",
+                    "type": "event"
+                }
+            ],
+            "passthrough": []
+        },
+        "events": {
+            "custom": [
+                {
+                    "group": "General",
+                    "kuid": "g179d5903b3f4fee955360e96033f1f5",
+                    "paramList": [
+                        {
+                            "name": "error"
+                        }
+                    ],
+                    "propertyIndex": 1,
+                    "propertyKey": "errorCallback",
+                    "pw": {
+                        "displayName": "errorCallback",
+                        "uiRepresentation": "Label-Label-Button-Button"
+                    },
+                    "srcWgtKUID": "ud15f18027494a8a941bf4c2763b9a4e",
+                    "type": "event"
+                }
+            ],
+            "passthrough": []
+        },
+        "groups": {
+            "apis": [
+                "General"
+            ],
+            "events": [],
+            "properties": [
+                "Barcode Image",
+                "Barcode Text"
+            ],
+            "widgets": []
+        },
+        "properties": {
+            "custom": [
+                {
+                    "access": "Write",
+                    "defaultValue": "Volt MX",
+                    "group": "General",
+                    "kuid": "e6b07c930d1948e4ac8165f1d8cf5368",
+                    "originalPropertyKey": "dataToEncode",
+                    "propertyIndex": 1,
+                    "propertyKey": "dataToEncode",
+                    "pw": {
+                        "dependencyConditions": {},
+                        "displayName": "Data to Encode",
+                        "uiRepresentation": "Label-Textbox"
+                    },
+                    "srcWgtKUID": "ud15f18027494a8a941bf4c2763b9a4e",
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "access": "Write",
+                    "defaultValue": "CODE128",
+                    "group": "General",
+                    "kuid": "c3803f49842d494593e89c9fe2705c51",
+                    "originalPropertyKey": "barcodeFormat",
+                    "propertyIndex": 1,
+                    "propertyKey": "barcodeFormat",
+                    "pw": {
+                        "dependencyConditions": {},
+                        "displayName": "Barcode Format",
+                        "uiRepresentation": "Label-Combobox"
+                    },
+                    "srcWgtKUID": "ud15f18027494a8a941bf4c2763b9a4e",
+                    "type": "list selector",
+                    "value": [
+                        "CODE128",
+                        "CODE39",
+                        "EAN13",
+                        "EAN8",
+                        "EAN5",
+                        "EAN2",
+                        "UPC",
+                        "ITF14",
+                        "MSI",
+                        "MSI10",
+                        "MSI11",
+                        "MSI1010",
+                        "MSI1110"
+                    ]
+                },
+                {
+                    "access": "Write",
+                    "defaultValue": false,
+                    "group": "Barcode Text",
+                    "kuid": "f532cf8ad98d4be3aae944742cb0128e",
+                    "originalPropertyKey": "displayValue",
+                    "propertyIndex": 1,
+                    "propertyKey": "displayValue",
+                    "pw": {
+                        "dependencyConditions": {},
+                        "displayName": "Text Display",
+                        "uiRepresentation": "Label-Radiobuttongroup"
+                    },
+                    "srcWgtKUID": "ud15f18027494a8a941bf4c2763b9a4e",
+                    "type": "boolean",
+                    "value": "true/false"
+                },
+                {
+                    "access": "Write",
+                    "defaultValue": "2",
+                    "group": "Barcode Image",
+                    "kuid": "bcbeb77bc8c24a4da9874c5cd93fde81",
+                    "originalPropertyKey": "barcodeWidth",
+                    "propertyIndex": 1,
+                    "propertyKey": "barcodeWidth",
+                    "pw": {
+                        "dependencyConditions": {},
+                        "displayName": "Barcode Single Bar Width",
+                        "uiRepresentation": "Label-Textbox"
+                    },
+                    "srcWgtKUID": "ud15f18027494a8a941bf4c2763b9a4e",
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "access": "Write",
+                    "defaultValue": "none",
+                    "group": "Barcode Text",
+                    "kuid": "e638d163f80849e19b72c8a8df1d6252",
+                    "originalPropertyKey": "barcodefontStyle",
+                    "propertyIndex": 2,
+                    "propertyKey": "barcodefontStyle",
+                    "pw": {
+                        "dependencyConditions": {},
+                        "displayName": "Font Style",
+                        "uiRepresentation": "Label-Combobox"
+                    },
+                    "srcWgtKUID": "ud15f18027494a8a941bf4c2763b9a4e",
+                    "type": "list selector",
+                    "value": [
+                        "none",
+                        "bold",
+                        "italic",
+                        "bold italic"
+                    ]
+                },
+                {
+                    "access": "Write",
+                    "defaultValue": "40",
+                    "group": "Barcode Image",
+                    "kuid": "bf7dc6d6fcc346deba6b12ec21b725ac",
+                    "originalPropertyKey": "barcodeHeight",
+                    "propertyIndex": 2,
+                    "propertyKey": "barcodeHeight",
+                    "pw": {
+                        "dependencyConditions": {},
+                        "displayName": "Barcode Height",
+                        "uiRepresentation": "Label-Textbox"
+                    },
+                    "srcWgtKUID": "ud15f18027494a8a941bf4c2763b9a4e",
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "access": "Write",
+                    "defaultValue": "",
+                    "group": "Barcode Text",
+                    "kuid": "cb61575086bc4ad493e98e0655f08791",
+                    "originalPropertyKey": "barcodefontFamily",
+                    "propertyIndex": 3,
+                    "propertyKey": "barcodefontFamily",
+                    "pw": {
+                        "dependencyConditions": {},
+                        "displayName": "Font Family",
+                        "uiRepresentation": "Label-Textbox"
+                    },
+                    "srcWgtKUID": "ud15f18027494a8a941bf4c2763b9a4e",
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "access": "Write",
+                    "defaultValue": "#ffffff",
+                    "group": "Barcode Image",
+                    "kuid": "b0cafaa633334e248c997b58bb4fb692",
+                    "originalPropertyKey": "backGroundColor",
+                    "propertyIndex": 3,
+                    "propertyKey": "backGroundColor",
+                    "pw": {
+                        "dependencyConditions": {},
+                        "displayName": "Background Color",
+                        "uiRepresentation": "Label-Textbox"
+                    },
+                    "srcWgtKUID": "ud15f18027494a8a941bf4c2763b9a4e",
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "access": "Write",
+                    "defaultValue": "",
+                    "group": "Barcode Text",
+                    "kuid": "jd4bce3eb1864701a94460095b7be50c",
+                    "originalPropertyKey": "barcodefontSize",
+                    "propertyIndex": 4,
+                    "propertyKey": "barcodefontSize",
+                    "pw": {
+                        "dependencyConditions": {},
+                        "displayName": "Font Size",
+                        "uiRepresentation": "Label-Textbox"
+                    },
+                    "srcWgtKUID": "ud15f18027494a8a941bf4c2763b9a4e",
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "access": "Write",
+                    "defaultValue": "#000000",
+                    "group": "Barcode Image",
+                    "kuid": "d6c85fb3806b4dbfa2f30353acbd9fac",
+                    "originalPropertyKey": "lineColor",
+                    "propertyIndex": 4,
+                    "propertyKey": "lineColor",
+                    "pw": {
+                        "dependencyConditions": {},
+                        "displayName": "Line Color",
+                        "uiRepresentation": "Label-Textbox"
+                    },
+                    "srcWgtKUID": "ud15f18027494a8a941bf4c2763b9a4e",
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "access": "Write",
+                    "defaultValue": "center",
+                    "group": "Barcode Text",
+                    "kuid": "e6961ef3743243a0a03cbbd49a56f4bc",
+                    "originalPropertyKey": "textAlign",
+                    "propertyIndex": 5,
+                    "propertyKey": "textAlign",
+                    "pw": {
+                        "dependencyConditions": {},
+                        "displayName": "Text Align",
+                        "uiRepresentation": "Label-Combobox"
+                    },
+                    "srcWgtKUID": "ud15f18027494a8a941bf4c2763b9a4e",
+                    "type": "list selector",
+                    "value": [
+                        "left",
+                        "center",
+                        "right"
+                    ]
+                },
+                {
+                    "access": "Write",
+                    "defaultValue": "",
+                    "group": "Barcode Image",
+                    "kuid": "b60f2450bea94467a5be8ecff4059214",
+                    "originalPropertyKey": "marginTop",
+                    "propertyIndex": 5,
+                    "propertyKey": "marginTop",
+                    "pw": {
+                        "dependencyConditions": {},
+                        "displayName": "Barcode Top Margin",
+                        "uiRepresentation": "Label-Textbox"
+                    },
+                    "srcWgtKUID": "ud15f18027494a8a941bf4c2763b9a4e",
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "access": "Write",
+                    "defaultValue": "bottom",
+                    "group": "Barcode Text",
+                    "kuid": "fe957aad829348b495c01b4aaa16a5f7",
+                    "originalPropertyKey": "textPosition",
+                    "propertyIndex": 6,
+                    "propertyKey": "textPosition",
+                    "pw": {
+                        "dependencyConditions": {},
+                        "displayName": "Text Position",
+                        "uiRepresentation": "Label-Combobox"
+                    },
+                    "srcWgtKUID": "ud15f18027494a8a941bf4c2763b9a4e",
+                    "type": "list selector",
+                    "value": [
+                        "top",
+                        "bottom"
+                    ]
+                },
+                {
+                    "access": "Write",
+                    "defaultValue": "",
+                    "group": "Barcode Image",
+                    "kuid": "aaff62e753bc4c61a97b2a85cfd0b2bf",
+                    "originalPropertyKey": "marginBottom",
+                    "propertyIndex": 6,
+                    "propertyKey": "marginBottom",
+                    "pw": {
+                        "dependencyConditions": {},
+                        "displayName": "Barcode Bottom Margin",
+                        "uiRepresentation": "Label-Textbox"
+                    },
+                    "srcWgtKUID": "ud15f18027494a8a941bf4c2763b9a4e",
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "access": "Write",
+                    "defaultValue": "",
+                    "group": "Barcode Text",
+                    "kuid": "bdddcbbf8f864023a2085979b1de181e",
+                    "originalPropertyKey": "textMargin",
+                    "propertyIndex": 7,
+                    "propertyKey": "textMargin",
+                    "pw": {
+                        "dependencyConditions": {},
+                        "displayName": "Text Margin",
+                        "uiRepresentation": "Label-Textbox"
+                    },
+                    "srcWgtKUID": "ud15f18027494a8a941bf4c2763b9a4e",
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "access": "Write",
+                    "defaultValue": "",
+                    "group": "Barcode Image",
+                    "kuid": "hd06af52198b43adaecdf223598363a9",
+                    "originalPropertyKey": "marginLeft",
+                    "propertyIndex": 7,
+                    "propertyKey": "marginLeft",
+                    "pw": {
+                        "dependencyConditions": {},
+                        "displayName": "Barcode Left Margin",
+                        "uiRepresentation": "Label-Textbox"
+                    },
+                    "srcWgtKUID": "ud15f18027494a8a941bf4c2763b9a4e",
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "access": "Write",
+                    "defaultValue": "",
+                    "group": "Barcode Image",
+                    "kuid": "h2bfb76ee3bc47ddb5d99df76fa80a0a",
+                    "originalPropertyKey": "marginRight",
+                    "propertyIndex": 8,
+                    "propertyKey": "marginRight",
+                    "pw": {
+                        "dependencyConditions": {},
+                        "displayName": "Barcode Right Margin",
+                        "uiRepresentation": "Label-Textbox"
+                    },
+                    "srcWgtKUID": "ud15f18027494a8a941bf4c2763b9a4e",
+                    "type": "string",
+                    "value": ""
+                }
+            ],
+            "passthrough": []
+        },
+        "widgets": {
+            "expose": [],
+            "passthrough": []
+        }
+    },
+    "namespace": "com.voltmxmp",
+    "version": "1.0.2"
+}
