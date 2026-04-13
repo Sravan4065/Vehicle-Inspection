@@ -17,7 +17,7 @@ define({
   {
     var self = this;
     toggleFooterIcons(this.view, "frmEngineInspectionType"); 
-
+    self.view.flxHeadingWithButton.btnSaveResponse.setEnabled(true);
     this.fileDetails = [];
 
     this.view.flxAddDetailsAndUpload.flxCloseAddDetails.onClick = () =>
@@ -120,6 +120,21 @@ define({
     this.view.flxHeadingWithButton.btnSaveResponse.onClick = this.onSaveResponseClick.bind(this);
     this.view.flxAddDetailsAndUpload.btnSubmitUpload.onClick = this.onAddDetailsSubmit.bind(this);
     this.invokeGetInspectionDetailsList();
+       this.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.onTextChange = function () {
+  
+  var text = self.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text;
+
+  // Allow only valid characters and max 500 length
+  var validText = text.replace(/[^a-zA-Z0-9\s.,\-()\/]/g, "");
+
+  if (validText.length > 500) {
+    validText = validText.substring(0, 500);
+  }
+
+  // Set cleaned text back
+  self.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text = validText;
+
+}.bind(this);
   },
 
   createUIWithRecords: function(records)
@@ -390,131 +405,252 @@ this.inspectionData[key].rating = selectedRating;
   //     ImageUploadAndDeletion.uploadImage(self.objectId,self.fileDetails);
   //   },
 
-  onAddDetailsSubmit: function()
-  {
-    var self = this;
+  onAddDetailsSubmit: function () {
+  var self = this;
 
-    ImageUploadAndDeletion.uploadImage(
-      self.objectId,
-      self.fileDetails,
-      function(response, error){
+  var index = self.currentIndex;
+  if (typeof index === "undefined" || !self.records[index]) {
+    voltmx.print("Error: currentIndex is undefined or invalid");
+    return;
+  }
 
-        if(error){
-          alert("Image upload failed");
-          return;
+  var record = self.records[index];
+  var key = record.item_name;
+
+  if (!self.inspectionData[key]) {
+    self.inspectionData[key] = {
+      id: record.id ? Number(record.id) : null,
+      insp_pac_lov_id: Number(record.insp_pac_lov_id),
+      item_name: record.item_name,
+      notes: self.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text,
+      repair_estimate_aed: Number(self.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text),
+      image_url_id: null
+    };
+  } else {
+    self.inspectionData[key].notes =
+      self.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text;
+
+    self.inspectionData[key].repair_estimate_aed =
+      Number(self.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text);
+  }
+
+  if (!self.fileDetails || Object.keys(self.fileDetails).length === 0) {
+
+    voltmx.print("No file selected → skipping upload");
+
+    self.view.flxAddDetailsAndUpload.setVisibility(false);
+
+    return; 
+  }
+
+  ImageUploadAndDeletion.uploadImage(
+    self.objectId,
+    self.fileDetails,
+    function (response, error) {
+
+      if (error) {
+        alert("Image upload failed");
+        return;
+      }
+
+      if (response) {
+
+        if (response.message === "Success") {
+
+          self.view.flxAddDetailsAndUpload.setVisibility(false);
+          self.view.flxSuccessUpload.setVisibility(true);
+
+          var parsed = JSON.parse(response.response || "[]");
+
+          if (parsed && parsed.length > 0) {
+
+            var item = parsed[0];
+            var payload = JSON.parse(item.object_image_payload || "{}");
+            var imageLog = JSON.parse(item.object_image_loged_result || "{}");
+
+            self.inspectionData[key].image_url_id = imageLog.id;
+
+            var obj = {
+              file_name: payload.file_name,
+              file_url: payload.file_url,
+              object_id: payload.object_id,
+              image_id: imageLog.id
+            };
+
+            if (!self.tempStore) {
+              self.tempStore = [];
+            }
+
+            self.tempStore.push(obj);
+            voltmx.store.setItem("tStore", self.tempStore);
+
+            voltmx.print("Temp Store: " + JSON.stringify(self.tempStore));
+          }
+
+          self.fileDetails = {};
         }
-        if(response){
-          if(response.message === "Success"){
-            self.view.flxAddDetailsAndUpload.setVisibility(false);
-//             alert(response.message || "Upload Successful");
-            self.view.flxSuccessUpload.setVisibility(true);
+        else {
+          if (response.response) {
             var parsed = JSON.parse(response.response || "[]");
+            var errCode = parsed[0] && parsed[0].error_code;
 
-            if(parsed && parsed.length > 0){
+            if (errCode == 409) {
+              alert("File already exists");
+            } else {
+              alert("Failed");
+            }
+          }
+        }
+      }
+      else {
+        alert("Invalid response");
+      }
+    }
+  );
+},
+  
+//   onAddDetailsSubmit: function()
+//   {
+//     var self = this;
 
-              var item = parsed[0];
+//     ImageUploadAndDeletion.uploadImage(
+//       self.objectId,
+//       self.fileDetails,
+//       function(response, error){
 
-              var payload = JSON.parse(item.object_image_payload || "{}");
-              var imageLog = JSON.parse(item.object_image_loged_result || "{}");
-              var index = self.currentIndex;
-              if (typeof index === "undefined" || !self.records[index]) {
-                voltmx.print("Error: currentIndex is undefined or invalid");
-                return;
-              }
+//         if(error){
+//           alert("Image upload failed");
+//           return;
+//         }
+//         if(response){
+//           if(response.message === "Success"){
+//             self.view.flxAddDetailsAndUpload.setVisibility(false);
+// //             alert(response.message || "Upload Successful");
+//             self.view.flxSuccessUpload.setVisibility(true);
+//             var parsed = JSON.parse(response.response || "[]");
 
-              var record = self.records[index];
-//               var id = record.id;
-              var key = record.item_name;
+//             if(parsed && parsed.length > 0){
 
-//               if(!self.inspectionData){
-//                 self.inspectionData = {};
+//               var item = parsed[0];
+
+//               var payload = JSON.parse(item.object_image_payload || "{}");
+//               var imageLog = JSON.parse(item.object_image_loged_result || "{}");
+//               var index = self.currentIndex;
+//               if (typeof index === "undefined" || !self.records[index]) {
+//                 voltmx.print("Error: currentIndex is undefined or invalid");
+//                 return;
 //               }
 
-//               if(!self.inspectionData[id]){
-//                 self.inspectionData[id] = {
-//                   id: Number(id),
-//                   insp_pac_lov_id: Number(record.insp_pac_lov_id),
-//                   item_name: record.item_name,
-//                   notes: self.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text,
-//                   repair_estimate_aed: Number(self.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text),
-//                   image_url_id: imageLog.id
-//                 };
+//               var record = self.records[index];
+// //               var id = record.id;
+//               var key = record.item_name;
+
+// //               if(!self.inspectionData){
+// //                 self.inspectionData = {};
+// //               }
+
+// //               if(!self.inspectionData[id]){
+// //                 self.inspectionData[id] = {
+// //                   id: Number(id),
+// //                   insp_pac_lov_id: Number(record.insp_pac_lov_id),
+// //                   item_name: record.item_name,
+// //                   notes: self.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text,
+// //                   repair_estimate_aed: Number(self.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text),
+// //                   image_url_id: imageLog.id
+// //                 };
+// //               }
+// //               else
+// //               {
+// //                 self.inspectionData[id].notes = self.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text;
+// //                 self.inspectionData[id].repair_estimate_aed = Number(self.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text);
+// //                 self.inspectionData[id].image_url_id = imageLog.id;
+// //               }
+//               if (!self.inspectionData[key]) {
+//   self.inspectionData[key] = {
+//     id: record.id ? Number(record.id) : null,
+//     insp_pac_lov_id: Number(record.insp_pac_lov_id),
+//     item_name: record.item_name,
+//     notes: self.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text,
+//     repair_estimate_aed: Number(self.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text),
+//     image_url_id: imageLog.id
+//   };
+// } else {
+//   self.inspectionData[key].notes =
+//     self.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text;
+
+//   self.inspectionData[key].repair_estimate_aed =
+//     Number(self.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text);
+
+//   self.inspectionData[key].image_url_id = imageLog.id;
+// }
+         
+
+//               var obj = {
+//                 file_name: payload.file_name,
+//                 file_url: payload.file_url,
+//                 object_id: payload.object_id,
+//                 image_id: imageLog.id
+//               };
+
+//               if(!this.tempStore){
+//                 this.tempStore = [];
+//               }
+
+
+//               this.tempStore.push(obj);
+
+//               voltmx.store.setItem("tStore",this.tempStore);
+
+//               voltmx.print("Temp Store: " + JSON.stringify(this.tempStore));
+//             }
+//           }
+//           else{
+//             if(response.response)
+//             {
+//               var parsed = JSON.parse(response.response || "[]");
+//               var errCode = parsed[0] && parsed[0].error_code;
+
+//               if(errCode == 409){
+//                 alert("File already exists");
 //               }
 //               else
 //               {
-//                 self.inspectionData[id].notes = self.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text;
-//                 self.inspectionData[id].repair_estimate_aed = Number(self.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text);
-//                 self.inspectionData[id].image_url_id = imageLog.id;
+//                 alert("Failed");
 //               }
-              if (!self.inspectionData[key]) {
-  self.inspectionData[key] = {
-    id: record.id ? Number(record.id) : null,
-    insp_pac_lov_id: Number(record.insp_pac_lov_id),
-    item_name: record.item_name,
-    notes: self.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text,
-    repair_estimate_aed: Number(self.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text),
-    image_url_id: imageLog.id
-  };
-} else {
-  self.inspectionData[key].notes =
-    self.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text;
-
-  self.inspectionData[key].repair_estimate_aed =
-    Number(self.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text);
-
-  self.inspectionData[key].image_url_id = imageLog.id;
-}
-         
-
-              var obj = {
-                file_name: payload.file_name,
-                file_url: payload.file_url,
-                object_id: payload.object_id,
-                image_id: imageLog.id
-              };
-
-              if(!this.tempStore){
-                this.tempStore = [];
-              }
-
-
-              this.tempStore.push(obj);
-
-              voltmx.store.setItem("tStore",this.tempStore);
-
-              voltmx.print("Temp Store: " + JSON.stringify(this.tempStore));
-            }
-          }
-          else{
-            if(response.response)
-            {
-              var parsed = JSON.parse(response.response || "[]");
-              var errCode = parsed[0] && parsed[0].error_code;
-
-              if(errCode == 409){
-                alert("File already exists");
-              }
-              else
-              {
-                alert("Failed");
-              }
-            }
-          }
-        }
-        else
-        {
-          alert("Invalid response");
-        }
-      }
-    );
-  },
+//             }
+//           }
+//         }
+//         else
+//         {
+//           alert("Invalid response");
+//         }
+//       }
+//     );
+//   },
 
   onSaveResponseClick: function () {
 
     var self = this;
 
-    var baseURL = voltmx.store.getItem("BASE_URL");
+     var isValid = true;
 
+for (var key in self.inspectionData) {
+
+  var item = self.inspectionData[key];
+
+//   var hasNotes = item.notes && item.notes.trim() !== "";
+//   var hasEstimate = item.repair_estimate_aed && Number(item.repair_estimate_aed) > 0;
+//   var hasImage = item.image_url_id;
+  var hasRating = item.rating && Number(item.rating) > 0;
+
+  if (!(hasRating)) {
+    isValid = false;
+    break;
+  }
+}
+     if(isValid){
+    var baseURL = voltmx.store.getItem("BASE_URL");
+   self.view.flxHeadingWithButton.btnSaveResponse.setEnabled(false);
     if (baseURL && !baseURL.endsWith("/")) {
 
       baseURL += "/";
@@ -548,7 +684,7 @@ this.inspectionData[key].rating = selectedRating;
         try {
 
           var response = JSON.parse(request.responseText);
-
+          self.view.flxHeadingWithButton.btnSaveResponse.setEnabled(true);
           voltmx.print("API Response: " + JSON.stringify(response));
 
           if (response && response.error) {
@@ -629,7 +765,7 @@ this.inspectionData[key].rating = selectedRating;
 //             });
 
 //             alert(message);
-            message = "Inspection details saved successfully";
+            message = voltmx.i18n.getLocalizedString("Inspection details saved successfully");
             self.view.saveresponse.setVisibility(true);
             self.view.saveresponse.lblUPdatedsucessfully.text = message;
           }
@@ -677,7 +813,11 @@ this.inspectionData[key].rating = selectedRating;
 
 
     request.send(JSON.stringify(data));
-
+    }
+    else
+      {
+        alert(voltmx.i18n.getLocalizedString("All fields are mandatory"));
+      }
 
 
   },

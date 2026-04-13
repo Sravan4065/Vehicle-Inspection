@@ -522,7 +522,8 @@ function convertUTCtoUserTime(utcString) {
     if (!utcString) return null;
 
     // Convert backend string to ISO format with UTC 'Z'
-    let isoString = utcString.replace(" ", "T").replace(".0", "") + "Z";
+//     let isoString = utcString.replace(" ", "T").replace(".0", "") + "Z";
+    let isoString = utcString.replace(" ", "T").replace(/\.(\d{1,3})/, (m, p) => "." + p.padEnd(3, "0")) + "Z";
     let utcDate = new Date(isoString);
 
     if (isNaN(utcDate.getTime())) {

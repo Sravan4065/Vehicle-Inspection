@@ -55,7 +55,10 @@
                 "srcKUID": "c8bfe999c628412789e57526c3a50675",
                 "wType": "FlexContainer"
             },
-            "isVisible": false
+            "isVisible": false,
+            "zIndex": {
+                "Default": 20
+            }
         },
         "flxChooseFromLibrary": {
             "__events__": {},
@@ -119,7 +122,8 @@
                 "kuid": "a963998443be408bacffdcba13e26855",
                 "srcKUID": "jd0e72058bd24ee6b653f8c3084a5904",
                 "wType": "Image"
-            }
+            },
+            "src": "choosefromlibraryicon.png"
         },
         "imgTakeAPhoto": {
             "__events__": {},
@@ -127,7 +131,8 @@
                 "kuid": "jaa018fa7fc644af8e17a268acc5f7e6",
                 "srcKUID": "b9b58ec16c7042a5acbc14a2b3c576bc",
                 "wType": "Image"
-            }
+            },
+            "src": "takephoto.png"
         },
         "lblChooseFromLibrary": {
             "__events__": {},
@@ -173,5 +178,5 @@
     "snaptogrid": true,
     "sourceUserWidget": "c8bfe999c628412789e57526c3a50675",
     "wType": "UserWidgetInstance",
-    "zindex": 1
+    "zindex": 20
 }

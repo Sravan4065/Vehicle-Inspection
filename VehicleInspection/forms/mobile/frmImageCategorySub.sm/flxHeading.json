@@ -74,7 +74,8 @@
                 "kuid": "ced94f3ad03e43659b5efc33034ba6fb",
                 "srcKUID": "gbbcb1b0713640a0bec682ec913b1fb7",
                 "wType": "Image"
-            }
+            },
+            "src": "backarrow.png"
         },
         "lblImages": {
             "__events__": {},

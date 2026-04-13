@@ -35,7 +35,7 @@ define({
     }
       
     this.view.btnLoadMore.onClick = this.onLoadMoreClick.bind(this);
-    this.view.flxSearchComponent.flxSearch.onClick = this.onSearchClick.bind(this);
+//     this.view.flxSearchComponent.flxSearch.onClick = this.onSearchClick.bind(this);
 // this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.bind(this);
   },
   

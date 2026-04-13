@@ -1,5 +1,6 @@
 {
     "keys": [
+        "All fields are mandatory",
         "App Settings",
         "Assigned",
         "Bar Code Scanner",
@@ -43,6 +44,7 @@
         "Inspected By",
         "Inspection Date",
         "Inspection Report",
+        "Inspection details saved successfully",
         "InspectioniQ",
         "Inspections",
         "Interior Color",
@@ -144,6 +146,7 @@
     "locales": {
         "ar_AE": {
             "i18nStrings": {
+                "All fields are mandatory": "جميع الحقول إلزامية",
                 "App Settings": "إعدادات التطبيق",
                 "Assigned": "مُكَلَّف",
                 "Bar Code Scanner": "ماسح الباركود",
@@ -187,6 +190,7 @@
                 "Inspected By": "تم التفتيش بواسطة",
                 "Inspection Date": "تاريخ التفتيش",
                 "Inspection Report": "تقرير التفتيش",
+                "Inspection details saved successfully": "تم حفظ تفاصيل الفحص بنجاح",
                 "InspectioniQ": "Qiتقتيش",
                 "Inspections": "عمليات التفتيش",
                 "Interior Color": "اللون الداخلي",
@@ -295,6 +299,7 @@
         },
         "en_IN": {
             "i18nStrings": {
+                "All fields are mandatory": "All fields are mandatory",
                 "App Settings": "App Settings",
                 "Assigned": "Assigned",
                 "Bar Code Scanner": "Bar Code Scanner",
@@ -338,6 +343,7 @@
                 "Inspected By": "Inspected By",
                 "Inspection Date": "Inspection Date",
                 "Inspection Report": "Inspection Report",
+                "Inspection details saved successfully": "Inspection details saved successfully",
                 "InspectioniQ": "InspectioniQ",
                 "Inspections": "Inspections",
                 "Interior Color": "Interior Color",
