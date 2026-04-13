@@ -38,7 +38,8 @@
     },
     "canUpdateUI": true,
     "children": [
-        "flxMain"
+        "flxMain",
+        "saveresponse"
     ],
     "containerweight": 100,
     "controllerInfo": {
