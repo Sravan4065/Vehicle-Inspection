@@ -138,7 +138,8 @@
                 "kuid": "e88b8f77ae534d218997136157f1ddea",
                 "srcKUID": "ebc50c8e65a347809072e22df5054686",
                 "wType": "Image"
-            }
+            },
+            "src": "images.png"
         },
         "imghome": {
             "__events__": {},
@@ -146,7 +147,8 @@
                 "kuid": "ad4cb1fa9cc14b2db0d26747bbc93ecf",
                 "srcKUID": "a3c9f03088dd4e9692079c81ff89fcca",
                 "wType": "Image"
-            }
+            },
+            "src": "homered.png"
         },
         "imginspections": {
             "__events__": {},
@@ -154,7 +156,8 @@
                 "kuid": "f1b4ec68e69d43ea8f3768f17fc15cce",
                 "srcKUID": "db546ae4e5684aa6a1635cec646ed0b9",
                 "wType": "Image"
-            }
+            },
+            "src": "inspections.png"
         },
         "imginward": {
             "__events__": {},
@@ -162,7 +165,8 @@
                 "kuid": "jedc60bc71a344409b49bf503349b838",
                 "srcKUID": "a42f3d03324b4239b49f380f05b1ba5d",
                 "wType": "Image"
-            }
+            },
+            "src": "inward.png"
         },
         "imgprofile": {
             "__events__": {},
@@ -170,7 +174,8 @@
                 "kuid": "jf44481b71184340a8f2058cb0b7b015",
                 "srcKUID": "ja24f407ed344932bb30e91f3d22ac1a",
                 "wType": "Image"
-            }
+            },
+            "src": "profile.png"
         },
         "lblHome": {
             "__events__": {},

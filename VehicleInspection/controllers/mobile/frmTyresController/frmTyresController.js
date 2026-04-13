@@ -820,7 +820,7 @@ uploadImage: function()
             if (details.length > 0 && details[0].object_images) {
               message = "Inspection details and image uploaded successfully";
             }
-            message = "Inspection details saved successfully";
+            message = voltmx.i18n.getLocalizedString("Inspection details saved successfully");
             voltmx.store.setItem("tStore", "");
             self.tempStore = [];
             voltmx.print("tStore cleared after successful save");

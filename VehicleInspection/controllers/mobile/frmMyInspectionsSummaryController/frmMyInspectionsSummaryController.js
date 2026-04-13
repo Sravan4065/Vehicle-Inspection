@@ -16,7 +16,7 @@ define({
 //       NavigationManager.pop();
 //     }
     
-     this.pageSize = 5;
+     this.pageSize = 10;
     this.currentOffset = 0;
     this.view.segMyinspections.setData([]);
     this.showPendingVehicles();
@@ -46,13 +46,13 @@ define({
     var self = this;
     if(self.isPending)
       {
-        self.pageSize += 5;
+        self.pageSize += 10;
         self.invokePendingInspectionService();
       }
     else
       {
-        self.pageSize += 5;
-        self.invokeCompletedInwardService();
+//         self.pageSize += 10;
+//         self.invokeCompletedInwardService();
       }
   },
   
@@ -60,9 +60,10 @@ define({
    showPendingVehicles: function()
   {
      this.isPending = true;
-    this.pageSize = 5;
+    this.pageSize = 10;
     this.currentOffset = 0;
     this.view.segMyinspections.setData([]);
+    this.view.btnLoadMore.setVisibility(false);
    this.invokePendingInspectionService();
     this.view.flxPendingVehicles.skin = "sknFlxFFE2E5";
     this.view.lblPendingVehicles.skin = "sknlblDubaid3243720pxMedium";
@@ -78,9 +79,10 @@ define({
   showCompletedVehicles: function()
   {
      this.isPending = false;
-    this.pageSize = 5;
+    this.pageSize = 10;
     this.currentOffset = 0;
     this.view.segMyinspections.setData([]);
+    this.view.btnLoadMore.setVisibility(false);
 //     this.invokeCompletedInwardService();
     
     this.view.flxPendingVehicles.skin = "sknFlxBasic";
@@ -110,7 +112,7 @@ define({
   "type": "",
   "status": "Pending", // Pending || Completed
   "page": "1",
-  "page_size": self.pageSize || 5
+  "page_size": self.pageSize || 10
   };
 
   // Headers

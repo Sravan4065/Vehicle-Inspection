@@ -138,7 +138,7 @@ define({
 
           if (responseJSON.success) {
 //             alert(responseJSON.message);
-            alert("Inspection details Saved Successfully");
+            alert(voltmx.i18n.getLocalizedString("Inspection details saved successfully"));
           } else {
             alert("Failed to save response");
           }

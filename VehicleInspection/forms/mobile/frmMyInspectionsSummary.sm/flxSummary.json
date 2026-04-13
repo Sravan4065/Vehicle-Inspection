@@ -38,7 +38,7 @@
     "canUpdateUI": true,
     "centerx": {
         "type": "string",
-        "value": "50%"
+        "value": "50.00%"
     },
     "clipbounds": true,
     "containerweight": 0,
@@ -82,6 +82,12 @@
                 "kuid": "h67b73072db943fc8ba4012c8aa7f3d0",
                 "srcKUID": "aef7d2ae03e54fe195e94041738cdc8d",
                 "wType": "FlexContainer"
+            },
+            "centerX": {
+                "Default": {
+                    "type": "string",
+                    "value": "50.00%"
+                }
             },
             "top": {
                 "Default": {

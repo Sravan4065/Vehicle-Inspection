@@ -9,141 +9,69 @@
         {
             "imgViewIcon": {
                 "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "view.png"
+                "src": "view.png",
+                "type": "Image"
             },
             "lblNameAndLot": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "41281 Nissan Altima 2020"
+                "text": "41281 Nissan Altima 2020",
+                "type": "Label"
             },
             "lblServiceType": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Comprehensive"
+                "text": "Comprehensive",
+                "type": "Label"
             }
         },
         {
             "imgViewIcon": {
                 "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "view.png"
+                "src": "view.png",
+                "type": "Image"
             },
             "lblNameAndLot": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "41281 Nissan Altima 2020"
+                "text": "41281 Nissan Altima 2020",
+                "type": "Label"
             },
             "lblServiceType": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Comprehensive"
+                "text": "Comprehensive",
+                "type": "Label"
             }
         },
         {
             "imgViewIcon": {
                 "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "view.png"
+                "src": "view.png",
+                "type": "Image"
             },
             "lblNameAndLot": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "41281 Nissan Altima 2020"
+                "text": "41281 Nissan Altima 2020",
+                "type": "Label"
             },
             "lblServiceType": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Comprehensive"
+                "text": "Comprehensive",
+                "type": "Label"
             }
         },
         {
             "imgViewIcon": {
                 "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "view.png"
+                "src": "view.png",
+                "type": "Image"
             },
             "lblNameAndLot": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "41281 Nissan Altima 2020"
+                "text": "41281 Nissan Altima 2020",
+                "type": "Label"
             },
             "lblServiceType": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Comprehensive"
-            }
-        },
-        {
-            "imgViewIcon": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "view.png"
-            },
-            "lblNameAndLot": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "41281 Nissan Altima 2020"
-            },
-            "lblServiceType": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Comprehensive"
-            }
-        },
-        {
-            "imgViewIcon": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "view.png"
-            },
-            "lblNameAndLot": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "41281 Nissan Altima 2020"
-            },
-            "lblServiceType": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Comprehensive"
-            }
-        },
-        {
-            "imgViewIcon": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "view.png"
-            },
-            "lblNameAndLot": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "41281 Nissan Altima 2020"
-            },
-            "lblServiceType": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Comprehensive"
-            }
-        },
-        {
-            "imgViewIcon": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "view.png"
-            },
-            "lblNameAndLot": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "41281 Nissan Altima 2020"
-            },
-            "lblServiceType": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Comprehensive"
-            }
-        },
-        {
-            "imgViewIcon": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "view.png"
-            },
-            "lblNameAndLot": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "41281 Nissan Altima 2020"
-            },
-            "lblServiceType": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Comprehensive"
-            }
-        },
-        {
-            "imgViewIcon": {
-                "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "view.png"
-            },
-            "lblNameAndLot": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "41281 Nissan Altima 2020"
-            },
-            "lblServiceType": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "Comprehensive"
+                "text": "Comprehensive",
+                "type": "Label"
             }
         }
     ],
@@ -180,7 +108,7 @@
     "autogrowmode": 0,
     "canUpdateUI": true,
     "containerweight": 100,
-    "counter": "09",
+    "counter": "03",
     "focusedindex": null,
     "focuseditem": null,
     "groupcells": false,
@@ -214,7 +142,7 @@
     "retainflexpositionproperties": false,
     "retainselection": false,
     "rowTemplateId": "fed6dbcb6c424b4ba72ad6bcf576f1b5",
-    "rowcounter": 9,
+    "rowcounter": 3,
     "rowfocusskin": "sb4cbb0437db46f8863eedda6fd864f8",
     "rowskin": "s87cc27d14a9433a9b4a99cdf72f69f3",
     "rowtemplate": "flxMyInspectionItem",

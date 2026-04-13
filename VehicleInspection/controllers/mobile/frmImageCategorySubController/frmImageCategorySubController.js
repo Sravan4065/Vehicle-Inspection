@@ -192,27 +192,91 @@ define({
         this.view.flxChooseFileTakePhoto.setVisibility(true);
     },
 
-    updateImagePreview: function() {
-        for (var i = 0; i < 5; i++) {
-            var imgWidget = this.view["imgItem" + i];
-            var lblClickWidget = this.view["lblClick" + i];
+//     updateImagePreview: function() {
+//         for (var i = 0; i < 5; i++) {
+//             var imgWidget = this.view["imgItem" + i];
+//             var lblClickWidget = this.view["lblClick" + i];
 
-            if (!imgWidget) continue;
+//             if (!imgWidget) continue;
 
-            if (this.uploadedImages[i]) {
-                imgWidget.base64 = this.uploadedImages[i];
-                if (lblClickWidget) lblClickWidget.text = "Retake";
-            }
-            else if (this.existingImages[i] && this.existingImages[i].file_url) {
-                imgWidget.src = this.existingImages[i].file_url;
-                if (lblClickWidget) lblClickWidget.text = "Retake";
-            }
-            else {
-                imgWidget.src = "defaulticon.png";
-                if (lblClickWidget) lblClickWidget.text = "Click";
-            }
+//             if (this.uploadedImages[i]) {
+//                 imgWidget.base64 = this.uploadedImages[i];
+//                 if (lblClickWidget) lblClickWidget.text = "Retake";
+//             }
+//             else if (this.existingImages[i] && this.existingImages[i].file_url) {
+//                 imgWidget.src = this.existingImages[i].file_url;
+//                 if (lblClickWidget) lblClickWidget.text = "Retake";
+//             }
+//             else {
+//                 imgWidget.src = "defaulticon.png";
+//                 if (lblClickWidget) lblClickWidget.text = "Click";
+//             }
+//         }
+//     },
+  
+//   updateImagePreview: function () {
+//     for (var i = 0; i < 5; i++) {
+
+//         var imgWidget = this.view["imgItem" + i];
+//         var lblClickWidget = this.view["lblClick" + i];
+//         var lblItemName = this.view["lblItemName" + i];
+
+//         if (!imgWidget || !lblItemName) continue;
+
+//         var subCatKey = lblItemName.text || "";
+//         var matchedImages = this.groupedImages[subCatKey] || [];
+
+//         // Priority 1: newly uploaded image
+//         if (this.uploadedImages[i]) {
+//             imgWidget.base64 = this.uploadedImages[i];
+//             if (lblClickWidget) lblClickWidget.text = "Retake";
+//         }
+//         // Priority 2: existing mapped image
+//         else if (matchedImages.length > 0 && matchedImages[0].file_url) {
+//             imgWidget.src = matchedImages[0].file_url;
+
+//             // remove used image so next slot gets next image
+//             matchedImages.shift();
+
+//             if (lblClickWidget) lblClickWidget.text = "Retake";
+//         }
+//         // Default
+//         else {
+//             imgWidget.src = "defaulticon.png";
+//             if (lblClickWidget) lblClickWidget.text = "Click";
+//         }
+//     }
+// },
+  
+  updateImagePreview: function () {
+    for (var i = 0; i < 5; i++) {
+
+        var imgWidget = this.view["imgItem" + i];
+        var lblClickWidget = this.view["lblClick" + i];
+        var lblItemName = this.view["lblItemName" + i];
+
+        if (!imgWidget || !lblItemName) continue;
+
+        var key = lblItemName.text || "";
+        var matchedImages = this.groupedImages[key] || [];
+
+        // ✅ uploaded image (fixed)
+        if (this.uploadedImages && this.uploadedImages[key]) {
+            imgWidget.base64 = this.uploadedImages[key];
+            if (lblClickWidget) lblClickWidget.text = "Retake";
         }
-    },
+        // existing image
+        else if (matchedImages.length > 0 && matchedImages[0].file_url) {
+            imgWidget.src = matchedImages[0].file_url;
+            matchedImages.shift();
+            if (lblClickWidget) lblClickWidget.text = "Retake";
+        }
+        else {
+            imgWidget.src = "defaulticon.png";
+            if (lblClickWidget) lblClickWidget.text = "Click";
+        }
+    }
+},
 
     flxChooseFromLibraryOnClickAction: function() {
         var self = this;
@@ -220,7 +284,10 @@ define({
             if (!rawbytes) return;
 
             var base64Data = voltmx.convertToBase64(rawbytes);
-            self.uploadedImages[self.currentIndex] = base64Data;
+//             self.uploadedImages[self.currentIndex] = base64Data;
+          if (!self.uploadedImages) self.uploadedImages = {};
+
+self.uploadedImages[self.currentViewName] = base64Data;
 
             self.updateImagePreview();
 
@@ -243,11 +310,16 @@ define({
     },
 
     camOnCaptureAction: function() {
+      var self = this;
         var rawBytes = this.view.flxChooseFileTakePhoto.camTakeAPhoto.rawBytes;
         if (!rawBytes) return;
 
         var base64Image = voltmx.convertToBase64(rawBytes);
-        this.uploadedImages[this.currentIndex] = base64Image;
+//         this.uploadedImages[this.currentIndex] = base64Image;
+      
+       if (!self.uploadedImages) self.uploadedImages = {};
+
+self.uploadedImages[self.currentViewName] = base64Image;
 
         this.updateImagePreview();
 
@@ -292,7 +364,9 @@ define({
         integrationObj.invokeOperation(
             "get-images-files-by-id",
             { "user_token": voltmx.store.getItem("getUserAccesstoken") },
-            { "object_id": self.objectId },
+            { "object_id": self.objectId,
+               "inspection_images": "true"
+            },
             function(response) {
                 voltmx.application.dismissLoadingScreen();
 
@@ -302,6 +376,21 @@ define({
                         return record.category === "Images" && 
                                record.inspection_category === subCat;
                     });
+                  
+                  self.groupedImages = {};
+
+self.existingImages.forEach(function(item) {
+    var key = item.inspection_subcategory || "NA";
+
+    if (!self.groupedImages[key]) {
+        self.groupedImages[key] = [];
+    }
+
+    // limit to 5 per subcategory
+    if (self.groupedImages[key].length < 5) {
+        self.groupedImages[key].push(item);
+    }
+});
                 } else {
                     self.existingImages = [];
                 }
