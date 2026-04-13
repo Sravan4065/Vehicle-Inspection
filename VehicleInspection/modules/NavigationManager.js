@@ -45,5 +45,23 @@ var NavigationManager = {
     this.stack.pop();
     var prev = this.stack[this.stack.length - 1];
     new voltmx.mvc.Navigation(prev.formId).navigate(prev.data);
+  },
+  
+popTo: function(formId) {
+  while (this.stack.length > 0) {
+    var last = this.stack[this.stack.length - 1];
+
+    if (last.formId === formId) {
+      break;
+    }
+
+    this.stack.pop();
   }
+
+  var target = this.stack[this.stack.length - 1];
+
+  if (target) {
+    new voltmx.mvc.Navigation(target.formId).navigate(target.data);
+  }
+}
 };

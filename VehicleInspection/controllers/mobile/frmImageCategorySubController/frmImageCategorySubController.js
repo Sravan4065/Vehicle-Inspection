@@ -186,68 +186,66 @@ define({
         return flxItem;
     },
 
-    openUploadPopup: function(index, viewName) {
-        this.currentIndex = index;
-        this.currentViewName = viewName;
-        this.view.flxChooseFileTakePhoto.setVisibility(true);
-    },
+  openUploadPopup: function(index, viewName) {
+    var self = this;
 
-//     updateImagePreview: function() {
-//         for (var i = 0; i < 5; i++) {
-//             var imgWidget = this.view["imgItem" + i];
-//             var lblClickWidget = this.view["lblClick" + i];
+    var store = voltmx.store.getItem("uploadImagesStore") || {};
+    var existingObj = store[viewName];
 
-//             if (!imgWidget) continue;
+    if (existingObj) {
 
-//             if (this.uploadedImages[i]) {
-//                 imgWidget.base64 = this.uploadedImages[i];
-//                 if (lblClickWidget) lblClickWidget.text = "Retake";
-//             }
-//             else if (this.existingImages[i] && this.existingImages[i].file_url) {
-//                 imgWidget.src = this.existingImages[i].file_url;
-//                 if (lblClickWidget) lblClickWidget.text = "Retake";
-//             }
-//             else {
-//                 imgWidget.src = "defaulticon.png";
-//                 if (lblClickWidget) lblClickWidget.text = "Click";
-//             }
-//         }
-//     },
-  
-//   updateImagePreview: function () {
-//     for (var i = 0; i < 5; i++) {
+        var alertConfig = {
+            message: "Do you want to delete old image?",
+            alertType: constants.ALERT_TYPE_CONFIRMATION,
+            alertTitle: "Confirmation",
+            yesLabel: "Yes",
+            noLabel: "No",
+            alertHandler: function(response) {
 
-//         var imgWidget = this.view["imgItem" + i];
-//         var lblClickWidget = this.view["lblClick" + i];
-//         var lblItemName = this.view["lblItemName" + i];
+                if (response) {
+                    ImageUploadAndDeletion.deleteImage([existingObj], function(res, err) {
 
-//         if (!imgWidget || !lblItemName) continue;
+                        if (!err && res && res.opstatus === 0) {
 
-//         var subCatKey = lblItemName.text || "";
-//         var matchedImages = this.groupedImages[subCatKey] || [];
+                            // remove from store
+                            delete store[viewName];
+                            voltmx.store.setItem("uploadImagesStore", store);
 
-//         // Priority 1: newly uploaded image
-//         if (this.uploadedImages[i]) {
-//             imgWidget.base64 = this.uploadedImages[i];
-//             if (lblClickWidget) lblClickWidget.text = "Retake";
-//         }
-//         // Priority 2: existing mapped image
-//         else if (matchedImages.length > 0 && matchedImages[0].file_url) {
-//             imgWidget.src = matchedImages[0].file_url;
+                            // remove from groupedImages (UI fix)
+                            if (self.groupedImages && self.groupedImages[viewName]) {
+                                delete self.groupedImages[viewName];
+                            }
 
-//             // remove used image so next slot gets next image
-//             matchedImages.shift();
+                            // refresh UI
+                            self.updateImagePreview();
 
-//             if (lblClickWidget) lblClickWidget.text = "Retake";
-//         }
-//         // Default
-//         else {
-//             imgWidget.src = "defaulticon.png";
-//             if (lblClickWidget) lblClickWidget.text = "Click";
-//         }
-//     }
-// },
-  
+                            // open upload popup
+                            self.currentIndex = index;
+                            self.currentViewName = viewName;
+                            self.view.flxChooseFileTakePhoto.setVisibility(true);
+
+                        } else {
+                            alert("Failed to delete old image");
+                        }
+                    });
+
+                } else {
+                    self.currentIndex = index;
+                    self.currentViewName = viewName;
+                    self.view.flxChooseFileTakePhoto.setVisibility(false);
+                }
+            }
+        };
+
+        voltmx.ui.Alert(alertConfig, {});
+
+    } else {
+        self.currentIndex = index;
+        self.currentViewName = viewName;
+        self.view.flxChooseFileTakePhoto.setVisibility(true);
+    }
+},
+
   updateImagePreview: function () {
     for (var i = 0; i < 5; i++) {
 
@@ -260,15 +258,12 @@ define({
         var key = lblItemName.text || "";
         var matchedImages = this.groupedImages[key] || [];
 
-        // ✅ uploaded image (fixed)
         if (this.uploadedImages && this.uploadedImages[key]) {
             imgWidget.base64 = this.uploadedImages[key];
             if (lblClickWidget) lblClickWidget.text = "Retake";
         }
-        // existing image
         else if (matchedImages.length > 0 && matchedImages[0].file_url) {
             imgWidget.src = matchedImages[0].file_url;
-            matchedImages.shift();
             if (lblClickWidget) lblClickWidget.text = "Retake";
         }
         else {
@@ -346,7 +341,14 @@ self.uploadedImages[self.currentViewName] = base64Image;
                     return;
                 }
                 if (response && response.message === "Success") {
-                    alert("Upload Successful");
+                   alert("Upload Successful");
+//                   self.updateUploadImagesStoreAfterUpload();
+//                   self.updateImagePreview();
+                if (self.uploadedImages && self.currentViewName) {
+                    delete self.uploadedImages[self.currentViewName];
+                }
+                
+                self.getImagesFilesById();                   
                 } else {
                     alert("Upload failed");
                 }
@@ -378,6 +380,7 @@ self.uploadedImages[self.currentViewName] = base64Image;
                     });
                   
                   self.groupedImages = {};
+                   self.uploadImagesStore = {};
 
 self.existingImages.forEach(function(item) {
     var key = item.inspection_subcategory || "NA";
@@ -390,11 +393,21 @@ self.existingImages.forEach(function(item) {
     if (self.groupedImages[key].length < 5) {
         self.groupedImages[key].push(item);
     }
+  
+  self.uploadImagesStore[key] = {
+                        file_name: item.file_name,
+                        image_url: item.file_url,
+                        object_id: item.object_id,
+                        image_id: item.id
+                    };
+
 });
                 } else {
                     self.existingImages = [];
                 }
 
+              
+                voltmx.store.setItem("uploadImagesStore", self.uploadImagesStore);
                 self.updateImagePreview();
             },
             function(error) {
