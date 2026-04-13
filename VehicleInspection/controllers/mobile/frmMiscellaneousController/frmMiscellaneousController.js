@@ -1063,6 +1063,18 @@ define({
   onSubmitClick: function() {
     var self = this;
 
+     var allFilled = true;
+
+    for (var i = 1; i <= 7; i++) {
+      var value = self.view["details" +i].txbData.text;
+
+      if (!value || value.trim() === "") {
+        allFilled = false;
+        break;
+      }
+    }
+
+    if (allFilled) {
     var signature = voltmx.store.getItem("signature"); // new drawn
     var existingSignatureId = self.fullExistingData && self.fullExistingData.signature_image_id;
 
@@ -1088,6 +1100,10 @@ define({
     }
 
     alert("Signature is mandatory");
+    }
+    else {
+      alert('Please fill all fields');
+    }
   },
   uploadImages: function() {
     var self = this;
@@ -1103,7 +1119,7 @@ define({
         }
 
         if(response && response.message === "Success"){
-          alert("Upload Successful");
+//           alert("Upload Successful");
 
           var parsed = JSON.parse(response.response || "[]");
           if(parsed && parsed.length > 0){

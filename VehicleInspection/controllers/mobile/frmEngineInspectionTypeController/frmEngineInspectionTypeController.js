@@ -472,7 +472,7 @@ this.inspectionData[key].rating = selectedRating;
 
             var obj = {
               file_name: payload.file_name,
-              file_url: payload.file_url,
+              image_url: payload.file_url,
               object_id: payload.object_id,
               image_id: imageLog.id
             };

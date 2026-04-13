@@ -3,7 +3,7 @@ var ImageUploadAndDeletion = {
   uploadImage: function(objectId,fileDetails,callback)
   {
     var self = this;
-voltmx.application.showLoadingScreen(null,"LoadingScreen",constants.LOADING_SCREEN_POSITION_ONLY_CENTER, false,true,null);
+voltmx.application.showLoadingScreen(null,"Uploading...",constants.LOADING_SCREEN_POSITION_ONLY_CENTER, false,true,null);
     
     var serviceName = "fry_collection";
    var integrationObj =  voltmx.sdk.getCurrentInstance().getIntegrationService(serviceName);
@@ -48,7 +48,7 @@ voltmx.application.showLoadingScreen(null,"LoadingScreen",constants.LOADING_SCRE
    deleteImage: function(fileDetails,callback)
   {
     var self = this;
-voltmx.application.showLoadingScreen(null,"LoadingScreen",constants.LOADING_SCREEN_POSITION_ONLY_CENTER, false,true,null);
+voltmx.application.showLoadingScreen(null,"Deleting...",constants.LOADING_SCREEN_POSITION_ONLY_CENTER, false,true,null);
     
     var serviceName = "fry_collection";
     var integrationObj =  voltmx.sdk.getCurrentInstance().getIntegrationService(serviceName);

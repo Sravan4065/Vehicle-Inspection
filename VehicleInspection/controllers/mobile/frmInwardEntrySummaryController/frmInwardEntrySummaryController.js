@@ -15,10 +15,14 @@ define({
 //     {
 //       NavigationManager.pop();
 //     }
+    this.lot = "";
+    this.title = "";
+    this.view.flxSearchComponent.tbxSearchBy.text = "";
     this.pageSize = 10;
     this.currentOffset = 0;
     this.view.segInwardEntryList.setData([]);
     this.showPendingVehicles();
+    
 //     this.view.segInwardEntryList.onRowClick = () =>
 //     {
 //       NavigationManager.push("frmInwardEntryVehicleDetails");
@@ -35,8 +39,8 @@ define({
     }
       
     this.view.btnLoadMore.onClick = this.onLoadMoreClick.bind(this);
-//     this.view.flxSearchComponent.flxSearch.onClick = this.onSearchClick.bind(this);
-// this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.bind(this);
+    this.view.flxSearchComponent.flxSearch.onClick = this.invokeServiceWithSearch.bind(this);
+    this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onTextChange.bind(this);
   },
   
 
@@ -63,6 +67,9 @@ define({
     this.isPending = true;
     this.pageSize = 10;
     this.currentOffset = 0;
+    this.lot = "";
+    this.title = "";
+    this.view.flxSearchComponent.tbxSearchBy.text = "";
     this.view.segInwardEntryList.setData([]);
     this.invokePendingInwardService();
     this.view.flxPendingVehicles.skin = "sknFlxFFE2E5";
@@ -81,6 +88,9 @@ define({
     this.isPending = false;
     this.pageSize = 10;
     this.currentOffset = 0;
+    this.lot = "";
+    this.title = "";
+    this.view.flxSearchComponent.tbxSearchBy.text = "";
     this.view.segInwardEntryList.setData([]);
     this.invokeCompletedInwardService();
     this.view.flxPendingVehicles.skin = "sknFlxBasic";
@@ -94,6 +104,56 @@ define({
     this.view.flxULCompleted.skin = "sknflxd32437";
   },
   
+ invokeServiceWithSearch: function()
+  {
+    var self = this;
+    this.pageSize = 10;
+    this.currentOffset = 0;
+    this.view.segInwardEntryList.setData([]);
+    this.view.btnLoadMore.setVisibility(false);
+   var searchText = (self.view.flxSearchComponent.tbxSearchBy && self.view.flxSearchComponent.tbxSearchBy.text ? self.view.flxSearchComponent.tbxSearchBy.text : "").trim();
+
+
+//     if (!searchText) return;
+
+    // Decide which field to use
+    if (!isNaN(searchText)) {
+        self.lot = searchText;
+        self.title = "";  // clear the other
+    } else {
+        self.title = searchText;
+        self.lot = "";    // clear the other
+    }
+
+//     self.getUnderReviewCars();
+    if(self.isPending)
+      {
+        self.invokePendingInwardService();
+      }
+    else
+      {
+        self.invokeCompletedInwardService();
+      }
+  },
+  
+  onTextChange: function()
+  {
+    var self = this;
+    
+    var textBoxText = self.view.flxSearchComponent.tbxSearchBy.text;
+    if(textBoxText === "")
+      {
+        if(self.isPending)
+      {
+        self.showPendingVehicles();
+      }
+    else
+      {
+        self.showCompletedVehicles();
+      }
+      }
+  },
+  
   invokePendingInwardService: function() {
   var self = this;
     checkTokenValidatity(function() {
@@ -104,8 +164,8 @@ define({
   var operationName = "get-inyard-vehicles";
 
   var data = {
-      "lot_no": "",
-      "title": "",
+      "lot_no": self.lot || "",
+      "title": self.title || "",
       "chassis_number": "",
       "language": "en",
       "oracle_num": "",
@@ -174,8 +234,8 @@ define({
   var operationName = "get-inyard-vehicles";
 
   var data = {
-      "lot_no": "",
-      "title": "",
+        "lot_no": self.lot || "",
+      "title": self.title || "",
       "chassis_number": "",
       "language": "en",
       "oracle_num": "",
@@ -204,6 +264,26 @@ define({
   {
     voltmx.application.dismissLoadingScreen();
     voltmx.print(response);
+    
+    var record = (response.records && response.records.length > 0)
+    ? response.records[0]
+    : {
+        total_completed: "0",
+        total_pending: "0",
+        total_vehicles: "0"
+      };
+
+  this.completedVehicles = record.total_completed;
+  this.pendingVehicles = record.total_pending;
+  this.totalVehicles = record.total_vehicles;
+
+  this.view.flxSummary.lblTotalCount.text = this.totalVehicles;
+  this.view.flxSummary.lblCompletedCount.text = this.completedVehicles;
+  this.view.flxSummary.lblPendingCount.text = this.pendingVehicles;
+
+  this.view.lblPendingCount.text = this.pendingVehicles;
+  this.view.lblCompletedCount.text = this.completedVehicles;
+    
     this.addToSegment(response);
   },
   

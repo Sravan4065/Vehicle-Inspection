@@ -6,7 +6,10 @@ onNavigate: function(context) {
 
 onPostShow: function() {
   var self = this;
-
+  this.view.flxHeading.flxBack.onClick = () =>
+  {
+    NavigationManager.popTo("frmInwardEntrySummary");
+  }
   voltmx.timer.schedule("barcodeTimer", function() {
     self.generate();
   }, 0.8, false); // delay in seconds

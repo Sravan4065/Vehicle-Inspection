@@ -31,8 +31,8 @@
     "autogrowmode": 0,
     "canUpdateUI": true,
     "children": [
-        "Label0idea036238774e",
-        "CopyLabel0fbe17b0391064d"
+        "lblImpNotice",
+        "lblImpNoticePara"
     ],
     "clipbounds": false,
     "containerweight": 100,
