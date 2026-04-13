@@ -3,15 +3,126 @@ define({
   onNavigate: function(context){
     this.objectId = context.object_id;
     this.lovId = context.lovId;
-        this.services_id = context.services_id;
+    this.services_id = context.services_id;
     voltmx.store.removeItem("signature");
     this.view.preShow =this.onPreShow.bind(this);
     this.view.flxHeadingWithButton.btnSaveResponse.onClick = this.onSubmitClick.bind(this);
     this.existingId = null;
     this.fullExistingData = null;
-  },
-  // this.view.flxHeadingWithButton.btnSaveResponse
+    this.adjustRTL();
 
+  },
+
+
+
+  adjustRTL: function () {
+
+    var self = this;
+    var isArabic = voltmx.i18n.getCurrentLocale() === "ar_AE";
+
+    // Move label
+    this.view.lblSignature.left = isArabic ? "" : "5%";
+    this.view.lblSignature.right = isArabic ? "5%" : "";
+    
+    this.view.lblImpNotice.left = isArabic ? "" : "3%";
+    this.view.lblImpNotice.right = isArabic ? "3%" : "";
+    
+    this.view.lblImpNoticePara.left = isArabic ? "" : "3%";
+    this.view.lblImpNoticePara.left = isArabic ? "3%" : "";
+
+    // Align text
+    this.view.lblSignature.contentAlignment = isArabic
+      ? constants.CONTENT_ALIGN_MIDDLE_RIGHT
+    : constants.CONTENT_ALIGN_MIDDLE_LEFT;
+    
+     this.view.lblImpNotice.contentAlignment = isArabic
+      ? constants.CONTENT_ALIGN_MIDDLE_RIGHT
+    : constants.CONTENT_ALIGN_MIDDLE_LEFT;
+    
+     this.view.lblImpNoticePara.contentAlignment = isArabic
+      ? constants.CONTENT_ALIGN_MIDDLE_RIGHT
+    : constants.CONTENT_ALIGN_MIDDLE_LEFT;
+
+    // 🔧 Common function
+    var setPosition = function(widget, left, right) {
+      if (!widget) return;
+      widget.left = left || "";
+      widget.right = right || "";
+    };
+
+    // 🔘 Button
+    setPosition(
+      self.view.flxHeadingWithButton.btnSaveResponse,
+      isArabic ? "5%" : "",
+      isArabic ? "" : "5%"
+    );
+    
+    setPosition(
+      self.view.flxHeadingWithButton.flxHeading,
+      isArabic ? "5%" : "",
+      isArabic ? "" : "5%"
+    );
+      self.view.flxHeadingWithButton.flxHeading.reverseLayoutDirection = isArabic;
+
+    setPosition(
+      self.view.flxArrow,
+      isArabic ? "5%" : "",
+      isArabic ? "" : "5%"
+    );
+    
+     setPosition(
+      self.view.flxImportantNotice,
+      isArabic ? "" : "0dp",
+      isArabic ? "0dp" : ""
+    );
+
+    
+    // 🔥 Details config (only define once)
+    var detailsList = ["details1", "details2","details3","details4","details5","details6","details7"];
+
+    detailsList.forEach(function(id) {
+
+      var item = self.view[id];
+      if (!item) return;
+
+      // txbData
+      setPosition(
+        item.txbData,
+        isArabic ? "" : "0dp",
+        isArabic ? "0dp" : ""
+      );
+
+      // label (flxName)
+      setPosition(
+        item.flxName,
+        isArabic ? "" : "32dp",
+        isArabic ? "32dp" : ""
+      );
+
+      // arrow
+      if (item.flxArrow) {
+        setPosition(
+          item.flxArrow,
+          isArabic ? "8dp" : "",
+          isArabic ? "" : "8dp"
+        );
+      }
+    });
+    self.view.flxHeadingWithButton.lblImages.text =  voltmx.i18n.getLocalizedString("Miscellaneous");
+    self.view.flxHeadingWithButton.btnSaveResponse.text = voltmx.i18n.getLocalizedString("save response");
+    self.view.details1.lblNamedata.text =  voltmx.i18n.getLocalizedString("Tool Kit");
+    self.view.details2.lblNamedata.text = voltmx.i18n.getLocalizedString("Damaged Areas");
+    self.view.details3.lblNamedata.text =  voltmx.i18n.getLocalizedString("Estimated Repair Cost");
+    self.view.details4.lblNamedata.text = voltmx.i18n.getLocalizedString("Service Provider");
+    self.view.details5.lblNamedata.text =  voltmx.i18n.getLocalizedString("Technician ID");
+    self.view.details6.lblNamedata.text = voltmx.i18n.getLocalizedString("Branch");
+    self.view.details7.lblNamedata.text =  voltmx.i18n.getLocalizedString("City");
+    self.view.lblSignature.text = voltmx.i18n.getLocalizedString("Signature");
+    self.view.lblImpNotice.text = voltmx.i18n.getLocalizedString("important notice");
+    self.view.lblImpNoticePara.text = voltmx.i18n.getLocalizedString("Emirates Transport is not responsible for hidden defects of the vehicle");
+    self.view.flxCompleteButton.btnCompleteInspection.text = voltmx.i18n.getLocalizedString("Complete Inspection");
+    self.view.forceLayout();
+  },
 
 
   onPreShow: function(){
@@ -21,36 +132,36 @@ define({
     this.masterfleetspecvalues();
     this.view.flxBrowser.setVisibility(false);
     this.view.details1.txbData.text = "";
-this.view.details2.txbData.text = "";
-this.view.details3.txbData.text = "";
-this.view.details4.txbData.text = "";
-this.view.details5.txbData.text = "";
-this.view.details6.txbData.text = "";
-this.view.details7.txbData.text = "";
-    
-   this.view.details3.txbData.textInputMode = constants.TEXTBOX_INPUT_MODE_NUMERIC;
+    this.view.details2.txbData.text = "";
+    this.view.details3.txbData.text = "";
+    this.view.details4.txbData.text = "";
+    this.view.details5.txbData.text = "";
+    this.view.details6.txbData.text = "";
+    this.view.details7.txbData.text = "";
 
-this.view.details3.txbData.onTextChange = function() {
-  var text = this.view.details3.txbData.text || "";
-  this.view.details3.txbData.text = text.replace(/[^0-9]/g, "");
-}.bind(this);
+    this.view.details3.txbData.textInputMode = constants.TEXTBOX_INPUT_MODE_NUMERIC;
+
+    this.view.details3.txbData.onTextChange = function() {
+      var text = this.view.details3.txbData.text || "";
+      this.view.details3.txbData.text = text.replace(/[^0-9]/g, "");
+    }.bind(this);
     this.view.details1.txbData.setEnabled(false);
     this.view.details2.txbData.setEnabled(false);
     this.view.details6.txbData.setEnabled(false);
     this.view.details7.txbData.setEnabled(false);
-    
+
     this.view.flxPromptGenerate.setVisibility(false);
-    
+
     this.view.btnCancel.onClick = () =>
     {
       self.view.flxPromptGenerate.setVisibility(false);
     }
-    
+
     this.view.flxClose.onClick = () =>
     {
       self.view.flxPromptGenerate.setVisibility(false);
     }
-    
+
     this.view.flxInspectionDonePopup.setVisibility(false);
     this.view.flxCloseSuccess.onClick = () =>
     {
@@ -60,10 +171,10 @@ this.view.details3.txbData.onTextChange = function() {
     {
       NavigationManager.push("frmMyInspectionsSummary");
     }
-    
+
     this.view.btnGenerateReport.onClick = this.generateReport.bind(this);
     this.getInspectionMiscellaneousList();
-//     this.setDataToSeg();  
+    //     this.setDataToSeg();  
 
     for (let i = 1; i <= 16; i++) {
       this.view["details" + i].flxArrow.onClick =
@@ -73,8 +184,8 @@ this.view.details3.txbData.onTextChange = function() {
       this.view["details" + i].segVehicleDetails.onRowClick =
         this.onRowClickAction.bind(this);
     } 
-    
-//     this.view.flxCompleteButton.btnCompleteInspection.onClick = this.generateReport.bind(this);
+
+    //     this.view.flxCompleteButton.btnCompleteInspection.onClick = this.generateReport.bind(this);
     this.view.flxCompleteButton.btnCompleteInspection.onClick = () =>{
       self.view.flxPromptGenerate.setVisibility(true);
     }
@@ -86,15 +197,15 @@ this.view.details3.txbData.onTextChange = function() {
     this.view.btnGoBack.onClick = () =>{
       self.view.flxBrowser.setVisibility(false);
     }
-    
+
     this.view.btnComplete.onClick = this.completeInspection.bind(this);
-    
-//                  //#ifdef android
-//   self.view.flxDownload.onClick =  self.onDownloadButtonClick.bind(self);
-//     //#endif
-//     //#ifdef iphone
-//   self.view.flxDownload.onClick = self.testPDFNFIDownload.bind(self);
-//     //#endif
+
+    //                  //#ifdef android
+    //   self.view.flxDownload.onClick =  self.onDownloadButtonClick.bind(self);
+    //     //#endif
+    //     //#ifdef iphone
+    //   self.view.flxDownload.onClick = self.testPDFNFIDownload.bind(self);
+    //     //#endif
   },
 
 
@@ -278,118 +389,118 @@ this.view.details3.txbData.onTextChange = function() {
   btnSaveResponseOnClickAction: function () {
 
     var self = this;
-    
+
     var allFilled = true;
 
-for (var i = 1; i <= 7; i++) {
-  var value = self.view["details" +i].txbData.text;
+    for (var i = 1; i <= 7; i++) {
+      var value = self.view["details" +i].txbData.text;
 
-  if (!value || value.trim() === "") {
-    allFilled = false;
-    break;
-  }
-}
-
-if (allFilled) {
-  
-   voltmx.application.showLoadingScreen(
-      null,
-      "Saving...",
-      constants.LOADING_SCREEN_POSITION_ONLY_CENTER,
-      false,
-      true,
-      { progressIndicatorType: constants.PROGRESS_INDICATOR_TYPE_SMALL }
-    );
-
-    var baseURL = voltmx.store.getItem("BASE_URL");
-    if (baseURL && !baseURL.endsWith("/")) {
-      baseURL += "/";
+      if (!value || value.trim() === "") {
+        allFilled = false;
+        break;
+      }
     }
-    var appkey = voltmx.store.getItem("ALWATANEYA_DEVELOPMENT_PUBLIC_APP_KEY");
-    var appsecret = voltmx.store.getItem("ALWATANEYA_DEVELOPMENT_PUBLIC_APP_SECRET");
-    var encodeVal = base64Encode(appkey + ":" + appsecret);
-     var endUrl = "services/ms_inspection/api/v1/upsert-inspection-miscellaneous";
-    var url = baseURL + endUrl;
-//     var url = "https://dev2-hcltx.et.ae/services/ms_inspection/api/v1/upsert-inspection-miscellaneous";
 
-    var token = voltmx.store.getItem("getUserAccesstoken");
-    voltmx.print("Token: " + token);
+    if (allFilled) {
 
-    var request = new voltmx.net.HttpRequest();
-    request.open("POST", url);
+      voltmx.application.showLoadingScreen(
+        null,
+        "Saving...",
+        constants.LOADING_SCREEN_POSITION_ONLY_CENTER,
+        false,
+        true,
+        { progressIndicatorType: constants.PROGRESS_INDICATOR_TYPE_SMALL }
+      );
 
-    request.setRequestHeader("Content-Type", "application/json");
-    request.setRequestHeader("Accept", "application/json");
-    request.setRequestHeader("Authorization", "Basic "+encodeVal);
-    request.setRequestHeader("user_token", token);
+      var baseURL = voltmx.store.getItem("BASE_URL");
+      if (baseURL && !baseURL.endsWith("/")) {
+        baseURL += "/";
+      }
+      var appkey = voltmx.store.getItem("ALWATANEYA_DEVELOPMENT_PUBLIC_APP_KEY");
+      var appsecret = voltmx.store.getItem("ALWATANEYA_DEVELOPMENT_PUBLIC_APP_SECRET");
+      var encodeVal = base64Encode(appkey + ":" + appsecret);
+      var endUrl = "services/ms_inspection/api/v1/upsert-inspection-miscellaneous";
+      var url = baseURL + endUrl;
+      //     var url = "https://dev2-hcltx.et.ae/services/ms_inspection/api/v1/upsert-inspection-miscellaneous";
 
-    
-    var data = self.fullExistingData ? 
-               JSON.parse(JSON.stringify(self.fullExistingData)) :   // deep copy
-               {};
-    data.tool_kit = (self.view.details1.txbData.text || "").trim();
-data.damaged_areas = (self.view.details2.txbData.text || "").trim();
-data.estimated_repair_cost = parseFloat(self.view.details3.txbData.text) || 0;
-data.service_provider = (self.view.details4.txbData.text || "").trim();
-data.technician_id = (self.view.details5.txbData.text || "").trim();
-data.branch = (self.view.details6.txbData.text || "").trim();
-data.city = (self.view.details7.txbData.text || "").trim();
-// data.signature_image_id = Number(self.obj.image_id) || self.fullExistingData.signature_image_id;
-    var imageId = self.obj && self.obj.image_id && Number(self.obj.image_id);
+      var token = voltmx.store.getItem("getUserAccesstoken");
+      voltmx.print("Token: " + token);
 
-if (!isNaN(imageId)) {
-    data.signature_image_id = imageId;
-} else {
-    data.signature_image_id = self.fullExistingData.signature_image_id ? Number(self.fullExistingData.signature_image_id) : 0;
-}
-    
-    data.object_id = self.objectId;
-    data.services_id = Number(self.services_id);
+      var request = new voltmx.net.HttpRequest();
+      request.open("POST", url);
 
-     if(self.existingId)
+      request.setRequestHeader("Content-Type", "application/json");
+      request.setRequestHeader("Accept", "application/json");
+      request.setRequestHeader("Authorization", "Basic "+encodeVal);
+      request.setRequestHeader("user_token", token);
+
+
+      var data = self.fullExistingData ? 
+          JSON.parse(JSON.stringify(self.fullExistingData)) :   // deep copy
+      {};
+      data.tool_kit = (self.view.details1.txbData.text || "").trim();
+      data.damaged_areas = (self.view.details2.txbData.text || "").trim();
+      data.estimated_repair_cost = parseFloat(self.view.details3.txbData.text) || 0;
+      data.service_provider = (self.view.details4.txbData.text || "").trim();
+      data.technician_id = (self.view.details5.txbData.text || "").trim();
+      data.branch = (self.view.details6.txbData.text || "").trim();
+      data.city = (self.view.details7.txbData.text || "").trim();
+      // data.signature_image_id = Number(self.obj.image_id) || self.fullExistingData.signature_image_id;
+      var imageId = self.obj && self.obj.image_id && Number(self.obj.image_id);
+
+      if (!isNaN(imageId)) {
+        data.signature_image_id = imageId;
+      } else {
+        data.signature_image_id = self.fullExistingData.signature_image_id ? Number(self.fullExistingData.signature_image_id) : 0;
+      }
+
+      data.object_id = self.objectId;
+      data.services_id = Number(self.services_id);
+
+      if(self.existingId)
       {
         data.id = self.existingId
       }
 
-    delete data.file_url;
-    delete data.file_name;
-    voltmx.print("Payload: " + JSON.stringify(data));
+      delete data.file_url;
+      delete data.file_name;
+      voltmx.print("Payload: " + JSON.stringify(data));
 
-    request.onReadyStateChange = function () {
+      request.onReadyStateChange = function () {
 
-      if (request.readyState === 4) {
+        if (request.readyState === 4) {
 
-        voltmx.application.dismissLoadingScreen();
+          voltmx.application.dismissLoadingScreen();
 
-        voltmx.print("Response Status: " + request.status);
-        voltmx.print("Response: " + request.responseText);
+          voltmx.print("Response Status: " + request.status);
+          voltmx.print("Response: " + request.responseText);
 
-        if (request.status === 200) {
+          if (request.status === 200) {
 
-          var responseJSON = JSON.parse(request.responseText);
+            var responseJSON = JSON.parse(request.responseText);
 
-  
-          if (responseJSON.success) {
-            alert("Saved successfully");
-            voltmx.store.removeItem("signature");
-          } else {
-            alert("Failed to save response");
+
+            if (responseJSON.success) {
+              alert("Saved successfully");
+              voltmx.store.removeItem("signature");
+            } else {
+              alert("Failed to save response");
+            }
+          } 
+
+          else {
+            alert("Server error occurred");
           }
-        } 
-
-        else {
-          alert("Server error occurred");
         }
-      }
-    };
+      };
 
-    request.send(JSON.stringify(data));
-  
-} else {
-  alert('Please fill all fields');
-}
+      request.send(JSON.stringify(data));
 
-   
+    } else {
+      alert('Please fill all fields');
+    }
+
+
   },
 
 
@@ -485,27 +596,27 @@ if (!isNaN(imageId)) {
     voltmx.application.dismissLoadingScreen();
     voltmx.print(response);
     if (response && 
-    response.records && 
-    response.records.length > 0) 
-{
-    const firstRecord = response.records[0];
-    
-    // Check if 'id' exists and is not empty
-    if (firstRecord.id && 
-        String(firstRecord.id).trim() !== "") 
+        response.records && 
+        response.records.length > 0) 
     {
+      const firstRecord = response.records[0];
+
+      // Check if 'id' exists and is not empty
+      if (firstRecord.id && 
+          String(firstRecord.id).trim() !== "") 
+      {
         self.existingId = Number(firstRecord.id);  
-         self.fullExistingData = firstRecord;
+        self.fullExistingData = firstRecord;
+      } 
+      else 
+      {
+        self.existingId = null;   
+      }
     } 
     else 
     {
-        self.existingId = null;   
+      self.existingId = null;   
     }
-} 
-else 
-{
-    self.existingId = null;   
-}
     self.addToLabel(response);
   },
 
@@ -537,8 +648,8 @@ else
     this.view.details3.txbData.text = res.estimated_repair_cost;
     this.view.details6.txbData.text = res.branch;
     this.view.details7.txbData.text = res.city;
-     this.view.details4.txbData.text = res.service_provider;
-     this.view.details5.txbData.text = res.technician_id;
+    this.view.details4.txbData.text = res.service_provider;
+    this.view.details5.txbData.text = res.technician_id;
   },
   // -----------------------------------------------------------------------
 
@@ -676,199 +787,199 @@ else
     segment.setData(segData);
 
   },
-  
+
   completeInspection: function()
   {
-     var self = this;
-    
-//     self.view.flxVehicleReceived.setVisibility(true);
+    var self = this;
 
-  var serviceName = "ms_fleet";
+    //     self.view.flxVehicleReceived.setVisibility(true);
 
-  var integrationObj = voltmx.sdk.getCurrentInstance()
+    var serviceName = "ms_fleet";
 
-                                  .getIntegrationService(serviceName);
+    var integrationObj = voltmx.sdk.getCurrentInstance()
 
-  var operationName = "fleet-wfstatus";
- 
-  var data = {
-    
-  "object_id": self.objectId,
-  "action_name": "Done"
-    
-  };
- 
-  // Headers
+    .getIntegrationService(serviceName);
 
-  var headers = {
+    var operationName = "fleet-wfstatus";
+
+    var data = {
+
+      "object_id": self.objectId,
+      "action_name": "Done"
+
+    };
+
+    // Headers
+
+    var headers = {
 
       "user_token": voltmx.store.getItem("getUserAccesstoken") 
 
-  };
-//  integrationObj.invokeOperation
-  integrationObj.invokeOperation(
+    };
+    //  integrationObj.invokeOperation
+    integrationObj.invokeOperation(
 
       operationName,
 
       headers,
 
       data,
-    
-    operationSuccessCompleted,   // ✅ pass reference
-    
-    operationFailureCompleted
 
-  );
+      operationSuccessCompleted,   // ✅ pass reference
+
+      operationFailureCompleted
+
+    );
 
 
-  function operationSuccessCompleted(response)
+    function operationSuccessCompleted(response)
 
-  {
-   voltmx.application.dismissLoadingScreen();
-    voltmx.print(response);
-    
-    if(response && response.data && response.data.object_id)
+    {
+      voltmx.application.dismissLoadingScreen();
+      voltmx.print(response);
+
+      if(response && response.data && response.data.object_id)
       {
-//            self.view.flxBrowser.setVisibility(false);
+        //            self.view.flxBrowser.setVisibility(false);
         self.view.flxInspectionDonePopup.setVisibility(true);
-        
+
       }
-   
 
-  }
 
-  function operationFailureCompleted(error)
+    }
 
-  {
-   voltmx.application.dismissLoadingScreen();
-    voltmx.print(error);
+    function operationFailureCompleted(error)
 
-  }
+    {
+      voltmx.application.dismissLoadingScreen();
+      voltmx.print(error);
+
+    }
   },
-  
+
   generateReport: function()
   {
-     var self = this;
-    
-//     self.view.flxVehicleReceived.setVisibility(true);
-      self.view.flxPromptGenerate.setVisibility(false);
-          voltmx.application.showLoadingScreen(null, "Generating Report..",     constants.LOADING_SCREEN_POSITION_ONLY_CENTER, false, true, {         shouldShowLabelInBottom: "true",         separatorHeight: 45,         progressIndicatorType: constants.PROGRESS_INDICATOR_TYPE_SMALL,         progressIndicatorColor: "Gray"     });
+    var self = this;
 
-  var serviceName = "fry_collection";
+    //     self.view.flxVehicleReceived.setVisibility(true);
+    self.view.flxPromptGenerate.setVisibility(false);
+    voltmx.application.showLoadingScreen(null, "Generating Report..",     constants.LOADING_SCREEN_POSITION_ONLY_CENTER, false, true, {         shouldShowLabelInBottom: "true",         separatorHeight: 45,         progressIndicatorType: constants.PROGRESS_INDICATOR_TYPE_SMALL,         progressIndicatorColor: "Gray"     });
 
-  var integrationObj = voltmx.sdk.getCurrentInstance()
+    var serviceName = "fry_collection";
 
-                                  .getIntegrationService(serviceName);
+    var integrationObj = voltmx.sdk.getCurrentInstance()
 
-  var operationName = "GenerateTechnicalReport";
- 
-  var data = {
-    
-   "moduleName": "GenerateTechnicalReport",
-    "user_token": voltmx.store.getItem("getUserAccesstoken"),
-    "moduleType": "Fleet",
-    "user_id": voltmx.store.getItem("userId"),
-    "object_id": self.objectId
-    
-  };
- 
-  // Headers
+    .getIntegrationService(serviceName);
 
-  var headers = {
+    var operationName = "GenerateTechnicalReport";
 
-//       "user_token": voltmx.store.getItem("getUserAccesstoken") 
+    var data = {
 
-  };
-//  integrationObj.invokeOperation
-  integrationObj.invokeOperation(
+      "moduleName": "GenerateTechnicalReport",
+      "user_token": voltmx.store.getItem("getUserAccesstoken"),
+      "moduleType": "Fleet",
+      "user_id": voltmx.store.getItem("userId"),
+      "object_id": self.objectId
+
+    };
+
+    // Headers
+
+    var headers = {
+
+      //       "user_token": voltmx.store.getItem("getUserAccesstoken") 
+
+    };
+    //  integrationObj.invokeOperation
+    integrationObj.invokeOperation(
 
       operationName,
 
       headers,
 
       data,
-    
-    operationSuccessCompleted,  
-    
-    operationFailureCompleted
 
-  );
+      operationSuccessCompleted,  
+
+      operationFailureCompleted
+
+    );
 
 
-  function operationSuccessCompleted(response)
+    function operationSuccessCompleted(response)
 
-  {
-   voltmx.application.dismissLoadingScreen();
-    voltmx.print(response);
-    
-    if(response && response.message === "Success")
+    {
+      voltmx.application.dismissLoadingScreen();
+      voltmx.print(response);
+
+      if(response && response.message === "Success")
       {
         if(response.file_url)
-          {
+        {
 
-            //#ifdef android
-            self.onDownloadButtonClick(response.file_url);
-            //#endif
-            //#ifdef iphone
-            self.testPDFNFIDownload(response.file_url);
-            //#endif            
-           self.completeInspection();
-          }
+          //#ifdef android
+          self.onDownloadButtonClick(response.file_url);
+          //#endif
+          //#ifdef iphone
+          self.testPDFNFIDownload(response.file_url);
+          //#endif            
+          self.completeInspection();
+        }
       }
-    else if(response.dam_response)
+      else if(response.dam_response)
       {
         var damResponseStr = response.dam_response || response.dam_response_s;
 
-if (damResponseStr && damResponseStr.indexOf("409") !== -1) {
-   alert("File already exists")
-}
+        if (damResponseStr && damResponseStr.indexOf("409") !== -1) {
+          alert("File already exists")
+        }
       }
-    else
+      else
       {
         self.showToast(response.message);
       }
-    
-   
 
-  }
 
-  function operationFailureCompleted(error)
 
-  {
-   voltmx.application.dismissLoadingScreen();
-    voltmx.print(error);
+    }
 
-  }
+    function operationFailureCompleted(error)
+
+    {
+      voltmx.application.dismissLoadingScreen();
+      voltmx.print(error);
+
+    }
   },
-  
-    onDownloadButtonClick: function (fileUrl) {
+
+  onDownloadButtonClick: function (fileUrl) {
     var self = this;
-  
 
-   
+
+
+    try {
+
+
+      //           var fileUrl = self.fileUrl;
+      //           var fileName = thirdPartyFile.file_name;
+      var fileName = "Inspection Report_" + Date.now();
+
       try {
-      
+        // Proceed to download using Java interop
+        var DownloadClass = java.import("com.example.pdffiledownload.FileDownloadHandler");
+        var ActivityContext = java.import("com.konylabs.android.KonyMain").getActivityContext();
 
-//           var fileUrl = self.fileUrl;
-//           var fileName = thirdPartyFile.file_name;
-         var fileName = "Inspection Report_" + Date.now();
-
-          try {
-            // Proceed to download using Java interop
-            var DownloadClass = java.import("com.example.pdffiledownload.FileDownloadHandler");
-            var ActivityContext = java.import("com.konylabs.android.KonyMain").getActivityContext();
-
-            DownloadClass.downloadFile(ActivityContext, fileUrl, fileName);
-            // Optionally show confirmation to user
-            // voltmx.ui.Alert("Download started for: " + fileName);
-          } catch (downloadError) {
-            self.showToast("Download failed: " + downloadError.message);
-          }
-        } 
-      catch (e) {
-        self.showToast("Unexpected error while checking files: " + e.message);
+        DownloadClass.downloadFile(ActivityContext, fileUrl, fileName);
+        // Optionally show confirmation to user
+        // voltmx.ui.Alert("Download started for: " + fileName);
+      } catch (downloadError) {
+        self.showToast("Download failed: " + downloadError.message);
       }
-    
+    } 
+    catch (e) {
+      self.showToast("Unexpected error while checking files: " + e.message);
+    }
+
   },
 
   showToast: function(message) {
@@ -896,89 +1007,89 @@ if (damResponseStr && damResponseStr.indexOf("409") !== -1) {
   testPDFNFIDownload: function(fileUrl)
   {
 
- 
-      try {
-        // Find the first file with type "3rd-Party"
-       
-//            var fileUrl = self.fileUrl;
-        //           var fileName = thirdPartyFile.file_name;
-        var  fileName = "Inspection Report_" + Date.now();
 
-          // Proceed to download
-          var FileDownloadHandlerNFI = objc.import("PDFDownloadNFI");
-          var DownloadPDFViewController = objc.import("DownloadPDFViewController");
-          if (!DownloadPDFViewController) {
-            voltmx.print("Error: Failed to import PDFDownloadNFI");
-          }
-          else{
-            var downloadObject = DownloadPDFViewController.alloc().jsinit();
-            downloadObject.downloadAndPreviewPDFFileName(fileUrl,fileName);
-          }
+    try {
+      // Find the first file with type "3rd-Party"
 
-       
-      } catch (e) {
-        alert("Download error: " + e.message);
+      //            var fileUrl = self.fileUrl;
+      //           var fileName = thirdPartyFile.file_name;
+      var  fileName = "Inspection Report_" + Date.now();
+
+      // Proceed to download
+      var FileDownloadHandlerNFI = objc.import("PDFDownloadNFI");
+      var DownloadPDFViewController = objc.import("DownloadPDFViewController");
+      if (!DownloadPDFViewController) {
+        voltmx.print("Error: Failed to import PDFDownloadNFI");
       }
-   
+      else{
+        var downloadObject = DownloadPDFViewController.alloc().jsinit();
+        downloadObject.downloadAndPreviewPDFFileName(fileUrl,fileName);
+      }
+
+
+    } catch (e) {
+      alert("Download error: " + e.message);
+    }
+
 
 
   },
-  
-//   onSubmitClick: function(){
-//     var self = this;
-//   var signature = voltmx.store.getItem("signature");
-// if(signature){
-// //   alert(signature);
-//           var filefullname = "signature" + new Date().getTime() + ".png";
 
-//   this.fileDetails = [{
-//     "is_thumbnail": "false",
-//     "inspection_category": "inspection",
-//     "inspection_subcategory": "inspectionsignature",
-//     "filename": filefullname,
-//     "base64": signature
-//   }];
+  //   onSubmitClick: function(){
+  //     var self = this;
+  //   var signature = voltmx.store.getItem("signature");
+  // if(signature){
+  // //   alert(signature);
+  //           var filefullname = "signature" + new Date().getTime() + ".png";
 
-//   self.uploadImages();
-// }
-//     else
-//       {
-//         alert("Signature is mandatory");
-//       }
+  //   this.fileDetails = [{
+  //     "is_thumbnail": "false",
+  //     "inspection_category": "inspection",
+  //     "inspection_subcategory": "inspectionsignature",
+  //     "filename": filefullname,
+  //     "base64": signature
+  //   }];
+
+  //   self.uploadImages();
+  // }
+  //     else
+  //       {
+  //         alert("Signature is mandatory");
+  //       }
 
 
-// },
-  
+  // },
+
   onSubmitClick: function() {
-  var self = this;
+    var self = this;
 
-  var signature = voltmx.store.getItem("signature"); // new drawn
-  var existingSignatureId = self.fullExistingData && self.fullExistingData.signature_image_id;
+    var signature = voltmx.store.getItem("signature"); // new drawn
+    var existingSignatureId = self.fullExistingData && self.fullExistingData.signature_image_id;
 
-  if (signature) {
+    if (signature) {
 
-    var filefullname = "signature" + new Date().getTime() + ".png";
+      var filefullname = "signature" + new Date().getTime() + ".png";
 
-    this.fileDetails = [{
-      "is_thumbnail": "false",
-      "inspection_category": "inspection",
-      "inspection_subcategory": "inspectionsignature",
-      "filename": filefullname,
-      "base64": signature
-    }];
+      this.fileDetails = [{
+        "is_thumbnail": "false",
+        "inspection_category": "inspection",
+        "inspection_subcategory": "inspectionsignature",
+        "filename": filefullname,
+        "base64": signature
+      }];
 
-    self.uploadImages();
-    return;
-  }
+      self.uploadImages();
+      return;
+    }
 
-  if (existingSignatureId) {
-    self.btnSaveResponseOnClickAction();
-    return;
-  }
+    if (existingSignatureId) {
+      self.btnSaveResponseOnClickAction();
+      return;
+    }
 
-  alert("Signature is mandatory");
-},
-        uploadImages: function() {
+    alert("Signature is mandatory");
+  },
+  uploadImages: function() {
     var self = this;
 
     ImageUploadAndDeletion.uploadImage(
@@ -993,31 +1104,31 @@ if (damResponseStr && damResponseStr.indexOf("409") !== -1) {
 
         if(response && response.message === "Success"){
           alert("Upload Successful");
-          
-            var parsed = JSON.parse(response.response || "[]");
+
+          var parsed = JSON.parse(response.response || "[]");
           if(parsed && parsed.length > 0){
 
-              var item = parsed[0];
+            var item = parsed[0];
 
-              var payload = JSON.parse(item.object_image_payload || "{}");
-              var imageLog = JSON.parse(item.object_image_loged_result || "{}");
-            
-             self.obj = {
-                file_name: payload.file_name,
-                file_url: payload.file_url,
-                object_id: payload.object_id,
-                image_id: imageLog.id
-              };
-            
+            var payload = JSON.parse(item.object_image_payload || "{}");
+            var imageLog = JSON.parse(item.object_image_loged_result || "{}");
+
+            self.obj = {
+              file_name: payload.file_name,
+              file_url: payload.file_url,
+              object_id: payload.object_id,
+              image_id: imageLog.id
+            };
+
           }
-          
-          
-          
-          
+
+
+
+
           self.btnSaveResponseOnClickAction();
         }
       }
     );
   },
- 
+
 });
