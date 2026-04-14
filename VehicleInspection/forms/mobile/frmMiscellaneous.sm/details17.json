@@ -31,7 +31,7 @@
     "_skin_": "s43b3f0daddb4853bfc5983bfb525431",
     "_top_": {
         "type": "string",
-        "value": "10dp"
+        "value": "4dp"
     },
     "_width_": {
         "type": "string",
@@ -47,21 +47,21 @@
             "__events__": {},
             "__info__": {
                 "isRoot": true,
-                "kuid": "ca8673024f0041c6818802ad8f17e0b8",
+                "kuid": "f2a28ff428204a5f9fe34f5bd12ff731",
                 "srcKUID": "f55b13451ca848fd9dee6df988be37bf",
                 "wType": "FlexContainer"
             },
             "top": {
                 "Default": {
                     "type": "string",
-                    "value": "10dp"
+                    "value": "4dp"
                 }
             }
         },
         "flxArrow": {
             "__events__": {},
             "__info__": {
-                "kuid": "h82e9eea680542c4b3c728748b6c91e0",
+                "kuid": "c65bb03b3fd14f9abe993c97d71722e6",
                 "srcKUID": "c6340dee896b4876bb7ecce4d50050ce",
                 "wType": "FlexContainer"
             }
@@ -69,29 +69,31 @@
         "flxName": {
             "__events__": {},
             "__info__": {
-                "kuid": "fcef34e6829941a6bb7f27a00acc4607",
+                "kuid": "a3f92ec84e89411d8382748bcc141c47",
                 "srcKUID": "af4f55790c1942ab9a8e328a44437228",
                 "wType": "FlexContainer"
             },
             "width": {
                 "Default": {
                     "type": "string",
-                    "value": "12%"
+                    "value": "21%"
                 }
             }
         },
         "flxSegment": {
             "__events__": {},
             "__info__": {
-                "kuid": "gbe0e012fc31468e826064650bc511aa",
+                "kuid": "h62b2e2b06ec4490b4bf3c5cbb551263",
                 "srcKUID": "i81d685650c047e0a36b27249031670f",
                 "wType": "FlexContainer"
-            }
+            },
+            "clipBounds": true,
+            "isVisible": false
         },
         "flxTextbox": {
             "__events__": {},
             "__info__": {
-                "kuid": "d5c05d98e495475898f72a15200b649f",
+                "kuid": "a42ea66c10744d0480a35bc3d87a8ab5",
                 "srcKUID": "ae8483871dbe422190d63fe28bb6daab",
                 "wType": "FlexContainer"
             }
@@ -99,7 +101,7 @@
         "imgarrow": {
             "__events__": {},
             "__info__": {
-                "kuid": "d5e717a03c574302a78e59f0e868c468",
+                "kuid": "daa19cacd2c34fe18403b7b44ef84203",
                 "srcKUID": "jbc1bfbf2d7646e3bbab003dd7da117f",
                 "wType": "Image"
             },
@@ -108,16 +110,16 @@
         "lblNamedata": {
             "__events__": {},
             "__info__": {
-                "kuid": "dd10b111cfbe4cf392f8eb04a9f4d15c",
+                "kuid": "g1c68428d39d4de3b559196c7b58a8fe",
                 "srcKUID": "b007f5d9e1dc4a809572ef3b836312a4",
                 "wType": "Label"
             },
-            "text": "City"
+            "text": "Service Book"
         },
         "segVehicleDetails": {
             "__events__": {},
             "__info__": {
-                "kuid": "e640e32a737545938f2016b313e78da4",
+                "kuid": "d8092f45d2b145b78d3c32c3b3ba11a9",
                 "srcKUID": "cfe5a327284c4bd88a6f1de68e7f0c17",
                 "wType": "Segment"
             }
@@ -125,19 +127,19 @@
         "txbData": {
             "__events__": {},
             "__info__": {
-                "kuid": "cd967392e38344868007b89834ecd12e",
+                "kuid": "ea5f830c08ac4d57ac4a3d028748b64a",
                 "srcKUID": "f836dbce2d5943308d153692e8c3cfb3",
                 "wType": "TextField"
             }
         }
     },
     "enablescrolling": true,
-    "id": "details7",
+    "id": "details17",
     "info": null,
     "iscustomlayout": false,
     "isdatareferenced": false,
     "isvisible": true,
-    "kuid": "ca8673024f0041c6818802ad8f17e0b8",
+    "kuid": "f2a28ff428204a5f9fe34f5bd12ff731",
     "layouttype": 2,
     "masterType": 0,
     "name": "kony.ui.UserWidgetInstance",

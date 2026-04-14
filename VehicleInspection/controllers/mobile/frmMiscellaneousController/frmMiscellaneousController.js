@@ -138,6 +138,7 @@ define({
     this.view.details5.txbData.text = "";
     this.view.details6.txbData.text = "";
     this.view.details7.txbData.text = "";
+    this.view.details17.txbData.text = "";
 
     this.view.details3.txbData.textInputMode = constants.TEXTBOX_INPUT_MODE_NUMERIC;
 
@@ -149,6 +150,7 @@ define({
     this.view.details2.txbData.setEnabled(false);
     this.view.details6.txbData.setEnabled(false);
     this.view.details7.txbData.setEnabled(false);
+    this.view.details17.txbData.setEnabled(false);
 
     this.view.flxPromptGenerate.setVisibility(false);
 
@@ -176,11 +178,11 @@ define({
     this.getInspectionMiscellaneousList();
     //     this.setDataToSeg();  
 
-    for (let i = 1; i <= 16; i++) {
+    for (let i = 1; i <= 17; i++) {
       this.view["details" + i].flxArrow.onClick =
         this.toggleDetails.bind(this);
     }
-    for (let i = 1; i <= 16; i++) {
+    for (let i = 1; i <= 17; i++) {
       this.view["details" + i].segVehicleDetails.onRowClick =
         this.onRowClickAction.bind(this);
     } 
@@ -400,6 +402,12 @@ define({
         break;
       }
     }
+    
+   var val = self.view.details17.txbData.text;
+    if (!val || val.trim() === "") {
+        allFilled = false;
+      }
+    
 
     if (allFilled) {
 
@@ -445,6 +453,7 @@ define({
       data.technician_id = (self.view.details5.txbData.text || "").trim();
       data.branch = (self.view.details6.txbData.text || "").trim();
       data.city = (self.view.details7.txbData.text || "").trim();
+      data.service_book = (self.view.details17.txbData.text || "").trim();
       // data.signature_image_id = Number(self.obj.image_id) || self.fullExistingData.signature_image_id;
       var imageId = self.obj && self.obj.image_id && Number(self.obj.image_id);
 
@@ -474,11 +483,8 @@ define({
 
           voltmx.print("Response Status: " + request.status);
           voltmx.print("Response: " + request.responseText);
-
+          var responseJSON = JSON.parse(request.responseText);
           if (request.status === 200) {
-
-            var responseJSON = JSON.parse(request.responseText);
-
 
             if (responseJSON.success) {
               alert("Saved successfully");
@@ -489,7 +495,11 @@ define({
           } 
 
           else {
-            alert("Server error occurred");
+            if(responseJSON.error && responseJSON.error.message)
+                {
+                  alert(responseJSON.error.message);
+                }
+//             alert("Server error occurred");
           }
         }
       };
@@ -650,6 +660,7 @@ define({
     this.view.details7.txbData.text = res.city;
     this.view.details4.txbData.text = res.service_provider;
     this.view.details5.txbData.text = res.technician_id;
+    this.view.details17.txbData.text = res.service_book;
   },
   // -----------------------------------------------------------------------
 
@@ -665,7 +676,7 @@ define({
 
       var data = {
         //         "object_id": "4D908BC2-AD33-4784-8420-3BB403CB6BF4"
-        "spec_list": "branch;tool_kit;service_history;city;damaged_areas",
+        "spec_list": "branch;tool_kit;service_history;city;damaged_areas;service_book",
         "widget_name": "fleet_specs_details;fleet_insp_details",
         "asset_definitions": "false",
         "auction_types": "false",
@@ -707,6 +718,7 @@ define({
     this.setSegmentData(this.view.details6.segVehicleDetails, res.branch);
     this.setSegmentData(this.view.details2.segVehicleDetails, res.damaged_areas);
     this.setSegmentData(this.view.details7.segVehicleDetails, res.city);
+    this.setSegmentData(this.view.details17.segVehicleDetails, res.service_book)
 
 
   },
