@@ -74,10 +74,16 @@
                 "srcKUID": "af4f55790c1942ab9a8e328a44437228",
                 "wType": "FlexContainer"
             },
+            "centerX": {
+                "Default": {
+                    "type": "string",
+                    "value": ""
+                }
+            },
             "width": {
                 "Default": {
                     "type": "string",
-                    "value": "35%"
+                    "value": "32%"
                 }
             }
         },
@@ -113,7 +119,25 @@
                 "srcKUID": "b007f5d9e1dc4a809572ef3b836312a4",
                 "wType": "Label"
             },
-            "text": "Estimated Repair Cost"
+            "centerX": {
+                "Default": {
+                    "type": "string",
+                    "value": "50%"
+                }
+            },
+            "left": {
+                "Default": {
+                    "type": "string",
+                    "value": ""
+                }
+            },
+            "text": "Estimated Repair Cost",
+            "width": {
+                "Default": {
+                    "type": "ref",
+                    "value": "preferred"
+                }
+            }
         },
         "segVehicleDetails": {
             "__events__": {},
@@ -130,7 +154,25 @@
                 "srcKUID": "f836dbce2d5943308d153692e8c3cfb3",
                 "wType": "TextField"
             },
+            "centerX": {
+                "Default": {
+                    "type": "string",
+                    "value": ""
+                }
+            },
+            "left": {
+                "Default": {
+                    "type": "string",
+                    "value": "0"
+                }
+            },
             "maxTextLength": "",
+            "right": {
+                "Default": {
+                    "type": "string",
+                    "value": "0"
+                }
+            },
             "text": ""
         }
     },

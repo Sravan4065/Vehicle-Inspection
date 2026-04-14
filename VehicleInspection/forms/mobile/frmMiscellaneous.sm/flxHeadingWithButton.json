@@ -59,6 +59,12 @@
                 "kuid": "adbe916ac9d24ce19a74de85f65c457a",
                 "srcKUID": "f0f0e5abfded46d7a38ef4f48d3c8f89",
                 "wType": "FlexContainer"
+            },
+            "right": {
+                "Default": {
+                    "type": "string",
+                    "value": ""
+                }
             }
         },
         "flxHeading": {
@@ -67,7 +73,8 @@
                 "kuid": "jcb4f033b5774e3e92a4cb7d143098e9",
                 "srcKUID": "f1a5b4fea22c40debec9edda654d7627",
                 "wType": "FlexContainer"
-            }
+            },
+            "reverseLayoutDirection": false
         },
         "flxHeadingWithButton": {
             "__events__": {},
@@ -106,7 +113,19 @@
                 "srcKUID": "af3ad0728c3c4d4e9e4311c055f4f9ea",
                 "wType": "Image"
             },
-            "src": "backarrow.png"
+            "height": {
+                "Default": {
+                    "type": "string",
+                    "value": "30%"
+                }
+            },
+            "src": "backarrow.png",
+            "width": {
+                "Default": {
+                    "type": "string",
+                    "value": "100%"
+                }
+            }
         },
         "lblImages": {
             "__events__": {},
@@ -115,7 +134,37 @@
                 "srcKUID": "adf7eb6db260494b9bcfb8940fb4b583",
                 "wType": "Label"
             },
-            "text": "Miscellaneous"
+            "centerX": {
+                "Default": {
+                    "type": "string",
+                    "value": ""
+                }
+            },
+            "height": {
+                "Default": {
+                    "type": "string",
+                    "value": "100%"
+                }
+            },
+            "left": {
+                "Default": {
+                    "type": "string",
+                    "value": "3%"
+                }
+            },
+            "right": {
+                "Default": {
+                    "type": "string",
+                    "value": ""
+                }
+            },
+            "text": "Miscellaneous",
+            "width": {
+                "Default": {
+                    "type": "string",
+                    "value": "40%"
+                }
+            }
         }
     },
     "enablescrolling": true,
