@@ -48,7 +48,7 @@
     "id": "flxInteriorColor",
     "info": null,
     "iscustomlayout": false,
-    "isvisible": true,
+    "isvisible": false,
     "kuid": "j349dc6b491944cca32a6ada5663f7ea",
     "layouttype": 4,
     "name": "kony.ui.FlexContainer",
