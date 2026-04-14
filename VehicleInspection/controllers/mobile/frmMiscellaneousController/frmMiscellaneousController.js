@@ -15,115 +15,247 @@ define({
 
 
 
+//   adjustRTL: function () {
+
+//     var self = this;
+//     var isArabic = voltmx.i18n.getCurrentLocale() === "ar_AE";
+
+//     // Move label
+//     this.view.lblSignature.left = isArabic ? "" : "5%";
+//     this.view.lblSignature.right = isArabic ? "5%" : "";
+    
+//     this.view.lblImpNotice.left = isArabic ? "" : "3%";
+//     this.view.lblImpNotice.right = isArabic ? "3%" : "";
+    
+//     this.view.lblImpNoticePara.left = isArabic ? "" : "3%";
+//     this.view.lblImpNoticePara.right = isArabic ? "3%" : "";
+    
+//     this.view.details3.txbData.left = isArabic ? "" : "5%";
+//     this.view.details3.txbData.right = isArabic ? "5%" :"";
+    
+//     this.view.details4.txbData.left = isArabic ? "" :"5%";
+//     this.view.details4.txbData.right = isArabic ? "5%" :"";
+    
+//     this.view.details5.txbData.left = isArabic ? "":"5%";
+//     this.view.details5.txbData.right = isArabic ? "5%":"";
+
+//     // Align text
+//     this.view.lblSignature.contentAlignment = isArabic
+//       ? constants.CONTENT_ALIGN_MIDDLE_RIGHT
+//     : constants.CONTENT_ALIGN_MIDDLE_LEFT;
+    
+//      this.view.lblImpNotice.contentAlignment = isArabic
+//       ? constants.CONTENT_ALIGN_MIDDLE_RIGHT
+//     : constants.CONTENT_ALIGN_MIDDLE_LEFT;
+    
+//      this.view.lblImpNoticePara.contentAlignment = isArabic
+//       ? constants.CONTENT_ALIGN_MIDDLE_RIGHT
+//     : constants.CONTENT_ALIGN_MIDDLE_LEFT;
+
+//     this.view.details3.txbData.contentAlignment = isArabic 
+//     ? constants.CONTENT_ALIGN_MIDDLE_RIGHT
+//     : constants.CONTENT_ALIGN_MIDDLE_LEFT
+    
+//      this.view.details4.txbData.contentAlignment = isArabic 
+//     ? constants.CONTENT_ALIGN_MIDDLE_RIGHT
+//     : constants.CONTENT_ALIGN_MIDDLE_LEFT
+    
+//      this.view.details5.txbData.contentAlignment = isArabic 
+//     ? constants.CONTENT_ALIGN_MIDDLE_RIGHT
+//     : constants.CONTENT_ALIGN_MIDDLE_LEFT
+    
+    
+//     var setPosition = function(widget, left, right) {
+//       if (!widget) return;
+//       widget.left = left || "";
+//       widget.right = right || "";
+//     };
+
+//     // 🔘 Button
+//     setPosition(
+//       self.view.flxHeadingWithButton.btnSaveResponse,
+//       isArabic ? "5%" : "",
+//       isArabic ? "" : "5%"
+//     );
+    
+//     setPosition(
+//       self.view.flxHeadingWithButton.flxHeading,
+//       isArabic ? "5%" : "",
+//       isArabic ? "" : "5%"
+//     );
+//       self.view.flxHeadingWithButton.flxHeading.reverseLayoutDirection = isArabic;
+
+//     setPosition(
+//       self.view.flxArrow,
+//       isArabic ? "5%" : "",
+//       isArabic ? "" : "5%"
+//     );
+    
+//      setPosition(
+//       self.view.flxImportantNotice,
+//       isArabic ? "" : "0dp",
+//       isArabic ? "0dp" : ""
+//     );
+
+    
+//     // 🔥 Details config (only define once)
+//     var detailsList = ["details1", "details2","details3","details4","details5","details6","details7","details17"];
+
+//     detailsList.forEach(function(id) {
+
+//       var item = self.view[id];
+//       if (!item) return;
+
+//       // txbData
+//       setPosition(
+//         item.txbData,
+//         isArabic ? "" : "0dp",
+//         isArabic ? "0dp" : ""
+//       );
+
+//       // label (flxName)
+//       setPosition(
+//         item.flxName,
+//         isArabic ? "" : "32dp",
+//         isArabic ? "32dp" : ""
+//       );
+
+//       // arrow
+//       if (item.flxArrow) {
+//         setPosition(
+//           item.flxArrow,
+//           isArabic ? "8dp" : "",
+//           isArabic ? "" : "8dp"
+//         );
+//       }
+//     });
+//     self.view.flxHeadingWithButton.lblImages.text =  voltmx.i18n.getLocalizedString("Miscellaneous");
+//     self.view.flxHeadingWithButton.btnSaveResponse.text = voltmx.i18n.getLocalizedString("save response");
+//     self.view.details1.lblNamedata.text =  voltmx.i18n.getLocalizedString("Tool Kit");
+//     self.view.details2.lblNamedata.text = voltmx.i18n.getLocalizedString("Damaged Areas");
+//     self.view.details3.lblNamedata.text =  voltmx.i18n.getLocalizedString("Estimated Repair Cost");
+//     self.view.details4.lblNamedata.text = voltmx.i18n.getLocalizedString("Service Provider");
+//     self.view.details5.lblNamedata.text =  voltmx.i18n.getLocalizedString("Technician ID");
+//     self.view.details6.lblNamedata.text = voltmx.i18n.getLocalizedString("Branch");
+//     self.view.details7.lblNamedata.text =  voltmx.i18n.getLocalizedString("City");
+//     self.view.lblSignature.text = voltmx.i18n.getLocalizedString("Signature");
+//     self.view.lblImpNotice.text = voltmx.i18n.getLocalizedString("important notice");
+//     self.view.lblImpNoticePara.text = voltmx.i18n.getLocalizedString("Emirates Transport is not responsible for hidden defects of the vehicle");
+//     self.view.flxCompleteButton.btnCompleteInspection.text = voltmx.i18n.getLocalizedString("Complete Inspection");
+//     self.view.forceLayout();
+//   },
+
+  
+  
   adjustRTL: function () {
 
-    var self = this;
-    var isArabic = voltmx.i18n.getCurrentLocale() === "ar_AE";
+  var self = this;
+  var isArabic = voltmx.i18n.getCurrentLocale() === "ar_AE";
 
-    // Move label
-    this.view.lblSignature.left = isArabic ? "" : "5%";
-    this.view.lblSignature.right = isArabic ? "5%" : "";
-    
-    this.view.lblImpNotice.left = isArabic ? "" : "3%";
-    this.view.lblImpNotice.right = isArabic ? "3%" : "";
-    
-    this.view.lblImpNoticePara.left = isArabic ? "" : "3%";
-    this.view.lblImpNoticePara.left = isArabic ? "3%" : "";
+  var setPosition = function(widget, left, right) {
+    if (!widget) return;
+    widget.left = left || "";
+    widget.right = right || "";
+  };
 
-    // Align text
-    this.view.lblSignature.contentAlignment = isArabic
+  var setAlignment = function(widget) {
+    if (!widget) return;
+    widget.contentAlignment = isArabic
       ? constants.CONTENT_ALIGN_MIDDLE_RIGHT
-    : constants.CONTENT_ALIGN_MIDDLE_LEFT;
-    
-     this.view.lblImpNotice.contentAlignment = isArabic
-      ? constants.CONTENT_ALIGN_MIDDLE_RIGHT
-    : constants.CONTENT_ALIGN_MIDDLE_LEFT;
-    
-     this.view.lblImpNoticePara.contentAlignment = isArabic
-      ? constants.CONTENT_ALIGN_MIDDLE_RIGHT
-    : constants.CONTENT_ALIGN_MIDDLE_LEFT;
+      : constants.CONTENT_ALIGN_MIDDLE_LEFT;
+  };
 
-    // 🔧 Common function
-    var setPosition = function(widget, left, right) {
-      if (!widget) return;
-      widget.left = left || "";
-      widget.right = right || "";
-    };
+  // 🔹 Labels
+  [this.view.lblSignature, this.view.lblImpNotice, this.view.lblImpNoticePara, this.view.flxHeadingWithButton.lblImages]
+    .forEach(setAlignment);
 
-    // 🔘 Button
-    setPosition(
-      self.view.flxHeadingWithButton.btnSaveResponse,
-      isArabic ? "5%" : "",
-      isArabic ? "" : "5%"
+  setPosition(this.view.lblSignature, isArabic ? "" : "5%", isArabic ? "5%" : "");
+  setPosition(this.view.lblImpNotice, isArabic ? "" : "3%", isArabic ? "3%" : "");
+  setPosition(this.view.lblImpNoticePara, isArabic ? "" : "3%", isArabic ? "3%" : "");
+
+  // 🔹 Header & Button
+  setPosition(this.view.flxHeadingWithButton.btnSaveResponse,
+    isArabic ? "5%" : "",
+    isArabic ? "" : "5%"
+  );
+
+  setPosition(this.view.flxHeadingWithButton.flxHeading,
+    isArabic ? "5%" : "",
+    isArabic ? "" : "5%"
+  );
+
+  this.view.flxHeadingWithButton.flxHeading.reverseLayoutDirection = isArabic;
+
+  setPosition(this.view.flxArrow,
+    isArabic ? "5%" : "",
+    isArabic ? "" : "5%"
+  );
+
+  setPosition(this.view.flxImportantNotice,
+    isArabic ? "" : "0dp",
+    isArabic ? "0dp" : ""
+  );
+    
+ setPosition(this.view.flxHeadingWithButton.flxBack,
+    isArabic ? "5%" : "",
+    isArabic ? "" : "5%"
+  );
+    
+  // 🔥 Details (single loop — no duplication)
+  var detailsList = ["details1","details2","details3","details4","details5","details6","details7","details17"];
+
+  detailsList.forEach(function(id) {
+
+    var item = self.view[id];
+    if (!item) return;
+
+    setPosition(item.txbData,
+      isArabic ? "" : "4%",
+      isArabic ? "4%" : ""
+    );
+
+    setPosition(item.flxName,
+      isArabic ? "" : "32dp",
+      isArabic ? "32dp" : ""
     );
     
-    setPosition(
-      self.view.flxHeadingWithButton.flxHeading,
-      isArabic ? "5%" : "",
-      isArabic ? "" : "5%"
-    );
-      self.view.flxHeadingWithButton.flxHeading.reverseLayoutDirection = isArabic;
 
-    setPosition(
-      self.view.flxArrow,
-      isArabic ? "5%" : "",
-      isArabic ? "" : "5%"
-    );
-    
-     setPosition(
-      self.view.flxImportantNotice,
-      isArabic ? "" : "0dp",
-      isArabic ? "0dp" : ""
-    );
-
-    
-    // 🔥 Details config (only define once)
-    var detailsList = ["details1", "details2","details3","details4","details5","details6","details7"];
-
-    detailsList.forEach(function(id) {
-
-      var item = self.view[id];
-      if (!item) return;
-
-      // txbData
-      setPosition(
-        item.txbData,
-        isArabic ? "" : "0dp",
-        isArabic ? "0dp" : ""
+    if (item.flxArrow) {
+      setPosition(item.flxArrow,
+        isArabic ? "8dp" : "",
+        isArabic ? "" : "8dp"
       );
+    }
 
-      // label (flxName)
-      setPosition(
-        item.flxName,
-        isArabic ? "" : "32dp",
-        isArabic ? "32dp" : ""
-      );
+    setAlignment(item.txbData);
+    setAlignment(item.lblNamedata);
+  });
 
-      // arrow
-      if (item.flxArrow) {
-        setPosition(
-          item.flxArrow,
-          isArabic ? "8dp" : "",
-          isArabic ? "" : "8dp"
-        );
-      }
-    });
-    self.view.flxHeadingWithButton.lblImages.text =  voltmx.i18n.getLocalizedString("Miscellaneous");
-    self.view.flxHeadingWithButton.btnSaveResponse.text = voltmx.i18n.getLocalizedString("save response");
-    self.view.details1.lblNamedata.text =  voltmx.i18n.getLocalizedString("Tool Kit");
-    self.view.details2.lblNamedata.text = voltmx.i18n.getLocalizedString("Damaged Areas");
-    self.view.details3.lblNamedata.text =  voltmx.i18n.getLocalizedString("Estimated Repair Cost");
-    self.view.details4.lblNamedata.text = voltmx.i18n.getLocalizedString("Service Provider");
-    self.view.details5.lblNamedata.text =  voltmx.i18n.getLocalizedString("Technician ID");
-    self.view.details6.lblNamedata.text = voltmx.i18n.getLocalizedString("Branch");
-    self.view.details7.lblNamedata.text =  voltmx.i18n.getLocalizedString("City");
-    self.view.lblSignature.text = voltmx.i18n.getLocalizedString("Signature");
-    self.view.lblImpNotice.text = voltmx.i18n.getLocalizedString("important notice");
-    self.view.lblImpNoticePara.text = voltmx.i18n.getLocalizedString("Emirates Transport is not responsible for hidden defects of the vehicle");
-    self.view.flxCompleteButton.btnCompleteInspection.text = voltmx.i18n.getLocalizedString("Complete Inspection");
-    self.view.forceLayout();
-  },
+  // 🌐 Localization
+  this.view.flxHeadingWithButton.lblImages.text = voltmx.i18n.getLocalizedString("Miscellaneous");
+  this.view.flxHeadingWithButton.btnSaveResponse.text = voltmx.i18n.getLocalizedString("save response");
 
+  this.view.details1.lblNamedata.text = voltmx.i18n.getLocalizedString("Tool Kit");
+  this.view.details2.lblNamedata.text = voltmx.i18n.getLocalizedString("Damaged Areas");
+  this.view.details3.lblNamedata.text = voltmx.i18n.getLocalizedString("Estimated Repair Cost");
+  this.view.details4.lblNamedata.text = voltmx.i18n.getLocalizedString("Service Provider");
+  this.view.details5.lblNamedata.text = voltmx.i18n.getLocalizedString("Technician ID");
+  this.view.details6.lblNamedata.text = voltmx.i18n.getLocalizedString("Branch");
+  this.view.details7.lblNamedata.text = voltmx.i18n.getLocalizedString("City");
+
+  this.view.lblSignature.text = voltmx.i18n.getLocalizedString("Signature");
+  this.view.lblImpNotice.text = voltmx.i18n.getLocalizedString("important notice");
+  this.view.lblImpNoticePara.text = voltmx.i18n.getLocalizedString("Emirates Transport is not responsible for hidden defects of the vehicle");
+  this.view.details17.lblNamedata.text = voltmx.i18n.getLocalizedString("Service Book");
+
+  this.view.flxCompleteButton.btnCompleteInspection.text =
+    voltmx.i18n.getLocalizedString("Complete Inspection");
+
+  this.view.forceLayout();
+},
+  
+  
+  
 
   onPreShow: function(){
     var self = this;
