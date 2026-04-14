@@ -3,6 +3,7 @@ define({
   onNavigate: function(context)
   {
     this.context = context;
+    this.view.saveresponse.btnClose.skin = "sknBtnd3243018px";
     this.view.preShow = this.onPreShow.bind(this);
      this.view.saveresponse.setVisibility(false);
      this.view.btnCompleteAndSubmit.onClick = this.showpopup.bind(this);
@@ -86,7 +87,7 @@ var lotNo = record.lot_no || "NA";
     );
 
     // 4️⃣ Call backend service
-    self.timeSetting();
+    self.timeSetting("start");
     self.vehicleDetails(objectId, self.view.lblStartWashing.text);
 
   },
@@ -196,7 +197,7 @@ var lotNo = record.lot_no || "NA";
     );
 
     // 4️⃣ Call backend service
-    self.timeSetting();
+    self.timeSetting("end");
     self.vehicleDetails1(objectId, self.view.lblStartWashing.text);
   },
 
@@ -247,7 +248,7 @@ var lotNo = record.lot_no || "NA";
 
     if (response && response.opstatus === 0) {
 
-      self.view.flxStarted.setVisibility(false);
+      self.view.flxStarted.setVisibility(true);
       self.view.flxEnded.setVisibility(true);
 
       // 1️⃣ Set label value
@@ -275,29 +276,29 @@ var lotNo = record.lot_no || "NA";
     alert("Failed to update vehicle status");
   },
 
-  timeSetting: function(){
-    var now = new Date();
+ timeSetting: function(type){
+  var now = new Date();
 
-    var hours = now.getHours();
-    var minutes = now.getMinutes();
-    var seconds = now.getSeconds();
+  var hours = now.getHours();
+  var minutes = now.getMinutes();
+  var seconds = now.getSeconds();
 
-    var ampm = hours >= 12 ? "PM" : "AM";
+  var ampm = hours >= 12 ? "PM" : "AM";
 
-    hours = hours % 12;
-    hours = hours ? hours : 12;
+  hours = hours % 12;
+  hours = hours ? hours : 12;
 
-    // Add leading zero if needed
-    minutes = minutes < 10 ? "0" + minutes : minutes;
-    seconds = seconds < 10 ? "0" + seconds : seconds;
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  seconds = seconds < 10 ? "0" + seconds : seconds;
 
-    var finalTime = hours + ":" + minutes + ":" + seconds + " " + ampm;
+  var finalTime = hours + ":" + minutes + ":" + seconds + " " + ampm;
 
-
+  if(type === "start"){
     this.view.lblStartedTime.text = finalTime;
+  } else if(type === "end"){
     this.view.lblEndedTime.text = finalTime;
-    voltmx.print(finalTime);
   }
 
-
+  voltmx.print(finalTime);
+}
 });

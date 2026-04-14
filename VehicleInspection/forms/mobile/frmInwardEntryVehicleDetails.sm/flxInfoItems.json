@@ -46,8 +46,8 @@
         "flxBodyStyleRow",
         "flxLocationRow",
         "flxMileageRow",
-        "flxColorRow",
-        "flxDriverTypeRow"
+        "flxDriverTypeRow",
+        "flxColorRow"
     ],
     "clipbounds": true,
     "containerweight": 100,

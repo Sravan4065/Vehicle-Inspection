@@ -420,12 +420,14 @@ this.view.flxSearchComponent.tbxSearchBy.onTextChange = this.onSearchTextChange.
   
   openDetails: function(objectId,record)
   {
-    new voltmx.mvc.Navigation("frmWashing").navigate(
-    {
+   NavigationManager.push("frmWashing",  {
+
       "objectId": objectId,
+
       "record": record
-      
+
     });
+ 
   },
   
   adjustRTL: function()

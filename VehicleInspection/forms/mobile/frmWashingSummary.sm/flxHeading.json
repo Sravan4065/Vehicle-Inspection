@@ -54,6 +54,18 @@
                 "kuid": "a469d34394374a02b85186f3ff20ac03",
                 "srcKUID": "e3bfd273ea9e44b4bc5367e8775cd1cf",
                 "wType": "FlexContainer"
+            },
+            "centerX": {
+                "Default": {
+                    "type": "string",
+                    "value": ""
+                }
+            },
+            "left": {
+                "Default": {
+                    "type": "string",
+                    "value": "0dp"
+                }
             }
         },
         "imgBack": {
@@ -70,6 +82,12 @@
                 "kuid": "a663d5982c304d00b8c39b10b03c00f3",
                 "srcKUID": "c99ec061bed3441bb3221b9f335ab163",
                 "wType": "Label"
+            },
+            "left": {
+                "Default": {
+                    "type": "string",
+                    "value": "4%"
+                }
             },
             "text": "Washing"
         }
