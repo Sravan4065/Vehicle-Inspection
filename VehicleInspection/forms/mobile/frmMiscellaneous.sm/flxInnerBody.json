@@ -36,6 +36,7 @@
     "canUpdateUI": true,
     "children": [
         "details1",
+        "details17",
         "details2",
         "details3",
         "details4",

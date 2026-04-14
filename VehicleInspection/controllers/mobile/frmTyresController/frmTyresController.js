@@ -773,6 +773,24 @@ uploadImage: function()
   },
   onSaveResponseClick: function () {
     var self = this;
+    
+      var isValid = true;
+
+for (var key in self.inspectionData) {
+
+  var item = self.inspectionData[key];
+
+//   var hasNotes = item.notes && item.notes.trim() !== "";
+//   var hasEstimate = item.repair_estimate_aed && Number(item.repair_estimate_aed) > 0;
+//   var hasImage = item.image_url_id;
+  var hasRating = item.condition_rating && Number(item.condition_rating) > 0;
+
+  if (!(hasRating)) {
+    isValid = false;
+    break;
+  }
+}
+     if(isValid){
     var baseURL = voltmx.store.getItem("BASE_URL");
     if (baseURL && !baseURL.endsWith("/")) {
       baseURL += "/";
@@ -864,6 +882,11 @@ uploadImage: function()
               "inspection_tyres": inspection_tyres
             }
     request.send(JSON.stringify(data));
+     }
+        else
+      {
+        alert("All ratings are mandatory");
+      }
   },
   
   onNotesChange: function() {

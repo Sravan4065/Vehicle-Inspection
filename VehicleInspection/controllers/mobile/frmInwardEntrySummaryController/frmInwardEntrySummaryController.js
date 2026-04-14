@@ -557,7 +557,7 @@ define({
     this.view.flxSummary.lblTotalVehicles.text = voltmx.i18n.getLocalizedString("Total Vehicles");
     this.view.flxSummary.lblCompletedVehicles.text = voltmx.i18n.getLocalizedString("Completed Vehicles");
     this.view.flxSummary.lblPendingVehicles.text = voltmx.i18n.getLocalizedString("Pending Vehicles");
-    this.view.lblSummaryOfVehicleInspection.text = voltmx.i18n.getLocalizedString("Summary of Vehicle Inspections");
+    this.view.lblSummaryOfVehicleInspection.text = voltmx.i18n.getLocalizedString("Summary of Vehicle Inward");
     this.view.lblPendingVehicles.text = voltmx.i18n.getLocalizedString("Pending Vehicles");
     this.view.lblCompletedVehicles.text = voltmx.i18n.getLocalizedString("Completed Vehicles");
     //this.view.flxSearchComponent.tbxSearchBy.text = voltmx.i18n.getLocalizedString("Search by ID");
