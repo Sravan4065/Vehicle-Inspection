@@ -31,22 +31,18 @@
     },
     "_width_": {
         "type": "string",
-        "value": "97%"
+        "value": "100%"
     },
     "areflexpropsreferenced": false,
     "autogrowmode": 0,
     "canUpdateUI": true,
-    "centerx": {
-        "type": "string",
-        "value": "50%"
-    },
-    "clipbounds": true,
+    "clipbounds": false,
     "containerweight": 0,
     "dataDiffs": {
         "flxBack": {
             "__events__": {},
             "__info__": {
-                "kuid": "a1c415ae3a1e47dfbf559f8c6327afbf",
+                "kuid": "dbb5f98f13fb439093b8b7803cc479a7",
                 "srcKUID": "c9c62e4afcf44ba8a1956978a66817d1",
                 "wType": "FlexContainer"
             }
@@ -55,27 +51,46 @@
             "__events__": {},
             "__info__": {
                 "isRoot": true,
-                "kuid": "a14f6217c7874922b2df696aa3bd0806",
+                "kuid": "ad67d1c3a45a4850ac0c6cc0c7268390",
                 "srcKUID": "e3bfd273ea9e44b4bc5367e8775cd1cf",
                 "wType": "FlexContainer"
+            },
+            "centerY": {
+                "Default": {
+                    "type": "string",
+                    "value": ""
+                }
+            },
+            "top": {
+                "Default": {
+                    "type": "string",
+                    "value": "0dp"
+                }
             }
         },
         "imgBack": {
             "__events__": {},
             "__info__": {
-                "kuid": "eef34a45d5a140e59a7bbc22df0e6b71",
+                "kuid": "c50b2dfa99b141d8bb0fab9f01511d00",
                 "srcKUID": "gbbcb1b0713640a0bec682ec913b1fb7",
                 "wType": "Image"
-            }
+            },
+            "src": "backarrow.png"
         },
         "lblImages": {
             "__events__": {},
             "__info__": {
-                "kuid": "g4032c2a6f7d4348bd5492b3a4bd1b61",
+                "kuid": "ecd958dae4c542aa9fd794905f25f35c",
                 "srcKUID": "c99ec061bed3441bb3221b9f335ab163",
                 "wType": "Label"
             },
-            "text": "Washing"
+            "left": {
+                "Default": {
+                    "type": "string",
+                    "value": "17%"
+                }
+            },
+            "text": "Vehicle Status Tracker"
         }
     },
     "enablescrolling": true,
@@ -84,16 +99,15 @@
     "iscustomlayout": false,
     "isdatareferenced": false,
     "isvisible": true,
-    "kuid": "a14f6217c7874922b2df696aa3bd0806",
+    "kuid": "ad67d1c3a45a4850ac0c6cc0c7268390",
     "layouttype": 2,
     "masterType": 0,
     "name": "kony.ui.UserWidgetInstance",
     "parent": "flxInnerBody",
-    "pf": "frmWashingSummary",
+    "pf": "frmStatusTrackVehicleDetails",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainflowhorizontalalignment": false,
-    "reverselayoutdirection": false,
     "snapgridsize": 10,
     "snaptogrid": true,
     "sourceUserWidget": "e3bfd273ea9e44b4bc5367e8775cd1cf",
