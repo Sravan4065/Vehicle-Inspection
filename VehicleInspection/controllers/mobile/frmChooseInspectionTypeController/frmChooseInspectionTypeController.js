@@ -5,6 +5,7 @@ define({
     var self = this;
     this.serviceId = context.type_service_id;
     this.objectId = context.object_id;
+    this.object_service_id = context.object_service_id;
     this.name = context.description;
     this.view.preShow = this.onPreShow.bind(this);
     this.view.segInspectionItems.onRowClick = this.onRowClickAction.bind(this);
@@ -131,7 +132,8 @@ voltmx.application.showLoadingScreen(null,"LoadingScreen",constants.LOADING_SCRE
     var navObj = {
       "object_id" : self.objectId,
       "lovId": selectedRow[0].lov_id || "",
-      "services_id": selectedRow[0].services_id || ""
+      "services_id": selectedRow[0].services_id || "",
+      "object_service_id": self.object_service_id
     }
     if(selectedRow && selectedRow[0].lov_id)
       {

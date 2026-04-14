@@ -4,6 +4,7 @@ define({
     this.objectId = context.object_id;
     this.lovId = context.lovId;
     this.services_id = context.services_id;
+    this.object_service_id = context.object_service_id;
     voltmx.store.removeItem("signature");
     this.view.preShow =this.onPreShow.bind(this);
     this.view.flxHeadingWithButton.btnSaveResponse.onClick = this.onSubmitClick.bind(this);
@@ -271,7 +272,9 @@ define({
     this.view.details6.txbData.text = "";
     this.view.details7.txbData.text = "";
     this.view.details17.txbData.text = "";
-
+     
+    this.view.flxCompleteButton.btnCompleteInspection.skin = "sknBtnebebeb18px";
+    this.view.flxCompleteButton.btnCompleteInspection.setEnabled(false);
     this.view.details3.txbData.textInputMode = constants.TEXTBOX_INPUT_MODE_NUMERIC;
 
     this.view.details3.txbData.onTextChange = function() {
@@ -620,6 +623,8 @@ define({
 
             if (responseJSON.success) {
               alert("Saved successfully");
+              self.view.flxCompleteButton.btnCompleteInspection.skin = "sknBtn61b35cBorder61b35cRadius8px";
+              self.view.flxCompleteButton.btnCompleteInspection.setEnabled(true);
               voltmx.store.removeItem("signature");
             } else {
               alert("Failed to save response");
@@ -742,7 +747,11 @@ define({
         response.records.length > 0) 
     {
       const firstRecord = response.records[0];
-
+       if(firstRecord.signature_image_id)
+         {
+           self.view.flxCompleteButton.btnCompleteInspection.skin = "sknBtn61b35cBorder61b35cRadius8px";
+              self.view.flxCompleteButton.btnCompleteInspection.setEnabled(true);
+         }
       // Check if 'id' exists and is not empty
       if (firstRecord.id && 
           String(firstRecord.id).trim() !== "") 
@@ -938,18 +947,19 @@ define({
 
     //     self.view.flxVehicleReceived.setVisibility(true);
 
-    var serviceName = "ms_fleet";
+    var serviceName = "ms_services";
 
     var integrationObj = voltmx.sdk.getCurrentInstance()
 
     .getIntegrationService(serviceName);
 
-    var operationName = "fleet-wfstatus";
+    var operationName = "wf-status";
 
     var data = {
-
+      "service_request_id": self.object_service_id,
       "object_id": self.objectId,
-      "action_name": "Done"
+      "action_name": "Done",
+      "comments": "Completed the inspection"
 
     };
 
@@ -982,7 +992,7 @@ define({
       voltmx.application.dismissLoadingScreen();
       voltmx.print(response);
 
-      if(response && response.data && response.data.object_id)
+      if(response && response.rawResponse && response.rawResponse.data && response.rawResponse.data.id)
       {
         //            self.view.flxBrowser.setVisibility(false);
         self.view.flxInspectionDonePopup.setVisibility(true);
@@ -1078,6 +1088,66 @@ define({
           alert("File already exists")
         }
       }
+      else if (response.file_url && response.file_name && response.file_id) {
+        
+        // Store file details (you can store in variable / state / local storage)
+        var fileDetails = {
+            image_url: response.file_url,
+            file_name: response.file_name,
+            image_id: response.file_id,
+            object_id: self.objectId
+        };
+        
+         var alertConfig = {
+            message: "Do you want to delete old report?",
+            alertType: constants.ALERT_TYPE_CONFIRMATION,
+            alertTitle: "Confirmation",
+            yesLabel: "Yes",
+            noLabel: "No",
+            alertHandler: function(response) {
+
+                if (response) {
+                    ImageUploadAndDeletion.deleteFile(fileDetails, function(res, err) {
+
+                        if (!err && res && res.opstatus === 0) {
+
+                           
+//                          alert("Old Report Deleted Successfully");   
+                   
+                            var alertConfig = {
+            message: "Do you want to download report?",
+            alertType: constants.ALERT_TYPE_CONFIRMATION,
+            alertTitle: "Confirmation",
+            yesLabel: "Yes",
+            noLabel: "No",
+            alertHandler: function(response) {
+
+                if (response) {
+
+                   self.view.flxPromptGenerate.setVisibility(true); 
+                   
+
+                } else {
+                    
+                }
+            }
+        };
+
+        voltmx.ui.Alert(alertConfig, {});
+                          
+
+                        } else {
+                        }
+                    });
+
+                } else {
+                    
+                }
+            }
+        };
+
+        voltmx.ui.Alert(alertConfig, {});
+       }
       else
       {
         self.showToast(response.message);

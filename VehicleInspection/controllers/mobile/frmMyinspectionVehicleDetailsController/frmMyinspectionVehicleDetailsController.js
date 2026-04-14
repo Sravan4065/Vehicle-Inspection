@@ -4,7 +4,7 @@ define({
 onNavigate: function(context){
   this.adjustRTL();
     this.vehicleDetails = context.vehicleDetails;
-
+    this.objectId = context.objectId;
    
    this.view.preShow = this.onPreShow.bind(this);
 },
@@ -12,16 +12,87 @@ onNavigate: function(context){
  onPreShow: function() {
    var self = this;
    toggleFooterIcons(this.view, "frmMyinspectionVehicleDetails");
-   this.view.btnStart.onClick = () =>
-   {
-     NavigationManager.push("frmChooseInspectionType",self.vehicleDetails);
-   }
+//    this.view.btnStart.onClick = () =>
+//    {
+//      NavigationManager.push("frmChooseInspectionType",self.vehicleDetails);
+//    }
+   this.view.btnStart.onClick = this.startInspection.bind(this);
    this.populateDetails();
    this.view.btnClose.onClick = () =>
    {
      NavigationManager.pop();
    }
  },
+  
+  startInspection: function()
+  {
+     var self = this;
+
+    //     self.view.flxVehicleReceived.setVisibility(true);
+
+    var serviceName = "ms_services";
+
+    var integrationObj = voltmx.sdk.getCurrentInstance()
+
+    .getIntegrationService(serviceName);
+
+    var operationName = "wf-status";
+
+    var data = {
+      "service_request_id": self.vehicleDetails.object_service_id,
+      "object_id": self.objectId,
+      "action_name": "Started",//"Approve Request",
+      "comments": "Started the inspection"
+
+    };
+
+    // Headers
+
+    var headers = {
+
+      "user_token": voltmx.store.getItem("getUserAccesstoken") 
+
+    };
+    //  integrationObj.invokeOperation
+    integrationObj.invokeOperation(
+
+      operationName,
+
+      headers,
+
+      data,
+
+      operationSuccessCompleted,   // ✅ pass reference
+
+      operationFailureCompleted
+
+    );
+
+
+    function operationSuccessCompleted(response)
+
+    {
+      voltmx.application.dismissLoadingScreen();
+      voltmx.print(response);
+
+      if(response && response.rawResponse && response.rawResponse.data && response.rawResponse.data.id)
+      {
+        //            self.view.flxBrowser.setVisibility(false);
+        NavigationManager.push("frmChooseInspectionType",self.vehicleDetails);
+      }
+
+
+    }
+
+    function operationFailureCompleted(error)
+
+    {
+      voltmx.application.dismissLoadingScreen();
+      voltmx.print(error);
+      alert("Cannot start Inspection");
+
+    }
+  },
   
   adjustRTL: function () {
 
