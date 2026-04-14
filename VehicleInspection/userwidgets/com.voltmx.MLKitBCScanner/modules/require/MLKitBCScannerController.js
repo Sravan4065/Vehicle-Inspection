@@ -428,7 +428,7 @@ callback: function(data) {
 
 // this.view.Label0f31f4b37bd1f48.text = value;
       
-      NavigationManager.push("frmInwardEntryVehicleDetails",{
+      NavigationManager.push("frmStatusTrackVehicleDetails",{
       "objectId": value,
       "isPending": false
     })

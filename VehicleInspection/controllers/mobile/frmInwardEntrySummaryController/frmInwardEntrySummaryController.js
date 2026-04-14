@@ -389,7 +389,7 @@ define({
                     "left": isArabic ? "5%" : "",
                     "right": isArabic ? "" : "5%",
                     "onClick": function() {
-                        self.openDetails(record.object_id,record);
+                        self.openDetails(record.object_id,record,record.lot_no);
                     }
                 }
             });
@@ -459,13 +459,14 @@ define({
   }
  
 },
-  openDetails: function(objectId,record)
+  openDetails: function(objectId,record,lotno)
   {
     var self = this;
     NavigationManager.push("frmInwardEntryVehicleDetails", {
       "objectId": objectId,
       "isPending": self.isPending,
-       "record": record
+       "record": record,
+       "lotno":lotno
     })
 //     new voltmx.mvc.Navigation("frmInwardEntryVehicleDetails").navigate(
 //     {

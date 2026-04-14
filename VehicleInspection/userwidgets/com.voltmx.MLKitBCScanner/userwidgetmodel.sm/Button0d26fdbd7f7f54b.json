@@ -7,7 +7,7 @@
     },
     "_left_": {
         "type": "string",
-        "value": "55dp"
+        "value": "0"
     },
     "_margin_": [
         6,
@@ -24,8 +24,8 @@
     "_skin_": "s3fb6a977abc425ea1f2681d40acec19",
     "_text_": "Scan",
     "_top_": {
-        "type": "string",
-        "value": "10dp"
+        "type": "number",
+        "value": "140"
     },
     "_width_": {
         "type": "string",
@@ -34,18 +34,18 @@
     "canUpdateUI": true,
     "centerx": {
         "type": "string",
-        "value": "50%"
+        "value": "49.95%"
     },
     "containerweight": 100,
     "contentalignment": 5,
     "displaytext": true,
     "focusskin": "s4ec7cfbb99d4ca7a00f788aa71ee43c",
-    "id": "Button0g0d19b0b8fc841",
-    "ide_onClick": "AS_Button_ae43e08f789c4ba082cb1db1ae42e65f",
+    "id": "Button0d26fdbd7f7f54b",
+    "ide_onClick": "AS_Button_gc17fa2d51ac424eaa6e52f507b2dacf",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "u625e7ecc9f44c0fba16345201ef7470",
+    "kuid": "d250d3ac7dd24072aee1fa5dda850a0e",
     "name": "kony.ui.Button",
     "parent": "MLKitBCScanner",
     "pf": "userwidgetmodel",

@@ -3,7 +3,7 @@
     "DNDConfig": null,
     "_height_": {
         "type": "string",
-        "value": "55.73%"
+        "value": "27.51%"
     },
     "_left_": {
         "type": "string",
@@ -23,11 +23,11 @@
     ],
     "_top_": {
         "type": "string",
-        "value": "70dp"
+        "value": "210dp"
     },
     "_width_": {
         "type": "string",
-        "value": "95.41%"
+        "value": "95%"
     },
     "canUpdateUI": true,
     "containerweight": 0,
@@ -37,11 +37,11 @@
     "id": "bgNativeContainer",
     "info": null,
     "iscustomlayout": false,
-    "isvisible": false,
+    "isvisible": true,
     "kiosk": {
         "render": false
     },
-    "kuid": "u2654498e8e6450292b216d2c5796fa5",
+    "kuid": "u034aa1456944d448b0ef55985157c1e",
     "name": "kony.ui.NativeContainer",
     "parent": "MLKitBCScanner",
     "pf": "userwidgetmodel",
