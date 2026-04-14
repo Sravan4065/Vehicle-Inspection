@@ -5,182 +5,182 @@
             "custom": [
                 {
                     "group": "General",
-                    "kuid": "a6dc17afb3dc49e6b0c37b695d9e9820",
+                    "kuid": "b9a924340c734e3aa0d418e89a0abde9",
                     "paramList": [],
                     "propertyKey": "startSession",
                     "pw": {
                         "displayName": "startSession",
                         "uiRepresentation": "Label-Label-Button-Button"
                     },
-                    "srcWgtKUID": "u028f1d6c04e44fd898a6496d2585b2e",
+                    "srcWgtKUID": "u42e1bbbfbb842d2ac06197450c164b5",
                     "type": "event"
                 },
                 {
                     "group": "General",
-                    "kuid": "jfcf0f938b1e41788933e881037467eb",
+                    "kuid": "e20d9f391c514cda8e84fd8e68c22788",
                     "paramList": [],
                     "propertyKey": "stopSession",
                     "pw": {
                         "displayName": "stopSession",
                         "uiRepresentation": "Label-Label-Button-Button"
                     },
-                    "srcWgtKUID": "u028f1d6c04e44fd898a6496d2585b2e",
+                    "srcWgtKUID": "u42e1bbbfbb842d2ac06197450c164b5",
                     "type": "event"
                 },
                 {
                     "group": "General",
-                    "kuid": "d2e776c6ca614f2a9ca304fc62e2dd09",
+                    "kuid": "aa54d52f292d47ea81f7fcc04f32a83a",
                     "paramList": [],
                     "propertyKey": "restartSession",
                     "pw": {
                         "displayName": "restartSession",
                         "uiRepresentation": "Label-Label-Button-Button"
                     },
-                    "srcWgtKUID": "u028f1d6c04e44fd898a6496d2585b2e",
+                    "srcWgtKUID": "u42e1bbbfbb842d2ac06197450c164b5",
                     "type": "event"
                 },
                 {
                     "group": "General",
-                    "kuid": "d86c5ae983c0444b812ce363f51a9dc2",
+                    "kuid": "cbdd90ca88de4f10b3a2ee480dc4420d",
                     "paramList": [],
                     "propertyKey": "addResultCallback",
                     "pw": {
                         "displayName": "addResultCallback",
                         "uiRepresentation": "Label-Label-Button-Button"
                     },
-                    "srcWgtKUID": "u028f1d6c04e44fd898a6496d2585b2e",
+                    "srcWgtKUID": "u42e1bbbfbb842d2ac06197450c164b5",
                     "type": "event"
                 },
                 {
                     "group": "General",
-                    "kuid": "g1fed5d3c80d466cb0835a137b21714c",
+                    "kuid": "e19aca9f35e84c8d817775c7c0541c14",
                     "paramList": [],
                     "propertyKey": "enableFlash",
                     "pw": {
                         "displayName": "enableFlash",
                         "uiRepresentation": "Label-Label-Button-Button"
                     },
-                    "srcWgtKUID": "u028f1d6c04e44fd898a6496d2585b2e",
+                    "srcWgtKUID": "u42e1bbbfbb842d2ac06197450c164b5",
                     "type": "event"
                 },
                 {
                     "group": "General",
-                    "kuid": "h6c56a881a46419eba0707e14f5e3d33",
+                    "kuid": "haa0f3f18a9042249abf104d0a7cfdd1",
                     "paramList": [],
                     "propertyKey": "setupRectOfInterest",
                     "pw": {
                         "displayName": "setupRectOfInterest",
                         "uiRepresentation": "Label-Label-Button-Button"
                     },
-                    "srcWgtKUID": "u028f1d6c04e44fd898a6496d2585b2e",
+                    "srcWgtKUID": "u42e1bbbfbb842d2ac06197450c164b5",
                     "type": "event"
                 },
                 {
                     "group": "General",
-                    "kuid": "c805a78c7394461faa587f75773afeb8",
+                    "kuid": "b823d6db56b34294abadd94355d50064",
                     "paramList": [],
                     "propertyKey": "removeRectofInterest",
                     "pw": {
                         "displayName": "removeRectofInterest",
                         "uiRepresentation": "Label-Label-Button-Button"
                     },
-                    "srcWgtKUID": "u028f1d6c04e44fd898a6496d2585b2e",
+                    "srcWgtKUID": "u42e1bbbfbb842d2ac06197450c164b5",
                     "type": "event"
                 },
                 {
                     "group": "General",
-                    "kuid": "f0b3395e0ca44be398f6e8079c5e4941",
+                    "kuid": "c5318ea18abe4052b733b5f3a726b64e",
                     "paramList": [],
                     "propertyKey": "addInitCompleteCallback",
                     "pw": {
                         "displayName": "addInitCompleteCallback",
                         "uiRepresentation": "Label-Label-Button-Button"
                     },
-                    "srcWgtKUID": "u028f1d6c04e44fd898a6496d2585b2e",
+                    "srcWgtKUID": "u42e1bbbfbb842d2ac06197450c164b5",
                     "type": "event"
                 },
                 {
                     "group": "General",
-                    "kuid": "b0301cff740f458bb95babeca31e033b",
+                    "kuid": "h723e8d6c8a643dea490a7c8e2a155d6",
                     "paramList": [],
                     "propertyKey": "setupSquareOfInterest",
                     "pw": {
                         "displayName": "setupSquareOfInterest",
                         "uiRepresentation": "Label-Label-Button-Button"
                     },
-                    "srcWgtKUID": "u028f1d6c04e44fd898a6496d2585b2e",
+                    "srcWgtKUID": "u42e1bbbfbb842d2ac06197450c164b5",
                     "type": "event"
                 },
                 {
                     "group": "General",
-                    "kuid": "c4467a72cd354c50ba6add3a263e0f17",
+                    "kuid": "f5d30037d2044e7d8e0852038789c259",
                     "paramList": [],
                     "propertyKey": "zoomIn",
                     "pw": {
                         "displayName": "zoomIn",
                         "uiRepresentation": "Label-Label-Button-Button"
                     },
-                    "srcWgtKUID": "u028f1d6c04e44fd898a6496d2585b2e",
+                    "srcWgtKUID": "u42e1bbbfbb842d2ac06197450c164b5",
                     "type": "event"
                 },
                 {
                     "group": "General",
-                    "kuid": "g19a04893c5c480983154be655081635",
+                    "kuid": "b3cd324912dd4c06b697b2c4cf46d692",
                     "paramList": [],
                     "propertyKey": "zoomOut",
                     "pw": {
                         "displayName": "zoomOut",
                         "uiRepresentation": "Label-Label-Button-Button"
                     },
-                    "srcWgtKUID": "u028f1d6c04e44fd898a6496d2585b2e",
+                    "srcWgtKUID": "u42e1bbbfbb842d2ac06197450c164b5",
                     "type": "event"
                 },
                 {
                     "group": "General",
-                    "kuid": "j78b932756f947419214edc16c320c79",
+                    "kuid": "d31f551ba03a4037b693fb4ff19c62c1",
                     "paramList": [],
                     "propertyKey": "isFlashSupports",
                     "pw": {
                         "displayName": "isFlashSupports",
                         "uiRepresentation": "Label-Label-Button-Button"
                     },
-                    "srcWgtKUID": "u028f1d6c04e44fd898a6496d2585b2e",
+                    "srcWgtKUID": "u42e1bbbfbb842d2ac06197450c164b5",
                     "type": "event"
                 },
                 {
                     "group": "General",
-                    "kuid": "ea10fc1fa9404781980198abbeafa072",
+                    "kuid": "e92316bd0b684a38b9072ae3a1ed34c4",
                     "paramList": [],
                     "propertyKey": "setupCustomRectOfInterest",
                     "pw": {
                         "displayName": "setupCustomRectOfInterest",
                         "uiRepresentation": "Label-Label-Button-Button"
                     },
-                    "srcWgtKUID": "u028f1d6c04e44fd898a6496d2585b2e",
+                    "srcWgtKUID": "u42e1bbbfbb842d2ac06197450c164b5",
                     "type": "event"
                 },
                 {
                     "group": "General",
-                    "kuid": "ba1b016d61c14cebab3bb24b8a16a285",
+                    "kuid": "f44451279d5b42e7aa24488a39486948",
                     "paramList": [],
                     "propertyKey": "isCameraPermissionAllowed",
                     "pw": {
                         "displayName": "isCameraPermissionAllowed",
                         "uiRepresentation": "Label-Label-Button-Button"
                     },
-                    "srcWgtKUID": "u028f1d6c04e44fd898a6496d2585b2e",
+                    "srcWgtKUID": "u42e1bbbfbb842d2ac06197450c164b5",
                     "type": "event"
                 },
                 {
                     "group": "General",
-                    "kuid": "e3dd373118ac49af85e066853ca2387e",
+                    "kuid": "jc6452f91bca4a20ad322944f98d860d",
                     "paramList": [],
                     "propertyKey": "higlightCodes",
                     "pw": {
                         "displayName": "higlightCodes",
                         "uiRepresentation": "Label-Label-Button-Button"
                     },
-                    "srcWgtKUID": "u028f1d6c04e44fd898a6496d2585b2e",
+                    "srcWgtKUID": "u42e1bbbfbb842d2ac06197450c164b5",
                     "type": "event"
                 }
             ],
@@ -204,7 +204,7 @@
                     "access": "Write",
                     "defaultValue": "[]",
                     "group": "General",
-                    "kuid": "h0ca426b3580428db48c14d2aea45c6a",
+                    "kuid": "ea89b8f0e35b4aac83cbdca6d13caab6",
                     "originalPropertyKey": "codeFormats",
                     "propertyIndex": 1,
                     "propertyKey": "codeFormats",
@@ -221,7 +221,7 @@
                         },
                         "uiRepresentation": "Label-Button"
                     },
-                    "srcWgtKUID": "u028f1d6c04e44fd898a6496d2585b2e",
+                    "srcWgtKUID": "u42e1bbbfbb842d2ac06197450c164b5",
                     "type": "json",
                     "value": ""
                 },
@@ -229,7 +229,7 @@
                     "access": "Write",
                     "defaultValue": true,
                     "group": "General",
-                    "kuid": "f95b88cc37e24642915f8f4c52582594",
+                    "kuid": "a916cfea4c644a6a9ebc3d5d5c4ded68",
                     "originalPropertyKey": "enableContinuousScan",
                     "propertyIndex": 2,
                     "propertyKey": "enableContinuousScan",
@@ -238,7 +238,7 @@
                         "displayName": "enableContinuousScan",
                         "uiRepresentation": "Label-Radiobuttongroup"
                     },
-                    "srcWgtKUID": "u028f1d6c04e44fd898a6496d2585b2e",
+                    "srcWgtKUID": "u42e1bbbfbb842d2ac06197450c164b5",
                     "type": "boolean",
                     "value": "true/false"
                 }

@@ -12,6 +12,7 @@ onNavigate: function(context){
     var self = this;
     var objectId = this.context.objectId;
     var isPending = this.context.isPending;
+  
     
     if(isPending) 
       {
@@ -48,7 +49,8 @@ onNavigate: function(context){
     var self = this;
     self.view.flxVehicleReceived.setVisibility(false);
     NavigationManager.push("frmBarCodeFromInward",{
-      objectId: self.context.objectId
+      lotno: self.context.lotno,
+      
     })
   },
   vehicleDetails: function(objectId) {

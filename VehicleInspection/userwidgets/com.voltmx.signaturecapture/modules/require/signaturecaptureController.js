@@ -137,22 +137,51 @@ defineGetter(this, "objectId", function() {
          * @private
          * @description adds the signature canvas into the native contatiner at post show
          */
+//     addSignatureCanvas: function(eventobject) {
+//       voltmxmp.logger.trace("-- Entering addSignatureCanvas --", voltmxmp.logger.FUNCTION_ENTRY);
+//       this.validateMaxHeightAndWidth();
+//       this.handler.addSignatureCanvas(eventobject, this._penColor, this._backgroundHex, this._saveAs);
+//       voltmxmp.logger.trace("-- Exiting addSignatureCanvas --", voltmxmp.logger.FUNCTION_EXIT);
+//     },
     addSignatureCanvas: function(eventobject) {
-      voltmxmp.logger.trace("-- Entering addSignatureCanvas --", voltmxmp.logger.FUNCTION_ENTRY);
-      this.validateMaxHeightAndWidth();
-      this.handler.addSignatureCanvas(eventobject, this._penColor, this._backgroundHex, this._saveAs);
-      voltmxmp.logger.trace("-- Exiting addSignatureCanvas --", voltmxmp.logger.FUNCTION_EXIT);
-    },
+  this.validateMaxHeightAndWidth();
+
+  this.handler.addSignatureCanvas(
+    eventobject,
+    this._penColor,
+    this._backgroundHex,
+    this._saveAs
+  );
+
+  // ✅ ADD THIS (detect user drawing)
+  this.view.flxCanvas.onTouchStart = function() {
+    this.view.btnSave.setEnabled(true);
+  }.bind(this);
+},
     /**
          * @function onClickClear
          * @private
          * @description clear behaviour
          */
+//     onClickClear: function() {
+//       voltmxmp.logger.trace("-- Entering onClickClear --", voltmxmp.logger.FUNCTION_ENTRY);
+//       this.handler.onClickClear();
+//       voltmxmp.logger.trace("-- Exiting onClickClear --", voltmxmp.logger.FUNCTION_EXIT);
+//     },
+//     onClickClear: function() {
+//   voltmxmp.logger.trace("-- Entering onClickClear --", voltmxmp.logger.FUNCTION_ENTRY);
+
+//   this.handler.onClickClear();
+
+//   // ✅ ADD THIS LINE (force validation reset)
+//   this.handler.validateSignature();
+
+//   voltmxmp.logger.trace("-- Exiting onClickClear --", voltmxmp.logger.FUNCTION_EXIT);
+// },
     onClickClear: function() {
-      voltmxmp.logger.trace("-- Entering onClickClear --", voltmxmp.logger.FUNCTION_ENTRY);
-      this.handler.onClickClear();
-      voltmxmp.logger.trace("-- Exiting onClickClear --", voltmxmp.logger.FUNCTION_EXIT);
-    },
+  this.handler.onClickClear();
+  this.view.btnSave.setEnabled(false); // ✅ correct
+},
     /**
          * @function getSignatureFromDevice
          * @private
@@ -167,46 +196,98 @@ defineGetter(this, "objectId", function() {
          * @function onClickSave
          * @private
          */
-    onClickSave: function() {
-      voltmxmp.logger.trace("-- Entering onClickSave --", voltmxmp.logger.FUNCTION_ENTRY);
-      voltmx.runOnMainThread(function() {
-        if(this._saveSignature){
-          this.handler.onClickSave();
-        }
-        else{
-          this.handler.validateSignature();
-        }
-      }.bind(this), []);
-      voltmxmp.logger.trace("-- Exiting onClickSave --", voltmxmp.logger.FUNCTION_EXIT);
-    },
+//     onClickSave: function() {
+//       voltmxmp.logger.trace("-- Entering onClickSave --", voltmxmp.logger.FUNCTION_ENTRY);
+//       voltmx.runOnMainThread(function() {
+//         if(this._saveSignature){
+//           this.handler.onClickSave();
+//         }
+//         else{
+//           this.handler.validateSignature();
+//         }
+//       }.bind(this), []);
+//       voltmxmp.logger.trace("-- Exiting onClickSave --", voltmxmp.logger.FUNCTION_EXIT);
+//     },
+ onClickSave: function() {
+  voltmxmp.logger.trace("-- Entering onClickSave --", voltmxmp.logger.FUNCTION_ENTRY);
+
+  voltmx.runOnMainThread(function () {
+
+    // ✅ Directly call save (component handles validation internally)
+    this.handler.onClickSave();
+
+  }.bind(this), []);
+
+  voltmxmp.logger.trace("-- Exiting onClickSave --", voltmxmp.logger.FUNCTION_EXIT);
+},
+//     onCheckValidity: function(isValid){
+
+//   if (!isValid) {
+//     voltmx.ui.Alert({
+//       message: "Please draw signature",
+//       alertType: constants.ALERT_TYPE_ERROR
+//     }, {});
+//   }
+
+// },
+    onCheckValidity: function(isValid){
+
+  // ✅ Enable button when user draws
+  if (isValid) {
+    this.view.btnSave.setEnabled(true);
+  } else {
+    this.view.btnSave.setEnabled(false);
+
+    voltmx.ui.Alert({
+      message: "Please draw signature",
+      alertType: constants.ALERT_TYPE_ERROR
+    }, {});
+  }
+
+},
     /**
          * @function onSaveImageSuccess
          * @exposed
          * @description event for image save success
          */
 
-    onSaveImageSuccess: function(response){
-      var config ={
-        albumName: "MyAlbum",
-        extensionType: voltmx.image.ENCODE_PNG,
-      };  
+//     onSaveImageSuccess: function(response){
+//       var config ={
+//         albumName: "MyAlbum",
+//         extensionType: voltmx.image.ENCODE_PNG,
+//       };  
 
-      var imgName = response;
-      var img = voltmx.image.createImage(imgName);
-      img.writeToMediaGallery(config);
-//       var signatureBase64 = this.getSignatureFromDevice();
-      var signatureBase64 = voltmx.convertToBase64(response);
-//        alert("Signature Base64:\n" + signatureBase64);
-      voltmx.store.setItem("signature", signatureBase64);
-//       this.view.setVisibility(false);
-      var currentForm = voltmx.application.getCurrentForm();
-      if (currentForm && currentForm.flxSignature) {
-        currentForm.flxSignature.setVisibility(false);
-      }
+//       var imgName = response;
+//       var img = voltmx.image.createImage(imgName);
+//       img.writeToMediaGallery(config);
+// //       var signatureBase64 = this.getSignatureFromDevice();
+//       var signatureBase64 = voltmx.convertToBase64(response);
+// //        alert("Signature Base64:\n" + signatureBase64);
+//       voltmx.store.setItem("signature", signatureBase64);
+// //       this.view.setVisibility(false);
+//       var currentForm = voltmx.application.getCurrentForm();
+//       if (currentForm && currentForm.flxSignature) {
+//         currentForm.flxSignature.setVisibility(false);
+//       }
       
-//       voltmx.ui.Alert({message:"Successfully saved to device gallery!!!",alertType:constants.ALERT_TYPE_INFO},{});
-    }, 
+// //       voltmx.ui.Alert({message:"Successfully saved to device gallery!!!",alertType:constants.ALERT_TYPE_INFO},{});
+//     }, 
     
+   onSaveImageSuccess: function(response){
+
+  var signatureBase64 = voltmx.convertToBase64(response);
+  voltmx.store.setItem("signature", signatureBase64);
+
+  var currentForm = voltmx.application.getCurrentForm();
+  if (currentForm && currentForm.flxSignature) {
+    currentForm.flxSignature.setVisibility(false);
+  }
+
+  voltmx.ui.Alert({
+    message: "Image Captured Success",
+    alertType: constants.ALERT_TYPE_INFO
+  }, {});
+},
 
     /**
          * @function onSaveImageFailure
@@ -229,9 +310,7 @@ defineGetter(this, "objectId", function() {
          * @exposed
          * @description event for checking if signature present or not
          */
-    onCheckValidity: function(bool){
 
-    },
     /**
          * @function onClickRedo
          * @exposed
