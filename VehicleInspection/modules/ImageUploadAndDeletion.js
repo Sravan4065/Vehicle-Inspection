@@ -87,6 +87,51 @@ voltmx.application.showLoadingScreen(null,"Deleting...",constants.LOADING_SCREEN
             callback(null, error);
         }
     }
+    },
+  
+   deleteFile: function(fileDetails,callback)
+  {
+    var self = this;
+voltmx.application.showLoadingScreen(null,"Deleting...",constants.LOADING_SCREEN_POSITION_ONLY_CENTER, false,true,null);
+    
+    var serviceName = "fry_collection";
+    var integrationObj =  voltmx.sdk.getCurrentInstance().getIntegrationService(serviceName);
+    var operationName = "delete-object-item";
+    var headers = 
+        {
+
+        }
+
+    var data = 
+        {
+          "moduleName": "DeleteFile",
+           "file_url": fileDetails.image_url,
+    "file_id": fileDetails.image_id,
+    "file_cat": "document", 
+          "user_token": voltmx.store.getItem("getUserAccesstoken"),
+
+        }
+    integrationObj.invokeOperation(operationName, headers, data, successCallback, failureCallback)
+
+    function successCallback(response)
+    {
+      voltmx.application.dismissLoadingScreen();
+        voltmx.print(response);
+
+        if(callback){
+            callback(response);
+        }
+    }
+    
+    function failureCallback(error)
+    {
+      voltmx.application.dismissLoadingScreen();
+        voltmx.print(error);
+
+        if(callback){
+            callback(null, error);
+        }
+    }
     }
   
   

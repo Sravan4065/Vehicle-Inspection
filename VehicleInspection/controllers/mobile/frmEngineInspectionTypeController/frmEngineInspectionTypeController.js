@@ -407,7 +407,11 @@ this.inspectionData[key].rating = selectedRating;
 
   onAddDetailsSubmit: function () {
   var self = this;
-
+if (
+  (self.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text || "").trim() !== "" &&
+  (self.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text || "").trim() !== ""
+)
+    {
   var index = self.currentIndex;
   if (typeof index === "undefined" || !self.records[index]) {
     voltmx.print("Error: currentIndex is undefined or invalid");
@@ -437,9 +441,9 @@ this.inspectionData[key].rating = selectedRating;
   if (!self.fileDetails || Object.keys(self.fileDetails).length === 0) {
 
     voltmx.print("No file selected → skipping upload");
-
+     
     self.view.flxAddDetailsAndUpload.setVisibility(false);
-
+    alert("Saved");
     return; 
   }
 
@@ -507,6 +511,7 @@ this.inspectionData[key].rating = selectedRating;
       }
     }
   );
+    }
 },
   
 //   onAddDetailsSubmit: function()
