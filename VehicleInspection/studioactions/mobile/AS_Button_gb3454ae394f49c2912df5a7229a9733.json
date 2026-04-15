@@ -1,0 +1,29 @@
+{
+    "AS_Button_gb3454ae394f49c2912df5a7229a9733": {
+        "id": "AS_Button_gb3454ae394f49c2912df5a7229a9733",
+        "type": "ACTION_SEQUENCE",
+        "params": [{
+            "datatype": "collection",
+            "name": "eventobject"
+        }],
+        "contextObj": {
+            "name": "Testnfiios",
+            "type": "forms",
+            "platform": null,
+            "KUID": "b77a6a6102a3446aa7962fc18ce2591a"
+        },
+        "language": "js",
+        "eventType": "onClick",
+        "actions": [{
+            "id": "INVOKE_FUNCTION__f8764e4188994ca59558760cf0ab56f0",
+            "type": "INVOKE_FUNCTION",
+            "sequenceKUID": "testImageNFIIOS",
+            "display": "testImageNFIIOS",
+            "inputparams": [],
+            "parentId": null,
+            "callbackType": null,
+            "disabled": null,
+            "source": "controller"
+        }]
+    }
+}

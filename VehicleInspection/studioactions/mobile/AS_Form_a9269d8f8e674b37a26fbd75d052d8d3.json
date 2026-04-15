@@ -1,0 +1,24 @@
+{
+    "AS_Form_a9269d8f8e674b37a26fbd75d052d8d3": {
+        "id": "AS_Form_a9269d8f8e674b37a26fbd75d052d8d3",
+        "type": "ACTION_SEQUENCE",
+        "params": [{
+            "datatype": "collection",
+            "name": "eventobject"
+        }],
+        "contextObj": {
+            "name": "frmBarcodeNFIcheck",
+            "type": "forms",
+            "platform": "",
+            "KUID": "bd5ae519a7b349e5939ef08c22aeb52c"
+        },
+        "language": "js",
+        "eventType": "preShow",
+        "actions": [{
+            "id": "ADD_SNIPPET_g7abb680b6474de0b60b2ae7066e5606",
+            "type": "ADD_SNIPPET",
+            "codeSnippet": "this.view.onActivityResult = this.onActivityResult.bind(this);",
+            "parentId": null
+        }]
+    }
+}

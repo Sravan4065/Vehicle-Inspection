@@ -1,0 +1,21 @@
+{
+    "AS_NativeContainer_ba87bdb7f06b4e2985b601adf8d3846b": {
+        "id": "AS_NativeContainer_ba87bdb7f06b4e2985b601adf8d3846b",
+        "type": "ACTION_SEQUENCE",
+        "params": [{
+            "datatype": "collection",
+            "name": "eventobject"
+        }],
+        "contextObj": {
+            "type": "userwidgets",
+            "KUID": "u5fcc5da525a40af9cb8e95424cc5b2b"
+        },
+        "language": "js",
+        "actions": [{
+            "id": "ADD_SNIPPET_f6e4d3be54ad48b6ad865fa22b3ad25c",
+            "type": "ADD_SNIPPET",
+            "codeSnippet": "if(voltmx.os.deviceInfo().name.toLowerCase() === \"android\"){\nthis.addSignatureCanvas(eventobject);\n}\n        \n      ",
+            "parentId": null
+        }]
+    }
+}
