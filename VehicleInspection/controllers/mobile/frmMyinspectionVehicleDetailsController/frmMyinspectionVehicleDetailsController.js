@@ -118,7 +118,7 @@ onNavigate: function(context){
         this.view.lblNotes.right = "0%";
         this.view.lblStatus.right = "0%";
         this.view.lblINspectionReport.right = "0%";
-        this.view.btnStart.right = "0%";
+        this.view.btnStart.left = "0%";
       
         this.view.lblId.left = null;
         this.view.lblDescription.left = null;
@@ -128,7 +128,7 @@ onNavigate: function(context){
         this.view.lblNotes.left = null;
         this.view.lblStatus.left = null;
         this.view.lblINspectionReport.left = null;
-        this.view.btnStart.left = null;
+        this.view.btnStart.right = null;
 
         this.view.lblIdData.left = "0%";
         this.view.lblDescriptionData.left = "0%";
@@ -138,7 +138,7 @@ onNavigate: function(context){
         this.view.lblNotesData.left =  "0%";
         this.view.lblStatusData.left =  "0%";
         this.view.lblInspectionReportData.left =  "0%";
-        this.view.btnClose.left =  "0%";
+        this.view.btnClose.right =  "0%";
       
       
         this.view.lblIdData.right =null;
@@ -149,7 +149,13 @@ onNavigate: function(context){
         this.view.lblNotesData.right =null;
         this.view.lblStatusData.right =null;
         this.view.lblInspectionReportData.right =null;
-        this.view.btnClose.right =null;
+        this.view.btnClose.left =null;
+      
+        this.view.flxHeading.flxBack.left = "";
+        this.view.flxHeading.flxBack.right = "5%";
+      
+      this.view.flxHeading.lblImages.left = "";
+      this.view.flxHeading.lblImages.right = "17%";
 
 
     } else {
@@ -162,7 +168,7 @@ onNavigate: function(context){
         this.view.lblNotesData.left = null;
         this.view.lblStatusData.left = null;
         this.view.lblInspectionReportData.left = null;
-        this.view.btnClose.left= null;
+        this.view.btnClose.right= null;
       
         this.view.lblIdData.right ="0%";
         this.view.lblDescriptionData.right  ="0%";
@@ -172,7 +178,7 @@ onNavigate: function(context){
         this.view.lblNotesData.right  ="0%";
         this.view.lblStatusData.right  ="0%";
         this.view.lblInspectionReportData.right ="0%";
-        this.view.btnClose.right ="0%";
+        this.view.btnClose.left ="0%";
       
          this.view.lblId.right = null;
         this.view.lblDescription.right = null;
@@ -182,7 +188,7 @@ onNavigate: function(context){
         this.view.lblNotes.right  = null;
         this.view.lblStatus.right = null;
         this.view.lblINspectionReport.right = null;
-        this.view.btnStart.right = null;
+        this.view.btnStart.left = null;
       
          this.view.lblId.left = "0%";
         this.view.lblDescription.left = "0%";
@@ -192,7 +198,13 @@ onNavigate: function(context){
         this.view.lblNotes.left = "0%";
         this.view.lblStatus.left = "0%";
         this.view.lblINspectionReport.left = "0%";
-        this.view.btnStart.left = "0%";
+        this.view.btnStart.right = "0%";
+      
+      this.view.flxHeading.flxBack.left = "5%";
+        this.view.flxHeading.flxBack.right = "";
+      
+      this.view.flxHeading.lblImages.left = "17%";
+      this.view.flxHeading.lblImages.right = "";
 
     }
 
@@ -337,6 +349,18 @@ onNavigate: function(context){
 
     this.view.btnClose.text =
         voltmx.i18n.getLocalizedString("Close");
+    
+    this.view.flxfooter.lblHome.text =voltmx.i18n.getLocalizedString("Dashboard");
+
+      this.view.flxfooter.lblinspections.text =voltmx.i18n.getLocalizedString("Inspections");
+
+      this.view.flxfooter.lblinward.text =voltmx.i18n.getLocalizedString("Inward");
+
+      this.view.flxfooter.lblimages.text =voltmx.i18n.getLocalizedString("Images");
+
+      this.view.flxfooter.lblprofile.text =voltmx.i18n.getLocalizedString("Profile");
+    
+    this.view.flxHeading.lblImages.text = voltmx.i18n.getLocalizedString("Vehicle Details");
 },
   
   populateDetails: function(){

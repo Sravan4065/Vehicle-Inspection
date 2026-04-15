@@ -71,7 +71,8 @@
                 "srcKUID": "e6a6d9ed9ef1446c9f9774f3c8651473",
                 "wType": "Label"
             },
-            "text": "Washing Completed Sucessfully"
+            "i18n_text": "Washing Completed Sucessfully",
+            "text": ""
         },
         "saveresponse": {
             "__events__": {},

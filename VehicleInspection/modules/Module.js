@@ -306,6 +306,11 @@ function toggleFooterIcons(formObj, formName) {
       resetFooterToNormal(footer);
     formObj.forceLayout();
     return;
+
+     case  "frmWashing":
+      resetFooterToNormal(footer);
+    formObj.forceLayout();
+    return;
       
     case "frmCompletedInspections":
       resetFooterToNormal(footer);

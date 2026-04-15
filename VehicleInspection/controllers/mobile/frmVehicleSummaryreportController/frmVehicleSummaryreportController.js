@@ -76,8 +76,13 @@ define({
 
     var self = this;
 
-    if(self.view.details1.txtAreaDetails.text !== "" && self.view.details2.txtAreaDetails.text !== "" && self.view.details3.txtAreaDetails.text !== "")
-      {
+//     if(self.view.details1.txtAreaDetails.text.trim() !== "" && self.view.details2.txtAreaDetails.text !== "" && self.view.details3.txtAreaDetails.text !== "")
+   if (
+  (self.view.details1.txtAreaDetails.text || "").trim() !== "" &&
+  (self.view.details2.txtAreaDetails.text || "").trim() !== "" &&
+  (self.view.details3.txtAreaDetails.text || "").trim() !== ""
+)
+    {
     voltmx.application.showLoadingScreen(
       null,
       "Saving...",

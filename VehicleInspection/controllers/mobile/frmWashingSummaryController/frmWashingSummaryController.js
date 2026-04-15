@@ -425,7 +425,7 @@ define({
         this.view.flxHeading.flxBack.right = "5%";
         this.view.flxHeading.flxBack.left = "";
         
-         this.view.flxHeading.lblImages.right = "3%";
+         this.view.flxHeading.lblImages.right = "17%";
         this.view.flxHeading.lblImages.left = "";
         
         this.view.flxSummary.lblActivityName.right = "5%";
@@ -484,7 +484,7 @@ define({
         this.view.flxHeading.flxBack.left = "5%";
         this.view.flxHeading.flxBack.right = "";
         
-        this.view.flxHeading.lblImages.left = "3%";
+        this.view.flxHeading.lblImages.left = "17%";
         this.view.flxHeading.lblImages.right = "";
         
         this.view.flxSummary.lblActivityName.left = "5%";
@@ -539,7 +539,7 @@ define({
     
     this.view.flxHeading.lblImages.text = voltmx.i18n.getLocalizedString("Washing");
 
-      this.view.flxSummary.lblActivityName.text = voltmx.i18n.getLocalizedString("Washing");
+      this.view.flxSummary.lblActivityName.text = voltmx.i18n.getLocalizedString("Washing Vehicles");
     this.view.flxSummary.lblTotalVehicles.text = voltmx.i18n.getLocalizedString("Total Vehicles");
     this.view.flxSummary.lblCompletedVehicles.text = voltmx.i18n.getLocalizedString("Completed Vehicles");
     this.view.flxSummary.lblPendingVehicles.text = voltmx.i18n.getLocalizedString("Pending Vehicles");

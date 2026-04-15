@@ -45,7 +45,8 @@
     "children": [
         "flxHeader",
         "flxBody",
-        "flxfooter"
+        "flxfooter",
+        "flxSuccessUpload"
     ],
     "clipbounds": false,
     "containerweight": 100,

@@ -46,7 +46,6 @@
     "containerweight": 100,
     "enablescrolling": true,
     "id": "flxPending",
-    "ide_onClick": "AS_FlexContainer_e0d5967cf7b1400b887cd398907a4b07",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,

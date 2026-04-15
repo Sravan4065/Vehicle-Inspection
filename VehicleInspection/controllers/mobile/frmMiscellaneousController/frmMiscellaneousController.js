@@ -197,10 +197,10 @@ define({
     isArabic ? "0dp" : ""
   );
     
- setPosition(this.view.flxHeadingWithButton.flxBack,
-    isArabic ? "5%" : "",
-    isArabic ? "" : "5%"
-  );
+//  setPosition(this.view.flxHeadingWithButton.flxBack,
+//     isArabic ? "5%" : "",
+//     isArabic ? "" : "5%"
+//   );
     
   // 🔥 Details (single loop — no duplication)
   var detailsList = ["details1","details2","details3","details4","details5","details6","details7","details17"];
@@ -232,6 +232,16 @@ define({
     setAlignment(item.lblNamedata);
   });
 
+    if(isArabic)
+      {
+        self.view.flxHeadingWithButton.flxBack.left = "";
+        self.view.flxHeadingWithButton.flxBack.right = "5%";
+      }
+    else
+      {
+        self.view.flxHeadingWithButton.flxBack.right = "";
+        self.view.flxHeadingWithButton.flxBack.left = "5%";
+      }
   // 🌐 Localization
   this.view.flxHeadingWithButton.lblImages.text = voltmx.i18n.getLocalizedString("Miscellaneous");
   this.view.flxHeadingWithButton.btnSaveResponse.text = voltmx.i18n.getLocalizedString("save response");
@@ -277,10 +287,22 @@ define({
     this.view.flxCompleteButton.btnCompleteInspection.setEnabled(false);
     this.view.details3.txbData.textInputMode = constants.TEXTBOX_INPUT_MODE_NUMERIC;
 
+//     this.view.details3.txbData.onTextChange = function() {
+//       var text = this.view.details3.txbData.text || "";
+//       this.view.details3.txbData.text = text.replace(/[^0-9]/g, "");
+//     }.bind(this);
     this.view.details3.txbData.onTextChange = function() {
-      var text = this.view.details3.txbData.text || "";
-      this.view.details3.txbData.text = text.replace(/[^0-9]/g, "");
-    }.bind(this);
+  var text = this.view.details3.txbData.text || "";
+
+  text = text.replace(/[^0-9]/g, "");
+
+  if (text.length > 0 && text.charAt(0) === "0") {
+    text = text.replace(/^0+/, ""); 
+  }
+
+  this.view.details3.txbData.text = text;
+
+}.bind(this);
     this.view.details1.txbData.setEnabled(false);
     this.view.details2.txbData.setEnabled(false);
     this.view.details6.txbData.setEnabled(false);
@@ -545,6 +567,11 @@ define({
     
 
     if (allFilled) {
+      
+     if (
+  self.view.details3.txbData.text &&
+  Number(self.view.details3.txbData.text) > 0
+) {
 
       voltmx.application.showLoadingScreen(
         null,
@@ -642,9 +669,12 @@ define({
       };
 
       request.send(JSON.stringify(data));
-
+}
+else{
+  alert(voltmx.i18n.getLocalizedString('Estimated Repair cost should be positive'));
+}
     } else {
-      alert('Please fill all fields');
+      alert(voltmx.i18n.getLocalizedString('Please fill all fields'));
     }
 
 
