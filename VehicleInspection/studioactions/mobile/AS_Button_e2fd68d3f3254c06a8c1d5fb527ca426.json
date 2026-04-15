@@ -1,0 +1,29 @@
+{
+    "AS_Button_e2fd68d3f3254c06a8c1d5fb527ca426": {
+        "id": "AS_Button_e2fd68d3f3254c06a8c1d5fb527ca426",
+        "type": "ACTION_SEQUENCE",
+        "params": [{
+            "datatype": "collection",
+            "name": "eventobject"
+        }],
+        "contextObj": {
+            "name": "Testnfiios",
+            "type": "forms",
+            "platform": "",
+            "KUID": "b77a6a6102a3446aa7962fc18ce2591a"
+        },
+        "language": "js",
+        "eventType": "onClick",
+        "actions": [{
+            "id": "INVOKE_FUNCTION__c68b04be717c463095e9d556bf380b01",
+            "type": "INVOKE_FUNCTION",
+            "sequenceKUID": "chooseFromLibrary",
+            "display": "chooseFromLibrary",
+            "inputparams": [],
+            "parentId": null,
+            "callbackType": null,
+            "disabled": null,
+            "source": "controller"
+        }]
+    }
+}

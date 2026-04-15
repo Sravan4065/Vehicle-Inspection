@@ -1,0 +1,29 @@
+{
+    "AS_Button_c05c87be55c643b696ef1a85a8592e02": {
+        "id": "AS_Button_c05c87be55c643b696ef1a85a8592e02",
+        "type": "ACTION_SEQUENCE",
+        "params": [{
+            "datatype": "collection",
+            "name": "eventobject"
+        }],
+        "contextObj": {
+            "name": "frmTestNfi",
+            "type": "forms",
+            "platform": null,
+            "KUID": "i5d1ff0f11f74919b11669db3bc98866"
+        },
+        "language": "js",
+        "eventType": "onClick",
+        "actions": [{
+            "id": "INVOKE_FUNCTION__b4e3a1bc46dc4a0a85e23d3e720db6d4",
+            "type": "INVOKE_FUNCTION",
+            "sequenceKUID": "excCheck",
+            "display": "excCheck",
+            "inputparams": [],
+            "parentId": null,
+            "callbackType": null,
+            "disabled": null,
+            "source": "controller"
+        }]
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "AS_Button_cdc91fd238124a099460bf4c053e4c25": {
+        "id": "AS_Button_cdc91fd238124a099460bf4c053e4c25",
+        "type": "ACTION_SEQUENCE",
+        "params": [{
+            "datatype": "collection",
+            "name": "eventobject"
+        }],
+        "contextObj": {
+            "name": "frmBarcodeNFIcheck",
+            "type": "forms",
+            "platform": "",
+            "KUID": "bd5ae519a7b349e5939ef08c22aeb52c"
+        },
+        "language": "js",
+        "eventType": "onClick",
+        "actions": [{
+            "id": "INVOKE_FUNCTION__a9fea502b5514e9994cda000c209d045",
+            "type": "INVOKE_FUNCTION",
+            "sequenceKUID": "show",
+            "display": "show",
+            "inputparams": [],
+            "parentId": null,
+            "callbackType": null,
+            "disabled": null,
+            "source": "controller"
+        }]
+    }
+}
