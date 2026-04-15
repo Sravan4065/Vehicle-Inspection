@@ -19,7 +19,7 @@
             },
             "lblInwardCount": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "4 pending",
+                "text": "",
                 "type": "Label"
             },
             "lblInwardEntry": {
@@ -51,7 +51,7 @@
             },
             "lblInwardCount": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "7 pending",
+                "text": "",
                 "type": "Label"
             },
             "lblInwardEntry": {
@@ -83,7 +83,7 @@
             },
             "lblInwardCount": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "4 pending",
+                "text": "",
                 "type": "Label"
             },
             "lblInwardEntry": {
@@ -115,7 +115,7 @@
             },
             "lblInwardCount": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": "3 pending",
+                "text": "",
                 "type": "Label"
             },
             "lblInwardEntry": {
@@ -218,7 +218,7 @@
     "selectedindex": null,
     "selectedindices": null,
     "selecteditems": null,
-    "selectedsectionindex": 0,
+    "selectedsectionindex": null,
     "selectionbehavior": "default",
     "separatorrequired": false,
     "showscrollbars": false,

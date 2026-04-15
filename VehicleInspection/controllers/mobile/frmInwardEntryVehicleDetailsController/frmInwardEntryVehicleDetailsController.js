@@ -221,7 +221,7 @@ return formatted;
     self.view.lblChassisValue.text = (metadata.chassis_number || "");
 //     self.view.lblEngineNumberValue.text = (metadata.chassis_number || "");
     self.view.lblSellerNameValue.text = metadata.created_by_name || "-";
-    self.view.lblSubmittedDateValue.text = metadata.yard_received_date || "-";
+    self.view.lblSubmittedDateValue.text = metadata.yard_received_date ? convertUTCtoUserTime(metadata.yard_received_date) : "-";
     self.view.lblBodyStyleValue.text = metadata.body_type || "-";
     self.view.lblFuelTypeValue.text = metadata.fuel_type || "-";
     self.view.lblLocationValue.text = metadata.location || "-";

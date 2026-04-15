@@ -57,9 +57,32 @@ define({
     this.view.flxChooseFileTakePhoto.flxChooseFromLibrary.onClick = this.flxChooseFromLibraryOnClickAction.bind(this);
     this.view.flxChooseFileTakePhoto.camTakeAPhoto.onCapture = this.camOnCaptureAction.bind(this);
     this.view.flxChooseFileTakePhoto.flxTakeAPhoto.onClick = this.camOnCaptureAction.bind(this);
-    this.view.flxAddDetailsAndUpload.flxRetake.onClick = () =>
+     this.view.flxAddDetailsAndUpload.flxRetake.onClick = () =>
     {
-      self.view.flxChooseFileTakePhoto.setVisibility(true);
+      
+      var alertConfig = {
+            message: "Do you want to delete existing image?",
+            alertType: constants.ALERT_TYPE_CONFIRMATION,
+            alertTitle: "Confirmation",
+            yesLabel: "Yes",
+            noLabel: "No",
+            alertHandler: function(response) {
+
+                if (response) {
+                     self.view.flxAddDetailsAndUpload.flxUploadImages.setVisibility(true);
+                     self.view.flxAddDetailsAndUpload.flxUploadedImage.setVisibility(false);
+                     self.view.flxChooseFileTakePhoto.setVisibility(true);
+                        } 
+
+                 else {
+                   self.view.flxChooseFileTakePhoto.setVisibility(false);
+                }
+            }
+        };
+
+        voltmx.ui.Alert(alertConfig, {});
+      
+      
     }
     this.view.flxChooseFileTakePhoto.onClick = () =>
     {
@@ -74,7 +97,7 @@ define({
       if (tStore && tStore.length > 0) {
 
         var alertConfig = {
-          message: "Do you want to discard the changes?",
+          message: voltmx.i18n.getLocalizedString("Do you want to discard the changes"),
           alertType: constants.ALERT_TYPE_CONFIRMATION,
           alertTitle: "Confirmation",
           yesLabel: "Yes",
@@ -194,7 +217,7 @@ define({
         {
           id: "lblSelectCondition"+i,
           isVisible: true,
-          text: "Select Condition",
+          text: voltmx.i18n.getLocalizedString("Select Condition"),
           skin: "sknLblDubai00000012pxRegular",
           left: isArabic ? "": "3%",
           right: isArabic ? "3%": "",
@@ -311,7 +334,7 @@ define({
         {
           id: "lblAddDetails"+i,
           isVisible: true,
-          text: "Add Details",
+          text: voltmx.i18n.getLocalizedString("Add Details"),
           skin: "sknLblDubai00000012pxMedium",
           //     left: "50%",
           left: isArabic ? "" : "50%",
@@ -407,10 +430,14 @@ this.inspectionData[key].rating = selectedRating;
 
   onAddDetailsSubmit: function () {
   var self = this;
-if (
-  (self.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text || "").trim() !== "" &&
-  (self.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text || "").trim() !== ""
-)
+// if (
+//   (self.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text || "").trim() !== "" &&
+//   (self.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text || "").trim() !== ""
+// )
+    var details = String(self.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text || "").trim();
+var cost = String(self.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text || "").trim();
+
+if (details !== "" && cost !== "" && Number(cost) > 0) 
     {
   var index = self.currentIndex;
   if (typeof index === "undefined" || !self.records[index]) {
@@ -473,6 +500,9 @@ if (
             var imageLog = JSON.parse(item.object_image_loged_result || "{}");
 
             self.inspectionData[key].image_url_id = imageLog.id;
+            
+            self.inspectionData[key].file_url = payload.file_url;
+    self.inspectionData[key].file_name = payload.file_name;
 
             var obj = {
               file_name: payload.file_name,
@@ -499,7 +529,7 @@ if (
             var errCode = parsed[0] && parsed[0].error_code;
 
             if (errCode == 409) {
-              alert("File already exists");
+              alert(voltmx.i18n.getLocalizedString("File already exists"));
             } else {
               alert("Failed");
             }
@@ -827,31 +857,66 @@ for (var key in self.inspectionData) {
 
   },
 
-  showAddDetails: function(record,index)
-  {
-    var self = this;
-    this.record = record;
-    this.currentIndex = index;
-    this.view.flxAddDetailsAndUpload.setVisibility(true);
-    this.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text = record.repair_estimate_aed;
-    this.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text = record.notes || "";
+  showAddDetails: function(record, index) {
+  var self = this;
+  this.record = record;
+  this.currentIndex = index;
 
-    if(record.file_url){
-      self.view.flxAddDetailsAndUpload.flxUploadedImage.setVisibility(true);
-      self.view.flxAddDetailsAndUpload.flxUploadImages.setVisibility(false);
-      self.view.flxAddDetailsAndUpload.imgUploadedImg.imageWhileDownloading = "loading.gif";
-      self.view.flxAddDetailsAndUpload.imgUploadedImg.src = record.file_url;
-      self.view.flxAddDetailsAndUpload.lblImgName.text = record.file_name;
+  var key = record.item_name;
+  var localData = this.inspectionData[key];
 
-    }
-    else
-    {
-      self.view.flxAddDetailsAndUpload.flxUploadedImage.setVisibility(false);
-      self.view.flxAddDetailsAndUpload.flxUploadImages.setVisibility(true);
+  // Safety fallback (should never hit after the changes above)
+  if (!localData) {
+    localData = record;
+  }
 
-    }
+  this.view.flxAddDetailsAndUpload.setVisibility(true);
 
-  },
+  // Always read from local (updated) state
+  this.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text = 
+    localData.repair_estimate_aed != null ? localData.repair_estimate_aed : "";
+
+  this.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text = 
+    localData.notes || "";
+
+  // Image handling
+  if (localData.file_url) {
+    self.view.flxAddDetailsAndUpload.flxUploadedImage.setVisibility(true);
+    self.view.flxAddDetailsAndUpload.flxUploadImages.setVisibility(false);
+    self.view.flxAddDetailsAndUpload.imgUploadedImg.imageWhileDownloading = "loading.gif";
+    self.view.flxAddDetailsAndUpload.imgUploadedImg.src = localData.file_url;
+    self.view.flxAddDetailsAndUpload.lblImgName.text = localData.file_name || "";
+  } else {
+    self.view.flxAddDetailsAndUpload.flxUploadedImage.setVisibility(false);
+    self.view.flxAddDetailsAndUpload.flxUploadImages.setVisibility(true);
+  }
+},
+  
+//   showAddDetails: function(record,index)
+//   {
+//     var self = this;
+//     this.record = record;
+//     this.currentIndex = index;
+//     this.view.flxAddDetailsAndUpload.setVisibility(true);
+//     this.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text = record.repair_estimate_aed;
+//     this.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text = record.notes || "";
+
+//     if(record.file_url){
+//       self.view.flxAddDetailsAndUpload.flxUploadedImage.setVisibility(true);
+//       self.view.flxAddDetailsAndUpload.flxUploadImages.setVisibility(false);
+//       self.view.flxAddDetailsAndUpload.imgUploadedImg.imageWhileDownloading = "loading.gif";
+//       self.view.flxAddDetailsAndUpload.imgUploadedImg.src = record.file_url;
+//       self.view.flxAddDetailsAndUpload.lblImgName.text = record.file_name;
+
+//     }
+//     else
+//     {
+//       self.view.flxAddDetailsAndUpload.flxUploadedImage.setVisibility(false);
+//       self.view.flxAddDetailsAndUpload.flxUploadImages.setVisibility(true);
+
+//     }
+
+//   },
 
   flxChooseFromLibraryOnClickAction: function () {
     var self = this;
@@ -1031,28 +1096,28 @@ for (var key in self.inspectionData) {
           self.records = response.records;
           self.inspectionData = {};
         self.records.forEach(function(record) {
-//             var id = record.id;
-          var key = record.item_name;
-//             if (id) {  // only process existing records
-//                 self.inspectionData[id] = {
-//                     id: Number(id),
-//                     insp_pac_lov_id: Number(record.insp_pac_lov_id),
-//                     item_name: record.item_name,
-//                     rating: record.rating || 0,                     // preserved from backend
-//                     notes: record.notes || "",                      // preserved
-//                     repair_estimate_aed: Number(record.repair_estimate_aed) || 0,
-//                     image_url_id: record.image_url_id || null       // preserved from backend
-//                 };
-//             }
-           self.inspectionData[key] = {
+     var key = record.item_name;
+//            self.inspectionData[key] = {
+//     id: record.id ? Number(record.id) : null,
+//     insp_pac_lov_id: Number(record.insp_pac_lov_id),
+//     item_name: record.item_name,
+//     rating: record.rating || 0,
+//     notes: record.notes || "",
+//     repair_estimate_aed: Number(record.repair_estimate_aed) || 0,
+//     image_url_id: record.image_url_id || null
+//   };
+       self.inspectionData[key] = {
     id: record.id ? Number(record.id) : null,
     insp_pac_lov_id: Number(record.insp_pac_lov_id),
     item_name: record.item_name,
     rating: record.rating || 0,
     notes: record.notes || "",
     repair_estimate_aed: Number(record.repair_estimate_aed) || 0,
-    image_url_id: record.image_url_id || null
-  };
+    image_url_id: record.image_url_id || null,
+    // === NEW LINES (display fields) ===
+    file_url: record.file_url || null,
+    file_name: record.file_name || ""
+  };   
         });
           
           
@@ -1089,7 +1154,9 @@ for (var key in self.inspectionData) {
     //content alignment--
     this.view.flxAddDetailsAndUpload.lblPleaseEnter.contentAlignment = isArabic ? constants.CONTENT_ALIGN_MIDDLE_RIGHT : constants.CONTENT_ALIGN_MIDDLE_LEFT;
     this.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.contentAlignment = isArabic ? constants.CONTENT_ALIGN_TOP_RIGHT : constants.CONTENT_ALIGN_TOP_LEFT;
-    this.view.flxAddDetailsAndUpload.lblPleaseEnter.contentAlignment = isArabic ? constants.CONTENT_ALIGN_MIDDLE_RIGHT : constants.CONTENT_ALIGN_MIDDLE_LEFT;
+    this.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.contentAlignment = isArabic ? constants.CONTENT_ALIGN_TOP_RIGHT : constants.CONTENT_ALIGN_TOP_LEFT;
+
+    this.view.flxAddDetailsAndUpload.lblEstimatedCost.contentAlignment = isArabic ? constants.CONTENT_ALIGN_MIDDLE_RIGHT : constants.CONTENT_ALIGN_MIDDLE_LEFT;
     //content alignment--
 
     if(isArabic)
@@ -1111,9 +1178,15 @@ for (var key in self.inspectionData) {
 
       this.view.flxAddDetailsAndUpload.lblPleaseEnter.left = "";
       this.view.flxAddDetailsAndUpload.lblPleaseEnter.right = "3%";
+      
+      this.view.flxAddDetailsAndUpload.lblEstimatedCost.left = "";
+      this.view.flxAddDetailsAndUpload.lblEstimatedCost.right = "3%";
 
       this.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.left = "";
-      this.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.right = "0dp";
+      this.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.right = "";
+      
+      this.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.left = "";
+      this.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.left = "0dp";
 
       this.view.flxIndicator.flxPass.left = "";
       this.view.flxIndicator.flxPass.right = "0dp";
@@ -1163,8 +1236,14 @@ for (var key in self.inspectionData) {
       this.view.flxAddDetailsAndUpload.lblPleaseEnter.left = "3%";
       this.view.flxAddDetailsAndUpload.lblPleaseEnter.right = "";
 
+      this.view.flxAddDetailsAndUpload.lblEstimatedCost.left = "3%";
+      this.view.flxAddDetailsAndUpload.lblEstimatedCost.right = "";
+      
       this.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.left = "0dp";
       this.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.right = "";
+      
+      this.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.left = "0dp";
+      this.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.left = "";
 
       this.view.flxIndicator.flxPass.left = "0%";
       this.view.flxIndicator.flxPass.right = "";
@@ -1192,6 +1271,31 @@ for (var key in self.inspectionData) {
 
       this.view.flxHeadingWithButton.imgBack.transform = voltmx.ui.makeAffineTransform();
     }
+    this.view.flxHeadingWithButton.btnSaveResponse.text = voltmx.i18n.getLocalizedString("save response");
+    this.view.flxHeadingWithButton.lblImages.text = voltmx.i18n.getLocalizedString("Rims Condition");
+     this.view.flxHeader.lblInspectionIQ.text = voltmx.i18n.getLocalizedString("InspectioniQ");
+    this.view.saveresponse.btnClose.text = voltmx.i18n.getLocalizedString("Close");
+    
+     this.view.flxAddDetailsAndUpload.lblAddDetails.text = voltmx.i18n.getLocalizedString("Add Details");
+  this.view.flxAddDetailsAndUpload.lblPleaseEnter.text = voltmx.i18n.getLocalizedString("Please enter your details");
+  this.view.flxAddDetailsAndUpload.lblEstimatedCost.text =  voltmx.i18n.getLocalizedString("Estimated Repair Cost AED");
+    this.view.flxAddDetailsAndUpload.btnSubmitUpload.text = voltmx.i18n.getLocalizedString("Submit");
+    this.view.flxSuccessUpload.lblThankyou.text = voltmx.i18n.getLocalizedString("Thank you");
+    this.view.flxSuccessUpload.lblUPdatedsucessfully.text = voltmx.i18n.getLocalizedString("Image uploaded successfully");
+    this.view.flxSuccessUpload.btnClose.text = voltmx.i18n.getLocalizedString("OKAY");
+    this.view.flxAddDetailsAndUpload.lblRetake.text = voltmx.i18n.getLocalizedString("Retake");
+    
+    this.view.flxfooter.lblHome.text =voltmx.i18n.getLocalizedString("Dashboard");
+    
+    
+      this.view.flxfooter.lblinspections.text =voltmx.i18n.getLocalizedString("Inspections");
+
+      this.view.flxfooter.lblinward.text =voltmx.i18n.getLocalizedString("Inward");
+
+      this.view.flxfooter.lblimages.text =voltmx.i18n.getLocalizedString("Images");
+
+      this.view.flxfooter.lblprofile.text =voltmx.i18n.getLocalizedString("Profile");
+    
   }
 
 });

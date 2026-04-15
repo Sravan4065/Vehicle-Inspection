@@ -16,6 +16,7 @@ define({
         toggleFooterIcons(this.view, "frmImageCategorySub");
 
         this.fileDetails = [];
+        this.imageWidgets = []; 
         this.view.lblSelectedvaluedata.text = this.context.record.model || "";
         this.view.lblCategoryValue.text = this.context.subCat || "";
 
@@ -35,31 +36,67 @@ define({
         this.getImagesFilesById();
     },
 
-    onBackClick: function() {
-        var tStore = voltmx.store.getItem("tStore");
-        if (tStore && tStore.length > 0) {
-            var alertConfig = {
-                message: "Do you want to discard the changes?",
-                alertType: constants.ALERT_TYPE_CONFIRMATION,
-                alertTitle: "Confirmation",
-                yesLabel: "Yes",
-                noLabel: "No",
-                alertHandler: function(response) {
-                    if (response) {
-                        ImageUploadAndDeletion.deleteImage(tStore, function(res, err) {
-                            if (!err && res && res.opstatus === 0) {
-                                voltmx.store.setItem("tStore", "");
-                                NavigationManager.pop();
-                            }
-                        });
-                    }
-                }
-            };
-            voltmx.ui.Alert(alertConfig, {});
-        } else {
-            NavigationManager.pop();
+//     onBackClick: function() {
+//         var tStore = voltmx.store.getItem("tStore");
+//         if (tStore && tStore.length > 0) {
+//             var alertConfig = {
+//                 message: "Do you want to discard the changes?",
+//                 alertType: constants.ALERT_TYPE_CONFIRMATION,
+//                 alertTitle: "Confirmation",
+//                 yesLabel: "Yes",
+//                 noLabel: "No",
+//                 alertHandler: function(response) {
+//                     if (response) {
+//                         ImageUploadAndDeletion.deleteImage(tStore, function(res, err) {
+//                             if (!err && res && res.opstatus === 0) {
+//                                 voltmx.store.setItem("tStore", "");
+//                                 NavigationManager.pop();
+//                             }
+//                         });
+//                     }
+//                 }
+//             };
+//             voltmx.ui.Alert(alertConfig, {});
+//         } else {
+//             NavigationManager.pop();
+//         }
+//     },
+  
+  onBackClick: function() {
+
+    var missingImage = false;
+
+    for (var i = 0; i < 5; i++) {
+
+        var imgWidget = this.view["imgItem" + i];
+
+        if (!imgWidget || !imgWidget.src || imgWidget.src === "defaulticon.png") {
+            missingImage = true;
+            break;
         }
-    },
+    }
+
+    if (missingImage) {
+
+        var alertConfig = {
+            message: "Some photos are missing. Go back anyway?",
+            alertType: constants.ALERT_TYPE_CONFIRMATION,
+            alertTitle: "Confirmation",
+            yesLabel: "Yes",
+            noLabel: "No",
+            alertHandler: function(response) {
+                if (response) {
+                    NavigationManager.pop();
+                }
+            }
+        };
+
+        voltmx.ui.Alert(alertConfig, {});
+
+    } else {
+        NavigationManager.pop();
+    }
+},
 
     createUI: function() {
         var self = this;
@@ -149,6 +186,11 @@ define({
         }, { 
             imageScaleMode: constants.IMAGE_SCALE_MODE_FIT_TO_DIMENSIONS 
         }, {});
+      
+        if (!self.imageWidgets) {
+    self.imageWidgets = [];
+}
+self.imageWidgets[index] = imgItem;
 
         flxImgItem.add(imgItem);
 
@@ -195,7 +237,7 @@ define({
     if (existingObj) {
 
         var alertConfig = {
-            message: "Do you want to delete old image?",
+            message: "Do you want to delete existing image?",
             alertType: constants.ALERT_TYPE_CONFIRMATION,
             alertTitle: "Confirmation",
             yesLabel: "Yes",
@@ -285,8 +327,8 @@ define({
 self.uploadedImages[self.currentViewName] = base64Data;
 
             self.updateImagePreview();
-
-            var filefullname = "image_" + new Date().getTime() + ".jpg";
+            var filetype = detectFileType(base64Data) || ".jpg";
+            var filefullname = "image_" + new Date().getTime() + filetype;
             self.fileDetails = [{
                 "is_thumbnail": "false",
                 "inspection_category": self.context.subCat,
@@ -317,9 +359,9 @@ self.uploadedImages[self.currentViewName] = base64Data;
 self.uploadedImages[self.currentViewName] = base64Image;
 
         this.updateImagePreview();
-
+        var filetype = detectFileType(base64Data) || ".jpg";
         this.fileDetails = [{
-            filename: "captured_" + new Date().getTime() + ".jpg",
+            filename: "captured_" + new Date().getTime() + filetype,
             base64: base64Image,
             is_thumbnail: "false",
             inspection_category: this.context.subCat,

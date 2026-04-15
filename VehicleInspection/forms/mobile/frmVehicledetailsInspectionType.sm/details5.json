@@ -51,6 +51,7 @@
                 "srcKUID": "f55b13451ca848fd9dee6df988be37bf",
                 "wType": "FlexContainer"
             },
+            "isVisible": false,
             "top": {
                 "Default": {
                     "type": "string",
@@ -65,7 +66,7 @@
                 "srcKUID": "c6340dee896b4876bb7ecce4d50050ce",
                 "wType": "FlexContainer"
             },
-            "isVisible": false
+            "isVisible": true
         },
         "flxName": {
             "__events__": {},
@@ -137,7 +138,7 @@
     "info": null,
     "iscustomlayout": false,
     "isdatareferenced": false,
-    "isvisible": true,
+    "isvisible": false,
     "kuid": "b099b5f7c64f457b93bd26c281adeef0",
     "layouttype": 2,
     "masterType": 0,

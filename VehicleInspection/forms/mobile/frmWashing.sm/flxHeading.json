@@ -84,6 +84,7 @@
                 "srcKUID": "c99ec061bed3441bb3221b9f335ab163",
                 "wType": "Label"
             },
+            "i18n_text": "Washing",
             "left": {
                 "Default": {
                     "type": "string",

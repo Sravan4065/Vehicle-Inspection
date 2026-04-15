@@ -4,7 +4,7 @@
     "_base64_": null,
     "_height_": {
         "type": "string",
-        "value": "230dp"
+        "value": "373dp"
     },
     "_left_": {
         "type": "string",
@@ -23,14 +23,14 @@
         0
     ],
     "_skin_": "sb8f9ecd82a04b66a15ce7fd3be4cb0b",
-    "_src_": "vehiclewithmarkings.png",
+    "_src_": "chassiss_report.png",
     "_top_": {
         "type": "string",
         "value": "10dp"
     },
     "_width_": {
         "type": "string",
-        "value": "94%"
+        "value": "96%"
     },
     "canUpdateUI": true,
     "centerx": {

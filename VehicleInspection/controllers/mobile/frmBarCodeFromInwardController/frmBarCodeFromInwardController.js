@@ -18,7 +18,7 @@ onPostShow: function() {
 generate: function() {
   var barcodeWidget = this.view.barcodegenerator;
 
-  var value = String(this.context.objectId || "123456");
+  var value = String(this.context.lotno || "123456");
 
   voltmx.print("Generating barcode for: " + value);
 
@@ -34,4 +34,6 @@ generate: function() {
     barcodeWidget.generate();
   }, 0.3, false);
 }
+  
+ 
  });
