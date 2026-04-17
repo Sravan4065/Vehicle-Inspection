@@ -7,7 +7,7 @@
     },
     "_left_": {
         "type": "string",
-        "value": "0dp"
+        "value": "8%"
     },
     "_margin_": [
         1,
@@ -21,8 +21,12 @@
         0,
         0
     ],
-    "_skin_": "sb12ce4e70cb489d9a8f14e855cb48a1",
-    "_text_": "#Current Status",
+    "_skin_": "sbae513568364974bb21f81123f3139e",
+    "_text_": "Received By",
+    "_top_": {
+        "type": "string",
+        "value": "14%"
+    },
     "_width_": {
         "type": "ref",
         "value": "preferred"
@@ -35,13 +39,9 @@
         }
     },
     "canUpdateUI": true,
-    "centery": {
-        "type": "string",
-        "value": "50%"
-    },
     "containerweight": 100,
     "contentalignment": 4,
-    "id": "CopylblChassisNumber0j51b484ed06b46",
+    "id": "lblReceivedBy",
     "info": null,
     "ipad": {
         "psp": {
@@ -55,10 +55,10 @@
     },
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "f40e135656ea4b1dab7b3ab2f63025b0",
+    "kuid": "fbfc61765b664aa38ff49e81dab3cc63",
     "name": "kony.ui.Label",
-    "parent": "CopyflxChassisNumber0bc33418d3a324a",
-    "pf": "frmStatusTrackVehicleDetails",
+    "parent": "flxReceivedBy",
+    "pf": "frmBarCodeFromInward",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "textstyle": {},

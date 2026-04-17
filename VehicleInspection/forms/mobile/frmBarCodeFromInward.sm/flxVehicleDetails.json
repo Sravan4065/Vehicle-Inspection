@@ -1,8 +1,8 @@
 {
     "DNDConfig": null,
     "_height_": {
-        "type": "ref",
-        "value": "preferred"
+        "type": "string",
+        "value": "130dp"
     },
     "_left_": {
         "type": "string",
@@ -22,34 +22,38 @@
         0
     ],
     "_percent_": true,
-    "_skin_": "s43b3f0daddb4853bfc5983bfb525431",
+    "_skin_": "s1751d7921d04544ae3f197d87696100",
     "_top_": {
         "type": "string",
-        "value": "15dp"
+        "value": "10dp"
     },
     "_width_": {
         "type": "string",
-        "value": "100%"
+        "value": "90%"
     },
     "allboxes": [],
-    "autogrowmode": 1,
+    "autogrowmode": 0,
     "canUpdateUI": true,
+    "centerx": {
+        "type": "string",
+        "value": "50%"
+    },
     "children": [
-        "lblBasicInformation",
-        "flxInfoItems"
+        "flxVehicleAndName",
+        "flxReceivedAtAndBy"
     ],
     "clipbounds": true,
     "containerweight": 100,
     "enablescrolling": true,
-    "id": "flxBasicInformation",
+    "id": "flxVehicleDetails",
     "info": null,
     "iscustomlayout": false,
-    "isvisible": false,
-    "kuid": "g8c64b2691054c24a37d18745c933b73",
+    "isvisible": true,
+    "kuid": "hb0f4bb8f8444326927b77f8b2f70d33",
     "layouttype": 4,
     "name": "kony.ui.FlexContainer",
-    "parent": "flxInnerBody",
-    "pf": "frmStatusTrackVehicleDetails",
+    "parent": "flxBody",
+    "pf": "frmBarCodeFromInward",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainflowhorizontalalignment": false,

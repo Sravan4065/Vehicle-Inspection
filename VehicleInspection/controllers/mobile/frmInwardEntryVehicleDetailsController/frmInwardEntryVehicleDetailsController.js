@@ -50,6 +50,8 @@ onNavigate: function(context){
     self.view.flxVehicleReceived.setVisibility(false);
     NavigationManager.push("frmBarCodeFromInward",{
       lotno: self.context.lotno,
+      objectId: self.context.objectId,
+      record: self.context.record
       
     })
   },
@@ -71,7 +73,7 @@ onNavigate: function(context){
 
    
     var headers = {
-      "user_token": voltmx.store.getItem("user_token"),
+      "user_token": voltmx.store.getItem("getUserAccesstoken"),
     };
 
     integrationObj.invokeOperation(

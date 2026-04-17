@@ -25,7 +25,7 @@
     "_skin_": "s43b3f0daddb4853bfc5983bfb525431",
     "_top_": {
         "type": "string",
-        "value": "10dp"
+        "value": "25dp"
     },
     "_width_": {
         "type": "string",
@@ -37,7 +37,7 @@
     "children": [
         "lblTechnicalInformation",
         "flxChassisNumber",
-        "CopyflxChassisNumber0bc33418d3a324a",
+        "flxCurrentStatus",
         "flxEngineNumber",
         "flxSeparator2"
     ],

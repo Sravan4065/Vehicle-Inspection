@@ -1,8 +1,8 @@
 {
     "DNDConfig": null,
     "_height_": {
-        "type": "ref",
-        "value": "preferred"
+        "type": "string",
+        "value": "30dp"
     },
     "_left_": {
         "type": "string",
@@ -25,30 +25,40 @@
     "_skin_": "s43b3f0daddb4853bfc5983bfb525431",
     "_top_": {
         "type": "string",
-        "value": "15dp"
+        "value": "10dp"
     },
     "_width_": {
         "type": "string",
-        "value": "100%"
+        "value": "90%"
     },
     "allboxes": [],
-    "autogrowmode": 1,
+    "autogrowmode": 0,
     "canUpdateUI": true,
+    "centerx": {
+        "type": "string",
+        "value": "50%"
+    },
     "children": [
-        "lblBasicInformation",
-        "flxInfoItems"
+        "lblCurrentStatus",
+        "lblCurrentStatusValue"
     ],
-    "clipbounds": true,
+    "clipbounds": false,
     "containerweight": 100,
     "enablescrolling": true,
-    "id": "flxBasicInformation",
+    "id": "flxCurrentStatus",
     "info": null,
+    "iphone": {
+        "left": {
+            "type": "string",
+            "value": "0"
+        }
+    },
     "iscustomlayout": false,
-    "isvisible": false,
-    "kuid": "g8c64b2691054c24a37d18745c933b73",
-    "layouttype": 4,
+    "isvisible": true,
+    "kuid": "fe0fe50c912441d485acf772fc82d648",
+    "layouttype": 2,
     "name": "kony.ui.FlexContainer",
-    "parent": "flxInnerBody",
+    "parent": "flxTechnicalInformation",
     "pf": "frmStatusTrackVehicleDetails",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,

@@ -27,7 +27,7 @@
     "_skin_": "s43b3f0daddb4853bfc5983bfb525431",
     "_top_": {
         "type": "string",
-        "value": "10%"
+        "value": "0%"
     },
     "_width_": {
         "type": "string",
@@ -36,7 +36,8 @@
     "canUpdateUI": true,
     "containerweight": 0,
     "data": {
-        "barcodeWidth": "1",
+        "barcodeHeight": "50",
+        "barcodeWidth": "5",
         "barcodefontSize": "5",
         "barcodefontStyle": "bold",
         "displayValue": false
@@ -44,7 +45,7 @@
     "id": "barcodegenerator",
     "info": null,
     "iscustomlayout": false,
-    "isvisible": true,
+    "isvisible": false,
     "kuid": "j4d652d8cd514dd7b1046a9ea9536ad6",
     "masterType": 1,
     "name": "kony.ui.UserWidgetInstance",

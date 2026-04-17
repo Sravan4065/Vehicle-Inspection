@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- Applies to all domains by default -->
+    <base-config>
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </base-config>
+
+    <!-- Applies to etdevconsumeraccess.b2clogin.com -->
+    <domain-config>
+        <domain includeSubdomains="true">etdevconsumeraccess.b2clogin.com</domain>
+        <trust-anchors>
+           
+            <certificates src="@raw/graph"/>
+            <certificates src="@raw/dig"/>
+            <certificates src="@raw/prodgraph"/>
+            
+        </trust-anchors>
+    </domain-config>
+	
+	<!-- Applies  to dev-hcltx.et.ae -->
+    <domain-config>
+        <domain includeSubdomains="true">dev2-hcltx.et.ae</domain>
+        <trust-anchors>
+            
+            <certificates src="@raw/prodcert"/>
+            <certificates src="@raw/etaenew"/>
+           
+
+            
+			
+        </trust-anchors>
+    </domain-config>
+</network-security-config>

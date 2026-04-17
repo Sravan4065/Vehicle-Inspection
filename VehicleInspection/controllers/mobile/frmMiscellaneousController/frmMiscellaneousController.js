@@ -1022,7 +1022,7 @@ else{
       voltmx.application.dismissLoadingScreen();
       voltmx.print(response);
 
-      if(response && response.rawResponse && response.rawResponse.data && response.rawResponse.data.id)
+      if(response && response.rawResponse && response.rawResponse.data)
       {
         //            self.view.flxBrowser.setVisibility(false);
         self.view.flxInspectionDonePopup.setVisibility(true);
