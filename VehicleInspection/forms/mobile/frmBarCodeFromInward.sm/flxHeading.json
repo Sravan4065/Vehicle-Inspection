@@ -54,6 +54,18 @@
                 "kuid": "fe4c2515c92d40adaaba2094e2ee190d",
                 "srcKUID": "e3bfd273ea9e44b4bc5367e8775cd1cf",
                 "wType": "FlexContainer"
+            },
+            "centerY": {
+                "Default": {
+                    "type": "string",
+                    "value": ""
+                }
+            },
+            "top": {
+                "Default": {
+                    "type": "string",
+                    "value": "0dp"
+                }
             }
         },
         "imgBack": {
@@ -71,7 +83,13 @@
                 "srcKUID": "c99ec061bed3441bb3221b9f335ab163",
                 "wType": "Label"
             },
-            "text": "Bar Code"
+            "left": {
+                "Default": {
+                    "type": "string",
+                    "value": "16%"
+                }
+            },
+            "text": "Back"
         }
     },
     "enablescrolling": true,

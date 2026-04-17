@@ -42,7 +42,7 @@ onNavigate: function(context){
 
    
     var headers = {
-      "user_token": voltmx.store.getItem("user_token"),
+      "user_token": voltmx.store.getItem("getUserAccesstoken"),
     };
 
     integrationObj.invokeOperation(
@@ -59,9 +59,9 @@ onNavigate: function(context){
     voltmx.print("Vehicle Details Success: " + JSON.stringify(response));
 
     if (response) {
-     if(response.meta_data)
+     if(response.records && response.records.length>0)
        {
-         self.setDataToLabels(response.meta_data[0]);
+         self.setDataToLabels(response.records[0]);
        }
     }
 },
@@ -79,22 +79,14 @@ onNavigate: function(context){
   {
     var self = this;
     
-    self.view.lblLotAndModel.text = (metadata.lot_no || "") + " "+ (metadata.title || "") + " "+ (metadata.year_make || "");
+    self.view.lblLotAndModel.text = (metadata.lot_no || "") + " "+ (metadata.title || "");
     self.view.lblVehicleNumber.text = (metadata.chassis_number || "");
     self.view.lblChassisValue.text = (metadata.chassis_number || "");
 //     self.view.lblEngineNumberValue.text = (metadata.chassis_number || "");
-    self.view.lblSellerNameValue.text = metadata.created_by_name || "-";
-    self.view.lblSubmittedDateValue.text = metadata.yard_received_date || "-";
-    self.view.lblBodyStyleValue.text = metadata.body_type || "-";
-    self.view.lblFuelTypeValue.text = metadata.fuel_type || "-";
-    self.view.lblLocationValue.text = metadata.location || "-";
-    self.view.lblYearValue.text = metadata.year_make || "-";
-    self.view.lblMileageValue.text = metadata.milage || "-";
-    self.view.lblTransmissionValue.text = metadata.transmission || "-";
-    self.view.lblExteriorColorValue.text = metadata.colors || "-";
-    self.view.lblInteriorColorValue.text = metadata.colors || "-";
-    self.view.lblDriveTypeValue.text = metadata.drive_type || "-";
-    self.view.lblEngineValue.text = metadata.engine || "-";
+    self.view.lblSellerNameValue.text = metadata.seller_name || "-";
+    self.view.lblSubmittedDateValue.text = metadata.type || "-";
+    self.view.lblCurrentStatusValue.text = metadata.status || "-";
+   
   },
   
   adjustRTL: function(){
@@ -404,7 +396,9 @@ this.view.lblEngine.contentAlignment =
 
       this.view.lblSellerName.text =voltmx.i18n.getLocalizedString("Seller Name");
 
-     this.view.lblSubmittedDate.text =voltmx.i18n.getLocalizedString("Submitted Date");
+     this.view.lblSubmittedDate.text =voltmx.i18n.getLocalizedString("Vehicle Type");
+    
+    this.view.lblCurrentStatus.text = voltmx.i18n.getLocalizedString("Status");
 
 
     this.view.lblBasicInformation.text = voltmx.i18n.getLocalizedString("Basic Information");

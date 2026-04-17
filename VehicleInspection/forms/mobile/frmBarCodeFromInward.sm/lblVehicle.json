@@ -7,7 +7,7 @@
     },
     "_left_": {
         "type": "string",
-        "value": "0dp"
+        "value": "8%"
     },
     "_margin_": [
         1,
@@ -21,8 +21,12 @@
         0,
         0
     ],
-    "_skin_": "sb12ce4e70cb489d9a8f14e855cb48a1",
-    "_text_": "Type",
+    "_skin_": "sbae513568364974bb21f81123f3139e",
+    "_text_": "Vehicle",
+    "_top_": {
+        "type": "string",
+        "value": "16%"
+    },
     "_width_": {
         "type": "ref",
         "value": "preferred"
@@ -35,13 +39,9 @@
         }
     },
     "canUpdateUI": true,
-    "centery": {
-        "type": "string",
-        "value": "50%"
-    },
     "containerweight": 100,
     "contentalignment": 4,
-    "id": "lblSubmittedDate",
+    "id": "lblVehicle",
     "info": null,
     "ipad": {
         "psp": {
@@ -55,10 +55,10 @@
     },
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "d51f8cb559734d98953bac8dbc80d685",
+    "kuid": "f0c04078bb864ae8a0c2321bdae5c947",
     "name": "kony.ui.Label",
-    "parent": "flxSubmittedDate",
-    "pf": "frmStatusTrackVehicleDetails",
+    "parent": "flxVehicle",
+    "pf": "frmBarCodeFromInward",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "textstyle": {},

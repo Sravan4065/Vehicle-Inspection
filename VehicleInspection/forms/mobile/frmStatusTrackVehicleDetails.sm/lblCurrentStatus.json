@@ -22,7 +22,7 @@
         0
     ],
     "_skin_": "sb12ce4e70cb489d9a8f14e855cb48a1",
-    "_text_": "Type",
+    "_text_": "#Current Status",
     "_width_": {
         "type": "ref",
         "value": "preferred"
@@ -41,7 +41,7 @@
     },
     "containerweight": 100,
     "contentalignment": 4,
-    "id": "lblSubmittedDate",
+    "id": "lblCurrentStatus",
     "info": null,
     "ipad": {
         "psp": {
@@ -55,9 +55,9 @@
     },
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "d51f8cb559734d98953bac8dbc80d685",
+    "kuid": "f40e135656ea4b1dab7b3ab2f63025b0",
     "name": "kony.ui.Label",
-    "parent": "flxSubmittedDate",
+    "parent": "flxCurrentStatus",
     "pf": "frmStatusTrackVehicleDetails",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,

@@ -41,7 +41,7 @@
     },
     "containerweight": 100,
     "contentalignment": 6,
-    "id": "CopylblChassisValue0b36b852ad67e4d",
+    "id": "lblCurrentStatusValue",
     "info": null,
     "ipad": {
         "psp": {
@@ -57,7 +57,7 @@
     "isvisible": true,
     "kuid": "hb218afd219442bb9fd6aa8088c65dab",
     "name": "kony.ui.Label",
-    "parent": "CopyflxChassisNumber0bc33418d3a324a",
+    "parent": "flxCurrentStatus",
     "pf": "frmStatusTrackVehicleDetails",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,

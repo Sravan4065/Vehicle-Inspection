@@ -28,6 +28,8 @@ onNavigate: function(context){
   {
      var self = this;
 
+    if(self.vehicleDetails && self.vehicleDetails.is_started && self.vehicleDetails.is_started === "0")
+      {
     //     self.view.flxVehicleReceived.setVisibility(true);
 
     var serviceName = "ms_services";
@@ -41,7 +43,7 @@ onNavigate: function(context){
     var data = {
       "service_request_id": self.vehicleDetails.object_service_id,
       "object_id": self.objectId,
-      "action_name": "Started",//"Approve Request",
+      "action_name": "Acknowledge",//"Approve Request",
       "comments": "Started the inspection"
 
     };
@@ -75,7 +77,7 @@ onNavigate: function(context){
       voltmx.application.dismissLoadingScreen();
       voltmx.print(response);
 
-      if(response && response.rawResponse && response.rawResponse.data && response.rawResponse.data.id)
+      if(response && response.rawResponse && response.rawResponse.data)
       {
         //            self.view.flxBrowser.setVisibility(false);
         NavigationManager.push("frmChooseInspectionType",self.vehicleDetails);
@@ -92,6 +94,11 @@ onNavigate: function(context){
       alert("Cannot start Inspection");
 
     }
+      }
+    else
+      {
+        NavigationManager.push("frmChooseInspectionType",self.vehicleDetails); 
+      }
   },
   
   adjustRTL: function () {
@@ -390,7 +397,7 @@ onNavigate: function(context){
          self.view.lblInspectionReportData.skin = "sknlblDubai231f2016pxRegular";
       }
 
-    this.view.lblInspectionReportData.text = (this.vehicleDetails && this.vehicleDetails.status) ? this.vehicleDetails.status : "N/A";
+    this.view.lblInspectionReportData.text = (this.vehicleDetails && this.vehicleDetails.inspection_report) ? this.vehicleDetails.inspection_report : "N/A";
   },
 
   

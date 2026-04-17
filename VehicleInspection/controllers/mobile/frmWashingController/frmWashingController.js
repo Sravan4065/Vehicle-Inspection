@@ -45,6 +45,8 @@ var self = this;
      this.view.btnStart.setVisibility(true);
 
     this.view.btnCompleteAndSubmit.setVisibility(false);
+    
+    this.showButtonsBasedonStatus();
 
     this.view.btnStart.onClick = this.onStartClick.bind(this);
 
@@ -54,19 +56,44 @@ var self = this;
    this.view.flxSuccessUpload.setVisibility(false);
     this.view.flxSuccessUpload.btnClose.onClick = () =>{
       self.view.flxSuccessUpload.setVisibility(false);
+       NavigationManager.pop();
     }
     
         this.view.flxSuccessUpload.flxClose.onClick = () =>{
       self.view.flxSuccessUpload.setVisibility(false);
+          NavigationManager.pop();
     }
  
   },
 
+  showButtonsBasedonStatus: function()
+  {
+    var self = this;
+    
+    var record = self.context && self.context.record;
+    
+    if(record.wash_started_on)
+      {
+          self.view.flxStarted.setVisibility(true);
+
+      self.view.btnComplete.setVisibility(true);
+
+      self.view.flxEnded.setVisibility(false);
+
+      self.view.btnStart.setVisibility(false);
+       
+      self.view.lblStartedTime.text = convertUTCtoUserTime(record.wash_started_on);
+      self.view.lblStartWashing.text = voltmx.i18n.getLocalizedString("Under Washing");
+      }
+    
+  },
+  
   navtowash: function(){
 
-    var nav = new voltmx.mvc.Navigation("frmWashingSummary");
+//     var nav = new voltmx.mvc.Navigation("frmWashingSummary");
 
-    nav.navigate();
+//     nav.navigate();
+    NavigationManager.pop();
 
   },
 
@@ -77,37 +104,6 @@ var self = this;
 
   },
  
-  onStartWashing: function()
-
-  {
-
-    if(this.view.btnStart.text === "Start")
-
-    {
-
-      this.view.btnStart.text = voltmx.i18n.getLocalizedString("Complete");
-
-      this.view.imgIcon.src = "playicon.png";
-
-      this.view.flxStarted.setVisibility(true);
-
-    }
-
-    else
-
-    {
-
-      this.view.btnStart.setVisibility(false);
-
-      //     this.view.imgIcon.src = "playicon.png";
-
-      this.view.flxEnded.setVisibility(true);
-
-     // this.view.btnCompleteAndSubmit.setVisibility(true);
-
-    }
-
-  },
  
  
   onStartClick: function() {
@@ -474,7 +470,8 @@ timeSetting: function(type){
         flipTransform.scale(-1, 1); // horizontal flip
 
     this.view.flxHeading.imgBack.transform = flipTransform;
-
+     this.view.flxStatusnumber.left = "";
+     this.view.flxStatusnumber.right = "5%";
       }
 
     else
@@ -488,6 +485,9 @@ timeSetting: function(type){
         this.view.flxHeading.lblImages.left = "17%";
 
         this.view.flxHeading.lblImages.right = "";
+        
+        this.view.flxStatusnumber.left = "5%";
+     this.view.flxStatusnumber.right = "";
 
         this.view.flxHeading.imgBack.transform = voltmx.ui.makeAffineTransform();
 
