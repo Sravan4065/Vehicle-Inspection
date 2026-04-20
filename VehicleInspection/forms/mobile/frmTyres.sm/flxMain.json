@@ -37,9 +37,9 @@
     "children": [
         "flxHeader",
         "flxBody",
-        "flxFooter",
         "flxChooseFileTakePhoto",
-        "saveresponse"
+        "saveresponse",
+        "flxfooter"
     ],
     "clipbounds": true,
     "containerweight": 100,
