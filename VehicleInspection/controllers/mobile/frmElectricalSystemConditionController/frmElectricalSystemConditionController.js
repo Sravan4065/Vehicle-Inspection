@@ -27,6 +27,7 @@ define({
     this.view.flxAddDetailsAndUpload.flxUploadImages.onClick = () =>
     {
       self.view.flxChooseFileTakePhoto.setVisibility(true);
+      self.view.flxfooter.setVisibility(false);
     }
     
     if(this.view.saveresponse)
@@ -57,36 +58,94 @@ define({
     this.view.flxChooseFileTakePhoto.flxChooseFromLibrary.onClick = this.flxChooseFromLibraryOnClickAction.bind(this);
     this.view.flxChooseFileTakePhoto.camTakeAPhoto.onCapture = this.camOnCaptureAction.bind(this);
     this.view.flxChooseFileTakePhoto.flxTakeAPhoto.onClick = this.camOnCaptureAction.bind(this);
-     this.view.flxAddDetailsAndUpload.flxRetake.onClick = () =>
-    {
+//     this.view.flxAddDetailsAndUpload.flxRetake.onClick = () =>
+//     {
       
-      var alertConfig = {
-            message: "Do you want to delete existing image?",
-            alertType: constants.ALERT_TYPE_CONFIRMATION,
-            alertTitle: "Confirmation",
-            yesLabel: "Yes",
-            noLabel: "No",
-            alertHandler: function(response) {
+//       var alertConfig = {
+//             message: "Do you want to delete existing image?",
+//             alertType: constants.ALERT_TYPE_CONFIRMATION,
+//             alertTitle: "Confirmation",
+//             yesLabel: "Yes",
+//             noLabel: "No",
+//             alertHandler: function(response) {
 
-                if (response) {
-                     self.view.flxAddDetailsAndUpload.flxUploadImages.setVisibility(true);
-                     self.view.flxAddDetailsAndUpload.flxUploadedImage.setVisibility(false);
-                     self.view.flxChooseFileTakePhoto.setVisibility(true);
-                        } 
+//                 if (response) {
+//                      self.view.flxAddDetailsAndUpload.flxUploadImages.setVisibility(true);
+//                      self.view.flxAddDetailsAndUpload.flxUploadedImage.setVisibility(false);
+//                      self.view.flxChooseFileTakePhoto.setVisibility(true);
+//                         } 
 
-                 else {
-                   self.view.flxChooseFileTakePhoto.setVisibility(false);
-                }
-            }
-        };
+//                  else {
+//                    self.view.flxChooseFileTakePhoto.setVisibility(false);
+//                 }
+//             }
+//         };
 
-        voltmx.ui.Alert(alertConfig, {});
+//         voltmx.ui.Alert(alertConfig, {});
       
       
+//     }
+    
+    this.view.flxAddDetailsAndUpload.flxRetake.onClick = () => {
+    var key = self.record ? self.record.item_name : null;
+
+    if (!key || !self.inspectionData[key]) {
+        self.resetAddDetailsUI();
+        return;
     }
+
+    var deletePayload = self.inspectionData[key].retakeDeletePayload;
+    if (!deletePayload) {
+        self.resetAddDetailsUI();
+        return;
+    }
+
+    var alertConfig = {
+        message: "Do you want to delete existing image?",
+        alertType: constants.ALERT_TYPE_CONFIRMATION,
+        alertTitle: "Confirmation",
+        yesLabel: "Yes",
+        noLabel: "No",
+        alertHandler: function (response) {
+            if (response) { // YES
+                ImageUploadAndDeletion.deleteImage([deletePayload], function(delResponse, error) {
+                    if (error) {
+                        alert("Image deletion failed");
+                        voltmx.print("Retake Delete Error: " + JSON.stringify(error));
+                        return;
+                    }
+
+                    if (delResponse && delResponse.opstatus === 0) {
+                        // Clear image from local state immediately
+                        self.inspectionData[key].image_url_id = null;
+                        self.inspectionData[key].file_url = null;
+                        self.inspectionData[key].file_name = null;
+                        self.inspectionData[key].retakeDeletePayload = null;
+
+                        // Optional: Track for safety (if list is refreshed before Save)
+                        if (!self.locallyDeletedImageIds) self.locallyDeletedImageIds = {};
+                        self.locallyDeletedImageIds[Number(deletePayload.image_id)] = true;
+
+                        self.resetAddDetailsUI();
+
+                        voltmx.print("Image deleted successfully. Cleared locally for key: " + key);
+                    } else {
+                        alert("Failed to delete image");
+                    }
+                });
+            } else {
+                self.view.flxChooseFileTakePhoto.setVisibility(false);
+                self.view.flxfooter.setVisibility(true);
+            }
+        }
+    };
+    voltmx.ui.Alert(alertConfig, {});
+};
+    
     this.view.flxChooseFileTakePhoto.onClick = () =>
     {
       self.view.flxChooseFileTakePhoto.setVisibility(false);
+      self.view.flxfooter.setVisibility(true);
     }
     this.view.flxAddDetailsAndUpload.setVisibility(false);
 
@@ -160,6 +219,15 @@ define({
 }.bind(this);
   },
 
+  resetAddDetailsUI: function() {
+    this.view.flxAddDetailsAndUpload.flxUploadImages.setVisibility(true);
+    this.view.flxAddDetailsAndUpload.flxUploadedImage.setVisibility(false);
+    this.view.flxChooseFileTakePhoto.setVisibility(true);
+    this.view.flxfooter.setVisibility(false);
+    this.view.flxAddDetailsAndUpload.imgUploadedImg.src = "";
+    this.view.flxAddDetailsAndUpload.lblImgName.text = "";
+},
+  
   createUIWithRecords: function(records)
   {
     var self = this;
@@ -503,6 +571,13 @@ if (details !== "" && cost !== "" && Number(cost) > 0)
             
             self.inspectionData[key].file_url = payload.file_url;
     self.inspectionData[key].file_name = payload.file_name;
+            
+            self.inspectionData[key].retakeDeletePayload = {
+            file_name: payload.file_name,
+            image_url: payload.file_url,
+            object_id: (self.objectId),
+            image_id: imageLog.id
+        };
 
             var obj = {
               file_name: payload.file_name,
@@ -972,6 +1047,7 @@ for (var key in self.inspectionData) {
 
 
         self.view.flxChooseFileTakePhoto.setVisibility(false);
+        self.view.flxfooter.setVisibility(true);
         self.view.flxAddDetailsAndUpload.flxUploadedImage.setVisibility(true);
         self.view.flxAddDetailsAndUpload.flxUploadImages.setVisibility(false);
         self.view.flxAddDetailsAndUpload.imgUploadedImg.base64 = base64Data;
@@ -1041,6 +1117,7 @@ for (var key in self.inspectionData) {
 
       this.selectedPdfBase64 = base64Image;
       self.view.flxChooseFileTakePhoto.setVisibility(false);
+      self.view.flxfooter.setVisibility(true);
       self.view.flxAddDetailsAndUpload.flxUploadedImage.setVisibility(true);
       self.view.flxAddDetailsAndUpload.flxUploadImages.setVisibility(false);
       self.view.flxAddDetailsAndUpload.imgUploadedImg.base64 = base64Image;
@@ -1049,6 +1126,7 @@ for (var key in self.inspectionData) {
       //     this.fleetDocUpload();
 
       this.view.flxChooseFileTakePhoto.setVisibility(false);
+      self.view.flxfooter.setVisibility(true);
 
     } else {
       voltmx.print("No image captured from camera.");
@@ -1116,7 +1194,16 @@ for (var key in self.inspectionData) {
     image_url_id: record.image_url_id || null,
     // === NEW LINES (display fields) ===
     file_url: record.file_url || null,
-    file_name: record.file_name || ""
+    file_name: record.file_name || "",
+    
+    // === NEW: Delete payload for existing images ===
+        retakeDeletePayload: record.image_url_id ? {
+            file_name: record.file_name || "",
+            image_url: record.file_url || "",
+            object_id: (self.objectId),
+            image_id: (record.image_url_id)
+        } : null
+         //
   };   
         });
           

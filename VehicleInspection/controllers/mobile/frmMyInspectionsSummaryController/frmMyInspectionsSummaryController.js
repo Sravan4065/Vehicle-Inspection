@@ -51,8 +51,8 @@ define({
       }
     else
       {
-//         self.pageSize += 10;
-//         self.invokeCompletedInwardService();
+        self.pageSize += 10;
+        self.invokePendingInspectionService();
       }
   },
   
@@ -83,7 +83,7 @@ define({
     this.currentOffset = 0;
     this.view.segMyinspections.setData([]);
     this.view.btnLoadMore.setVisibility(false);
-//     this.invokeCompletedInwardService();
+    this.invokePendingInspectionService();
     
     this.view.flxPendingVehicles.skin = "sknFlxBasic";
     this.view.lblPendingVehicles.skin = "sknlblDubaid3243720pxMedium";
@@ -110,7 +110,7 @@ define({
       "lot_no": "",
   "title": "",
   "type": "",
-  "status": "Pending", // Pending || Completed
+  "status": self.isPending ? "Pending": "Completed", // Pending || Completed
   "page": "1",
   "page_size": self.pageSize || 10
   };
