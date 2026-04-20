@@ -1,5 +1,6 @@
 {
     "keys": [
+        "Activity List",
         "Add Details",
         "All fields are mandatory",
         "App Settings",
@@ -143,6 +144,7 @@
         "Total Vehicles",
         "Transmission",
         "Trim",
+        "Tyres Condition",
         "Under Washing",
         "Upload Exterior Images",
         "Vehicle",
@@ -179,6 +181,7 @@
     "locales": {
         "ar_AE": {
             "i18nStrings": {
+                "Activity List": "قائمة الأنشطة",
                 "Add Details": "أضف التفاصيل",
                 "All fields are mandatory": "جميع الحقول إلزامية",
                 "App Settings": "إعدادات التطبيق",
@@ -322,6 +325,7 @@
                 "Total Vehicles": "إجمالي المركبات",
                 "Transmission": "الانتقال",
                 "Trim": "الفئة",
+                "Tyres Condition": "حالة الإطارات",
                 "Under Washing": "تحت الغسيل",
                 "Upload Exterior Images": "تحميل صور خارجية",
                 "Vehicle": "المركبة",
@@ -365,6 +369,7 @@
         },
         "en_IN": {
             "i18nStrings": {
+                "Activity List": "Activity List",
                 "Add Details": "Add Details",
                 "All fields are mandatory": "All fields are mandatory",
                 "App Settings": "App Settings",
@@ -508,6 +513,7 @@
                 "Total Vehicles": "Total Vehicles",
                 "Transmission": "Transmission",
                 "Trim": "Trim",
+                "Tyres Condition": "Tyres Condition",
                 "Under Washing": "Under Washing",
                 "Upload Exterior Images": "Upload Exterior Images",
                 "Vehicle": "Vehicle",
