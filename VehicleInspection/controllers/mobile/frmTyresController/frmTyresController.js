@@ -3,6 +3,7 @@ define({
    onNavigate: function(context)
   {
     var self = this;
+    this.adjustRTL();
     this.lovId = context.lovId;
     this.objectId = context.object_id;
     this.resetFormData();
@@ -172,8 +173,8 @@ callRate: function(context) {
   onPreShow: function()
   {
     var self = this;
-   toggleFooterIcons(this.view, "frmTyres");
-   
+ toggleFooterIcons(this.view, "frmEngineInspectionType"); 
+    
     for (var n = 1; n <= 5; n++) {
         self.view["imgStar" + n].src = "ashstar.png";
     }
@@ -914,4 +915,115 @@ for (var key in self.inspectionData) {
 
     self.inspectionData[key].notes = self.view.txsumreport3.text || "";
 },
+  
+  adjustRTL: function()
+  {
+    var self = this;
+     var isArabic = voltmx.i18n.getCurrentLocale() === "ar_AE";
+    
+    this.view.flxHeadingWithButton.flxHeading.reverseLayoutDirection = isArabic;
+    
+        if(isArabic)
+    {
+      this.view.flxHeadingWithButton.btnSaveResponse.right = "";
+      this.view.flxHeadingWithButton.btnSaveResponse.left = "5%";
+
+      this.view.flxHeadingWithButton.flxBack.left = "";
+      this.view.flxHeadingWithButton.flxBack.right = "5%";
+
+      this.view.flxHeadingWithButton.lblImages.left = "";
+      this.view.flxHeadingWithButton.lblImages.right = "3%";
+      
+        var flipTransform = voltmx.ui.makeAffineTransform();
+      flipTransform.scale(-1, 1); // horizontal flip
+      this.view.flxHeadingWithButton.imgBack.transform = flipTransform;
+    }
+    else
+      {
+         this.view.flxHeadingWithButton.btnSaveResponse.right = "5%";
+      this.view.flxHeadingWithButton.btnSaveResponse.left = "";
+
+      this.view.flxHeadingWithButton.flxBack.left = "5%";
+      this.view.flxHeadingWithButton.flxBack.right = "";
+
+      this.view.flxHeadingWithButton.lblImages.left = "3%";
+      this.view.flxHeadingWithButton.lblImages.right = "";
+        
+          this.view.flxHeadingWithButton.imgBack.transform = voltmx.ui.makeAffineTransform();
+      }
+    
+     var setPosition = function(widget, left, right) {
+    if (!widget) return;
+    widget.left = left || "";
+    widget.right = right || "";
+  };
+
+  var setAlignment = function(widget) {
+    if (!widget) return;
+    widget.contentAlignment = isArabic
+      ? constants.CONTENT_ALIGN_MIDDLE_RIGHT
+      : constants.CONTENT_ALIGN_MIDDLE_LEFT;
+  };
+    
+      var detailsList = ["details1","details2","details"];
+
+  detailsList.forEach(function(id) {
+
+    var item = self.view[id];
+    if (!item) return;
+
+    setPosition(item.txbData,
+      isArabic ? "" : "4%",
+      isArabic ? "4%" : ""
+    );
+
+    setPosition(item.flxName,
+      isArabic ? "" : "32dp",
+      isArabic ? "32dp" : ""
+    );
+    
+
+    if (item.flxArrow) {
+      setPosition(item.flxArrow,
+        isArabic ? "8dp" : "",
+        isArabic ? "" : "8dp"
+      );
+    }
+
+    setAlignment(item.txbData);
+    setAlignment(item.lblNamedata);
+  });
+    
+    if(isArabic)
+      {
+        this.view.flxTextheading3.left = "";
+        this.view.flxTextheading3.right = "32dp";
+      }
+    else
+      {
+         this.view.flxTextheading3.left = "32dp";
+        this.view.flxTextheading3.right = "";
+      }
+    
+     this.view.flxHeadingWithButton.btnSaveResponse.text = voltmx.i18n.getLocalizedString("save response");
+    this.view.flxHeadingWithButton.lblImages.text = voltmx.i18n.getLocalizedString("Tyres Condition");
+     this.view.flxHeader.lblInspectionIQ.text = voltmx.i18n.getLocalizedString("InspectioniQ");
+    
+    this.view.details.lblNamedata.text =  voltmx.i18n.getLocalizedString("Name");
+    this.view.details1.lblNamedata.text =  voltmx.i18n.getLocalizedString("Size");
+    this.view.details2.lblNamedata.text =  voltmx.i18n.getLocalizedString("Year Of Month");
+    this.view.lblInspheading3.text = voltmx.i18n.getLocalizedString("Remarks");
+    this.view.lblConditionRating.text = voltmx.i18n.getLocalizedString("Condition Rating");
+    
+     this.view.flxfooter.lblHome.text =voltmx.i18n.getLocalizedString("Dashboard");
+    
+    
+      this.view.flxfooter.lblinspections.text =voltmx.i18n.getLocalizedString("Inspections");
+
+      this.view.flxfooter.lblinward.text =voltmx.i18n.getLocalizedString("Inward");
+
+      this.view.flxfooter.lblimages.text =voltmx.i18n.getLocalizedString("Images");
+
+      this.view.flxfooter.lblprofile.text =voltmx.i18n.getLocalizedString("Profile");
+  }
  });

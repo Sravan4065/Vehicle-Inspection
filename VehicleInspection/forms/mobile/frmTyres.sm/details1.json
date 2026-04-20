@@ -72,6 +72,12 @@
                 "kuid": "e1411d5e9d87492c9e00e289e19f2b9d",
                 "srcKUID": "af4f55790c1942ab9a8e328a44437228",
                 "wType": "FlexContainer"
+            },
+            "width": {
+                "Default": {
+                    "type": "string",
+                    "value": "13%"
+                }
             }
         },
         "flxSegment": {
