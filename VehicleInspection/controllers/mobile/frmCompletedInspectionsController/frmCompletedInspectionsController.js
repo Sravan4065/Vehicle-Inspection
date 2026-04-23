@@ -2,15 +2,33 @@ define({
 
    onNavigate: function()
   {
+    this.adjustRtl();
     this.view.preShow = this.onPreShow.bind(this);
   },
   
   onPreShow: function()
   {
     toggleFooterIcons(this.view, "frmCompletedInspections");
+    this.currentOffset = 0;
+this.pageSize = this.pageSize || 5;
+this.view.segCompletedInspections.removeAll();
+    toggleFooterIcons(this.view, "frmCompletedInspections");
+    this.view.btnLoadMore.onClick = this.onLoadMoreClick.bind(this);
     this.invokePendingInspectionService();
+      this.view.btnLoadMore.setEnabled(true);
+    this.view.btnLoadMore.setVisibility(true);
   },
   
+  onLoadMoreClick: function()
+{
+  var self = this;
+
+  // Prevent multiple clicks
+  self.view.btnLoadMore.setEnabled(false);
+
+  // Call same service again
+  self.invokePendingInspectionService();
+},
   
     invokePendingInspectionService: function() {
   var self = this;
@@ -20,13 +38,13 @@ define({
   var integrationObj = voltmx.sdk.getCurrentInstance()
                                   .getIntegrationService(serviceName);
   var operationName = "get-inspection-vehicles";
-
+self.currentPage = self.currentPage || 1;
   var data = {
       "lot_no": "",
   "title": "",
   "type": "",
   "status": "Completed", // Pending || Completed
-  "page": "1",
+  "page": self.currentPage.toString(),
   "page_size": self.pageSize || 5
   };
 
@@ -49,16 +67,19 @@ define({
 {
   voltmx.application.dismissLoadingScreen();
   voltmx.print(response);
+  this.currentPage++;
 
   
 
  
   this.addToSegment(response);
+  this.view.btnLoadMore.setEnabled(true);
 },
   operationFailurePending: function(error)
   {
     voltmx.application.dismissLoadingScreen();
     voltmx.print(error);
+      this.view.btnLoadMore.setEnabled(true);
   },
   
   
@@ -109,7 +130,7 @@ define({
    if (newRecords.length > 0) {
 //         self.view.lblNorecords.setVisibility(false);
 //         self.view.segMyinspections.setVisibility(true);
-        records.forEach(function(record) {
+        newRecords.forEach(function(record) {
 
             data.push({
                 "imgFArrowIE": 
@@ -117,12 +138,16 @@ define({
                 "left": isArabic ? "" : "5%",
                 "right": isArabic ? "4%": ""
               },
+              "imgVehicleIcon":{
+              "src":"caricon.png"
+            },
               "flxModelAndNumber":{
                 "left": isArabic ? "" : "2%",
                 "right": isArabic ? "2%": ""
               },
                 "lblLotAndModel":{
-                  "text": (record.ID || "") + " " + (record.description
+                  "text": (record.ID
+ || "") + " " + (record.description
  || ""),
                     "left": isArabic ? "" : "2%",
                 "right": isArabic ? "2%": ""
@@ -141,15 +166,13 @@ define({
               },
                 "lblDate":{
                   "text": "Date",
-                    "left": isArabic ? "" : "2%",
-                "right": isArabic ? "2%": ""
+                  
                 }, 
                "lblDateAndTimeValue":{
                   "text": record.requested_time
 
  || "",
-                    "left": isArabic ? "" : "2%",
-                "right": isArabic ? "2%": ""
+                    
                 }, 
            
               
@@ -162,6 +185,9 @@ define({
                         self.openDetails(record.object_id,record);
                     }
                 },
+              "lblViewDetailsInwardEntry":{
+                  "text": "View"
+                                 },
               "imgFArrowIE":{
               "left": isArabic ? "5%" : "",
                     "right": isArabic ? "" : "5%",
@@ -178,7 +204,7 @@ define({
 //         self.view.segMyinspections.setVisibility(false);
       }
      
-       if (records.length < self.pageSize) {
+       if (newRecords.length < self.pageSize) {
     self.view.btnLoadMore.setVisibility(false);
 } else {
     self.view.btnLoadMore.setVisibility(true);
@@ -197,6 +223,16 @@ define({
       "isPending": self.isPending
     });
   },
-  
+  adjustRtl: function(){
+     this.view.flxfooter.lblinspections.text =voltmx.i18n.getLocalizedString("Inspections");
+
+      this.view.flxfooter.lblinward.text =voltmx.i18n.getLocalizedString("Inward");
+
+      this.view.flxfooter.lblimages.text =voltmx.i18n.getLocalizedString("Images");
+
+      this.view.flxfooter.lblprofile.text =voltmx.i18n.getLocalizedString("Profile");
+    this.view.flxfooter.lblHome.text =voltmx.i18n.getLocalizedString("Dashboard");
+ 
+  },
 
  });
