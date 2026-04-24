@@ -227,6 +227,7 @@ newRecords.forEach(function(record) {
              
                  
                 "flxView": {
+                    "isVisible": self.isPending,
                     "left": isArabic ? "5%" : "",
                     "right": isArabic ? "" : "5%",
                     "onClick": function() {

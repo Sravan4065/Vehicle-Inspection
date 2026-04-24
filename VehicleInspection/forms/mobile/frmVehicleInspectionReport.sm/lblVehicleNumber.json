@@ -22,7 +22,7 @@
         0
     ],
     "_skin_": "sbae513568364974bb21f81123f3139e",
-    "_text_": "Label",
+    "_text_": "C",
     "_top_": {
         "type": "string",
         "value": "0"
@@ -61,7 +61,7 @@
     "pf": "frmVehicleInspectionReport",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
-    "texti18n": "Vehicle Number",
+    "texti18n": "Chassis Number",
     "textstyle": {},
     "tooltip": "",
     "wType": "Label"

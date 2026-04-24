@@ -42,7 +42,7 @@
     "imagescalemode": 1,
     "info": null,
     "iscustomlayout": false,
-    "isvisible": true,
+    "isvisible": false,
     "kuid": "a732ebb7e46245e19a57ceda02d0f479",
     "name": "kony.ui.Image2",
     "parent": "flxPrintBarCode",

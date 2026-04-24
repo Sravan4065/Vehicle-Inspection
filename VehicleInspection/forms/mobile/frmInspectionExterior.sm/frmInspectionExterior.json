@@ -72,7 +72,7 @@
             "titleBarAttributes": {
                 "barStyle": 0,
                 "hidesBackButton": false,
-                "kuid": "c64f41c3a5544e6cba7e303b89289965",
+                "kuid": "af496fabcbd44aa4ab065d17b2b05ce9",
                 "leftBarButtonItems": [],
                 "leftItemsSupplementBackButton": true,
                 "prompt": "",
@@ -83,7 +83,7 @@
                         "info": {
                             "title": "Edit"
                         },
-                        "kuid": "d5ed87461c404dd4ab5813ad1e94f46f",
+                        "kuid": "i2595290b10b44d39c90c1d4a88b717f",
                         "style": 0,
                         "tintColor": "4b88f100",
                         "type": 1
@@ -100,7 +100,7 @@
     "kiosk": {
         "needAppMenu": false
     },
-    "kuid": "b0d59ee6445c4908b1c4b8c2f97bda3e",
+    "kuid": "ha64c014c0404a1b92c52da2a6d2fb64",
     "layouttype": 2,
     "name": "kony.ui.Form2",
     "needappmenu": false,

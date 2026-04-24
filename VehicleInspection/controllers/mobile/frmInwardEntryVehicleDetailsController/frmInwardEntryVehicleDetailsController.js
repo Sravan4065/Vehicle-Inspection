@@ -229,11 +229,12 @@ return formatted;
     self.view.lblLocationValue.text = metadata.location || "-";
     self.view.lblYearValue.text = metadata.year_make || "-";
     self.view.lblMileageValue.text = metadata.milage || "-";
-    self.view.lblTransmissionValue.text = metadata.transmission || "-";
+    self.view.lblTransmissionValue.text = metadata.transmission_type || "-";
     self.view.lblExteriorColorValue.text = metadata.colors || "-";
     self.view.lblInteriorColorValue.text = metadata.colors || "-";
     self.view.lblDriveTypeValue.text = metadata.drive_type || "-";
-    self.view.lblEngineValue.text = metadata.engine || "-";
+    self.view.lblEngineValue.text = metadata.no_of_cylinders || "-";
+    self.view.lblOwnershipvalue.text = metadata.ownership || "-";
   },
   
   adjustRTL: function(){
@@ -268,7 +269,8 @@ return formatted;
       "lblExteriorColor",
       "lblInteriorColor",
       "lblDriveType",
-      "lblEngine"
+      "lblEngine",
+      "lblOwnership"
 
 
 
@@ -294,6 +296,7 @@ return formatted;
     this.view.lblInteriorColor.right = "0%";
     this.view.lblDriveType.right = "0%";
     this.view.lblEngine.right = "0%";
+    this.view.lblOwnership.right = "0%";
 
     /* LEFT = null */
       this.view.lblTechnicalInformation.left=null;
@@ -313,6 +316,7 @@ return formatted;
     this.view.lblInteriorColor.left = null;
     this.view.lblDriveType.left = null;
     this.view.lblEngine.left = null;
+    this.view.lblOwnership.left = null;
      
    this.view.lblChassisValue.left = "0%";
      this.view.lblEngineNumberValue.left = "0%"; 
@@ -328,7 +332,7 @@ return formatted;
      this.view.lblInteriorColorValue.left = "0%";
      this.view.lblDriveTypeValue.left = "0%";
      this.view.lblEngineValue.left = "0%"; 
-     
+     this.view.lblOwnershipvalue.left = "0%";
      
       this.view.lblChassisValue.right = null;
      this.view.lblEngineNumberValue.right = null;
@@ -344,6 +348,8 @@ return formatted;
      this.view.lblInteriorColorValue.right = null;
      this.view.lblDriveTypeValue.right = null;
      this.view.lblEngineValue.right = null; 
+     this.view.lblOwnership.right = null;
+     this.view.lblOwnershipvalue.right = null;
      
 
 } else {
@@ -366,6 +372,7 @@ return formatted;
     this.view.lblInteriorColor.left = "0%";
     this.view.lblDriveType.left = "0%";
     this.view.lblEngine.left = "0%";
+    this.view.lblOwnership.left = "0%";
 
     /* RIGHT = null */
    this.view.lblTechnicalInformation.right =null;
@@ -385,6 +392,7 @@ return formatted;
     this.view.lblInteriorColor.right = null;
     this.view.lblDriveType.right = null;
     this.view.lblEngine.right = null;
+    this.view.lblOwnership.right = null;
   
   
    this.view.lblChassisValue.right = "0%";
@@ -401,6 +409,7 @@ return formatted;
      this.view.lblInteriorColorValue.right = "0%";
      this.view.lblDriveTypeValue.right = "0%";
      this.view.lblEngineValue.right = "0%"; 
+     this.view.lblOwnershipvalue.right = "0%";
      
      
       this.view.lblChassisValue.left = null;
@@ -417,6 +426,7 @@ return formatted;
      this.view.lblInteriorColorValue.left = null;
      this.view.lblDriveTypeValue.left = null;
      this.view.lblEngineValue.left = null; 
+     this.view.lblOwnershipvalue.left = null;
   
   
   
@@ -466,8 +476,9 @@ this.view.lblDriveType.contentAlignment =
 
 this.view.lblEngine.contentAlignment =
     isArabic ? constants.CONTENT_ALIGN_MIDDLE_RIGHT : constants.CONTENT_ALIGN_MIDDLE_LEFT;
-    
-    
+  
+    this.view.lblOwnership.contentAlignment = 
+      isArabic ? constants.CONTENT_ALIGN_MIDDLE_RIGHT : constants.CONTENT_ALIGN_MIDDLE_LEFT;
     
    this.view.lblChassisValue.contentAlignment =
     isArabic ? constants.CONTENT_ALIGN_MIDDLE_LEFT : constants.CONTENT_ALIGN_MIDDLE_RIGHT;
@@ -498,8 +509,8 @@ this.view.lblEngine.contentAlignment =
      this.view.lblEngineValue.contentAlignment =
    isArabic ? constants.CONTENT_ALIGN_MIDDLE_RIGHT : constants.CONTENT_ALIGN_MIDDLE_LEFT;  
     
-    
-    
+    this.view.lblOwnershipvalue.contentAlignment = 
+      isArabic ? constants.CONTENT_ALIGN_MIDDLE_RIGHT : constants.CONTENT_ALIGN_MIDDLE_LEFT;
 
   
 
@@ -545,7 +556,22 @@ this.view.lblEngine.contentAlignment =
 
      this.view.lblSubmittedDate.text =voltmx.i18n.getLocalizedString("Submitted Date");
 
+    this.view.flxVehicleReceived.lblVehicleReceived.text = voltmx.i18n.getLocalizedString("Vehicle Received Successfully");
 
+    this.view.flxVehicleReceived.lblVehicleHasBeenLogged.text = voltmx.i18n.getLocalizedString("The vehicle has been logged into the system with timestamp");
+    
+    this.view.flxVehicleReceived.lblVehicleNumber.text = voltmx.i18n.getLocalizedString("Chassis Number");
+    
+    this.view.flxVehicleReceived.lblVehicle.text = voltmx.i18n.getLocalizedString("Vehicle");
+    
+    this.view.flxVehicleReceived.lblReceivedBy.text = voltmx.i18n.getLocalizedString("Received By");
+    
+    this.view.flxVehicleReceived.lblReceivedAt.text = voltmx.i18n.getLocalizedString("Received At");
+    
+    this.view.flxVehicleReceived.lblPrintBarCode.text = voltmx.i18n.getLocalizedString("Generate Barcode");
+    
+    this.view.flxVehicleReceived.lblReturnToList.text = voltmx.i18n.getLocalizedString("Return to List");
+    
     this.view.lblBasicInformation.text = voltmx.i18n.getLocalizedString("Basic Information");
 
     this.view.lblBodyStyle.text = voltmx.i18n.getLocalizedString("Body Style");
@@ -567,6 +593,12 @@ this.view.lblEngine.contentAlignment =
       this.view.lblDriveType.text =voltmx.i18n.getLocalizedString("Drive Type");
     
       this.view.lblEngine.text =voltmx.i18n.getLocalizedString("Engine");
+    
+      this.view.lblOwnership.text = voltmx.i18n.getLocalizedString("Ownership");
+    
+     this.view.flxHeading.lblImages.text = voltmx.i18n.getLocalizedString("Inward Entry");
+    
+     this.view.btnReceiveVehicle.text = voltmx.i18n.getLocalizedString("RECEIVE VEHICLE");
 
   }
  });

@@ -2,7 +2,7 @@ define({
 
   onNavigate: function()
   {
-    this.login1();
+//     this.login1();
     this.view.preShow = this.onPreShow.bind(this);
     
   },
@@ -10,14 +10,14 @@ define({
   onPreShow: function()
   {
 
-    
+    this.login1();
   },
   
 
   
   login1: function() {
     var self = this;
-
+    try{
     function SHOW_ALERT_fd10b6306969472cbdf6f91575f6f820_True() {}
 
     function INVOKE_IDENTITY_SERVICE_gaa8c1b9dbdc47888f6ce42aa0f7d793_Success(response) {
@@ -142,6 +142,12 @@ define({
         INVOKE_IDENTITY_SERVICE_gaa8c1b9dbdc47888f6ce42aa0f7d793_Success,
         INVOKE_IDENTITY_SERVICE_gaa8c1b9dbdc47888f6ce42aa0f7d793_Failure
     );
+    }
+    catch(e)
+      {
+        voltmx.print(e);
+//         alert(e);
+      }
 },
 
   
@@ -209,10 +215,10 @@ get_user_object &&
      var allowedRoles = [
     "inspection_executive",
     "washing_assistant",
-    "awa_supervisor",
+//     "awa_supervisor",
     "admin",
     "yard_assistant",
-    "awa_manager"
+//     "awa_manager"
 ];
       var roles = jobtitle
         ? jobtitle.split(";").map(function(r) {

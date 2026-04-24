@@ -138,7 +138,8 @@ define({
 
       var data = {
         "insp_pac_lov_id": self.lovId,
-        "object_id":self.objectId  
+        "lovs_sub_cat_id": "",
+        "object_id":self.objectId 
       };
       var headers = {
         "user_token": voltmx.store.getItem("getUserAccesstoken") 
@@ -169,13 +170,13 @@ define({
 
   submitOnClickAction: function () {
     var self = this;
-    var baseURL = "https://dev2-hcltx.et.ae:443/";
+    var baseURL = voltmx.store.getItem("BASE_URL");
     if (baseURL && !baseURL.endsWith("/")) {
       baseURL += "/";
     }
 
-    var appkey = "30cc719c34beb54afc9dd174a5304067";
-    var appsecret = "bfa04e3bfce8de77f65467f2e352245";
+    var appkey = voltmx.store.getItem("ALWATANEYA_DEVELOPMENT_PUBLIC_APP_KEY");
+    var appsecret = voltmx.store.getItem("ALWATANEYA_DEVELOPMENT_PUBLIC_APP_SECRET");
     var encodeVal = base64Encode(appkey + ":" + appsecret);
 
     var endUrl = "services/ms_inspection/api/v1/upsert-inspection-body-panels";

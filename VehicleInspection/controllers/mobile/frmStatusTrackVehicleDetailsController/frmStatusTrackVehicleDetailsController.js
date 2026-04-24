@@ -37,7 +37,8 @@ onNavigate: function(context){
   "chassis_number": "",
   "location": "",
   "page": "1",
-  "page_size": "10"
+  "page_size": "10",
+   "user_id": voltmx.store.getItem("userId")
     };
 
    
@@ -59,15 +60,20 @@ onNavigate: function(context){
     voltmx.print("Vehicle Details Success: " + JSON.stringify(response));
 
     if (response) {
-     if(response.records && response.records.length>0)
+     if(response.records && response.records.length>0 && response.records.length<2)
        {
          self.setDataToLabels(response.records[0]);
        }
+      else
+        {
+          alert('Invalid Code. Try again');
+          self.removeData();
+        }
     }
 },
   
   vehicleDetailsFailure: function(error) {
-
+  
     voltmx.print("Vehicle Details Error: " + JSON.stringify(error));
     alert("Failed to fetch vehicle details");
 },
@@ -87,6 +93,19 @@ onNavigate: function(context){
     self.view.lblSubmittedDateValue.text = metadata.type || "-";
     self.view.lblCurrentStatusValue.text = metadata.status || "-";
    
+  },
+  
+  removeData: function()
+  {
+    var self = this;
+    
+    self.view.lblLotAndModel.text = "-";
+    self.view.lblVehicleNumber.text = "-";
+    self.view.lblChassisValue.text = "-";
+//     self.view.lblEngineNumberValue.text = (metadata.chassis_number || "");
+    self.view.lblSellerNameValue.text = "-";
+    self.view.lblSubmittedDateValue.text =  "-";
+    self.view.lblCurrentStatusValue.text = "-";
   },
   
   adjustRTL: function(){

@@ -138,6 +138,7 @@ this.washingPending = 0;
 
     var labelAlignment = isArabic ?constants.CONTENT_ALIGN_MIDDLE_RIGHT : constants.CONTENT_ALIGN_MIDDLE_LEFT;
 
+    
     var textAlign =  isArabic ? constants.TEXT_ALIGN_RIGHT : constants.TEXT_ALIGN_LEFT;
 
     var direction = isArabic;
@@ -164,6 +165,19 @@ this.washingPending = 0;
         
          self.view.flxRole.left = null;
         self.view.flxRole.right = "0dp";
+        
+        self.view.lblPerformanceOverview.right = "5%";
+        self.view.lblPerformanceOverview.left = "";
+        
+        self.view.lblSettings.right = "5%";
+        self.view.lblSettings.left = "";
+        
+        self.view.lblEmail.left = "";
+        self.view.lblEmail.right = "2dp";
+        
+        self.view.lblRoleID.left = "";
+        self.view.lblRoleID.right = "2dp";
+        
       }
     else
       {
@@ -187,22 +201,26 @@ this.washingPending = 0;
         
         self.view.flxRole.left = "0dp";
         self.view.flxRole.right = null;
+        
+        self.view.lblPerformanceOverview.right = "";
+        self.view.lblPerformanceOverview.left = "5%";
+        
+         self.view.lblSettings.right = "";
+        self.view.lblSettings.left = "5%";
+        
+         self.view.lblEmail.left = "2dp";
+        self.view.lblEmail.right = "";
+        
+        self.view.lblRoleID.left = "2dp";
+        self.view.lblRoleID.right = "";
       }
 
 
     var labelList =[
 
-      "lblUsername",
+    
 
       "lblRole",
-
-      "lblEmail",
-
-      "lblEmailValue",
-
-      "lblRoleID",
-
-      "lblRoleValue",
 
       "lblPerformanceOverview",
 
@@ -231,6 +249,7 @@ this.washingPending = 0;
       "lblHelpSupport",
 
       "lblLogout",
+      
 
       
 
@@ -285,11 +304,13 @@ this.washingPending = 0;
 
       this.view.lblPerformanceOverview.text =voltmx.i18n.getLocalizedString("Performance Overview");
 
-      this.view.lblTotalCompleted.text =voltmx.i18n.getLocalizedString("Total Completed");
+      this.view.lblTotalCompleted.text =voltmx.i18n.getLocalizedString("Inward");
 
       this.view.lblInspections.text =voltmx.i18n.getLocalizedString("Inspections");
 
       this.view.lblWashing.text =voltmx.i18n.getLocalizedString("Washing");
+    
+      this.view.lblImages.text =voltmx.i18n.getLocalizedString("Images");
 
 //       this.view.flxHeading.lblImages.text =voltmx.i18n.getLocalizedString("Profile");
 
@@ -311,6 +332,8 @@ this.washingPending = 0;
 
       this.view.flxfooter.lblprofile.text =voltmx.i18n.getLocalizedString("Profile");
     
+      this.view.lblImages.text = voltmx.i18n.getLocalizedString("Total Completed");
+    
       this.view.lblUsername.text = voltmx.store.getItem("username");
     
       this.view.lblRole.text = voltmx.store.getItem("jobTitle");
@@ -322,7 +345,10 @@ this.washingPending = 0;
     this.view.lblLanguageToggle.text = voltmx.i18n.getLocalizedString("Language Toggle");
     this.view.flxHeading.lblImages.text = voltmx.i18n.getLocalizedString("Profile");
     this.view.lblBarCodeScanner.text = voltmx.i18n.getLocalizedString("Bar Code Scanner");
-
+    
+    this.view.lblUsername.contentAlignment = isArabic ? constants.CONTENT_ALIGN_MIDDLE_RIGHT : constants.CONTENT_ALIGN_MIDDLE_LEFT;
+    this.view.lblEmailValue.contentAlignment = isArabic ? constants.CONTENT_ALIGN_MIDDLE_RIGHT : constants.CONTENT_ALIGN_MIDDLE_LEFT;
+    this.view.lblRoleValue.contentAlignment = isArabic ? constants.CONTENT_ALIGN_MIDDLE_RIGHT : constants.CONTENT_ALIGN_MIDDLE_LEFT;
   },
   
   

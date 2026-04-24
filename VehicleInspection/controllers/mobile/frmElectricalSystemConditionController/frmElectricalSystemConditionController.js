@@ -28,6 +28,7 @@ define({
     {
       self.view.flxChooseFileTakePhoto.setVisibility(true);
       self.view.flxfooter.setVisibility(false);
+      self.view.flxAddDetailsAndUpload.setVisibility(false);
     }
     
     if(this.view.saveresponse)
@@ -503,9 +504,13 @@ this.inspectionData[key].rating = selectedRating;
 //   (self.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text || "").trim() !== ""
 // )
     var details = String(self.view.flxAddDetailsAndUpload.txtAreaPleaseEnterDetails.text || "").trim();
-var cost = String(self.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text || "").trim();
+// var cost = String(self.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text || "").trim();
+var rawValue = self.view.flxAddDetailsAndUpload.txtAreaEstimatedCost.text;
+var cost = rawValue !== null && rawValue !== undefined
+  ? String(rawValue).trim()
+  : "";
 
-if (details !== "" && cost !== "" && Number(cost) > 0) 
+if (details !== "" && cost !== "" && Number(cost) >= 0) 
     {
   var index = self.currentIndex;
   if (typeof index === "undefined" || !self.records[index]) {
@@ -1047,6 +1052,7 @@ for (var key in self.inspectionData) {
 
 
         self.view.flxChooseFileTakePhoto.setVisibility(false);
+        self.view.flxAddDetailsAndUpload.setVisibility(true);
         self.view.flxfooter.setVisibility(true);
         self.view.flxAddDetailsAndUpload.flxUploadedImage.setVisibility(true);
         self.view.flxAddDetailsAndUpload.flxUploadImages.setVisibility(false);
@@ -1117,6 +1123,7 @@ for (var key in self.inspectionData) {
 
       this.selectedPdfBase64 = base64Image;
       self.view.flxChooseFileTakePhoto.setVisibility(false);
+      self.view.flxAddDetailsAndUpload.setVisibility(true);
       self.view.flxfooter.setVisibility(true);
       self.view.flxAddDetailsAndUpload.flxUploadedImage.setVisibility(true);
       self.view.flxAddDetailsAndUpload.flxUploadImages.setVisibility(false);

@@ -42,7 +42,7 @@
         "btnClose": {
             "__events__": {},
             "__info__": {
-                "kuid": "f6fcb449d15b48be81e49f7b2a6578a7",
+                "kuid": "g37a90e66db245568ed83a8d023ff93a",
                 "srcKUID": "g768b67478c2444f98b18cd16d21920e",
                 "wType": "Button"
             }
@@ -50,7 +50,7 @@
         "flxPopup": {
             "__events__": {},
             "__info__": {
-                "kuid": "a64f0450a59d4527ba1e739991522622",
+                "kuid": "c4a63bd318634c88a3181640e37beb21",
                 "srcKUID": "bf43ffb367af42a7ac744ca949d13c33",
                 "wType": "FlexContainer"
             }
@@ -58,7 +58,7 @@
         "imgmarkgreen": {
             "__events__": {},
             "__info__": {
-                "kuid": "f6161360be4e477dbc40778cf4ad6892",
+                "kuid": "e646235e6cdb43faa6d9b910cff4ed5f",
                 "srcKUID": "d105cce42c874f2d8518f6f50216fc4c",
                 "wType": "Image"
             },
@@ -67,7 +67,7 @@
         "lblUPdatedsucessfully": {
             "__events__": {},
             "__info__": {
-                "kuid": "b8b2576badce4f7aad29866489fcc287",
+                "kuid": "d8eadc2b0c72420898020cd2cc0d2fff",
                 "srcKUID": "e6a6d9ed9ef1446c9f9774f3c8651473",
                 "wType": "Label"
             }
@@ -76,11 +76,14 @@
             "__events__": {},
             "__info__": {
                 "isRoot": true,
-                "kuid": "hc54c580018c4996b601177386e6bc5a",
+                "kuid": "d2d97309582541a49f520a42d44a13a5",
                 "srcKUID": "dbc81a67456d4be284f1101e8723c958",
                 "wType": "FlexContainer"
             },
-            "isVisible": false
+            "isVisible": false,
+            "zIndex": {
+                "Default": 250
+            }
         }
     },
     "enablescrolling": true,
@@ -89,7 +92,7 @@
     "iscustomlayout": false,
     "isdatareferenced": false,
     "isvisible": false,
-    "kuid": "hc54c580018c4996b601177386e6bc5a",
+    "kuid": "d2d97309582541a49f520a42d44a13a5",
     "layouttype": 2,
     "masterType": 0,
     "name": "kony.ui.UserWidgetInstance",
@@ -102,5 +105,5 @@
     "snaptogrid": true,
     "sourceUserWidget": "dbc81a67456d4be284f1101e8723c958",
     "wType": "UserWidgetInstance",
-    "zindex": 100
+    "zindex": 250
 }

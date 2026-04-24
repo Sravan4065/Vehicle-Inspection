@@ -16,6 +16,7 @@ define({
 //     this.insertIntoSegInspectionItems();
     this.invokeSelectedInspectionPackages();
     this.view.flxHeading.lblImages.text = this.name;
+    this.view.flxHeader.lblInspectionIQ.text = voltmx.i18n.getLocalizedString("InspectioniQ");
   },
   
   invokeSelectedInspectionPackages: function()
@@ -33,7 +34,8 @@ voltmx.application.showLoadingScreen(null,"LoadingScreen",constants.LOADING_SCRE
     
     var data = 
         {
-         "service_id": self.serviceId
+         "service_id": self.serviceId,
+          "object_id": self.objectId
         }
     integrationObj.invokeOperation(operationName, headers, data, successCallback, failureCallback)
     
@@ -103,10 +105,17 @@ voltmx.application.showLoadingScreen(null,"LoadingScreen",constants.LOADING_SCRE
       data.push(
       {
         "key": record.id,
-        "lblServiceType": record.value_en,
+        "lblServiceType": 
+        {
+         "text": record.value_en,
+          "skin": record.is_data_saved === "0"
+      ? "sknLblDubai231f2020pxMedium"
+      : "sknLblDubai63b15c20pxBold"
+        },
         "imgRight": "imgchevronright.png",
         "lov_id": record.master_lov_id,
-        "services_id": record.services_id
+        "services_id": record.services_id,
+//         "is_data_saved": record.is_data_saved
       }
       )
                     });

@@ -15,8 +15,8 @@ define({
    onInit: function()
   {
   //Sample code to initialize Volt MX Foundry Client
-var appkey = "30cc719c34beb54afc9dd174a5304067" ;
-var appsecret = "bfa04e3bfce8de77f65467f2e352245";
+var appkey = voltmx.store.getItem("ALWATANEYA_DEVELOPMENT_PUBLIC_APP_KEY");
+var appsecret = voltmx.store.getItem("ALWATANEYA_DEVELOPMENT_PUBLIC_APP_SECRET");
 var serviceURL = "https://dev2-hcltx.et.ae/authService/100000002/appconfig";
 
 var client = new voltmx.sdk();

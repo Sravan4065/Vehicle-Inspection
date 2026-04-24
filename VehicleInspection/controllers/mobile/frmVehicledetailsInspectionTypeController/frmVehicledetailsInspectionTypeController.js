@@ -119,6 +119,7 @@ define({
   
   
   onPreShow: function(){
+    var self = this;
     this.invokeMasterFleetSpecValues();
 
     toggleFooterIcons(this.view, "frmVehicledetailsInspectionType");
@@ -147,6 +148,12 @@ define({
     this.view.details8.txbData.setEnabled(false);
     this.view.details11.txbData.setEnabled(false);
     this.view.details15.txbData.setEnabled(false);
+    
+    this.view.saveresponse.setVisibility(false);
+    
+    this.view.saveresponse.btnClose.onClick = () => {
+      self.view.saveresponse.setVisibility(false);
+    }
 //     4,6,9,10,12
   },
   
@@ -729,7 +736,14 @@ define({
           }
 
           // SUCCESS HANDLING
-          alert(response.message);
+//           alert(response.message);
+          if(response && response.data)
+            {
+              self.view.saveresponse.setVisibility(true);
+              self.view.saveresponse.btnClose.text = voltmx.i18n.getLocalizedString("Close");
+              self.view.saveresponse.lblUPdatedsucessfully.text = voltmx.i18n.getLocalizedString("Inspection details saved successfully");
+//               alert('Vehicle details updated successfully');
+            }
           voltmx.print("Save successful → " + JSON.stringify(response));
           // → you can add navigation / toast / refresh here
 
