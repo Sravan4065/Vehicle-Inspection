@@ -36,8 +36,10 @@
     "canUpdateUI": true,
     "children": [
         "flxDescriptionWithImage",
+        "flxButtonScroll",
         "flxCheckBoxes",
-        "imgVehicleWithMarks"
+        "imgVehicleWithMarks",
+        "flxInspectionSubTypes"
     ],
     "clipbounds": true,
     "containerweight": 100,
@@ -46,7 +48,7 @@
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "d8584a27f6854bd3bb73ae96272e852a",
+    "kuid": "b1a4520f4e8c48f08e313492f126ee15",
     "layouttype": 4,
     "name": "kony.ui.FlexContainer",
     "parent": "flxScrollContainer",

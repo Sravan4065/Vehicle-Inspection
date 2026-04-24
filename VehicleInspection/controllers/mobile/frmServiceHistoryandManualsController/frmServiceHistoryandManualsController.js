@@ -2,6 +2,7 @@ define({
 
   onNavigate: function(context){
     this.view.preShow =this.onPreShow.bind(this);
+    this.adjustRTL();
     this.view.flxHeadingWithButton.btnSaveResponse.onClick = this.btnSaveResponseOnClickAction.bind(this);
      this.lovId = context.lovId;
     this.objectId = context.object_id;
@@ -13,6 +14,7 @@ define({
 
 
   onPreShow: function(){
+    var self = this;
     toggleFooterIcons(this.view, "frmVehicledetailsInspectionType");
     //     this.clearData();
     this.masterfleetspecvalues();
@@ -31,6 +33,10 @@ define({
     }
     this.view.details1.txbData.setEnabled(false);
     this.view.details2.txbData.setEnabled(false);
+    this.view.saveresponse.setVisibility(false);
+    this.view.saveresponse.btnClose.onClick = () => {
+      self.view.saveresponse.setVisibility(false);
+    }
   },
 
 
@@ -57,7 +63,7 @@ define({
 
     var self = this;
 
-    if(self.view.details1.txbData.text !== "" && self.view.details2.txbData.text !== "")
+    if((self.view.details1.txbData.text || "").trim() !== "" && (self.view.details2.txbData.text || "").trim() !== "")
       {
     voltmx.application.showLoadingScreen(
       null,
@@ -138,7 +144,10 @@ define({
 
           if (responseJSON.success) {
 //             alert(responseJSON.message);
-            alert(voltmx.i18n.getLocalizedString("Inspection details saved successfully"));
+            self.view.saveresponse.setVisibility(true);
+            self.view.saveresponse.lblUPdatedsucessfully.text = voltmx.i18n.getLocalizedString("Inspection details saved successfully");
+            self.view.saveresponse.btnClose.text = voltmx.i18n.getLocalizedString("Close");
+//             alert(voltmx.i18n.getLocalizedString("Inspection details saved successfully"));
           } else {
             alert("Failed to save response");
           }
@@ -151,6 +160,10 @@ define({
     };
 
     request.send(JSON.stringify(data));
+      }
+    else
+      {
+        alert('Please fill all fields')
       }
   },
 
@@ -371,6 +384,77 @@ else
 
     segment.setData(segData);
 
+  },
+  
+  adjustRTL: function()
+  {
+    var self = this;
+     var isArabic = voltmx.i18n.getCurrentLocale() === "ar_AE";
+     this.view.flxHeadingWithButton.flxHeading.reverseLayoutDirection = isArabic;
+    
+    if(isArabic)
+      {
+         this.view.flxHeadingWithButton.btnSaveResponse.right = "";
+      this.view.flxHeadingWithButton.btnSaveResponse.left = "5%";
+
+      this.view.flxHeadingWithButton.flxBack.left = "";
+      this.view.flxHeadingWithButton.flxBack.right = "5%";
+
+      this.view.flxHeadingWithButton.lblImages.left = "";
+      this.view.flxHeadingWithButton.lblImages.right = "3%";
+        
+        
+        
+          self.view.details1.flxArrow.right = "";
+        self.view.details1.flxArrow.left = "8dp";
+        
+         self.view.details2.flxArrow.right = "";
+        self.view.details2.flxArrow.left = "8dp";
+        
+        
+        self.view.details1.flxName.right = "32dp";
+         self.view.details1.flxName.left = "";
+        
+         self.view.details2.flxName.right = "32dp";
+         self.view.details2.flxName.left = "";
+        
+        var flipTransform = voltmx.ui.makeAffineTransform();
+      flipTransform.scale(-1, 1); // horizontal flip
+      self.view.flxHeadingWithButton.imgBack.transform = flipTransform;
+      }
+    else
+      {
+        
+        this.view.flxHeadingWithButton.btnSaveResponse.right = "5%";
+      this.view.flxHeadingWithButton.btnSaveResponse.left = "";
+
+      this.view.flxHeadingWithButton.flxBack.left = "5%";
+      this.view.flxHeadingWithButton.flxBack.right = "";
+
+      this.view.flxHeadingWithButton.lblImages.left = "3%";
+      this.view.flxHeadingWithButton.lblImages.right = "";
+        
+       
+         self.view.details1.flxName.right = "";
+         self.view.details1.flxName.left = "32dp";
+        
+        self.view.details2.flxName.right = "";
+         self.view.details2.flxName.left = "32dp";
+        
+        self.view.details1.flxArrow.right = "8dp";
+        self.view.details1.flxArrow.left = "";
+        
+         self.view.details2.flxArrow.right = "8dp";
+        self.view.details2.flxArrow.left = "";
+        
+        self.view.flxHeadingWithButton.imgBack.transform = voltmx.ui.makeAffineTransform();
+      }
+    
+    this.view.details1.lblNamedata.text = voltmx.i18n.getLocalizedString("Service History");
+    this.view.details2.lblNamedata.text = voltmx.i18n.getLocalizedString("User Manual");
+    this.view.flxHeader.lblInspectionIQ.text = voltmx.i18n.getLocalizedString("InspectioniQ");
+     this.view.flxHeadingWithButton.btnSaveResponse.text = voltmx.i18n.getLocalizedString("save response");
+    this.view.flxHeadingWithButton.lblImages.text = voltmx.i18n.getLocalizedString("Service History & Manuals");
   }
  
 });

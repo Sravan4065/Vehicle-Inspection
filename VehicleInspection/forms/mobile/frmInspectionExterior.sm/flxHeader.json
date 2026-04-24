@@ -43,7 +43,7 @@
             "__events__": {},
             "__info__": {
                 "isRoot": true,
-                "kuid": "i6b6fcc7805b496e84dae103e0c69956",
+                "kuid": "a1c3d7c764434c8aab258350abc0b00c",
                 "srcKUID": "heb97a2d121a4430bbc0259df8dc61a6",
                 "wType": "FlexContainer"
             }
@@ -51,7 +51,7 @@
         "flxUL": {
             "__events__": {},
             "__info__": {
-                "kuid": "a150832beb284c8d8f742063643488f4",
+                "kuid": "j076f51f2a584b86b132d47698bbd443",
                 "srcKUID": "a52dd62e79284009ad50f02c9363aef5",
                 "wType": "FlexContainer"
             }
@@ -59,7 +59,7 @@
         "lblInspectionIQ": {
             "__events__": {},
             "__info__": {
-                "kuid": "j180663ad7de414d8405c1ec54648458",
+                "kuid": "c1e2e4d5780e48ac8d177649c57854fa",
                 "srcKUID": "jf5e79045e50472d944c4e659934ae1c",
                 "wType": "Label"
             }
@@ -71,7 +71,7 @@
     "iscustomlayout": false,
     "isdatareferenced": false,
     "isvisible": true,
-    "kuid": "i6b6fcc7805b496e84dae103e0c69956",
+    "kuid": "a1c3d7c764434c8aab258350abc0b00c",
     "layouttype": 2,
     "masterType": 0,
     "name": "kony.ui.UserWidgetInstance",

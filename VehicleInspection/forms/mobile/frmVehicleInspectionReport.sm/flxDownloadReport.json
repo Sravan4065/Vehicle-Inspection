@@ -1,0 +1,59 @@
+{
+    "DNDConfig": null,
+    "_height_": {
+        "type": "string",
+        "value": "45dp"
+    },
+    "_margin_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_orientation_": 6,
+    "_padding_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_percent_": true,
+    "_right_": {
+        "type": "string",
+        "value": "6%"
+    },
+    "_skin_": "s175688994e34f1aadc549cd3efcc72c",
+    "_top_": {
+        "type": "string",
+        "value": "0dp"
+    },
+    "_width_": {
+        "type": "string",
+        "value": "45dp"
+    },
+    "allboxes": [],
+    "autogrowmode": 0,
+    "canUpdateUI": true,
+    "children": [
+        "imgDownload"
+    ],
+    "clipbounds": false,
+    "containerweight": 100,
+    "enablescrolling": true,
+    "id": "flxDownloadReport",
+    "info": null,
+    "iscustomlayout": false,
+    "isvisible": true,
+    "kuid": "g3b69100c38a4046ae28e26857a2aa34",
+    "layouttype": 2,
+    "name": "kony.ui.FlexContainer",
+    "parent": "flxMain",
+    "pf": "frmVehicleInspectionReport",
+    "retaincontentalignment": false,
+    "retainflexpositionproperties": false,
+    "retainflowhorizontalalignment": false,
+    "snapgridsize": 10,
+    "snaptogrid": true,
+    "wType": "FlexContainer",
+    "widgetalignment": 1
+}

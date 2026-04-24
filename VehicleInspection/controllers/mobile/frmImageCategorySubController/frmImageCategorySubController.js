@@ -79,7 +79,7 @@ define({
     if (missingImage) {
 
         var alertConfig = {
-            message: "Some photos are missing. Go back anyway?",
+            message: "Do you want to go back?",
             alertType: constants.ALERT_TYPE_CONFIRMATION,
             alertTitle: "Confirmation",
             yesLabel: "Yes",
@@ -359,7 +359,7 @@ self.uploadedImages[self.currentViewName] = base64Data;
 self.uploadedImages[self.currentViewName] = base64Image;
 
         this.updateImagePreview();
-        var filetype = detectFileType(base64Data) || ".jpg";
+        var filetype = detectFileType(base64Image) || ".jpg";
         this.fileDetails = [{
             filename: "captured_" + new Date().getTime() + filetype,
             base64: base64Image,

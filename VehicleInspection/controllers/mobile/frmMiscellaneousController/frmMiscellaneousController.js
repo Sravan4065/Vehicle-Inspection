@@ -253,12 +253,15 @@ define({
   this.view.details5.lblNamedata.text = voltmx.i18n.getLocalizedString("Technician ID");
   this.view.details6.lblNamedata.text = voltmx.i18n.getLocalizedString("Branch");
   this.view.details7.lblNamedata.text = voltmx.i18n.getLocalizedString("City");
-
+  this.view.CopylblUPdatedsucessfully0i2ba9af27bba46.text = voltmx.i18n.getLocalizedString("Inspection report has been generated successfully");
+  this.view.btnGoBackToPending.text = voltmx.i18n.getLocalizedString("Go back to Pending Inspections");
   this.view.lblSignature.text = voltmx.i18n.getLocalizedString("Signature");
   this.view.lblImpNotice.text = voltmx.i18n.getLocalizedString("important notice");
   this.view.lblImpNoticePara.text = voltmx.i18n.getLocalizedString("Emirates Transport is not responsible for hidden defects of the vehicle");
   this.view.details17.lblNamedata.text = voltmx.i18n.getLocalizedString("Service Book");
-
+this.view.lblUPdatedsucessfully.text = voltmx.i18n.getLocalizedString("Are you sure you want to complete this inspection?");
+ this.view.btnCancel.text = voltmx.i18n.getLocalizedString("Cancel");
+  this.view.btnGenerateReport.text = voltmx.i18n.getLocalizedString("Generate Report");
   this.view.flxCompleteButton.btnCompleteInspection.text =
     voltmx.i18n.getLocalizedString("Complete Inspection");
 
@@ -282,7 +285,11 @@ define({
     this.view.details6.txbData.text = "";
     this.view.details7.txbData.text = "";
     this.view.details17.txbData.text = "";
-     
+    this.view.saveresponse.setVisibility(false);
+    
+    this.view.saveresponse.btnClose.onClick = () => {
+      self.view.saveresponse.setVisibility(false);
+    }
     this.view.flxCompleteButton.btnCompleteInspection.skin = "sknBtnebebeb18px";
     this.view.flxCompleteButton.btnCompleteInspection.setEnabled(false);
     this.view.details3.txbData.textInputMode = constants.TEXTBOX_INPUT_MODE_NUMERIC;
@@ -649,7 +656,10 @@ define({
           if (request.status === 200) {
 
             if (responseJSON.success) {
-              alert("Saved successfully");
+//               alert("Saved successfully");
+              self.view.saveresponse.setVisibility(true);
+              self.view.saveresponse.lblUPdatedsucessfully.text = voltmx.i18n.getLocalizedString("Inspection details saved successfully");
+              self.view.saveresponse.btnClose.text = voltmx.i18n.getLocalizedString("Close");
               self.view.flxCompleteButton.btnCompleteInspection.skin = "sknBtn61b35cBorder61b35cRadius8px";
               self.view.flxCompleteButton.btnCompleteInspection.setEnabled(true);
               voltmx.store.removeItem("signature");
@@ -1026,6 +1036,7 @@ else{
       {
         //            self.view.flxBrowser.setVisibility(false);
         self.view.flxInspectionDonePopup.setVisibility(true);
+        self.callDone();
 
       }
 
@@ -1041,10 +1052,58 @@ else{
     }
   },
 
+  callDone: function()
+  {
+    var self = this;
+     
+    var serviceName = "ms_fleet";
+
+    var operationName = "fleet-wfstatus";
+ 
+    var integrationObj = voltmx.sdk.getCurrentInstance()
+
+    .getIntegrationService(serviceName);
+ 
+    var data = {
+
+      "object_id": self.objectId,
+
+      "action_name":  "Done"   
+
+    };
+ 
+    var headers = {
+
+      "user_token": voltmx.store.getItem("getUserAccesstoken")
+
+    };
+ 
+    integrationObj.invokeOperation(
+
+      operationName,
+
+      headers,
+
+      data,
+
+      function(response) {
+
+
+      },
+
+      function(error) {
+
+
+      }
+
+    );
+
+  },
+  
   generateReport: function()
   {
     var self = this;
-
+   var isArabic = voltmx.i18n.getCurrentLocale() === "ar_AE";
     //     self.view.flxVehicleReceived.setVisibility(true);
     self.view.flxPromptGenerate.setVisibility(false);
     voltmx.application.showLoadingScreen(null, "Generating Report..",     constants.LOADING_SCREEN_POSITION_ONLY_CENTER, false, true, {         shouldShowLabelInBottom: "true",         separatorHeight: 45,         progressIndicatorType: constants.PROGRESS_INDICATOR_TYPE_SMALL,         progressIndicatorColor: "Gray"     });
@@ -1063,7 +1122,8 @@ else{
       "user_token": voltmx.store.getItem("getUserAccesstoken"),
       "moduleType": "Fleet",
       "user_id": voltmx.store.getItem("userId"),
-      "object_id": self.objectId
+      "object_id": self.objectId,
+      "language": isArabic ? "AR" : "EN"
 
     };
 

@@ -42,7 +42,8 @@
         "flxSignature",
         "flxBrowser",
         "flxPromptGenerate",
-        "flxInspectionDonePopup"
+        "flxInspectionDonePopup",
+        "saveresponse"
     ],
     "clipbounds": true,
     "containerweight": 100,

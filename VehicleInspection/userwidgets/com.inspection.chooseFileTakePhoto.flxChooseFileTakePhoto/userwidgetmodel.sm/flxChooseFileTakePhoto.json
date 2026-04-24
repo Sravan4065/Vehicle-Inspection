@@ -43,7 +43,7 @@
     "id": "flxChooseFileTakePhoto",
     "info": null,
     "iscustomlayout": false,
-    "ismodalcontainer": true,
+    "ismodalcontainer": false,
     "isvisible": true,
     "kuid": "c8bfe999c628412789e57526c3a50675",
     "layouttype": 2,

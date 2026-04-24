@@ -139,9 +139,62 @@ this.totalPendingAll = 0;
       { 
 //         new voltmx.mvc.Navigation(navigatingFormName).navigate();
         if(voltmx.store.getItem("isLogin"))
-         NavigationManager.push(navigatingFormName);
+          {
+          if(navigatingFormName === "frmInwardEntrySummary")
+            {
+            if(voltmx.store.getItem("jobTitle").includes("yard_assistant") || voltmx.store.getItem("jobTitle").includes("inspection_executive") || voltmx.store.getItem("jobTitle").includes("admin"))
+          {
+            NavigationManager.push(navigatingFormName);
+          }
+              else
+                {
+                  alert('You are not allowed to do this operation');
+                }
+            }
+            
+             if(navigatingFormName === "frmMyInspectionsSummary")
+            {
+            if(voltmx.store.getItem("jobTitle").includes("inspection_executive") || voltmx.store.getItem("jobTitle").includes("admin"))
+          {
+            NavigationManager.push(navigatingFormName);
+          }
+              else
+                {
+                  alert('You are not allowed to do this operation');
+                }
+            }
+            
+             if(navigatingFormName === "frmImagesSummary")
+            {
+            if(voltmx.store.getItem("jobTitle").includes("yard_assistant") || voltmx.store.getItem("jobTitle").includes("washing_assistant") || voltmx.store.getItem("jobTitle").includes("admin"))
+          {
+            NavigationManager.push(navigatingFormName);
+          }
+              else
+                {
+                  alert('You are not allowed to do this operation');
+                }
+            }
+            
+             if(navigatingFormName === "frmWashingSummary")
+            {
+            if(voltmx.store.getItem("jobTitle").includes("washing_assistant") || voltmx.store.getItem("jobTitle").includes("admin"))
+          {
+            NavigationManager.push(navigatingFormName);
+          }
+              else
+                {
+                  alert('You are not allowed to do this operation');
+                }
+            }
+            
+            
+//          NavigationManager.push(navigatingFormName);
+          }
         else
+          {
         NavigationManager.push("frmLogin");
+          }
         
       },
   adjustRTL: function(){

@@ -36,6 +36,10 @@
     "areflexpropsreferenced": false,
     "autogrowmode": 0,
     "canUpdateUI": true,
+    "centery": {
+        "type": "string",
+        "value": "50%"
+    },
     "clipbounds": true,
     "containerweight": 0,
     "dataDiffs": {
@@ -73,7 +77,7 @@
             "centerY": {
                 "Default": {
                     "type": "string",
-                    "value": ""
+                    "value": "50%"
                 }
             },
             "height": {
@@ -145,7 +149,8 @@
                 "kuid": "he5b4215819849b8bffe33b4c797e632",
                 "srcKUID": "c99ec061bed3441bb3221b9f335ab163",
                 "wType": "Label"
-            }
+            },
+            "text": "Back"
         }
     },
     "enablescrolling": true,

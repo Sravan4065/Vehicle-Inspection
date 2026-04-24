@@ -4,11 +4,11 @@
     "_base64_": null,
     "_height_": {
         "type": "string",
-        "value": "15dp"
+        "value": "16dp"
     },
     "_left_": {
         "type": "string",
-        "value": "10%"
+        "value": "12%"
     },
     "_margin_": [
         0,
@@ -34,7 +34,7 @@
     },
     "_width_": {
         "type": "string",
-        "value": "15dp"
+        "value": "16dp"
     },
     "canUpdateUI": true,
     "centery": {

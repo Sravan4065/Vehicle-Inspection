@@ -10,7 +10,8 @@ define({
   {
     toggleFooterIcons(this.view, "frmCompletedInspections");
     this.currentOffset = 0;
-this.pageSize = this.pageSize || 5;
+    this.currentPage = 1;
+this.pageSize = this.pageSize || 10;
 this.view.segCompletedInspections.removeAll();
     toggleFooterIcons(this.view, "frmCompletedInspections");
     this.view.btnLoadMore.onClick = this.onLoadMoreClick.bind(this);
@@ -45,7 +46,7 @@ self.currentPage = self.currentPage || 1;
   "type": "",
   "status": "Completed", // Pending || Completed
   "page": self.currentPage.toString(),
-  "page_size": self.pageSize || 5
+  "page_size": self.pageSize || 10
   };
 
   // Headers
@@ -153,7 +154,7 @@ self.currentPage = self.currentPage || 1;
                 "right": isArabic ? "2%": ""
                 }, 
                "lblVehicleNumber":{
-                  "text": ""
+                  "text": record.chassis_number
  || "",
                     "left": isArabic ? "" : "2%",
                 "right": isArabic ? "2%": ""
@@ -164,8 +165,8 @@ self.currentPage = self.currentPage || 1;
                 "left": isArabic ? "" : "2%",
                 "right": isArabic ? "2%": ""
               },
-                "lblDate":{
-                  "text": "Date",
+                "lblDate": {
+                  "text": voltmx.i18n.getLocalizedString("Date")
                   
                 }, 
                "lblDateAndTimeValue":{
@@ -186,12 +187,12 @@ self.currentPage = self.currentPage || 1;
                     }
                 },
               "lblViewDetailsInwardEntry":{
-                  "text": "View"
+                  "text": voltmx.i18n.getLocalizedString("View")
                                  },
               "imgFArrowIE":{
-              "left": isArabic ? "5%" : "",
-                    "right": isArabic ? "" : "5%",
-              "src":"view.png"
+              "left": isArabic ? "5%" : "12%",
+                    "right": isArabic ? "8%" : "5%",
+              "src":"viewwhite.png"
             }
             });
 
@@ -216,8 +217,14 @@ self.currentPage = self.currentPage || 1;
   openDetails: function(objectId,record)
   {
     var self = this;
-    new voltmx.mvc.Navigation("frmVehicleInspectionReport").navigate(
-    {
+//     new voltmx.mvc.Navigation("frmVehicleInspectionReport").navigate(
+//     {
+//       "objectId": objectId,
+//        "vehicleDetails": record,
+//       "isPending": self.isPending
+//     });
+    
+    NavigationManager.push("frmVehicleInspectionReport",  {
       "objectId": objectId,
        "vehicleDetails": record,
       "isPending": self.isPending
@@ -232,6 +239,11 @@ self.currentPage = self.currentPage || 1;
 
       this.view.flxfooter.lblprofile.text =voltmx.i18n.getLocalizedString("Profile");
     this.view.flxfooter.lblHome.text =voltmx.i18n.getLocalizedString("Dashboard");
+    
+     this.view.flxHeader.lblInspectionIQ.text = voltmx.i18n.getLocalizedString("InspectioniQ");
+    this.view.flxHeading.lblImages.text =voltmx.i18n.getLocalizedString("Completed Inspections");
+    this.view.lblLotAndModel.text =voltmx.i18n.getLocalizedString("Completed Inspections");
+    this.view.lblVehicleNumber.text =voltmx.i18n.getLocalizedString("View and Print inspection reports");
  
   },
 

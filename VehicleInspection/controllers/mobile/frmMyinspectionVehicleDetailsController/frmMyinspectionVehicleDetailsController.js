@@ -331,7 +331,7 @@ onNavigate: function(context){
         voltmx.i18n.getLocalizedString("ID");
 
     this.view.lblDescription.text =
-        voltmx.i18n.getLocalizedString("Description");
+        voltmx.i18n.getLocalizedString("Make & Model");
 
     this.view.lblYear.text =
         voltmx.i18n.getLocalizedString("Year");

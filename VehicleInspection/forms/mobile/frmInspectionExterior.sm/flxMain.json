@@ -46,7 +46,10 @@
         "flxHeader",
         "flxBody",
         "flxfooter",
-        "saveresponse"
+        "saveresponse",
+        "flxAddDetailsAndUpload",
+        "flxChooseFileTakePhoto",
+        "flxSuccessUpload"
     ],
     "clipbounds": false,
     "containerweight": 100,
@@ -55,7 +58,7 @@
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "d3fa992d233a4f1b83aa4e40a65dec9a",
+    "kuid": "f1268e98bf944651948e6ba377ec0920",
     "layouttype": 2,
     "name": "kony.ui.FlexContainer",
     "parent": "frmInspectionExterior",

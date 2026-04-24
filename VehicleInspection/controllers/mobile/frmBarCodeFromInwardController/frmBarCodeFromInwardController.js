@@ -114,7 +114,7 @@ generate: function() {
   var value = String(this.context.lotno || "123456");
  
   voltmx.print("Generating barcode for: " + value);
- 
+ alert("Bar code Generated sucessfully")
   //  Call HTML function
 
   var js = "createBarcode('" + value + "', '{}');";

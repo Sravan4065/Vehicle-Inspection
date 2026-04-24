@@ -21,8 +21,8 @@
         0,
         0
     ],
-    "_skin_": "s38d13853f8a4b8a896d8ab05ef95274",
-    "_text_": "Print Barcode",
+    "_skin_": "s8e4a2c4d5ee4285b49cc479a338e439",
+    "_text_": "Generate Barcode",
     "_width_": {
         "type": "string",
         "value": "70%"
