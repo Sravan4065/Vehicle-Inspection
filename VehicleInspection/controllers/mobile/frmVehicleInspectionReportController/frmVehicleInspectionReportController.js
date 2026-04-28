@@ -15,7 +15,21 @@ define({
   {
     var self = this;
     this.setData();
-    this.view.flxDownloadReport.onClick = this.generateReport.bind(this);
+    
+    //#ifdef android
+    this.view.flxDownloadReport.onClick = this.onDownloadButtonClick.bind(this);
+     //#endif
+    
+    //#ifdef iphone
+    this.view.flxDownloadReport.onClick = this.testPDFNFIDownload.bind(this);
+     //#endif 
+    
+//       //#ifdef android
+//           self.onDownloadButtonClick(response.file_url);
+//           //#endif
+//           //#ifdef iphone
+//           self.testPDFNFIDownload(response.file_url);
+//           //#endif 
     
     
   },
@@ -23,8 +37,12 @@ define({
   setData: function()
   {
    var self = this;
+    self.file_url = "";
    if(self.context && self.context.vehicleDetails)
      {
+       if(self.context.vehicleDetails.file_url){
+       self.file_url = self.context.vehicleDetails.file_url
+       }
        self.view.lblVehicleNumberdata.text = self.context.vehicleDetails.chassis_number || "-";
        self.view.lblInspectednamedata.text = self.context.vehicleDetails.inspected_by || "-";
        self.view.lblMakemodeldata.text = self.context.vehicleDetails.description || "-";
@@ -310,10 +328,16 @@ define({
     }
   },
 
-  onDownloadButtonClick: function (fileUrl) {
+  onDownloadButtonClick: function () {
     var self = this;
-
-
+     var fileUrl;
+     if(self.file_url){
+      fileUrl = self.file_url;
+     }
+      else
+      {
+        return;
+      }
 
     try {
 
@@ -362,8 +386,18 @@ define({
   },
 
 
-  testPDFNFIDownload: function(fileUrl)
+  testPDFNFIDownload: function()
   {
+    
+    var self = this;
+    var fileUrl;
+    if(self.file_url){
+     fileUrl = self.file_url;
+    }
+    else
+      {
+        return;
+      }
 
 
     try {
