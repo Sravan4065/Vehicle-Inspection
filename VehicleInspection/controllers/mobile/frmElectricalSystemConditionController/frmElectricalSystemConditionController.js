@@ -224,6 +224,7 @@ define({
     this.view.flxAddDetailsAndUpload.flxUploadImages.setVisibility(true);
     this.view.flxAddDetailsAndUpload.flxUploadedImage.setVisibility(false);
     this.view.flxChooseFileTakePhoto.setVisibility(true);
+    this.view.flxAddDetailsAndUpload.setVisibility(false);
     this.view.flxfooter.setVisibility(false);
     this.view.flxAddDetailsAndUpload.imgUploadedImg.src = "";
     this.view.flxAddDetailsAndUpload.lblImgName.text = "";

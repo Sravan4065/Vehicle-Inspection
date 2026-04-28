@@ -486,7 +486,7 @@ function fetchClientProperties() {
 
   var configurationSvc = client.getConfigurationService();
   configurationSvc.getAllClientAppProperties(function(response) {
-//     voltmx.store.setItem("BASE_URL", response.BASE_URL);
+    voltmx.store.setItem("BASE_URL", response.BASE_URL);
     voltmx.store.setItem("ALWATANEYA_DEVELOPMENT_PUBLIC_APP_KEY", response.ALWATANEYA_DEVELOPMENT_PUBLIC_APP_KEY);
     voltmx.store.setItem("ALWATANEYA_DEVELOPMENT_PUBLIC_APP_SECRET", response.ALWATANEYA_DEVELOPMENT_PUBLIC_APP_SECRET);
 //     voltmx.store.setItem("PAYMENT_ACCESS_TOKEN", response.PAYMENT_ACCESS_TOKEN);
@@ -494,7 +494,10 @@ function fetchClientProperties() {
 //     voltmx.store.setItem("PAYMENT_ORDER_ID", response.PAYMENT_ORDER_ID);
 //     voltmx.store.setItem("DAM_USER_NAME",response.DAM_USER_NAME);
 //     voltmx.store.setItem("DAM_PASSWORD",response.DAM_PASSWORD);
-    
+    if(response.SERVICE_URL)
+      {
+        voltmx.store.setItem("SERVICE_URL",response.SERVICE_URL);
+      }
     
     if (response.PAYMENT_ACCESS_TOKEN) {
     voltmx.store.setItem("PAYMENT_ACCESS_TOKEN", response.PAYMENT_ACCESS_TOKEN);
