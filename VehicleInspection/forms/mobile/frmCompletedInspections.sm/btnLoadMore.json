@@ -3,7 +3,7 @@
     "DNDConfig": null,
     "_bottom_": {
         "type": "string",
-        "value": "25dp"
+        "value": "35dp"
     },
     "_height_": {
         "type": "string",
@@ -29,7 +29,7 @@
     "_text_": "Load More",
     "_top_": {
         "type": "string",
-        "value": "101%"
+        "value": "10dp"
     },
     "_width_": {
         "type": "string",
@@ -50,7 +50,7 @@
     "isvisible": true,
     "kuid": "b2e235dc1a914996bc4ef105918eb6bd",
     "name": "kony.ui.Button",
-    "parent": "flxScrollBody",
+    "parent": "flxInnerBody",
     "pf": "frmCompletedInspections",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,

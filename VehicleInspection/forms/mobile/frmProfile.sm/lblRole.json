@@ -2,8 +2,8 @@
     "@class": "com.kony.gen.viz.model.component.KVizLabel",
     "DNDConfig": null,
     "_height_": {
-        "type": "string",
-        "value": "100%"
+        "type": "ref",
+        "value": "preferred"
     },
     "_margin_": [
         1,
@@ -19,6 +19,10 @@
     ],
     "_skin_": "s4d639f423ca4bc590ad1905a7ba16e6",
     "_text_": "Inspector",
+    "_top_": {
+        "type": "string",
+        "value": "2dp"
+    },
     "_width_": {
         "type": "ref",
         "value": "preferred"
@@ -32,10 +36,6 @@
     },
     "canUpdateUI": true,
     "centerx": {
-        "type": "string",
-        "value": "50%"
-    },
-    "centery": {
         "type": "string",
         "value": "50%"
     },
@@ -56,7 +56,6 @@
     "iscustomlayout": false,
     "isvisible": true,
     "kuid": "b37af76b49114f0bbaeaafc44690e7c8",
-    "maxnumberoflines": 1,
     "name": "kony.ui.Label",
     "parent": "flxRole",
     "pf": "frmProfile",

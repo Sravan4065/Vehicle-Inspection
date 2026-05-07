@@ -149,6 +149,16 @@ define({
 
     this.view.flxHeader1.lblInspectionIQ.text = 
       voltmx.i18n.getLocalizedString("InspectioniQ");
+    
+     this.view.flxfooter.lblHome.text =voltmx.i18n.getLocalizedString("Dashboard");
+
+      this.view.flxfooter.lblinspections.text =voltmx.i18n.getLocalizedString("Inspections");
+
+      this.view.flxfooter.lblinward.text =voltmx.i18n.getLocalizedString("Inward");
+
+      this.view.flxfooter.lblimages.text =voltmx.i18n.getLocalizedString("Images");
+
+      this.view.flxfooter.lblprofile.text =voltmx.i18n.getLocalizedString("Profile");
 
     //     Object.keys(labelsMap).forEach(function(key) {
     //         if (key.startsWith("details") && self.view[key]) {
@@ -210,6 +220,7 @@ define({
         flxInwardCount: {
           "left": isArabic ? "4%" : "",
           "right": isArabic ? "": "4%",
+          "isVisible": false
         },
         lblInwardEntry: { 
           text: voltmx.i18n.getLocalizedString("Exterior Photos"), 
@@ -250,6 +261,7 @@ define({
         flxInwardCount: {
           "left": isArabic ? "4%" : "",
           "right": isArabic ? "": "4%",
+          "isVisible": false
         },
         lblInwardEntry:
         {
@@ -292,6 +304,7 @@ define({
         flxInwardCount: {
           "left": isArabic ? "4%" : "",
           "right": isArabic ? "": "4%",
+          "isVisible": false
         },
         lblInwardEntry:
         { 
@@ -335,6 +348,7 @@ define({
         flxInwardCount: {
           "left": isArabic ? "4%" : "",
           "right": isArabic ? "": "4%",
+          "isVisible": false
         },
         lblInwardEntry:
         { 

@@ -591,6 +591,7 @@ timeSetting: function(type){
     this.view.flxSuccessUpload.btnClose.text = voltmx.i18n.getLocalizedString("Close");
     this.view.flxSuccessUpload.lblThankyou.text = voltmx.i18n.getLocalizedString("Washing Completed Successfully");
     this.view.flxSuccessUpload.lblUPdatedsucessfully.text = "";
+    this.view.flxHeader.lblInspectionIQ.text = voltmx.i18n.getLocalizedString("InspectioniQ");
     this.view.flxfooter.lblHome.text =voltmx.i18n.getLocalizedString("Dashboard");
     
     

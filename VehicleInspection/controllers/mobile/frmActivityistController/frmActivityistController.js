@@ -117,7 +117,7 @@ define({
     this.view.lblcarimageupload.text =voltmx.i18n.getLocalizedString("Images");
 
     this.view.lblCompletedinspections.text =voltmx.i18n.getLocalizedString("Completed Inspections");
-
+    this.view.flxHeader.lblInspectionIQ.text = voltmx.i18n.getLocalizedString("InspectioniQ");
     this.view.flxfooter.lblinspections.text =voltmx.i18n.getLocalizedString("Inspections");
  
       this.view.flxfooter.lblinward.text =voltmx.i18n.getLocalizedString("Inward");

@@ -38,7 +38,7 @@
         "flxHeader",
         "flxSubHeader",
         "flxBody",
-        "flxFooter"
+        "flxfooter"
     ],
     "clipbounds": false,
     "containerweight": 100,

@@ -4,6 +4,7 @@ define({
   {
    
     var self = this;
+    this.adjustRTL();
     self.selectedChecks = ""; 
     self.tempChecks = "";
      this.view.saveresponse.setVisibility(false);
@@ -268,7 +269,7 @@ define({
           self.view.saveresponse.setVisibility(true);
           self.selectedChecks = "";
           self.tempChecks = "";
-            self.view.saveresponse.lblUPdatedsucessfully.text = "Panel list saved Sucessfully";
+            self.view.saveresponse.lblUPdatedsucessfully.text = voltmx.i18n.getLocalizedString("Panel list saved successfully");
         } catch (e) {
           voltmx.print("API Error: " + e);
         }
@@ -883,7 +884,8 @@ if (details !== "" && cost !== "" && Number(cost) > 0)
     voltmx.print("No file selected → skipping upload");
      
     self.view.flxAddDetailsAndUpload.setVisibility(false);
-    alert("Saved");
+//     alert("Saved");
+    alert(voltmx.i18n.getLocalizedString("Saved"));
     return; 
   }
 
@@ -1229,9 +1231,13 @@ if (details !== "" && cost !== "" && Number(cost) > 0)
       }
     };
 
+    var msg = voltmx.i18n.getLocalizedString("Save changes before switching tabs. Otherwise changes will be discarded. Do you want to continue?");
+//     var tit = voltmx.i18n.getLocalizedString();
+//     var yes = voltmx.i18n.getLocalizedString();
+//     var no = voltmx.i18n.getLocalizedString();
     voltmx.ui.Alert(
       {
-        message: "Save changes before switching tabs. Otherwise changes will be discarded. Do you want to continue?",
+        message: msg,
         alertType: constants.ALERT_TYPE_CONFIRMATION,
         alertTitle: "Confirmation",
         yesLabel: "Yes",
@@ -1260,7 +1266,60 @@ if (details !== "" && cost !== "" && Number(cost) > 0)
   self.view["btnSubType" + index].skin = "sknBtnd3243018px";
 
   self.invokePaintCondition(record.lovs_sub_cat_id);
-}
+},
+  
+  adjustRTL: function()
+  {
+    var self = this;
+    var isArabic = voltmx.i18n.getCurrentLocale() === "ar_AE";
+    this.view.flxHeadingWithButton.flxHeading.reverseLayoutDirection = isArabic;
+    
+    if(isArabic)
+      {
+        
+        self.view.flxHeadingWithButton.lblImages.left = "";
+      self.view.flxHeadingWithButton.lblImages.right = "3%";
+        
+          self.view.flxHeadingWithButton.flxBack.left = "";
+      self.view.flxHeadingWithButton.flxBack.right = "5%";
+        
+         var flipTransform = voltmx.ui.makeAffineTransform();
+      flipTransform.scale(-1, 1); // horizontal flip
+      self.view.flxHeadingWithButton.imgBack.transform = flipTransform;
+    }
+    else
+      {
+        
+        self.view.flxHeadingWithButton.lblImages.left = "3%";
+      self.view.flxHeadingWithButton.lblImages.right = "";
+        
+         self.view.flxHeadingWithButton.flxBack.left = "5%";
+      self.view.flxHeadingWithButton.flxBack.right = "";
+        
+        self.view.flxHeadingWithButton.imgBack.transform = voltmx.ui.makeAffineTransform();
+    }
+    
+    this.view.flxHeadingWithButton.lblImages.text = voltmx.i18n.getLocalizedString("Exterior & Paint Condition");
+     this.view.flxHeadingWithButton.btnSaveResponse.text = voltmx.i18n.getLocalizedString("save response");
+     this.view.flxHeader.lblInspectionIQ.text = voltmx.i18n.getLocalizedString("InspectioniQ");
+    this.view.saveresponse.btnClose.text = voltmx.i18n.getLocalizedString("Close");
+    this.view.saveresponse.lblUPdatedsucessfully.text = voltmx.i18n.getLocalizedString("Panel list saved successfully");
+    
+    
+    this.view.flxfooter.lblHome.text =voltmx.i18n.getLocalizedString("Dashboard");
+    
+    
+      this.view.flxfooter.lblinspections.text =voltmx.i18n.getLocalizedString("Inspections");
+
+      this.view.flxfooter.lblinward.text =voltmx.i18n.getLocalizedString("Inward");
+
+      this.view.flxfooter.lblimages.text =voltmx.i18n.getLocalizedString("Images");
+
+      this.view.flxfooter.lblprofile.text =voltmx.i18n.getLocalizedString("Profile");
+    
+  }
+  
+  
 
 
 });

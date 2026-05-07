@@ -16,6 +16,7 @@ define({
 //     this.insertIntoSegInspectionItems();
     this.invokeSelectedInspectionPackages();
     this.view.flxHeading.lblImages.text = this.name;
+    voltmx.store.setItem("fromSignature",false);
     this.view.flxHeader.lblInspectionIQ.text = voltmx.i18n.getLocalizedString("InspectioniQ");
   },
   
