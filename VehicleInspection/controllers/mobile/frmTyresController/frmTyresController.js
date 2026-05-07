@@ -1014,7 +1014,12 @@ for (var key in self.inspectionData) {
     this.view.details2.lblNamedata.text =  voltmx.i18n.getLocalizedString("Year Of Month");
     this.view.lblInspheading3.text = voltmx.i18n.getLocalizedString("Remarks");
     this.view.lblConditionRating.text = voltmx.i18n.getLocalizedString("Condition Rating");
-    
+    this.view.flxChooseFileTakePhoto.lblUploadYour.text = voltmx.i18n.getLocalizedString("How would you like to upload your document");
+    this.view.flxChooseFileTakePhoto.lblChooseFromLibrary.text = voltmx.i18n.getLocalizedString("CHOOSE FROM LIBRARY");
+    this.view.flxChooseFileTakePhoto.lblTakeAPhoto.text = voltmx.i18n.getLocalizedString("TAKE A PHOTO");
+    this.view.flxChooseFileTakePhoto.flxULSummary.reverseLayoutDirection = isArabic;
+    this.view.flxChooseFileTakePhoto.lblUploadYour.contentAlignment = isArabic ? constants.CONTENT_ALIGN_MIDDLE_RIGHT : constants.CONTENT_ALIGN_MIDDLE_LEFT;
+
      this.view.flxfooter.lblHome.text =voltmx.i18n.getLocalizedString("Dashboard");
     
     

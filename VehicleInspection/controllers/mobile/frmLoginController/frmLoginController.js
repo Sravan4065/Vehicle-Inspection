@@ -2,6 +2,7 @@ define({
 
  onNavigate: function()
   {
+    this.adjustRTL();
     this.view.preShow = this.onPreShow.bind(this);
   },
   
@@ -27,6 +28,17 @@ client.init(appkey, appsecret, serviceURL, function(response) {
 }, function(error) {
 // console.log("Init Failure");
 });
-}
+},
+  
+  adjustRTL: function()
+  {
+    var self = this;
+    
+    var isArabic = voltmx.i18n.getCurrentLocale() === "ar_AE";
+    
+    this.view.lblInspectionIQ.text = voltmx.i18n.getLocalizedString("InspectioniQ");
+    this.view.lblWelcomeBack.text = voltmx.i18n.getLocalizedString("Welcome back");
+    this.view.btnSignIn.text = voltmx.i18n.getLocalizedString("Sign In");
+  }
 
  });

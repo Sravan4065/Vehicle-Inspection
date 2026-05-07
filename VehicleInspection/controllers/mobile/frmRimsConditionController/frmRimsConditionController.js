@@ -542,7 +542,8 @@ if (details !== "" && cost !== "" && Number(cost) >= 0)
     voltmx.print("No file selected → skipping upload");
      
     self.view.flxAddDetailsAndUpload.setVisibility(false);
-    alert("Saved");
+//     alert("Saved");
+    alert(voltmx.i18n.getLocalizedString("Saved"));
     return; 
   }
 
@@ -1374,7 +1375,12 @@ for (var key in self.inspectionData) {
     this.view.flxSuccessUpload.lblUPdatedsucessfully.text = voltmx.i18n.getLocalizedString("Image uploaded successfully");
     this.view.flxSuccessUpload.btnClose.text = voltmx.i18n.getLocalizedString("OKAY");
     this.view.flxAddDetailsAndUpload.lblRetake.text = voltmx.i18n.getLocalizedString("Retake");
-    
+    this.view.flxChooseFileTakePhoto.lblUploadYour.text = voltmx.i18n.getLocalizedString("How would you like to upload your document");
+    this.view.flxChooseFileTakePhoto.lblChooseFromLibrary.text = voltmx.i18n.getLocalizedString("CHOOSE FROM LIBRARY");
+    this.view.flxChooseFileTakePhoto.lblTakeAPhoto.text = voltmx.i18n.getLocalizedString("TAKE A PHOTO");
+    this.view.flxChooseFileTakePhoto.flxULSummary.reverseLayoutDirection = isArabic;
+    this.view.flxChooseFileTakePhoto.lblUploadYour.contentAlignment = isArabic ? constants.CONTENT_ALIGN_MIDDLE_RIGHT : constants.CONTENT_ALIGN_MIDDLE_LEFT;
+
     this.view.flxfooter.lblHome.text =voltmx.i18n.getLocalizedString("Dashboard");
     
     

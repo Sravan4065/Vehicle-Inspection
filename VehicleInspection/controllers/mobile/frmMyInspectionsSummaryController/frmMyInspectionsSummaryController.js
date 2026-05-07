@@ -344,7 +344,7 @@ newRecords.forEach(function(record) {
     self.view.lblCompletedVehicles.text =voltmx.i18n.getLocalizedString("Completed Vehicles");
   
   self.view.btnLoadMore.text = voltmx.i18n.getLocalizedString("Load More");
- 
+ this.view.flxHeader.lblInspectionIQ.text = voltmx.i18n.getLocalizedString("InspectioniQ");
    this.view.flxfooter.lblHome.text =voltmx.i18n.getLocalizedString("Dashboard");
 
       this.view.flxfooter.lblinspections.text =voltmx.i18n.getLocalizedString("Inspections");

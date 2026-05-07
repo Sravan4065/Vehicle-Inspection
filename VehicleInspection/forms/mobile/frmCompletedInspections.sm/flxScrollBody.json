@@ -37,8 +37,7 @@
     "bounces": true,
     "canUpdateUI": true,
     "children": [
-        "flxInnerBody",
-        "btnLoadMore"
+        "flxInnerBody"
     ],
     "clipbounds": true,
     "containerweight": 100,

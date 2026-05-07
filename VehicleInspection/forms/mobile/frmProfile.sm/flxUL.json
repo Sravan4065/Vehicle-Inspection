@@ -6,7 +6,7 @@
     },
     "_height_": {
         "type": "string",
-        "value": "1%"
+        "value": "1dp"
     },
     "_left_": {
         "type": "number",

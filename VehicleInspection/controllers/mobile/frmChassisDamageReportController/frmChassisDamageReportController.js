@@ -4,6 +4,7 @@ define({
   {
    
     var self = this;
+    this.adjustRTL();
     self.selectedChecks = ""; 
      this.view.saveresponse.setVisibility(false);
     self.panelIdMap = {};
@@ -195,7 +196,7 @@ define({
           var response = JSON.parse(request.responseText);
           voltmx.print("API Response: " + JSON.stringify(response));
           self.view.saveresponse.setVisibility(true);
-           self.view.saveresponse.lblUPdatedsucessfully.text = "Panel list saved Sucessfully";
+           self.view.saveresponse.lblUPdatedsucessfully.text = voltmx.i18n.getLocalizedString("Panel list saved successfully");
            
         } catch (e) {
           voltmx.print("API Error: " + e);
@@ -299,6 +300,57 @@ define({
       self.selectedChecks = self.selectedChecks.slice(0,-1);
     }
     self.view.flxCheckBoxes.forceLayout();
+  },
+  
+  adjustRTL: function()
+  {
+    var self = this;
+    var isArabic = voltmx.i18n.getCurrentLocale() === "ar_AE";
+    this.view.flxHeadingWithButton.flxHeading.reverseLayoutDirection = isArabic;
+    
+    if(isArabic)
+      {
+        
+        self.view.flxHeadingWithButton.lblImages.left = "";
+      self.view.flxHeadingWithButton.lblImages.right = "3%";
+        
+          self.view.flxHeadingWithButton.flxBack.left = "";
+      self.view.flxHeadingWithButton.flxBack.right = "5%";
+        
+         var flipTransform = voltmx.ui.makeAffineTransform();
+      flipTransform.scale(-1, 1); // horizontal flip
+      self.view.flxHeadingWithButton.imgBack.transform = flipTransform;
+    }
+    else
+      {
+        
+        self.view.flxHeadingWithButton.lblImages.left = "3%";
+      self.view.flxHeadingWithButton.lblImages.right = "";
+        
+         self.view.flxHeadingWithButton.flxBack.left = "5%";
+      self.view.flxHeadingWithButton.flxBack.right = "";
+        
+        self.view.flxHeadingWithButton.imgBack.transform = voltmx.ui.makeAffineTransform();
+    }
+    
+    this.view.flxHeadingWithButton.lblImages.text = voltmx.i18n.getLocalizedString("Chassis Damage Report");
+     this.view.flxHeadingWithButton.btnSaveResponse.text = voltmx.i18n.getLocalizedString("save response");
+     this.view.flxHeader.lblInspectionIQ.text = voltmx.i18n.getLocalizedString("InspectioniQ");
+    this.view.saveresponse.btnClose.text = voltmx.i18n.getLocalizedString("Close");
+    this.view.saveresponse.lblUPdatedsucessfully.text = voltmx.i18n.getLocalizedString("Panel list saved successfully");
+    
+    
+    this.view.flxfooter.lblHome.text =voltmx.i18n.getLocalizedString("Dashboard");
+    
+    
+      this.view.flxfooter.lblinspections.text =voltmx.i18n.getLocalizedString("Inspections");
+
+      this.view.flxfooter.lblinward.text =voltmx.i18n.getLocalizedString("Inward");
+
+      this.view.flxfooter.lblimages.text =voltmx.i18n.getLocalizedString("Images");
+
+      this.view.flxfooter.lblprofile.text =voltmx.i18n.getLocalizedString("Profile");
+    
   }
 
 });

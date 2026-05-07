@@ -418,6 +418,8 @@ this.view.lblEngine.contentAlignment =
      this.view.lblSubmittedDate.text =voltmx.i18n.getLocalizedString("Vehicle Type");
     
     this.view.lblCurrentStatus.text = voltmx.i18n.getLocalizedString("Status");
+    
+    this.view.flxHeading.lblImages.text = voltmx.i18n.getLocalizedString("Vehicle Status");
 
 
     this.view.lblBasicInformation.text = voltmx.i18n.getLocalizedString("Basic Information");

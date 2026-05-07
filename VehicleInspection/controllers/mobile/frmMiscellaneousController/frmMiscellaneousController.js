@@ -1,11 +1,13 @@
 define({ 
 
   onNavigate: function(context){
+    
     this.objectId = context.object_id;
     this.lovId = context.lovId;
     this.services_id = context.services_id;
     this.object_service_id = context.object_service_id;
-    voltmx.store.removeItem("signature");
+//     this.isFromSignature = context && context.fromSignature ? true : false;
+//     voltmx.store.removeItem("signature");
     this.view.preShow =this.onPreShow.bind(this);
     this.view.flxHeadingWithButton.btnSaveResponse.onClick = this.onSubmitClick.bind(this);
     this.existingId = null;
@@ -245,6 +247,7 @@ define({
   // 🌐 Localization
   this.view.flxHeadingWithButton.lblImages.text = voltmx.i18n.getLocalizedString("Miscellaneous");
   this.view.flxHeadingWithButton.btnSaveResponse.text = voltmx.i18n.getLocalizedString("save response");
+       this.view.flxHeader.lblInspectionIQ.text = voltmx.i18n.getLocalizedString("InspectioniQ");
 
   this.view.details1.lblNamedata.text = voltmx.i18n.getLocalizedString("Tool Kit");
   this.view.details2.lblNamedata.text = voltmx.i18n.getLocalizedString("Damaged Areas");
@@ -273,18 +276,24 @@ this.view.lblUPdatedsucessfully.text = voltmx.i18n.getLocalizedString("Are you s
 
   onPreShow: function(){
     var self = this;
-    toggleFooterIcons(this.view, "frmVehicledetailsInspectionType");
+//     toggleFooterIcons(this.view, "frmVehicledetailsInspectionType");
     //     this.clearData();
     this.masterfleetspecvalues();
     this.view.flxBrowser.setVisibility(false);
-    this.view.details1.txbData.text = "";
-    this.view.details2.txbData.text = "";
-    this.view.details3.txbData.text = "";
-    this.view.details4.txbData.text = "";
-    this.view.details5.txbData.text = "";
-    this.view.details6.txbData.text = "";
-    this.view.details7.txbData.text = "";
-    this.view.details17.txbData.text = "";
+   var isFromSignature = voltmx.store.getItem("fromSignature");
+    if (!isFromSignature) {
+    self.view.details1.txbData.text = "";
+    self.view.details2.txbData.text = "";
+    self.view.details3.txbData.text = "";
+    self.view.details4.txbData.text = "";
+    self.view.details5.txbData.text = "";
+    self.view.details6.txbData.text = "";
+    self.view.details7.txbData.text = "";
+    self.view.details17.txbData.text = "";
+    voltmx.store.removeItem("signature");
+    self.getInspectionMiscellaneousList();
+    
+    }
     this.view.saveresponse.setVisibility(false);
     
     this.view.saveresponse.btnClose.onClick = () => {
@@ -339,7 +348,7 @@ this.view.lblUPdatedsucessfully.text = voltmx.i18n.getLocalizedString("Are you s
     }
 
     this.view.btnGenerateReport.onClick = this.generateReport.bind(this);
-    this.getInspectionMiscellaneousList();
+//     this.getInspectionMiscellaneousList();
     //     this.setDataToSeg();  
 
     for (let i = 1; i <= 17; i++) {
@@ -358,7 +367,17 @@ this.view.lblUPdatedsucessfully.text = voltmx.i18n.getLocalizedString("Are you s
     this.view.flxSignature.setVisibility(false);
     this.view.flxArrow.onClick = () =>
     {
-      self.view.flxSignature.setVisibility(true);
+//       self.view.flxSignature.setVisibility(true);
+//       new voltmx.mvc.Navigation("frmNavSign").navigate();
+      NavigationManager.push("frmNavSign");
+      self.view.forceLayout();
+      
+//       if (voltmx.os.deviceInfo().name.toLowerCase() === "iphone") {
+//     voltmx.timer.schedule("sigCanvasTimer", function() {
+//         self.view.signaturecapture.addSignatureCanvas();
+//         voltmx.timer.cancel("sigCanvasTimer");
+//     }, 0.3, false);
+// }
     }
     this.view.btnGoBack.onClick = () =>{
       self.view.flxBrowser.setVisibility(false);
@@ -366,12 +385,7 @@ this.view.lblUPdatedsucessfully.text = voltmx.i18n.getLocalizedString("Are you s
 
     this.view.btnComplete.onClick = this.completeInspection.bind(this);
 
-    //                  //#ifdef android
-    //   self.view.flxDownload.onClick =  self.onDownloadButtonClick.bind(self);
-    //     //#endif
-    //     //#ifdef iphone
-    //   self.view.flxDownload.onClick = self.testPDFNFIDownload.bind(self);
-    //     //#endif
+    
   },
 
 
@@ -1266,7 +1280,7 @@ else{
 
       //           var fileUrl = self.fileUrl;
       //           var fileName = thirdPartyFile.file_name;
-      var fileName = "Inspection Report_" + Date.now();
+      var fileName = "Inspection Report_" + Date.now()+".pdf";
 
       try {
         // Proceed to download using Java interop
@@ -1317,7 +1331,7 @@ else{
 
       //            var fileUrl = self.fileUrl;
       //           var fileName = thirdPartyFile.file_name;
-      var  fileName = "Inspection Report_" + Date.now();
+      var  fileName = "Inspection Report_" + Date.now()+".pdf";
 
       // Proceed to download
       var FileDownloadHandlerNFI = objc.import("PDFDownloadNFI");

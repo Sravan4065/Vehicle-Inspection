@@ -11,7 +11,7 @@ define({
     toggleFooterIcons(this.view, "frmCompletedInspections");
     this.currentOffset = 0;
     this.currentPage = 1;
-this.pageSize = this.pageSize || 10;
+this.pageSize =  10;
 this.view.segCompletedInspections.removeAll();
     toggleFooterIcons(this.view, "frmCompletedInspections");
     this.view.btnLoadMore.onClick = this.onLoadMoreClick.bind(this);
@@ -25,8 +25,8 @@ this.view.segCompletedInspections.removeAll();
   var self = this;
 
   // Prevent multiple clicks
-  self.view.btnLoadMore.setEnabled(false);
-
+//   self.view.btnLoadMore.setEnabled(false);
+   this.pageSize += 10;
   // Call same service again
   self.invokePendingInspectionService();
 },
@@ -68,7 +68,7 @@ self.currentPage = self.currentPage || 1;
 {
   voltmx.application.dismissLoadingScreen();
   voltmx.print(response);
-  this.currentPage++;
+//   this.currentPage++;
 
   
 
@@ -205,7 +205,7 @@ self.currentPage = self.currentPage || 1;
 //         self.view.segMyinspections.setVisibility(false);
       }
      
-       if (newRecords.length < self.pageSize) {
+       if (records.length < self.pageSize) {
     self.view.btnLoadMore.setVisibility(false);
 } else {
     self.view.btnLoadMore.setVisibility(true);

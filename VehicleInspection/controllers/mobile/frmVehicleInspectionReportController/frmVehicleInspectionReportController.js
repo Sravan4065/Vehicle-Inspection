@@ -161,7 +161,7 @@ define({
     this.view.lbloverallstatus.contentAlignment = isArabic ? constants.CONTENT_ALIGN_MIDDLE_LEFT : constants.CONTENT_ALIGN_MIDDLE_RIGHT;
     this.view.lblOverallsstatusData.contentAlignment = isArabic ? constants.CONTENT_ALIGN_MIDDLE_LEFT : constants.CONTENT_ALIGN_MIDDLE_RIGHT;
     
-  
+    this.view.lblInspectiondate.text = voltmx.i18n.getLocalizedString("Inspection Date");
      this.view.flxHeader.lblInspectionIQ.text = voltmx.i18n.getLocalizedString("InspectioniQ");
     this.view.flxHeading.lblImages.text = voltmx.i18n.getLocalizedString("Back");
     this.view.lblVehicleInspectionReport.text = voltmx.i18n.getLocalizedString("Vehicle Inspection Report");
@@ -410,6 +410,7 @@ define({
       // Proceed to download
       var FileDownloadHandlerNFI = objc.import("PDFDownloadNFI");
       var DownloadPDFViewController = objc.import("DownloadPDFViewController");
+         
       if (!DownloadPDFViewController) {
         voltmx.print("Error: Failed to import PDFDownloadNFI");
       }

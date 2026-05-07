@@ -37,7 +37,8 @@
     "children": [
         "flxHeading",
         "flxLotModel",
-        "segCompletedInspections"
+        "segCompletedInspections",
+        "btnLoadMore"
     ],
     "clipbounds": true,
     "containerweight": 100,

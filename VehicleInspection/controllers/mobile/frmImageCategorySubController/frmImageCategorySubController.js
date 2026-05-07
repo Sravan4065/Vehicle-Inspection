@@ -1,6 +1,7 @@
 define({
     onNavigate: function(context) {
         var self = this;
+        this.adjustRTL();
         this.objectId = context.record.object_id;
         this.context = context;
         this.view.preShow = this.onPreShow.bind(this);
@@ -77,13 +78,18 @@ define({
     }
 
     if (missingImage) {
+      
+      var msg = voltmx.i18n.getLocalizedString("Do you want to go back?");
+      var title = voltmx.i18n.getLocalizedString("Confirmation");
+      var yes = voltmx.i18n.getLocalizedString("Yes");
+      var no = voltmx.i18n.getLocalizedString("No");
 
         var alertConfig = {
-            message: "Do you want to go back?",
+            message: msg,
             alertType: constants.ALERT_TYPE_CONFIRMATION,
-            alertTitle: "Confirmation",
-            yesLabel: "Yes",
-            noLabel: "No",
+            alertTitle: title,
+            yesLabel: yes,
+            noLabel: no,
             alertHandler: function(response) {
                 if (response) {
                     NavigationManager.pop();
@@ -218,7 +224,7 @@ self.imageWidgets[index] = imgItem;
             id: "lblClick" + index,
             centerY: "50%",
             centerX: "50%",
-            text: "Click",
+            text: voltmx.i18n.getLocalizedString("Click"),
             skin: "sknLblDubai231f2018pxMedium"
         }, {}, {});
 
@@ -235,9 +241,9 @@ self.imageWidgets[index] = imgItem;
     var existingObj = store[viewName];
 
     if (existingObj) {
-
+       var msg = voltmx.i18n.getLocalizedString("Do you want to delete existing image?");
         var alertConfig = {
-            message: "Do you want to delete existing image?",
+            message: msg,
             alertType: constants.ALERT_TYPE_CONFIRMATION,
             alertTitle: "Confirmation",
             yesLabel: "Yes",
@@ -302,15 +308,15 @@ self.imageWidgets[index] = imgItem;
 
         if (this.uploadedImages && this.uploadedImages[key]) {
             imgWidget.base64 = this.uploadedImages[key];
-            if (lblClickWidget) lblClickWidget.text = "Retake";
+            if (lblClickWidget) lblClickWidget.text = voltmx.i18n.getLocalizedString("Retake");
         }
         else if (matchedImages.length > 0 && matchedImages[0].file_url) {
             imgWidget.src = matchedImages[0].file_url;
-            if (lblClickWidget) lblClickWidget.text = "Retake";
+            if (lblClickWidget) lblClickWidget.text = voltmx.i18n.getLocalizedString("Retake");
         }
         else {
             imgWidget.src = "defaulticon.png";
-            if (lblClickWidget) lblClickWidget.text = "Click";
+            if (lblClickWidget) lblClickWidget.text = voltmx.i18n.getLocalizedString("Click");
         }
     }
 },
@@ -383,7 +389,7 @@ self.uploadedImages[self.currentViewName] = base64Image;
                     return;
                 }
                 if (response && response.message === "Success") {
-                   alert("Upload Successful");
+                   alert(voltmx.i18n.getLocalizedString("Image uploaded successfully"));
 //                   self.updateUploadImagesStoreAfterUpload();
 //                   self.updateImagePreview();
                 if (self.uploadedImages && self.currentViewName) {
@@ -459,5 +465,52 @@ self.existingImages.forEach(function(item) {
                 self.updateImagePreview();
             }
         );
-    }
+    },
+  
+  adjustRTL: function()
+  {
+    var isArabic = voltmx.i18n.getCurrentLocale() === "ar_AE";
+    var direction = isArabic;
+    
+    this.view.flxHeading.lblImages.text = voltmx.i18n.getLocalizedString("Images");
+    this.view.lblSelectedVehicle.text = voltmx.i18n.getLocalizedString("Selected Vehicle");
+    this.view.lblCategory.text = voltmx.i18n.getLocalizedString("Category");
+    this.view.lblCaptureImages.text = voltmx.i18n.getLocalizedString("Capture Images");
+         this.view.flxHeader.lblInspectionIQ.text = voltmx.i18n.getLocalizedString("InspectioniQ");
+
+     this.view.flxfooter.lblHome.text =voltmx.i18n.getLocalizedString("Dashboard");
+
+      this.view.flxfooter.lblinspections.text =voltmx.i18n.getLocalizedString("Inspections");
+
+      this.view.flxfooter.lblinward.text =voltmx.i18n.getLocalizedString("Inward");
+
+      this.view.flxfooter.lblimages.text =voltmx.i18n.getLocalizedString("Images");
+
+      this.view.flxfooter.lblprofile.text =voltmx.i18n.getLocalizedString("Profile");
+    this.view.flxChooseFileTakePhoto.lblUploadYour.text = voltmx.i18n.getLocalizedString("How would you like to upload your document");
+    this.view.flxChooseFileTakePhoto.lblChooseFromLibrary.text = voltmx.i18n.getLocalizedString("CHOOSE FROM LIBRARY");
+    this.view.flxChooseFileTakePhoto.lblTakeAPhoto.text = voltmx.i18n.getLocalizedString("TAKE A PHOTO");
+    this.view.flxChooseFileTakePhoto.flxULSummary.reverseLayoutDirection = isArabic;
+    this.view.flxChooseFileTakePhoto.lblUploadYour.contentAlignment = isArabic ? constants.CONTENT_ALIGN_MIDDLE_RIGHT : constants.CONTENT_ALIGN_MIDDLE_LEFT;
+
+    
+    this.view.lblSelectedVehicle.left = isArabic ? "" : "5%";
+this.view.lblSelectedVehicle.right = isArabic ? "5%" : "";
+
+// lblCategory
+this.view.lblCategory.left = isArabic ? "" : "5%";
+this.view.lblCategory.right = isArabic ? "5%" : "";
+
+// lblSelectedvaluedata
+this.view.lblSelectedvaluedata.left = isArabic ? "" : "5%";
+this.view.lblSelectedvaluedata.right = isArabic ? "5%" : "";
+
+// lblCategoryValue
+this.view.lblCategoryValue.left = isArabic ? "" : "5%";
+this.view.lblCategoryValue.right = isArabic ? "5%" : "";
+    
+  this.view.lblCaptureImages.left = isArabic ? "" : "5%";
+    this.view.lblCaptureImages.right = isArabic ? "5%" : "";
+    
+  }
 });

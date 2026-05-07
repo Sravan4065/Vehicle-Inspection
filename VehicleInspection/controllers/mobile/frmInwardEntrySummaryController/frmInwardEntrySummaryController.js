@@ -471,7 +471,6 @@ define({
 //     new voltmx.mvc.Navigation("frmInwardEntryVehicleDetails").navigate(
 //     {
 //       "objectId": objectId,
-//       "isPending": self.isPending
 //     });
   },
   
@@ -561,6 +560,8 @@ define({
     this.view.lblSummaryOfVehicleInspection.text = voltmx.i18n.getLocalizedString("Summary of Vehicle Inward");
     this.view.lblPendingVehicles.text = voltmx.i18n.getLocalizedString("Pending Vehicles");
     this.view.lblCompletedVehicles.text = voltmx.i18n.getLocalizedString("Completed Vehicles");
+    this.view.flxSearchComponent.tbxSearchBy.placeholder = voltmx.i18n.getLocalizedString("Search by Make, Model, or Vehicle ID");
+    this.view.flxHeader.lblInspectionIQ.text = voltmx.i18n.getLocalizedString("InspectioniQ");
     //this.view.flxSearchComponent.tbxSearchBy.text = voltmx.i18n.getLocalizedString("Search by ID");
     this.view.btnLoadMore.text = voltmx.i18n.getLocalizedString("Load More");
      this.view.flxfooter.lblHome.text =voltmx.i18n.getLocalizedString("Dashboard");
