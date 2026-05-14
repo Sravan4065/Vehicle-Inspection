@@ -75,7 +75,7 @@ define({
     voltmx.print("handleRequest → " + url);
 
      if (url.indexOf("CombinedSigninAndSignup/unified") !== -1 &&
-        url.indexOf("local=signup") !== -1) {
+        url.indexOf("local=signup") !== -1 && false) {
 
         voltmx.print("Detected Signup URL, navigating to frmRegister1");
         if (!self._navigatedToRegister) {
@@ -86,7 +86,7 @@ define({
     }
 
     // --- Handle Forgot Password Flow ---
-    if (( url.indexOf("CombinedSigninAndSignup/forgotPassword") !== -1) || ( url.indexOf("The+user+has+forgotten+their+password") !== -1) ){
+    if (( url.indexOf("CombinedSigninAndSignup/forgotPassword") !== -1) || ( url.indexOf("The+user+has+forgotten+their+password") !== -1) && false){
 
         voltmx.print("Detected Forgot Password URL, redirecting to password reset policy");
         
@@ -314,7 +314,7 @@ if (!isAllowed) {
 
     // --- Handle Signup Flow ---
     if (url.indexOf("CombinedSigninAndSignup/unified") !== -1 &&
-        url.indexOf("local=signup") !== -1) {
+        url.indexOf("local=signup") !== -1 && false) {
 
         voltmx.print("Detected Signup URL, navigating to frmRegister1");
         if (!self._navigatedToRegister) {
@@ -325,7 +325,7 @@ if (!isAllowed) {
     }
 
     // --- Handle Forgot Password Flow ---
-    if (( url.indexOf("CombinedSigninAndSignup/forgotPassword") !== -1) || ( url.indexOf("The+user+has+forgotten+their+password") !== -1) ){
+    if (( url.indexOf("CombinedSigninAndSignup/forgotPassword") !== -1) || ( url.indexOf("The+user+has+forgotten+their+password") !== -1) && false){
 
         voltmx.print("Detected Forgot Password URL, redirecting to password reset policy");
         

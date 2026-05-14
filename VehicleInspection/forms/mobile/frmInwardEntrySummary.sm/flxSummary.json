@@ -112,7 +112,8 @@
                 "kuid": "dde384663a344baca7853b968bc1a6ca",
                 "srcKUID": "dc043ee54619438e8f905fd8e5c71609",
                 "wType": "Label"
-            }
+            },
+            "text": ""
         },
         "lblCompletedVehicles": {
             "__events__": {},
@@ -128,7 +129,8 @@
                 "kuid": "ccde64d7a63444f182fab606efc52d76",
                 "srcKUID": "i19b07fb759845bdb7713c0b57f7366a",
                 "wType": "Label"
-            }
+            },
+            "text": ""
         },
         "lblPendingVehicles": {
             "__events__": {},
@@ -144,7 +146,8 @@
                 "kuid": "c8824f9f11c6428b9b97d45b8b59b89e",
                 "srcKUID": "f2379be6e142468dadfeba9e2ee89b6a",
                 "wType": "Label"
-            }
+            },
+            "text": ""
         },
         "lblTotalVehicles": {
             "__events__": {},

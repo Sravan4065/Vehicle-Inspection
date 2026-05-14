@@ -338,6 +338,20 @@ this.washingPending = 0;
     
       this.view.lblRole.text = voltmx.store.getItem("jobTitle");
     
+       var roleText = self.view.lblRole.text || "";
+
+var calculatedWidth = (roleText.length * 3.3); // adjust multiplier if needed
+
+if (calculatedWidth < 30) {
+    calculatedWidth = 30;
+}
+
+if (calculatedWidth > 90) {
+    calculatedWidth = 90;
+}
+
+self.view.flxRole.width = calculatedWidth + "%";
+    
       this.view.lblRoleValue.text = voltmx.store.getItem("jobTitle");
     
       this.view.lblEmailValue.text = voltmx.store.getItem("email");
